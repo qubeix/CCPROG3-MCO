@@ -11,17 +11,26 @@ public class Book
     private final String AUTHOR;
     private final String GENRE;
 
+    private int chapterCount;     //the number of chapters
+    private int currentChapter;         //the user's current chapter
+
     //Constructor
-    public Book(String title, String author, String genre)
+    public Book(String title, String author, String genre, int chapterCount)
     {
         TITLE = title;
         AUTHOR = author;
         GENRE = genre;
 
+        if(chapterCount > 0)
+            this.chapterCount = chapterCount;
+        else
+            System.out.println("Invalid Chapters");
+        
         //Initialization
-        this.status = "Planned";
-        this.rating = 0;
-        this.review = "";
+        status = "Planned";
+        rating = 0;
+        review = "";
+        currentChapter = 0;
     }
 
     //Methods
@@ -44,9 +53,9 @@ public class Book
     public void addRating(int rating)
     {
         if(status.equals("Completed"))  //If the entry's status is "Completed"
-            this.rating = rating;  //Assign the rating
+            this.rating = rating;       //Assign the rating
         else                                                        //If the entry's status is not "Completed"
-            System.out.println("This entry is yet to completed.");  //Display a message
+            System.out.println("This entry is yet to completed");  //Display a message
     }
 
     public void addReview(String review)
@@ -54,7 +63,23 @@ public class Book
         if(status.equals("Completed"))  //If the entry's status is "Completed"
             this.review = review;       //Assign the review
         else                                                        //If the entry's status is not "Completed"
-            System.out.println("This entry is yet to completed.");  //Display a message
+            System.out.println("This entry is yet to completed");  //Display a message
+    }
+
+    public void nextChapter()
+    {
+        if(currentChapter < chapterCount)   //If the current chapter has not reached the last chapter
+        {
+            currentChapter++;                   //Move to the next chapter
+
+            if(status.equals("Planned"))           //If the status if "Planned"
+                updateStatus("In Progress");       //Update the status to "In Progress"
+            
+            if(currentChapter == chapterCount)     //If the current chapter is the last chapter
+                updateStatus("Completed");         //Update the status to "Completed"
+        }
+        else                                                                //If the book is completed
+            System.out.println("You have already completed this book");    //Display a message
     }
 
     //Getters
@@ -71,5 +96,10 @@ public class Book
     public String getReview()
     {
         return review;
+    }
+
+    public String getProgress()
+    {
+        return currentChapter + "/" + chapterCount + " Chapters";   //return the amount of chapters read
     }
 }
