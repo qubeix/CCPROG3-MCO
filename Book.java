@@ -17,41 +17,47 @@ public class Book
         TITLE = title;
         AUTHOR = author;
         GENRE = genre;
+
+        //Initialization
+        this.status = "Planned";
+        this.rating = 0;
+        this.review = "";
     }
 
     //Methods
-    public void addStatus()
+    public void addStatus(String status)
     {
-
+        if(status.equals("Planned") || status.equals("In Progress") || status.equals("Completed"))  //If the status is valid
+            this.status = status;  //Assign the new status
+        else                                       //If the new status is not valid
+            System.out.println("Invalid status");  //Display a message
     }
 
-    public void updateStatus()
+    public void updateStatus(String newStatus)
     {
-
+        if(newStatus.equals("Planned") || newStatus.equals("In Progress") || newStatus.equals("Completed"))  //If the new status is valid
+            this.status = newStatus;  //Assign the new status
+        else                                       //If the new status is not valid
+            System.out.println("Invalid status");  //Display a message
     }
 
-    public void addRating()
+    public void addRating(int rating)
     {
         if(status.equals("Completed"))  //If the entry's status is "Completed"
-        {   //Get rating and assign
-            Scanner sc = new Scanner(System.in);
-            System.out.print("Rating: ");
-            rating = sc.nextInt();
-        } else                          //If the entry's status is not "Completed"
+            this.rating = rating;  //Assign the rating
+        else                                                        //If the entry's status is not "Completed"
             System.out.println("This entry is yet to completed.");  //Display a message
     }
 
-    public void addReview()
+    public void addReview(String review)
     {
         if(status.equals("Completed"))  //If the entry's status is "Completed"
-        {   //Get review and assign
-            Scanner sc = new Scanner(System.in);
-            System.out.println("Review:");
-            review = sc.nextLine();
-        } else                          //If the entry's status is not "Completed"
+            this.review = review;       //Assign the review
+        else                                                        //If the entry's status is not "Completed"
             System.out.println("This entry is yet to completed.");  //Display a message
     }
 
+    //Getters
     public String getStatus()
     {
         return status;
