@@ -11,7 +11,7 @@ public class Book
     private final String AUTHOR;
     private final String GENRE;
 
-    private int chapterCount;     //the number of chapters
+    private final int CHAPTERCOUNT;     //the number of chapters
     private int currentChapter;         //the user's current chapter
 
     //Constructor
@@ -21,10 +21,7 @@ public class Book
         AUTHOR = author;
         GENRE = genre;
 
-        if(chapterCount > 0)
-            this.chapterCount = chapterCount;
-        else
-            System.out.println("Invalid Chapters");
+        CHAPTERCOUNT = chapterCount;
         
         //Initialization
         status = "Planned";
@@ -68,14 +65,14 @@ public class Book
 
     public void nextChapter()
     {
-        if(currentChapter < chapterCount)   //If the current chapter has not reached the last chapter
+        if(currentChapter < CHAPTERCOUNT)   //If the current chapter has not reached the last chapter
         {
             currentChapter++;                   //Move to the next chapter
 
             if(status.equals("Planned"))           //If the status if "Planned"
                 updateStatus("In Progress");       //Update the status to "In Progress"
             
-            if(currentChapter == chapterCount)     //If the current chapter is the last chapter
+            if(currentChapter == CHAPTERCOUNT)     //If the current chapter is the last chapter
                 updateStatus("Completed");         //Update the status to "Completed"
         }
         else                                                                //If the book is completed
@@ -100,6 +97,6 @@ public class Book
 
     public String getProgress()
     {
-        return currentChapter + "/" + chapterCount + " Chapters";   //return the amount of chapters read
+        return currentChapter + "/" + CHAPTERCOUNT + " Chapters";   //return the amount of chapters read
     }
 }
