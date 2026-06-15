@@ -11,18 +11,21 @@ public class Series
     private final String GENRE;
 
     private final int SEASONCOUNT;     //the number of seasons
-    private final int EPISODECOUNT;    //the number of episodes
+    private int[] episodeCount;        //stores the number of episodes for each season
+    //private final int EPISODECOUNT;    //the number of episodes
     private int currentSeason;         //the user's current season
     private int currentEpisode;        //the user's current episode
 
     //Constructor
-    public Series(String title, String genre, int seasonCount, int episodeCount)
+    public Series(String title, String genre, int seasonCount)
     {
         TITLE = title;
         GENRE = genre;
 
         SEASONCOUNT = seasonCount;
-        EPISODECOUNT = episodeCount;
+        //EPISODECOUNT = episodeCount;
+
+        episodeCount = new int[SEASONCOUNT];
 
         //Initialization
         status = "Planned";
@@ -65,20 +68,40 @@ public class Series
             System.out.println("This entry is yet to completed");  //Display a message
     }
 
+    public void addEpisodes()
+    {
+        Scanner sc = new Scanner(System.in);
+        for(int i=0; i<SEASONCOUNT; i++)
+        {
+            do
+            {
+                System.out.print("Season " + i+1 + " Episode Count: ");
+                episodeCount[i] = sc.nextInt();
+            } while(episodeCount[i] <= 0);
+        }
+
+        sc.close();
+    }
+
     public void nextEpisode()
     {
-        if(currentEpisode < EPISODECOUNT)   //If the current episode has not reached the last episode
+        if(currentEpisode < episodeCount[currentSeason-1])   //If the current episode has not reached the last episode
         {
-            currentEpisode++;                   //Move to the next chapter
+            currentEpisode++;                   //Move to the next episode
 
             if(status.equals("Planned"))           //If the status if "Planned"
                 updateStatus("In Progress");       //Update the status to "In Progress"
             
-            if(currentEpisode == episodeCount)     //If the current chapter is the last chapter
-                updateStatus("Completed");         //Update the status to "Completed"
+            if(currentEpisode == episodeCount[SEASONCOUNT-1] && currentSeason == SEASONCOUNT)     //If it is the last episode and the last season
+                updateStatus("Completed");                        //Update the status to "Completed"
+
+        } else if(currentEpisode == episodeCount[currentSeason-1])
+        {
+            currentEpisode = 1;
+            currentSeason++;
         }
-        else                                                                //If the book is completed
-            System.out.println("You have already completed this book");    //Display a message
+        else                                                                //If the series is completed
+            System.out.println("You have already completed this series");    //Display a message
     }
 
     //Getters
@@ -99,6 +122,6 @@ public class Series
 
     public String getProgress()
     {
-        return "Season " + currentSeason + ": " + currentEpisode + "/" + EPISODECOUNT + " Episodes";   //return the amount of chapters read
+        return "Season " + currentSeason + ": " + currentEpisode + "/" + episodeCount[currentSeason-1] + " Episodes";   //return the season and amount of episodes watched
     }
 }
