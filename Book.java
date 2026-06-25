@@ -105,6 +105,11 @@ public class Book
         return AUTHOR;
     }
 
+    public int getChapterCount()
+    {
+        return CHAPTERCOUNT;
+    }
+
     public String getGenre()
     {
         return GENRE;
