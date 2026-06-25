@@ -95,6 +95,21 @@ public class Book
         return review;
     }
 
+    public String getTitle()
+    {
+        return TITLE;
+    }
+
+    public String getAuthor()
+    {
+        return AUTHOR;
+    }
+
+    public String getGenre()
+    {
+        return GENRE;
+    }
+
     public String getProgress()
     {
         return currentChapter + "/" + CHAPTERCOUNT + " Chapters";   //return the amount of chapters read
