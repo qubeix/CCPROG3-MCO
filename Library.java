@@ -300,6 +300,162 @@ public class Library
         }
     }
 
+    /**
+    filterByType() displays all the entries (books, albums, and series) with the given media type
+    @param type - the String containing the medita type condition (Book, Album, or Series)
+    */
+    public void filterByType(String type)
+    {
+        if(type.equals("Book"))
+            displayBookLibrary();
+        else if(type.equals("Album"))
+            displayAlbumLibrary();
+        else (type.equals("Series"))
+            displaySeriesLibrary();
+    }
+
+    /**
+    filterByStatsAndType() displays all the entries (books, albums, and series) with the given status and media type
+    @param status - the String containing the status condition (Planned, In Progress, or Completed)
+    @param type - the String containing the medita type condition (Book, Album, or Series)
+    */
+    public void filterByType(String status, String type)
+    {
+        if(type.equals("Book"))
+        {
+            System.out.println("BOOK LIBRARY [" + status + "]");    //Display all book entries with the given status
+            for(i=0; i<bookCount; i++)
+            {
+                if(bookLibrary[i].getStatus().equals(status))
+                {
+                    System.out.print("[" + i+1 + "] ");
+                    displayBookEntry(bookLibrary[i]);
+                }
+            }
+        } else if(type.equals("Album"))
+        {
+            System.out.println("ALBUM LIBRARY [" + status + "]");    //Display all album entries with the given status
+            for(i=0; i<albumCount; i++)
+            {
+                if(albumLibrary[i].getStatus().equals(status))
+                {
+                    System.out.print("[" + i+1 + "] ");
+                    displayAlbumEntry(albumLibrary[i]);
+                }
+            }
+        } else (type.equals("Series"))
+        {
+            System.out.println("SERIES LIBRARY [" + status + "]");    //Display all series entries with the given status
+            for(i=0; iserieskCount; i++)
+            {
+                if(seriesLibrary[i].getStatus().equals(status))
+                {
+                    System.out.print("[" + i+1 + "] ");
+                    displaySeriesEntry(seriesLibrary[i]);
+                }
+            }
+        }
+    }
+
+    //For summary
+    /**
+    summary() displays the library's:
+        1. total entry count per media type
+        2. total entry count of all media types
+        3. total entry count per status
+        4. average rating of completed entries
+    */
+    public void summary()
+    {
+        int i;                  //loop variable
+        int plannedCount = 0;           //stores the total count of planned entries
+        int inProgressCount = 0;        //stores the total count of inprogress entries
+        int completedBookCount = 0;     //stores the total count of completed book entries
+        int completedAlbumCount = 0;    //stores the total count of completed album entries
+        int completedSeriesCount = 0;   //stores the total count of completed series entries
+        Book[] completedBooks = new Book[MAXCOUNT];         //stores the completed books (to be used for getting average rating)
+        Album[] completedAlbums = new Album[MAXCOUNT];      //stores the completed balbums (to be used for getting average rating)
+        Series[] completedSeries = new Series[MAXCOUNT];    //stores the completed series (to be used for getting average rating)
+        double aveBookRating = 0;      //stores the average rating of completed book entries
+        double aveAlbumRating = 0;     //stores the average rating of completed book entries
+        double aveSeriesRating = 0;    //stores the average rating of completed book entries
+
+        System.out.println("YOUR LIBRARY SUMMARY");
+
+        System.out.println("Total Books in Your Library: " + bookCount);    //Display total book in library
+        System.out.println("Total Albums in Your Library: " + albumCount);  //Display total albums in library
+        System.out.println("Total Series in Your Library: " + seriesCount); //Display total series in library
+
+        System.out.println("\n\tTotal Entries in Your Library: " + bookCount+albumCount+seriesCount);   //Display total entries in library
+        System.out.println("");
+
+        for(i=0; i<bookCount; i++)  //Get status counts for book entries
+        {
+            if(bookLibrary[i].getStatus().equals("Planned"))
+                plannedCount++;
+            if(bookLibrary[i].getStatus().equals("In Progress"))
+                inProgressCount++;
+            if(bookLibrary[i].getStatus().equals("Completed"))
+            {
+                completedBooks[completedBookCount] = bookLibrary[i];
+                completedBookCount++;
+            }
+        }
+
+        for(i=0; i<albumCount; i++)  //Get status counts for album entries
+        {
+            if(albumLibrary[i].getStatus().equals("Planned"))
+                plannedCount++;
+            if(albumLibrary[i].getStatus().equals("In Progress"))
+                inProgressCount++;
+            if(albumLibrary[i].getStatus().equals("Completed"))
+            {
+                completedAlbums[completedAlbumCount] = albumLibrary[i];
+                completedAlbumCount++;
+            }
+        }
+
+        for(i=0; i<seriesCount; i++)  //Get status counts for series entries
+        {
+            if(seriesLibrary[i].getStatus().equals("Planned"))
+                plannedCount++;
+            if(seriesLibrary[i].getStatus().equals("In Progress"))
+                inProgressCount++;
+            if(seriesLibrary[i].getStatus().equals("Completed"))
+            {
+                completedSeries[completedSeriesCount] = seriesLibrary[i];
+                completedSeriesCount++;
+            }
+        }
+
+        System.out.println("Total Entries Planned in Your Library: " + plannedCount);    //Display total book in library
+        System.out.println("Total Entries In Progress in Your Library: " + inProgressCount);  //Display total albums in library
+        System.out.println("Total Entries Completed in Your Library: " + completedBookCount+completedAlbumCount+completedSeriesCount); //Display total series in library
+        System.out.println("");
+
+        //Compute for average book rating
+        for(i=0; i<completedBookCount; i++)
+            aveBookRating += completedBooks[i].getRating();
+        aveBookRating /= (completedBookCount * 1.0);
+
+        //Compute for average album rating
+        for(i=0; i<completedAlbumCount; i++)
+            aveAlbumRating += completedAlbums[i].getRating();
+        aveAlbumRating /= (completedAlbumCount * 1.0);
+
+        //Compute for average series rating
+        for(i=0; i<completedSeriesCount; i++)
+            aveSeriesRating += completedSeries[i].getRating();
+        aveSeriesRating /= (completedSeriesCount * 1.0);
+
+        System.out.println("Your Average Book Rating: " + aveBookRating);
+        System.out.println("Your Average Album Rating: " + aveAlbumRating);
+        System.out.println("Your Average Series Rating: " + aveSeriesRating);
+
+        //Will continue...
+        //System.out.println("\n\tYour Total Average Rating: " + aveRating);
+    }
+
 
 
     //Getters
