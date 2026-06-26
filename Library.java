@@ -10,7 +10,7 @@ public class Library
     private int seriesCount;
     private final int MAXCOUNT = 100;   //Maximum count of media entries
 
-    //Constructor
+    //CONSTRUCTOR
     public Library()
     {
         bookLibrary = new Book[MAXCOUNT];
@@ -22,8 +22,11 @@ public class Library
         seriesCount = 0;
     }
 
-    //Methods
+    //METHODS
     //For adding entries:
+    /**
+     * addBook() adds a book to the book library
+     */
     public void addBook()
     {
         String title;
@@ -53,6 +56,9 @@ public class Library
             System.out.println("Maximum Book Entries reached.");
     }
 
+    /**
+     * addAlbum() adds an album to the album library
+     */
     public void addAlbum()
     {
         String title;
@@ -82,6 +88,9 @@ public class Library
             System.out.println("Maximum Album Entries reached.");
     }
 
+    /**
+     * addSeries() adds a series to the series library
+     */
     public void addSeries()
     {
         String title;
@@ -111,6 +120,10 @@ public class Library
 
 
     //For displaying medi type entries:
+    /**
+     * displayBookEntry() displays the given book's details (title, author, genre, and no. of chapters)
+     * @param book - the book whose detalls shall be displayed
+     */
     public void displayBookEntry(Book book)
     {
         System.out.println("\"" + book.getTitle() + "\" by " + book.getAuthor());
@@ -118,6 +131,10 @@ public class Library
         System.out.println("");
     }
 
+    /**
+     * displayAlbumEntry() displays the given album's details (title, artist, genre, and no. of tracks)
+     * @param album - the album whose detalls shall be displayed
+     */
     public void displayAlbumEntry(Album album)
     {
         System.out.println("\"" + album.getTitle() + "\" by " + album.getArtist());
@@ -125,6 +142,10 @@ public class Library
         System.out.println("");
     }
 
+    /**
+     * displaySeriesEntry() displays the given series' details (title, genre, no. of seasons, and no. of episodes)
+     * @param series - the series whose detalls shall be displayed
+     */
     public void displaySeriesEntry(Series series)
     {
         System.out.println("\"" + series.getTitle() + "\"");
@@ -134,6 +155,9 @@ public class Library
 
 
     //For displaying media type libraries:
+    /**
+     * displayBookLibrary() displays all entries in the book library
+     */
     public void displayBookLibrary()
     {
         int i;
@@ -146,6 +170,9 @@ public class Library
         }
     }
 
+    /**
+     * displayAlbumLibrary() displays all entries in the album library
+     */
     public void displayAlbumLibrary()
     {
         int i;
@@ -158,6 +185,9 @@ public class Library
         }
     }
 
+    /**
+     * displaySeriesLibrary() displays all entries in the series library
+     */
     public void displaySeriesLibrary()
     {
         int i;
@@ -172,6 +202,9 @@ public class Library
 
 
     //For removing entries:
+    /**
+     * removeBook() removes a book in the book library
+     */
     public void removeBook()
     {
         int index;
@@ -197,6 +230,9 @@ public class Library
         sc.close();
     }
 
+    /**
+     * removeAlbum() removes an album in the album library
+     */
     public void removeAlbum()
     {
         int index;
@@ -222,6 +258,9 @@ public class Library
         sc.close();
     }
 
+    /**
+     * removeSeries() removes a series in the series library
+     */
     public void removeSeries()
     {
         int index;
@@ -250,8 +289,8 @@ public class Library
 
     //For displaying all entries
     /**
-    displayLibrary() displays all the entries (books, albums, and series) without any filters
-    */
+      * displayLibrary() displays all the entries (books, albums, and series) without any filters
+     */
     public void displayLibrary()
     {
         displayBookLibrary();   //Display all the book entries
@@ -262,9 +301,9 @@ public class Library
     }
 
     /**
-    filterByStatus() displays all the entries (books, albums, and series) with the given status
-    @param status - the String containing the status condition (Planned, In Progress, or Completed)
-    */
+      * filterByStatus() displays all the entries (books, albums, and series) with the given status
+      * @param status - the String containing the status condition (Planned, In Progress, or Completed)
+     */
     public void filterByStatus(String status)
     {
         int i;
@@ -301,9 +340,9 @@ public class Library
     }
 
     /**
-    filterByType() displays all the entries (books, albums, and series) with the given media type
-    @param type - the String containing the medita type condition (Book, Album, or Series)
-    */
+      * filterByType() displays all the entries (books, albums, and series) with the given media type
+      * @param type - the String containing the medita type condition (Book, Album, or Series)
+     */
     public void filterByType(String type)
     {
         if(type.equals("Book"))
@@ -315,10 +354,10 @@ public class Library
     }
 
     /**
-    filterByStatsAndType() displays all the entries (books, albums, and series) with the given status and media type
-    @param status - the String containing the status condition (Planned, In Progress, or Completed)
-    @param type - the String containing the medita type condition (Book, Album, or Series)
-    */
+      * filterByStatsAndType() displays all the entries (books, albums, and series) with the given status and media type
+      * @param status - the String containing the status condition (Planned, In Progress, or Completed)
+      * @param type - the String containing the medita type condition (Book, Album, or Series)
+     */
     public void filterByType(String status, String type)
     {
         if(type.equals("Book"))
@@ -359,12 +398,12 @@ public class Library
 
     //For summary
     /**
-    summary() displays the library's:
-        1. total entry count per media type
-        2. total entry count of all media types
-        3. total entry count per status
-        4. average rating of completed entries
-    */
+      * summary() displays the library's:
+      *     1. total entry count per media type
+      *     2. total entry count of all media types
+      *     3. total entry count per status
+      *     4. average rating of completed entries
+     */
     public void summary()
     {
         int i;                  //loop variable
@@ -448,17 +487,15 @@ public class Library
             aveSeriesRating += completedSeries[i].getRating();
         aveSeriesRating /= (completedSeriesCount * 1.0);
 
-        System.out.println("Your Average Book Rating: " + aveBookRating);
-        System.out.println("Your Average Album Rating: " + aveAlbumRating);
-        System.out.println("Your Average Series Rating: " + aveSeriesRating);
+        System.out.println("Your Average Book Rating: " + aveBookRating);       //Display average book rating
+        System.out.println("Your Average Album Rating: " + aveAlbumRating);     //Display average album rating
+        System.out.println("Your Average Series Rating: " + aveSeriesRating);   //Display average series rating
 
-        //Will continue...
-        //System.out.println("\n\tYour Total Average Rating: " + aveRating);
+        System.out.println("\n\tYour Total Average Rating: " + (aveBookRating*completedBookCount + aveAlbumRating*completedAlbumCount + aveSeriesRating*completedSeriesCount)/(completedBookCount+completedAlbumCount+completedSeriesCount));   //Display average rating of all entries
     }
 
 
-
-    //Getters
+    //GETTERS
     public int getBookCount()
     {
         return bookCount;
@@ -472,5 +509,20 @@ public class Library
     public int getSeriesCount()
     {
         return seriesCount;
+    }
+
+    public Book getBookEntry(index)
+    {
+        return bookLibrary[index];
+    }
+
+    public Album getAlbumEntry(index)
+    {
+        return albumLibrary[index];
+    }
+
+    public Series getSeriesEntry(index)
+    {
+        return seriesLibrary[index];
     }
 }
