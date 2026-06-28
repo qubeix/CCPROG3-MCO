@@ -120,6 +120,26 @@ public class Series
         return review;
     }
 
+    public String getTitle()
+    {
+        return TITLE;
+    }
+
+    public String getGenre()
+    {
+        return GENRE;
+    }
+
+    public int getSeasonCount()
+    {
+        return SEASONCOUNT;
+    }
+
+    public int getEpisodeCount(int season)
+    {
+        return episodeCount[season-1];
+    }
+
     public String getProgress()
     {
         return "Season " + currentSeason + ": " + currentEpisode + "/" + episodeCount[currentSeason-1] + " Episodes";   //return the season and amount of episodes watched
