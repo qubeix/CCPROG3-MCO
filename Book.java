@@ -1,8 +1,13 @@
 import java.util.*;
 
+/**
+  * The Book class contains the attributes, constructor, methods, and getters necessary for the creation, modification, and manipulation of a book entry with:
+  * the common methods of: assigning a status (and modifying it), assigning a rating, and assigning a review; and
+  * the unique method of: updating the book entry's current chapter progress
+ */
 public class Book
 {
-    //Variables
+    //ATTRIBUTES
     private String status;
     private int rating;
     private String review;
@@ -14,7 +19,7 @@ public class Book
     private final int CHAPTERCOUNT;     //the number of chapters
     private int currentChapter;         //the user's current chapter
 
-    //Constructor
+    //CONSTRUCTOR
     public Book(String title, String author, String genre, int chapterCount)
     {
         TITLE = title;
@@ -30,7 +35,11 @@ public class Book
         currentChapter = 0;
     }
 
-    //Methods
+    //METHODS
+    /**
+      * addStatus() assigns a status ("Planned", "In Progress", or "Completed") to an entry
+      * @param status - the status to be assigned
+     */
     public void addStatus(String status)
     {
         if(status.equals("Planned") || status.equals("In Progress") || status.equals("Completed"))  //If the status is valid
@@ -39,6 +48,10 @@ public class Book
             System.out.println("Invalid status");  //Display a message
     }
 
+    /**
+      * updateStatus() modifies an entry's status ("Planned", "In Progress", or "Completed")
+      * @param newStatus - the status to be newly assigned
+     */
     public void updateStatus(String newStatus)
     {
         if(newStatus.equals("Planned") || newStatus.equals("In Progress") || newStatus.equals("Completed"))  //If the new status is valid
@@ -47,6 +60,11 @@ public class Book
             System.out.println("Invalid status");  //Display a message
     }
 
+    /**
+      * addRating() assigns a rating to an entry
+      * @param rating - the number rating to be assigned
+      * @pre - the entry must have a status of "Completed" to assign a rating
+     */
     public void addRating(int rating)
     {
         if(status.equals("Completed"))  //If the entry's status is "Completed"
@@ -55,6 +73,11 @@ public class Book
             System.out.println("This entry is yet to completed");  //Display a message
     }
 
+    /**
+      * addReview() assigns a review to an entry
+      * @param review - the review to be assigned
+      * @pre - the entry must have a status of "Completed" to assign a review
+     */
     public void addReview(String review)
     {
         if(status.equals("Completed"))  //If the entry's status is "Completed"
@@ -63,6 +86,9 @@ public class Book
             System.out.println("This entry is yet to completed");  //Display a message
     }
 
+    /**
+      * nextChapter() moves the current chapter forward by one
+     */
     public void nextChapter()
     {
         if(currentChapter < CHAPTERCOUNT)   //If the current chapter has not reached the last chapter
@@ -79,7 +105,7 @@ public class Book
             System.out.println("You have already completed this book");    //Display a message
     }
 
-    //Getters
+    //GETTERS
     public String getStatus()
     {
         return status;
