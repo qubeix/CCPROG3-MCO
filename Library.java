@@ -214,7 +214,7 @@ public class Library
         System.out.print("Book Number to Remove: ");
         index = nextInt() - 1;
 
-        if(index >= 0)
+        if(index >= 0 && index < bookCount)
         {
             int j;
             for(j=index; j<bookCount-1; j++)
@@ -242,7 +242,7 @@ public class Library
         System.out.print("Album Number to Remove: ");
         index = nextInt() - 1;
 
-        if(index >= 0)
+        if(index >= 0 && index < albumCount)
         {
             int j;
             for(j=index; j<bookCount-1; j++)
@@ -270,7 +270,7 @@ public class Library
         System.out.print("Series Number to Remove: ");
         index = nextInt() - 1;
 
-        if(index >= 0)
+        if(index >= 0 && index < seriesCount)
         {
             int j;
             for(j=index; j<bookCount-1; j++)
