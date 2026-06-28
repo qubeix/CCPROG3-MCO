@@ -1,6 +1,6 @@
 import java.util.*
 
-public class MediaVault
+public class MenuInterface
 {
   public static void main(String[] args)
   {
