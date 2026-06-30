@@ -32,7 +32,7 @@ public class Album
 	//Methods 
 	public void addStatus()
 	{
-		
+		System.out.println("Current Status: " +status);
 	}
 	
 	public void updateStatus(String newStatus)
@@ -91,6 +91,22 @@ public class Album
 	}
 	
 	//Getters
+	public String getTitle(){
+		return TITLE;
+	}
+	
+	public String getArtist(){
+		return ARTIST;
+	}
+	
+	public String getGenre(){
+		return GENRE;
+	}
+	
+	public int getTrackCount(){
+		return TRACKCOUNT;
+	}
+	
 	public String getStatus()
 	{
 		return status;

@@ -107,7 +107,7 @@ public class Library
             System.out.print("\nNo. of Seasons: ");
             seasonCount = sc.nextInt();
 
-            Seriess series = new Series(title, genre, seasonCount);
+            Series series = new Series(title, genre, seasonCount);
             series.addEpisodes();
             seriesLibrary[seriesCount] = series;
 
@@ -212,7 +212,7 @@ public class Library
 
         Scanner sc = new Scanner(System.in);
         System.out.print("Book Number to Remove: ");
-        index = nextInt() - 1;
+        index = sc.nextInt() - 1;
 
         if(index >= 0 && index < bookCount)
         {
@@ -240,7 +240,7 @@ public class Library
 
         Scanner sc = new Scanner(System.in);
         System.out.print("Album Number to Remove: ");
-        index = nextInt() - 1;
+        index = sc.nextInt() - 1;
 
         if(index >= 0 && index < albumCount)
         {
@@ -268,7 +268,7 @@ public class Library
 
         Scanner sc = new Scanner(System.in);
         System.out.print("Series Number to Remove: ");
-        index = nextInt() - 1;
+        index = sc.nextInt() - 1;
 
         if(index >= 0 && index < seriesCount)
         {
@@ -329,7 +329,7 @@ public class Library
         }
 
         System.out.println("SERIES LIBRARY [" + status + "]");    //Display all series entries with the given status
-        for(i=0; iserieskCount; i++)
+        for(i=0; i < seriesCount; i++)
         {
             if(seriesLibrary[i].getStatus().equals(status))
             {
@@ -349,7 +349,7 @@ public class Library
             displayBookLibrary();
         else if(type.equals("Album"))
             displayAlbumLibrary();
-        else (type.equals("Series"))
+        else if (type.equals("Series"))
             displaySeriesLibrary();
     }
 
@@ -363,7 +363,7 @@ public class Library
         if(type.equals("Book"))
         {
             System.out.println("BOOK LIBRARY [" + status + "]");    //Display all book entries with the given status
-            for(i=0; i<bookCount; i++)
+            for(int i=0; i<bookCount; i++)
             {
                 if(bookLibrary[i].getStatus().equals(status))
                 {
@@ -374,7 +374,7 @@ public class Library
         } else if(type.equals("Album"))
         {
             System.out.println("ALBUM LIBRARY [" + status + "]");    //Display all album entries with the given status
-            for(i=0; i<albumCount; i++)
+            for(int i=0; i<albumCount; i++)
             {
                 if(albumLibrary[i].getStatus().equals(status))
                 {
@@ -382,10 +382,10 @@ public class Library
                     displayAlbumEntry(albumLibrary[i]);
                 }
             }
-        } else (type.equals("Series"))
+        } else if (type.equals("Series"))
         {
             System.out.println("SERIES LIBRARY [" + status + "]");    //Display all series entries with the given status
-            for(i=0; iserieskCount; i++)
+            for(int i=0; i < seriesCount; i++)
             {
                 if(seriesLibrary[i].getStatus().equals(status))
                 {
@@ -511,17 +511,17 @@ public class Library
         return seriesCount;
     }
 
-    public Book getBookEntry(index)
+    public Book getBookEntry(int index)
     {
         return bookLibrary[index];
     }
 
-    public Album getAlbumEntry(index)
+    public Album getAlbumEntry(int index)
     {
         return albumLibrary[index];
     }
 
-    public Series getSeriesEntry(index)
+    public Series getSeriesEntry(int index)
     {
         return seriesLibrary[index];
     }

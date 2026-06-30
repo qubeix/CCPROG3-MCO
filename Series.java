@@ -167,6 +167,14 @@ public class Series
         return episodeCount[season-1];
     }
 
+    public int getEpisodeCount(){
+        int total = 0;
+        for (int i = 0; i < SEASONCOUNT; i++){
+            total += episodeCount[i];
+        }
+        return total; 
+    }
+
     public String getProgress()
     {
         return "Season " + currentSeason + ": " + currentEpisode + "/" + episodeCount[currentSeason-1] + " Episodes";   //return the season and amount of episodes watched

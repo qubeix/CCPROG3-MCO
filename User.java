@@ -39,28 +39,25 @@ public class User
 	}
 
 	//add the different media types
-	public void addMedia(Book book)
-	{
-		library.addEntry(book);
+	public void addBookEntry(){
+		library.addBook();
 		System.out.println("Book added to library");
 	}
-	
-	public void addMedia(Album album)
-	{
-		library.addEntry(album);
+
+	public void addAlbumEntry(){
+		library.addAlbum();
 		System.out.println("Album added to library");
 	}
-	
-	public void addMedia(Series series)
-	{
-		library.addEntry(series);
+
+	public void addSeriesEntry(){
+		library.addSeries();
 		System.out.println("Series added to library");
 	}
-	
+
 	//view media types entires 
 	public void viewLibrary()
 	{
-		library.listEntries();
+		library.displayLibrary();
 	}
 	
 	public void getSummary()
