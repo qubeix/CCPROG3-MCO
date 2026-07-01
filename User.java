@@ -53,11 +53,50 @@ public class User
 		library.addSeries();
 		System.out.println("Series added to library");
 	}
+	
+	//remove the differnt media types
+	public void removeBookEntry(){
+		library.removeBook();
+		System.out.println("Book removed from library");
+	}
+	
+	public void removeAlbumEntry(){
+		library.removeAlbum();
+		System.out.println("Album removed from library");
+	}
+	
+	public void removeSeriesEntry(){
+		library.removeSeries();
+		System.out.println("Series removed from library");
+	}
 
 	//view media types entires 
 	public void viewLibrary()
 	{
 		library.displayLibrary();
+	}
+	
+	public void viewByStatus(){
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter status (Planned, In Progress, Completed): ");
+		String status = sc.nextLine();
+		library.filterByStatus(status);
+	}
+	
+	public void viewByType(){
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter type (Book, Album, Series): ");
+		String type = sc.nextLine();
+		library.filterByStatus(type);
+	}
+	
+	public void viewByStatusType(){
+		Scanner sc = new Scanner(System.in);
+		System.out.print("Enter status (Planned, In Progress, Completed): ");
+		String status = sc.nextLine();
+		System.out.print("Enter type (Book, Album, Series): ");
+		String type = sc.nextLine();
+		library.filterByType(status, type);
 	}
 	
 	public void getSummary()
