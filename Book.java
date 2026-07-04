@@ -58,6 +58,9 @@ public class Book
             this.status = newStatus;  //Assign the new status
         else                                       //If the new status is not valid
             System.out.println("Invalid status");  //Display a message
+     
+        if(status.equals("Completed"))
+            currentChapter = CHAPTERCOUNT;
     }
 
     /**
