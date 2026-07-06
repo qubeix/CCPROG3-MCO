@@ -2,13 +2,13 @@ import java.util.*;
 
 public class User
 {
-	//variables 
+	//ATTRIBUTES 
 	private String username;
 	private String password;
 	private String name;
 	private Library library; 
 	
-	//constructors 
+	//CONSTRUCTORS 
 	public User (String username, String password, String name)
 	{
 		this.username = username;
@@ -17,12 +17,13 @@ public class User
 		this.library = new Library();
 	}
 
+	//METHODS
 	//login method for user 
 	public boolean login (String inputUsername, String inputPassword) 
 	{
 		if (inputUsername.equals(username) && inputPassword.equals(password))
 		{
-			System.out.println("Login Successful! Welcome, " +name+ "!");
+			System.out.println("Login Successful! Welcome, " +name+ "!\n");
 			return true;
 		}
 		else
@@ -35,39 +36,36 @@ public class User
 	//logout display/method 
 	public void logout()
 	{
-		System.out.println("Thank you " +name+ " has logged out");
+		System.out.println("Thank you! " +name+ " has logged out\n");
 	}
 
 	//add the different media types
 	public void addBookEntry(){
 		library.addBook();
-		System.out.println("Book added to library");
+		System.out.println("Book added to library\n");
 	}
 
 	public void addAlbumEntry(){
 		library.addAlbum();
-		System.out.println("Album added to library");
+		System.out.println("Album added to library\n");
 	}
 
 	public void addSeriesEntry(){
 		library.addSeries();
-		System.out.println("Series added to library");
+		System.out.println("Series added to library\n");
 	}
 	
 	//remove the differnt media types
 	public void removeBookEntry(){
 		library.removeBook();
-		System.out.println("Book removed from library");
 	}
 	
 	public void removeAlbumEntry(){
 		library.removeAlbum();
-		System.out.println("Album removed from library");
 	}
 	
 	public void removeSeriesEntry(){
 		library.removeSeries();
-		System.out.println("Series removed from library");
 	}
 
 	//view media types entires 
@@ -80,6 +78,7 @@ public class User
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter status (Planned, In Progress, Completed): ");
 		String status = sc.nextLine();
+		System.out.println("");
 		library.filterByStatus(status);
 	}
 	
@@ -87,6 +86,7 @@ public class User
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter type (Book, Album, Series): ");
 		String type = sc.nextLine();
+		System.out.println("");
 		library.filterByType(type);
 	}
 	
@@ -96,7 +96,8 @@ public class User
 		String status = sc.nextLine();
 		System.out.print("Enter type (Book, Album, Series): ");
 		String type = sc.nextLine();
-		library.filterByType(status, type);
+		System.out.println("");
+		library.filterByStatusType(status, type);
 	}
 	
 	public void getSummary()
