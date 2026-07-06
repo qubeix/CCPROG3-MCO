@@ -11,6 +11,10 @@ public class MenuInterface
     int menuOption;
     int addOption;
     int removeOption;
+    int rateOption;
+    int reviewOption;
+    int updateOption;
+    int updateOption2;
     int viewOption;
     int i;    //loop variable
 
@@ -64,19 +68,23 @@ public class MenuInterface
             if(users[userIndex].login(username, password))  //Validate log-in
             {
               menuOption = 0;
-              while(menuOption != 4)
+              while(menuOption != 8)
               {
                 System.out.println("What would you like to do?");
                 System.out.println("[1] Add Entries");
                 System.out.println("[2] Remove Entries");
-                System.out.println("[3] View Entries");
-                System.out.println("[4] Log out");
+                System.out.println("[3] Rate Entries");
+                System.out.println("[4] Review Entries");
+                System.out.println("[5] Update Entries");
+                System.out.println("[6] View Entries");
+                System.out.println("[7] View Summary");
+                System.out.println("[8] Log out");
 
                 System.out.print("\n> ");
 
                 do{
                   menuOption = sc.nextInt();
-                } while(menuOption < 1 || menuOption > 4);
+                } while(menuOption < 1 || menuOption > 8);
 
                 System.out.println("");
 
@@ -149,18 +157,183 @@ public class MenuInterface
                     }
 
                     break;
-
+                  
                   case 3:
+                    System.out.println("MENU: Rate Entries");
+                    System.out.println("[1] Rate Book");
+                    System.out.println("[2] Rate Album");
+                    System.out.println("[3] Rate Series");
+
+                    System.out.print("\n> ");
+
+                    do{
+                      rateOption = sc.nextInt();
+                    } while(rateOption < 1 || rateOption > 3);
+
+                    System.out.println("");
+                    whiteSpace = sc.nextLine();
+
+                    //Switch Cases for Rating Entries
+                    switch(rateOption)
+                    {
+                      case 1:
+                        //rate book
+                        break;
+                      
+                      case 2:
+                        //rate album
+                        break;
+                      
+                      case 3:
+                        //rate series
+                    }
+
+                    break;
+                  
+                  case 4:
+                    System.out.println("MENU: Review Entries");
+                    System.out.println("[1] Review Book");
+                    System.out.println("[2] Review Album");
+                    System.out.println("[3] Review Series");
+
+                    System.out.print("\n> ");
+
+                    do{
+                      reviewOption = sc.nextInt();
+                    } while(reviewOption < 1 || reviewOption > 3);
+
+                    System.out.println("");
+                    whiteSpace = sc.nextLine();
+
+                    //Switch Cases for Reviewing Entries
+                    switch(reviewOption)
+                    {
+                      case 1:
+                        //review book
+                        break;
+                      
+                      case 2:
+                        //review album
+                        break;
+                      
+                      case 3:
+                        //review series
+                    }
+
+                    break;
+
+                  case 5:
+                    System.out.println("MENU: Update Entries");
+                    System.out.println("[1] Update Book");
+                    System.out.println("[2] Update Album");
+                    System.out.println("[3] Update Series");
+
+                    System.out.print("\n> ");
+
+                    do{
+                      updateOption = sc.nextInt();
+                    } while(updateOption < 1 || updateOption > 3);
+
+                    System.out.println("");
+                    whiteSpace = sc.nextLine();
+
+                    //Switch Cases for Updating Entries
+                    switch(updateOption)
+                    {
+                      case 1:
+                        System.out.println("MENU: Update Book");
+                        System.out.println("[1] Update Status");
+                        System.out.println("[2] Update Chapter");
+
+                        System.out.print("\n> ");
+
+                        do{
+                          updateOption2 = sc.nextInt();
+                        } while(updateOption2 < 1 || updateOption2 > 2);
+
+                        System.out.println("");
+                        whiteSpace = sc.nextLine();
+
+                        //Switch Case for Updating Book
+                        switch(updateOption2)
+                        {
+                          case 1:
+                            //update status
+                            break;
+                          
+                          case 2:
+                            //update chapter + display progress
+                        }
+
+                        break;
+                      
+                      case 2:
+                        System.out.println("MENU: Update Album");
+                        System.out.println("[1] Update Status");
+                        System.out.println("[2] Update Track");
+
+                        System.out.print("\n> ");
+
+                        do{
+                          updateOption2 = sc.nextInt();
+                        } while(updateOption2 < 1 || updateOption2 > 2);
+
+                        System.out.println("");
+                        whiteSpace = sc.nextLine();
+
+                        //Switch Case for Updating Book
+                        switch(updateOption2)
+                        {
+                          case 1:
+                            //update status
+                            break;
+                          
+                          case 2:
+                            //update track + display progress
+                        }
+
+                        break;
+                      
+                      case 3:
+                        System.out.println("MENU: Update Series");
+                        System.out.println("[1] Update Status");
+                        System.out.println("[2] Update Season/Episode");
+
+                        System.out.print("\n> ");
+
+                        do{
+                          updateOption2 = sc.nextInt();
+                        } while(updateOption2 < 1 || updateOption2 > 2);
+
+                        System.out.println("");
+                        whiteSpace = sc.nextLine();
+
+                        //Switch Case for Updating Book
+                        switch(updateOption2)
+                        {
+                          case 1:
+                            //update status
+                            break;
+                          
+                          case 2:
+                            //update season/episode + display progress
+                        }
+                    }
+
+                    break;
+
+                  case 6:
                     System.out.println("MENU: View Entries");
                     System.out.println("[1] View by Status");
                     System.out.println("[2] View by Media Type");
                     System.out.println("[3] View by Status and Media Type");
+                    System.out.println("[4] View All");
 
                     System.out.print("\n> ");
 
                     do{
                       viewOption = sc.nextInt();
-                    } while(viewOption < 1 || viewOption > 3);
+                    } while(viewOption < 1 || viewOption > 4);
 
                     System.out.println("");
                     whiteSpace = sc.nextLine();
@@ -178,11 +351,19 @@ public class MenuInterface
                       
                       case 3:
                         users[userIndex].viewByStatusType();
+                        break;
+                      
+                      case 4:
+                        users[userIndex].viewLibrary();
                     }
 
                     break;
                   
-                  case 4:
+                  case 7:
+                    users[userIndex].getSummary();
+                  
+                  case 8:
+                    users[userIndex].logout();
                     startOption = 0;  //Revert back to default
                 }
               }
