@@ -34,7 +34,7 @@ public class Series
         status = "Planned";
         rating = 0;
         review = "";
-        currentSeason = 0;
+        currentSeason = 1;
         currentEpisode = 0;
     }
 
@@ -105,12 +105,12 @@ public class Series
         {
             do
             {
-                System.out.print("Season " + i+1 + " Episode Count: ");
+                System.out.print("Season " + (i+1) + " Episode Count: ");
                 episodeCount[i] = sc.nextInt();
             } while(episodeCount[i] <= 0);
         }
 
-        sc.close();
+        //sc.close();
     }
 
     /**
@@ -130,8 +130,13 @@ public class Series
 
         } else if(currentEpisode == episodeCount[currentSeason-1])
         {
-            currentEpisode = 1;
-            currentSeason++;
+            if(currentSeason == SEASONCOUNT){
+                updateStatus("Completed");
+            }
+            else{
+                currentEpisode = 1;
+                currentSeason++;
+            }
         }
         else                                                                //If the series is completed
             System.out.println("You have already completed this series");    //Display a message

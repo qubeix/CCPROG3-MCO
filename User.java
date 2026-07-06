@@ -35,7 +35,7 @@ public class User
 	//logout display/method 
 	public void logout()
 	{
-		System.out.println("Thank you " +name+ "has logged out");
+		System.out.println("Thank you " +name+ " has logged out");
 	}
 
 	//add the different media types
@@ -87,7 +87,7 @@ public class User
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter type (Book, Album, Series): ");
 		String type = sc.nextLine();
-		library.filterByStatus(type);
+		library.filterByType(type);
 	}
 	
 	public void viewByStatusType(){

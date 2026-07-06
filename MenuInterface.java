@@ -96,6 +96,7 @@ public class MenuInterface
                     } while(addOption < 1 || addOption > 3);
 
                     System.out.println("");
+                    whiteSpace = sc.nextLine();
 
                     //Switch Cases for Adding Entries
                     switch(addOption)
@@ -130,6 +131,7 @@ public class MenuInterface
                     } while(removeOption < 1 || removeOption > 3);
 
                     System.out.println("");
+                    whiteSpace = sc.nextLine();
 
                     //Switch Cases for Removing Entries
                     switch(removeOption)
@@ -161,6 +163,7 @@ public class MenuInterface
                     } while(viewOption < 1 || viewOption > 3);
 
                     System.out.println("");
+                    whiteSpace = sc.nextLine();
 
                     //Switch Cases for Viewing Entries
                     switch(viewOption)
@@ -199,12 +202,14 @@ public class MenuInterface
           name = sc.nextLine();
 
           do{
+            isValidUsername = true;              //reverts back to default
+
             System.out.print("Username: ");
             username = sc.nextLine();
 
             for(i=0; i<userCount && isValidUsername; i++)    //Ensure created username is not already in use
             {
-              if(users[i].getName().equals(username))
+              if(users[i].getUsername().equals(username))
               {
                 isValidUsername = false;
                 System.out.println("Invalid: This username is already taken.");

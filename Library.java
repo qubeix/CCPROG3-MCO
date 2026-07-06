@@ -51,7 +51,7 @@ public class Library
 
             bookCount++;
 
-            sc.close();
+            //sc.close();
         } else      //If there are no more slots for an entry
             System.out.println("Maximum Book Entries reached.");
     }
@@ -83,7 +83,7 @@ public class Library
 
             albumCount++;
 
-            sc.close();
+            //sc.close();
         } else      //If there are no more slots for an entry
             System.out.println("Maximum Album Entries reached.");
     }
@@ -113,7 +113,7 @@ public class Library
 
             seriesCount++;
 
-            sc.close();
+            //sc.close();
         } else      //If there are no more slots for an entry
             System.out.println("Maximum Series Entries reached.");
     }
@@ -165,7 +165,7 @@ public class Library
         System.out.println("BOOK LIBRARY");
         for(i=0; i<bookCount; i++)
         {
-            System.out.print("[" + i+1 + "]");
+            System.out.print("[" + (i+1) + "]");
             displayBookEntry(bookLibrary[i]);
         }
     }
@@ -180,7 +180,7 @@ public class Library
         System.out.println("ALBUM LIBRARY");
         for(i=0; i<albumCount; i++)
         {
-            System.out.print("[" + i+1 + "]");
+            System.out.print("[" + (i+1) + "]");
             displayAlbumEntry(albumLibrary[i]);
         }
     }
@@ -195,7 +195,7 @@ public class Library
         System.out.println("SERIES LIBRARY");
         for(i=0; i<seriesCount; i++)
         {
-            System.out.print("[" + i+1 + "]");
+            System.out.print("[" + (i+1) + "]");
             displaySeriesEntry(seriesLibrary[i]);
         }
     }
@@ -216,18 +216,22 @@ public class Library
 
         if(index >= 0 && index < bookCount)
         {
+            String removedTitle = bookLibrary[index].getTitle();           //Save before shifting
+            String removedAuthor = bookLibrary[index].getAuthor();          //save before shifting
+            
             int j;
-            for(j=index; j<bookCount-1; j++)
+            for(j=index; j<bookCount-1; j++){
                 bookLibrary[j] = bookLibrary[j+1];
+            }
 
             bookLibrary[j] = null;
             bookCount--;
 
-            System.out.println("\"" + bookLibrary[index].getTitle() + "\" by " + bookLibrary[index].getAuthor() + "is removed.");
+            System.out.println("\"" + removedTitle + "\" by " + removedAuthor + " is removed.");
         } else
         System.out.println("Invalid Book Number. Exiting Book Removal...");
         
-        sc.close();
+        //sc.close();
     }
 
     /**
@@ -244,18 +248,21 @@ public class Library
 
         if(index >= 0 && index < albumCount)
         {
+            String removedTitle = albumLibrary[index].getTitle();
+            String removedArtist = albumLibrary[index].getArtist();
+
             int j;
-            for(j=index; j<bookCount-1; j++)
+            for(j=index; j<albumCount-1; j++)
                 albumLibrary[j] = albumLibrary[j+1];
 
             albumLibrary[j] = null;
             albumCount--;
 
-            System.out.println("\"" + albumLibrary[index].getTitle() + "\" by " + albumLibrary[index].getArtist() + "is removed.");
+            System.out.println("\"" + removedTitle + "\" by " + removedArtist + " is removed.");
         } else
         System.out.println("Invalid Album Number. Exiting Album Removal...");
         
-        sc.close();
+        //sc.close();
     }
 
     /**
@@ -272,18 +279,20 @@ public class Library
 
         if(index >= 0 && index < seriesCount)
         {
+            String removedTitle = seriesLibrary[index].getTitle();
+
             int j;
-            for(j=index; j<bookCount-1; j++)
+            for(j=index; j<seriesCount-1; j++)
                 seriesLibrary[j] = seriesLibrary[j+1];
 
             seriesLibrary[j] = null;
             seriesCount--;
 
-            System.out.println("\"" + seriesLibrary[index].getTitle() + "is removed.");
+            System.out.println("\"" + removedTitle + "\" is removed.");
         } else
         System.out.println("Invalid Series Number. Exiting Series Removal...");
         
-        sc.close();
+        //sc.close();
     }
 
 
@@ -313,7 +322,7 @@ public class Library
         {
             if(bookLibrary[i].getStatus().equals(status))
             {
-                System.out.print("[" + i+1 + "] ");
+                System.out.print("[" + (i+1) + "] ");
                 displayBookEntry(bookLibrary[i]);
             }
         }
@@ -323,7 +332,7 @@ public class Library
         {
             if(albumLibrary[i].getStatus().equals(status))
             {
-                System.out.print("[" + i+1 + "] ");
+                System.out.print("[" + (i+1) + "] ");
                 displayAlbumEntry(albumLibrary[i]);
             }
         }
@@ -333,7 +342,7 @@ public class Library
         {
             if(seriesLibrary[i].getStatus().equals(status))
             {
-                System.out.print("[" + i+1 + "] ");
+                System.out.print("[" + (i+1) + "] ");
                 displaySeriesEntry(seriesLibrary[i]);
             }
         }
@@ -367,7 +376,7 @@ public class Library
             {
                 if(bookLibrary[i].getStatus().equals(status))
                 {
-                    System.out.print("[" + i+1 + "] ");
+                    System.out.print("[" + (i+1) + "] ");
                     displayBookEntry(bookLibrary[i]);
                 }
             }
@@ -378,7 +387,7 @@ public class Library
             {
                 if(albumLibrary[i].getStatus().equals(status))
                 {
-                    System.out.print("[" + i+1 + "] ");
+                    System.out.print("[" + (i+1) + "] ");
                     displayAlbumEntry(albumLibrary[i]);
                 }
             }
@@ -389,7 +398,7 @@ public class Library
             {
                 if(seriesLibrary[i].getStatus().equals(status))
                 {
-                    System.out.print("[" + i+1 + "] ");
+                    System.out.print("[" + (i+1) + "] ");
                     displaySeriesEntry(seriesLibrary[i]);
                 }
             }
@@ -425,7 +434,7 @@ public class Library
         System.out.println("Total Albums in Your Library: " + albumCount);  //Display total albums in library
         System.out.println("Total Series in Your Library: " + seriesCount); //Display total series in library
 
-        System.out.println("\n\tTotal Entries in Your Library: " + bookCount+albumCount+seriesCount);   //Display total entries in library
+        System.out.println("\n\tTotal Entries in Your Library: " + (bookCount+albumCount+seriesCount));   //Display total entries in library
         System.out.println("");
 
         for(i=0; i<bookCount; i++)  //Get status counts for book entries
@@ -469,7 +478,7 @@ public class Library
 
         System.out.println("Total Entries Planned in Your Library: " + plannedCount);    //Display total book in library
         System.out.println("Total Entries In Progress in Your Library: " + inProgressCount);  //Display total albums in library
-        System.out.println("Total Entries Completed in Your Library: " + completedBookCount+completedAlbumCount+completedSeriesCount); //Display total series in library
+        System.out.println("Total Entries Completed in Your Library: " + (completedBookCount+completedAlbumCount+completedSeriesCount)); //Display total series in library
         System.out.println("");
 
         //Compute for average book rating

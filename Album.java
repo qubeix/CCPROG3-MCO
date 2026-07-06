@@ -30,9 +30,14 @@ public class Album
 	}
 	
 	//Methods 
-	public void addStatus()
+	public void addStatus(String status)
 	{
-		System.out.println("Current Status: " +status);
+		if(status.equals("Planned") || status.equals("In Progress") || status.equals("Completed")){
+			this.status = status;
+		}
+		else{
+			System.out.println("Invalid Status");
+		}
 	}
 	
 	public void updateStatus(String newStatus)
@@ -77,6 +82,11 @@ public class Album
 		{
 			currentTrack++;
 			System.out.println("Now playing track " + currentTrack + " of " + TRACKCOUNT);
+			
+			if(status.equals("Planned")){
+				status = "In Progress";
+			}
+
 			if (currentTrack == TRACKCOUNT)
 			{
 				status = "Completed";
@@ -124,6 +134,6 @@ public class Album
 	
 	public String getProgress()
 	{
-		return "Track" +currentTrack+ " of " +TRACKCOUNT;
+		return "Track " +currentTrack+ " of " +TRACKCOUNT;
 	}
 }
