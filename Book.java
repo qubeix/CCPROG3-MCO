@@ -42,7 +42,7 @@ public class Book
      */
     public void addStatus(String status)
     {
-        if(status.equals("Planned") || status.equals("In Progress") || status.equals("Completed"))  //If the status is valid
+        if(status.equalsIgnoreCase("Planned") || status.equalsIgnoreCase("In Progress") || status.equalsIgnoreCase("Completed"))  //If the status is valid
             this.status = status;  //Assign the new status
         else                                       //If the new status is not valid
             System.out.println("Invalid status");  //Display a message
@@ -54,12 +54,12 @@ public class Book
      */
     public void updateStatus(String newStatus)
     {
-        if(newStatus.equals("Planned") || newStatus.equals("In Progress") || newStatus.equals("Completed"))  //If the new status is valid
+        if(newStatus.equalsIgnoreCase("Planned") || newStatus.equalsIgnoreCase("In Progress") || newStatus.equalsIgnoreCase("Completed"))  //If the new status is valid
             this.status = newStatus;  //Assign the new status
         else                                       //If the new status is not valid
             System.out.println("Invalid status");  //Display a message
-     
-        if(status.equals("Completed"))
+
+        if(status.equalsIgnoreCase("Completed"))
             currentChapter = CHAPTERCOUNT;
     }
 
@@ -70,10 +70,10 @@ public class Book
      */
     public void addRating(int rating)
     {
-        if(status.equals("Completed"))  //If the entry's status is "Completed"
+        if(status.equalsIgnoreCase("Completed"))  //If the entry's status is "Completed"
             this.rating = rating;       //Assign the rating
         else                                                        //If the entry's status is not "Completed"
-            System.out.println("This entry is yet to completed");  //Display a message
+            System.out.println("This entry is yet to be completed\n");  //Display a message
     }
 
     /**
@@ -83,10 +83,10 @@ public class Book
      */
     public void addReview(String review)
     {
-        if(status.equals("Completed"))  //If the entry's status is "Completed"
+        if(status.equalsIgnoreCase("Completed"))  //If the entry's status is "Completed"
             this.review = review;       //Assign the review
         else                                                        //If the entry's status is not "Completed"
-            System.out.println("This entry is yet to completed");  //Display a message
+            System.out.println("This entry is yet to be completed\n");  //Display a message
     }
 
     /**
@@ -98,7 +98,7 @@ public class Book
         {
             currentChapter++;                   //Move to the next chapter
 
-            if(status.equals("Planned"))           //If the status if "Planned"
+            if(status.equalsIgnoreCase("Planned"))           //If the status if "Planned"
                 updateStatus("In Progress");       //Update the status to "In Progress"
             
             if(currentChapter == CHAPTERCOUNT)     //If the current chapter is the last chapter
@@ -146,6 +146,6 @@ public class Book
 
     public String getProgress()
     {
-        return currentChapter + "/" + CHAPTERCOUNT + " Chapters";   //return the amount of chapters read
+        return currentChapter + "/" + CHAPTERCOUNT + " Chapters\n";   //return the amount of chapters read
     }
 }
