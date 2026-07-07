@@ -392,7 +392,7 @@ public class MenuInterface
               if(users[i].getUsername().equals(username))
               {
                 isValidUsername = false;
-                System.out.println("Invalid: This username is already taken.");
+                System.out.println("Invalid: This username is already taken.\n");
               }
             }
           } while(!isValidUsername);
