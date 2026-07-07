@@ -119,8 +119,16 @@ public class User
 
 		if(index >= 0 && index < library.getBookCount()){
 			Book book = library.getBookEntry(index);
-			System.out.print("Rating (1-10): ");
-			int rating = sc.nextInt();
+
+			int rating;
+			do{
+				System.out.print("Rating (1-10): ");
+				rating = sc.nextInt();
+				if(rating < 1 || rating > 10)
+					System.out.println("Invalid Rating\n");
+			} while(rating < 1 || rating > 10);
+			System.out.println("");
+
 			book.addRating(rating);
 		}
 		else{
@@ -141,8 +149,16 @@ public class User
 
 		if(index >= 0 && index < library.getAlbumCount()){
 			Album album = library.getAlbumEntry(index);
-			System.out.print("Rating (1-10): ");
-			int rating = sc.nextInt();
+
+			int rating;
+			do{
+				System.out.print("Rating (1-10): ");
+				rating = sc.nextInt();
+				if(rating < 1 || rating > 10)
+					System.out.println("Invalid Rating\n");
+			} while(rating < 1 || rating > 10);
+			System.out.println("");
+
 			album.addRating(rating);
 		}
 		else{
@@ -163,8 +179,16 @@ public class User
 
 		if(index >= 0 && index < library.getSeriesCount()){
 			Series series = library.getSeriesEntry(index);
-			System.out.print("Rating (1-10): ");
-			int rating = sc.nextInt();
+
+		int rating;
+			do{
+				System.out.print("Rating (1-10): ");
+				rating = sc.nextInt();
+				if(rating < 1 || rating > 10)
+					System.out.println("Invalid Rating\n");
+			} while(rating < 1 || rating > 10);
+			System.out.println("");
+
 			series.addRating(rating);
 		}
 		else{
@@ -261,6 +285,7 @@ public class User
 		else{
 			System.out.println("Invalid Book Number");
 		}
+		System.out.println("");
 	}
 
 	public void updateAlbumStatus(){
@@ -284,6 +309,7 @@ public class User
 		else{
 			System.out.println("Invalid Album Number");
 		}
+		System.out.println("");
 	}
 	
 	public void updateSeriesStatus(){
@@ -307,6 +333,7 @@ public class User
 		else{
 			System.out.println("Invalid Series Number");
 		}
+		System.out.println("");
 	}
 
 	//update progress 
@@ -320,6 +347,7 @@ public class User
 		library.displayBookLibrary();
 		System.out.print("Book Number to update Chapter: ");
 		int index = sc.nextInt() - 1;
+		System.out.println("");
 
 		if(index >= 0 && index < library.getBookCount()){
 			Book book = library.getBookEntry(index);
@@ -341,6 +369,7 @@ public class User
 		library.displayAlbumLibrary();
 		System.out.print("Album Number to update Track: ");
 		int index = sc.nextInt() - 1;
+		System.out.println("");
 
 		if(index >= 0 && index < library.getAlbumCount()){
 			Album album = library.getAlbumEntry(index);
@@ -362,6 +391,7 @@ public class User
 		library.displaySeriesLibrary();
 		System.out.print("Series Number to update Episode: ");
 		int index = sc.nextInt() - 1;
+		System.out.println("");
 
 		if(index >= 0 && index < library.getSeriesCount()){
 			Series series = library.getSeriesEntry(index);
