@@ -34,7 +34,7 @@ public class Series
         status = "Planned";
         rating = 0;
         review = "";
-        currentSeason = 1;
+        currentSeason = 0;
         currentEpisode = 0;
     }
 
@@ -45,7 +45,7 @@ public class Series
      */
     public void addStatus(String status)
     {
-        if(status.equals("Planned") || status.equals("In Progress") || status.equals("Completed"))  //If the status is valid
+        if(status.equalsIgnoreCase("Planned") || status.equals("In Progress") || status.equals("Completed"))  //If the status is valid
             this.status = status;  //Assign the new status
         else                                       //If the new status is not valid
             System.out.println("Invalid status");  //Display a message
@@ -57,12 +57,12 @@ public class Series
      */
     public void updateStatus(String newStatus)
     {
-        if(newStatus.equals("Planned") || newStatus.equals("In Progress") || newStatus.equals("Completed"))  //If the new status is valid
+        if(newStatus.equalsIgnoreCase("Planned") || newStatus.equals("In Progress") || newStatus.equals("Completed"))  //If the new status is valid
             this.status = newStatus;  //Assign the new status
         else                                       //If the new status is not valid
             System.out.println("Invalid status");  //Display a message
      
-        if(status.equals("Completed"))
+        if(status.equalsIgnoreCase("Completed"))
         {
             currentEpisode = episodeCount[SEASONCOUNT-1];
             currentSeason = SEASONCOUNT;
@@ -76,10 +76,10 @@ public class Series
      */
     public void addRating(int rating)
     {
-        if(status.equals("Completed"))  //If the entry's status is "Completed"
+        if(status.equalsIgnoreCase("Completed"))  //If the entry's status is "Completed"
             this.rating = rating;       //Assign the rating
         else                                                        //If the entry's status is not "Completed"
-            System.out.println("This entry is yet to completed");  //Display a message
+            System.out.println("This entry is yet to be completed\n");  //Display a message
     }
 
     /**
@@ -89,10 +89,10 @@ public class Series
      */
     public void addReview(String review)
     {
-        if(status.equals("Completed"))  //If the entry's status is "Completed"
+        if(status.equalsIgnoreCase("Completed"))  //If the entry's status is "Completed"
             this.review = review;       //Assign the review
         else                                                        //If the entry's status is not "Completed"
-            System.out.println("This entry is yet to completed");  //Display a message
+            System.out.println("This entry is yet to be completed\n");  //Display a message
     }
 
     /**
@@ -105,12 +105,12 @@ public class Series
         {
             do
             {
-                System.out.print("Season " + (i+1) + " Episode Count: ");
+                System.out.print("Season " + i+1 + " Episode Count: ");
                 episodeCount[i] = sc.nextInt();
             } while(episodeCount[i] <= 0);
         }
 
-        //sc.close();
+        sc.close();
     }
 
     /**
@@ -122,7 +122,7 @@ public class Series
         {
             currentEpisode++;                   //Move to the next episode
 
-            if(status.equals("Planned"))           //If the status if "Planned"
+            if(status.equalsIgnoreCase("Planned"))           //If the status if "Planned"
                 updateStatus("In Progress");       //Update the status to "In Progress"
             
             if(currentEpisode == episodeCount[SEASONCOUNT-1] && currentSeason == SEASONCOUNT)     //If it is the last episode and the last season
@@ -130,13 +130,8 @@ public class Series
 
         } else if(currentEpisode == episodeCount[currentSeason-1])
         {
-            if(currentSeason == SEASONCOUNT){
-                updateStatus("Completed");
-            }
-            else{
-                currentEpisode = 1;
-                currentSeason++;
-            }
+            currentEpisode = 1;
+            currentSeason++;
         }
         else                                                                //If the series is completed
             System.out.println("You have already completed this series");    //Display a message
@@ -188,6 +183,6 @@ public class Series
 
     public String getProgress()
     {
-        return "Season " + currentSeason + ": " + currentEpisode + "/" + episodeCount[currentSeason-1] + " Episodes";   //return the season and amount of episodes watched
+        return "Season " + currentSeason + ": " + currentEpisode + "/" + episodeCount[currentSeason-1] + " Episodes\n";   //return the season and amount of episodes watched
     }
 }
