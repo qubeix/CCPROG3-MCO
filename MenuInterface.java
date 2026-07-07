@@ -111,17 +111,14 @@ public class MenuInterface
                     {
                       case 1:
                         users[userIndex].addBookEntry();
-                        //whiteSpace = sc.nextLine();
                         break;
                       
                       case 2:
                         users[userIndex].addAlbumEntry();
-                        //whiteSpace = sc.nextLine();
                         break;
                       
                       case 3:
                         users[userIndex].addSeriesEntry();
-                        //whiteSpace = sc.nextLine();
                     }
 
                     break;
@@ -177,15 +174,15 @@ public class MenuInterface
                     switch(rateOption)
                     {
                       case 1:
-                        //rate book
+                        users[userIndex].rateBookEntry();
                         break;
                       
                       case 2:
-                        //rate album
+                        users[userIndex].rateAlbumEntry();
                         break;
                       
                       case 3:
-                        //rate series
+                        users[userIndex].rateSeriesEntry();
                     }
 
                     break;
@@ -209,15 +206,15 @@ public class MenuInterface
                     switch(reviewOption)
                     {
                       case 1:
-                        //review book
+                        users[userIndex].reviewBookEntry();
                         break;
                       
                       case 2:
-                        //review album
+                        users[userIndex].reviewAlbumEntry();
                         break;
                       
                       case 3:
-                        //review series
+                        users[userIndex].reviewSeriesEntry();
                     }
 
                     break;
@@ -258,11 +255,11 @@ public class MenuInterface
                         switch(updateOption2)
                         {
                           case 1:
-                            //update status
+                            users[userIndex].updateBookStatus();
                             break;
                           
                           case 2:
-                            //update chapter + display progress
+                            users[userIndex].moveBookChapter();
                         }
 
                         break;
@@ -281,15 +278,15 @@ public class MenuInterface
                         System.out.println("");
                         whiteSpace = sc.nextLine();
 
-                        //Switch Case for Updating Book
+                        //Switch Case for Updating Album
                         switch(updateOption2)
                         {
                           case 1:
-                            //update status
+                            users[userIndex].updateAlbumStatus();
                             break;
                           
                           case 2:
-                            //update track + display progress
+                            users[userIndex].moveAlbumTrack();
                         }
 
                         break;
@@ -308,15 +305,15 @@ public class MenuInterface
                         System.out.println("");
                         whiteSpace = sc.nextLine();
 
-                        //Switch Case for Updating Book
+                        //Switch Case for Updating Series
                         switch(updateOption2)
                         {
                           case 1:
-                            //update status
+                            users[userIndex].updateSeriesStatus();
                             break;
                           
                           case 2:
-                            //update season/episode + display progress
+                            users[userIndex].moveSeriesEpisode();
                         }
                     }
 
@@ -361,10 +358,12 @@ public class MenuInterface
                   
                   case 7:
                     users[userIndex].getSummary();
+                    break;
                   
                   case 8:
                     users[userIndex].logout();
                     startOption = 0;  //Revert back to default
+                    break;
                 }
               }
 

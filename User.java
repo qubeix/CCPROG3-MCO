@@ -89,7 +89,13 @@ public class User
 		System.out.println("");
 		library.filterByType(type);
 	}
-	
+
+	public void getSummary()
+	{
+		library.summary();
+	}
+
+	//rating methods
 	public void viewByStatusType(){
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter status (Planned, In Progress, Completed): ");
@@ -99,12 +105,274 @@ public class User
 		System.out.println("");
 		library.filterByStatusType(status, type);
 	}
-	
-	public void getSummary()
-	{
-		library.summary();
+
+	public void rateBookEntry(){
+		if(library.getBookCount() == 0){
+			library.displayBookLibrary();
+			return;
+		}
+		
+		Scanner sc = new Scanner(System.in);
+		library.displayBookLibrary();
+		System.out.print("Book Number to Rate: ");
+		int index = sc.nextInt() - 1;
+
+		if(index >= 0 && index < library.getBookCount()){
+			Book book = library.getBookEntry(index);
+			System.out.print("Rating (1-10): ");
+			int rating = sc.nextInt();
+			book.addRating(rating);
+		}
+		else{
+			System.out.println("Invalid Book Number");
+		}
+	}
+
+	public void rateAlbumEntry(){
+		if(library.getAlbumCount() == 0){
+			library.displayAlbumLibrary();
+			return;
+		}
+
+		Scanner sc = new Scanner(System.in);
+		library.displayAlbumLibrary();
+		System.out.print("Album Number to Rate: ");
+		int index = sc.nextInt() - 1;
+
+		if(index >= 0 && index < library.getAlbumCount()){
+			Album album = library.getAlbumEntry(index);
+			System.out.print("Rating (1-10): ");
+			int rating = sc.nextInt();
+			album.addRating(rating);
+		}
+		else{
+			System.out.println("Invalid Album Number");
+		}
+	}
+
+	public void rateSeriesEntry(){
+		if(library.getSeriesCount() == 0){
+			library.displaySeriesLibrary();
+			return;
+		}
+		
+		Scanner sc = new Scanner(System.in);
+		library.displaySeriesLibrary();
+		System.out.print("Series Number to Rate: ");
+		int index = sc.nextInt() - 1;
+
+		if(index >= 0 && index < library.getSeriesCount()){
+			Series series = library.getSeriesEntry(index);
+			System.out.print("Rating (1-10): ");
+			int rating = sc.nextInt();
+			series.addRating(rating);
+		}
+		else{
+			System.out.println("Invalid Series Number");
+		}
+	}
+
+	//review methods
+	public void reviewBookEntry(){
+		if(library.getBookCount() == 0){
+			library.displayBookLibrary();
+			return;
+		}
+
+		Scanner sc = new Scanner(System.in);
+		library.displayBookLibrary();
+		System.out.print("Book Number to Review: ");
+		int index = sc.nextInt() - 1;
+		sc.nextLine();
+
+		if(index >= 0 && index < library.getBookCount()){
+			Book book = library.getBookEntry(index);
+			String review = sc.nextLine();
+			book.addReview(review);
+		}
+		else{
+			System.out.println("Invalid Book Number");
+		}
+	}
+
+	public void reviewAlbumEntry(){
+		if(library.getAlbumCount() == 0){
+			library.displayAlbumLibrary();
+			return;
+		}
+		
+		Scanner sc = new Scanner(System.in);
+		library.displayAlbumLibrary();
+		System.out.print("Album to Review: ");
+		int index = sc.nextInt() - 1;
+		sc.nextLine();
+
+		if(index >= 0 && index < library.getAlbumCount()){
+			Album album = library.getAlbumEntry(index);
+			String review = sc.nextLine();
+			album.addReview(review);
+		}
+		else{
+			System.out.println("Invalid Album Number");
+		}
+	}
+
+	public void reviewSeriesEntry(){
+		if(library.getSeriesCount() == 0){
+			library.displaySeriesLibrary();
+			return;
+		}
+		
+		Scanner sc = new Scanner(System.in);
+		library.displaySeriesLibrary();
+		System.out.print("Series to Review: ");
+		int index = sc.nextInt() - 1;
+		sc.nextLine();
+
+		if(index >= 0 && index < library.getSeriesCount()){
+			Series series = library.getSeriesEntry(index);
+			String review = sc.nextLine();
+			series.addReview(review);
+		}
+		else{
+			System.out.println("Invalid Series Number");
+		}
+	}
+
+	//update status methods
+	public void updateBookStatus(){
+		if(library.getBookCount() == 0){
+			library.displayBookLibrary();
+			return;
+		}
+
+		Scanner sc = new Scanner(System.in);
+		library.displayBookLibrary();
+		System.out.print("Book Number to Update: ");
+		int index = sc.nextInt() - 1;
+		sc.nextLine();
+
+		if(index >= 0 && index < library.getBookCount()){
+			Book book = library.getBookEntry(index);
+			System.out.print("New Status (Planned, In Progress, Completed): ");
+			String newStatus = sc.nextLine();
+			book.updateStatus(newStatus);
+		}
+		else{
+			System.out.println("Invalid Book Number");
+		}
+	}
+
+	public void updateAlbumStatus(){
+		if(library.getAlbumCount() == 0){
+			library.displayAlbumLibrary();
+			return;
+		}
+
+		Scanner sc = new Scanner(System.in);
+		library.displayAlbumLibrary();
+		System.out.print("Album Number to Update: ");
+		int index = sc.nextInt() - 1;
+		sc.nextLine();
+
+		if(index >= 0 && index < library.getAlbumCount()){
+			Album album = library.getAlbumEntry(index);
+			System.out.print("New Status (Planned, In Progress, Completed): ");
+			String newStatus = sc.nextLine();
+			album.updateStatus(newStatus);
+		}
+		else{
+			System.out.println("Invalid Album Number");
+		}
 	}
 	
+	public void updateSeriesStatus(){
+		if(library.getSeriesCount() == 0){
+			library.displaySeriesLibrary();
+			return;
+		}
+
+		Scanner sc = new Scanner(System.in);
+		library.displaySeriesLibrary();
+		System.out.print("Series Number to Update: ");
+		int index = sc.nextInt() - 1;
+		sc.nextLine();
+
+		if(index >= 0 && index < library.getSeriesCount()){
+			Series series = library.getSeriesEntry(index);
+			System.out.print("New Status (Planned, In Progress, Completed): ");
+			String newStatus = sc.nextLine();
+			series.updateStatus(newStatus);
+		}
+		else{
+			System.out.println("Invalid Series Number");
+		}
+	}
+
+	//update progress 
+	public void moveBookChapter(){
+		if(library.getBookCount() == 0){
+			library.displayBookLibrary();
+			return;
+		}
+
+		Scanner sc = new Scanner(System.in);
+		library.displayBookLibrary();
+		System.out.print("Book Number to update Chapter: ");
+		int index = sc.nextInt() - 1;
+
+		if(index >= 0 && index < library.getBookCount()){
+			Book book = library.getBookEntry(index);
+			book.nextChapter();
+			System.out.println(book.getProgress());
+		}
+		else{
+			System.out.println("Invalid Book Number");
+		}
+	}
+
+	public void moveAlbumTrack(){
+		if(library.getAlbumCount() == 0){
+			library.displayAlbumLibrary();
+			return;
+		}
+
+		Scanner sc = new Scanner(System.in);
+		library.displayAlbumLibrary();
+		System.out.print("Album Number to update Track: ");
+		int index = sc.nextInt() - 1;
+
+		if(index >= 0 && index < library.getAlbumCount()){
+			Album album = library.getAlbumEntry(index);
+			album.nextTrack();
+			System.out.println(album.getProgress());
+		}
+		else{
+			System.out.println("Invalid Album Number");
+		}
+	}
+	
+	public void moveSeriesEpisode(){
+		if(library.getSeriesCount() == 0){
+			library.displaySeriesLibrary();
+			return;
+		}
+
+		Scanner sc = new Scanner(System.in);
+		library.displaySeriesLibrary();
+		System.out.print("Series Number to update Episode: ");
+		int index = sc.nextInt() - 1;
+
+		if(index >= 0 && index < library.getSeriesCount()){
+			Series series = library.getSeriesEntry(index);
+			series.nextEpisode();
+			System.out.println(series.getProgress());
+		}
+		else{
+			System.out.println("Invalid Series Number");
+		}
+	}
+
 	//getters 
 	public String getUsername()
 	{

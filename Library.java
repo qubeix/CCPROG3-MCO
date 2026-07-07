@@ -563,25 +563,44 @@ public class Library
         System.out.println("");
 
         //Compute for average book rating
-        for(i=0; i<completedBookCount; i++)
-            aveBookRating += completedBooks[i].getRating();
-        aveBookRating /= (completedBookCount * 1.0);
+        if(completedBookCount > 0){
+            for(i=0; i<completedBookCount; i++){
+                 aveBookRating += completedBooks[i].getRating();
+            }
+            aveBookRating /= (completedBookCount * 1.0);
+        }
+        
 
         //Compute for average album rating
-        for(i=0; i<completedAlbumCount; i++)
-            aveAlbumRating += completedAlbums[i].getRating();
-        aveAlbumRating /= (completedAlbumCount * 1.0);
+        if(completedAlbumCount > 0){
+            for(i=0; i<completedAlbumCount; i++){
+                 aveAlbumRating += completedAlbums[i].getRating();
+            }
+            aveAlbumRating /= (completedAlbumCount * 1.0);
+        }
+        
 
         //Compute for average series rating
-        for(i=0; i<completedSeriesCount; i++)
-            aveSeriesRating += completedSeries[i].getRating();
-        aveSeriesRating /= (completedSeriesCount * 1.0);
+        if(completedSeriesCount > 0){
+            for(i=0; i<completedSeriesCount; i++){
+               aveSeriesRating += completedSeries[i].getRating();
+            }
+            aveSeriesRating /= (completedSeriesCount * 1.0);
+        }
+        
 
         System.out.println("Your Average Book Rating: " + aveBookRating);       //Display average book rating
         System.out.println("Your Average Album Rating: " + aveAlbumRating);     //Display average album rating
         System.out.println("Your Average Series Rating: " + aveSeriesRating);   //Display average series rating
 
-        System.out.println("\n\tYour Total Average Rating: " + (aveBookRating*completedBookCount + aveAlbumRating*completedAlbumCount + aveSeriesRating*completedSeriesCount)/(completedBookCount+completedAlbumCount+completedSeriesCount));   //Display average rating of all entries
+        int totalCompleted = completedBookCount + completedAlbumCount + completedSeriesCount;
+        if(totalCompleted > 0){
+            System.out.println("\n\tYour Total Average Rating: " + (aveBookRating*completedBookCount + aveAlbumRating*completedAlbumCount + aveSeriesRating*completedSeriesCount)/(completedBookCount+completedAlbumCount+completedSeriesCount));   //Display average rating of all entries
+        }
+        else{
+            System.out.println("\n\tYour Total Average Raiting: No completed entries");
+        }
+        
     }
 
 
