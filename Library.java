@@ -135,6 +135,11 @@ public class Library
     {
         System.out.println("\"" + book.getTitle() + "\" by " + book.getAuthor());
         System.out.println("\tGenre: " + book.getGenre() + "  |  No. of Chapters: " + book.getChapterCount());
+        if(book.getStatus().equalsIgnoreCase("Completed"))
+        {
+            System.out.println("\tRating: " + book.getRating());
+            System.out.println("\tReview: " + book.getReview());
+        }
         System.out.println("");
     }
 
@@ -146,6 +151,11 @@ public class Library
     {
         System.out.println("\"" + album.getTitle() + "\" by " + album.getArtist());
         System.out.println("\tGenre: " + album.getGenre() + "  |  No. of Tracks: " + album.getTrackCount());
+        if(album.getStatus().equalsIgnoreCase("Completed"))
+        {
+            System.out.println("\tRating: " + album.getRating());
+            System.out.println("\tReview: " + album.getReview());
+        }
         System.out.println("");
     }
 
@@ -157,6 +167,11 @@ public class Library
     {
         System.out.println("\"" + series.getTitle() + "\"");
         System.out.println("\tGenre: " + series.getGenre() + "  |  No. of Seasons: " + series.getSeasonCount() + "  |  No. of Episodes: " + series.getEpisodeCount());
+        if(series.getStatus().equalsIgnoreCase("Completed"))
+        {
+            System.out.println("\tRating: " + series.getRating());
+            System.out.println("\tReview: " + series.getReview());
+        }
         System.out.println("");
     }
 
@@ -600,7 +615,7 @@ public class Library
         else{
             System.out.println("\n\tYour Total Average Raiting: No completed entries");
         }
-        
+        System.out.println("");
     }
 
 
