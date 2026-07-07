@@ -41,14 +41,14 @@ public class Album
      */
 	public void addStatus(String status)
 	{
-		if(status.equals("Planned") || status.equals("In Progress") || status.equals("Completed")){
+		if(status.equalsIgnoreCase("Planned") || status.equalsIgnoreCase("In Progress") || status.equalsIgnoreCase("Completed")){
 			this.status = status;
 		}
 		else{
 			System.out.println("Invalid Status");
 		}
 
-		if(status.equals("Completed"))
+		if(status.equalsIgnoreCase("Completed"))
             currentTrack = TRACKCOUNT;
 	}
 	
@@ -58,7 +58,7 @@ public class Album
      */
 	public void updateStatus(String newStatus)
 	{
-		if (newStatus.equals("Planned") || newStatus.equals("In Progress") || newStatus.equals("Completed"))
+		if (newStatus.equalsIgnoreCase("Planned") || newStatus.equalsIgnoreCase("In Progress") || newStatus.equalsIgnoreCase("Completed"))
 		{
 			this.status = newStatus;
 		}
@@ -75,13 +75,13 @@ public class Album
      */
 	public void addRating(int rating)
 	{
-		if (status.equals("Completed"))
+		if (status.equalsIgnoreCase("Completed"))
 		{
 			this.rating = rating;
 		}
 		else
 		{
-			System.out.println("Allowed for completed entries");
+			System.out.println("This entry is yet to be completed\n");
 		}
 	}
 	
@@ -92,13 +92,13 @@ public class Album
      */
 	public void addReview(String review)
 	{
-		if (status.equals("Completed"))
+		if (status.equalsIgnoreCase("Completed"))
 		{
 			this.review = review;
 		}
 		else
 		{
-			System.out.println("Allowed for completed entries");
+			System.out.println("This entry is yet to be completed\n");
 		}
 	}
 	
@@ -112,7 +112,7 @@ public class Album
 			currentTrack++;
 			System.out.println("Now playing track " + currentTrack + " of " + TRACKCOUNT);
 			
-			if(status.equals("Planned")){
+			if(status.equalsIgnoreCase("Planned")){
 				status = "In Progress";
 			}
 
@@ -163,6 +163,6 @@ public class Album
 	
 	public String getProgress()
 	{
-		return "Track " +currentTrack+ " of " +TRACKCOUNT;
+		return "Track " +currentTrack+ " of " +TRACKCOUNT+ "\n";
 	}
 }
