@@ -109,8 +109,6 @@ public class Series
                 episodeCount[i] = sc.nextInt();
             } while(episodeCount[i] <= 0);
         }
-
-        sc.close();
     }
 
     /**
