@@ -1,5 +1,10 @@
 import java.util.*;
 
+/**
+ * The Library class contains a book library, album library, and series library, along with respective methods for
+ * adding, removing, displaying, and summarizing entries/libraries,
+ */
+
 public class Library
 {
     private Book[] bookLibrary;
@@ -50,17 +55,13 @@ public class Library
             bookLibrary[bookCount] = book;
 
             bookCount++;
-
-            //sc.close();
         } else      //If there are no more slots for an entry
             System.out.println("Maximum Book Entries reached.");
         
         System.out.println("");
     }
 
-    /**
-     * addAlbum() adds an album to the album library
-     */
+
     public void addAlbum()
     {
         String title;
@@ -84,8 +85,6 @@ public class Library
             albumLibrary[albumCount] = album;
 
             albumCount++;
-
-            //sc.close();
         } else      //If there are no more slots for an entry
             System.out.println("Maximum Album Entries reached.");
         
@@ -117,8 +116,6 @@ public class Library
             seriesLibrary[seriesCount] = series;
 
             seriesCount++;
-
-            //sc.close();
         } else      //If there are no more slots for an entry
             System.out.println("Maximum Series Entries reached.");
         
@@ -270,8 +267,6 @@ public class Library
             System.out.println("\n\"" + removedTitle + "\" by " + removedAuthor + " is removed.");
         } else
         System.out.println("Invalid Book Number. Exiting Book Removal...");
-        
-        //sc.close();
     }
 
     /**
@@ -301,8 +296,6 @@ public class Library
             System.out.println("\n\"" + removedTitle + "\" by " + removedArtist + " is removed.");
         } else
         System.out.println("Invalid Album Number. Exiting Album Removal...");
-        
-        //sc.close();
     }
 
     /**
@@ -331,8 +324,6 @@ public class Library
             System.out.println("\n\"" + removedTitle + "\" is removed.");
         } else
         System.out.println("Invalid Series Number. Exiting Series Removal...");
-        
-        //sc.close();
     }
 
 
