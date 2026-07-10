@@ -105,7 +105,7 @@ public class Series
         {
             do
             {
-                System.out.print("Season " + i+1 + " Episode Count: ");
+                System.out.print("Season " + (i+1) + " Episode Count: ");
                 episodeCount[i] = sc.nextInt();
             } while(episodeCount[i] <= 0);
         }
