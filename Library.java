@@ -619,7 +619,7 @@ public class Library
             System.out.println("\n\tYour Total Average Rating: " + String.format("%.2f", totalAve)); //Display average rating of all entries
         }
         else{
-            System.out.println("\n\tYour Total Average Raiting: No completed entries");
+            System.out.println("\n\tYour Total Average Rating: No completed entries");
         }
         System.out.println("");
     }
