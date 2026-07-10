@@ -2,7 +2,7 @@ import java.util.*;
 
 /**
  * The Library class contains a book library, album library, and series library, along with respective methods for
- * adding, removing, displaying, and summarizing entries/libraries,
+ * adding, removing, displaying, and summarizing entries/libraries.
  */
 
 public class Library
