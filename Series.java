@@ -1,3 +1,5 @@
+import java.util.*;
+
 /**
   * The Series class contains the attributes, constructor, methods, and getters necessary for the creation, modification, and manipulation of a series entry with:
   * the common methods of: assigning a status (and modifying it), assigning a rating, and assigning a review; and
