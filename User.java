@@ -127,13 +127,13 @@ public class User
 				if(rating < 1 || rating > 10)
 					System.out.println("Invalid Rating\n");
 			} while(rating < 1 || rating > 10);
-			System.out.println("");
-
+			
 			book.addRating(rating);
 		}
 		else{
 			System.out.println("Invalid Book Number");
 		}
+		System.out.println("");
 	}
 
 	public void rateAlbumEntry(){
@@ -157,13 +157,13 @@ public class User
 				if(rating < 1 || rating > 10)
 					System.out.println("Invalid Rating\n");
 			} while(rating < 1 || rating > 10);
-			System.out.println("");
 
 			album.addRating(rating);
 		}
 		else{
 			System.out.println("Invalid Album Number");
 		}
+		System.out.println("");
 	}
 
 	public void rateSeriesEntry(){
@@ -187,13 +187,13 @@ public class User
 				if(rating < 1 || rating > 10)
 					System.out.println("Invalid Rating\n");
 			} while(rating < 1 || rating > 10);
-			System.out.println("");
 
 			series.addRating(rating);
 		}
 		else{
 			System.out.println("Invalid Series Number");
 		}
+		System.out.println("");
 	}
 
 	//review methods
@@ -217,6 +217,7 @@ public class User
 		else{
 			System.out.println("Invalid Book Number");
 		}
+		System.out.println("");
 	}
 
 	public void reviewAlbumEntry(){
@@ -239,6 +240,7 @@ public class User
 		else{
 			System.out.println("Invalid Album Number");
 		}
+		System.out.println("");
 	}
 
 	public void reviewSeriesEntry(){
@@ -261,6 +263,7 @@ public class User
 		else{
 			System.out.println("Invalid Series Number");
 		}
+		System.out.println("");
 	}
 
 	//update status methods
