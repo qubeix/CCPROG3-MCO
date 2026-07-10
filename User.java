@@ -156,282 +156,259 @@ public class User
 	 * rateBookEntry() rates a book entry in the user's library
 	 */ 
 	public void rateBookEntry(){
-		if(library.getBookCount() == 0){
+		if(library.getBookCount() > 0){
+			Scanner sc = new Scanner(System.in);
 			library.displayBookLibrary();
-			return;
-		}
-		
-		Scanner sc = new Scanner(System.in);
-		library.displayBookLibrary();
-		System.out.print("Book Number to Rate: ");
-		int index = sc.nextInt() - 1;
+			System.out.print("Book Number to Rate: ");
+			int index = sc.nextInt() - 1;
 
-		if(index >= 0 && index < library.getBookCount()){
-			Book book = library.getBookEntry(index);
+			if(index >= 0 && index < library.getBookCount()){
+				Book book = library.getBookEntry(index);
 
-			int rating;
-			do{
-				System.out.print("Rating (1-10): ");
-				rating = sc.nextInt();
-				if(rating < 1 || rating > 10)
-					System.out.println("Invalid Rating\n");
-			} while(rating < 1 || rating > 10);
+				int rating;
+				do{
+					System.out.print("Rating (1-10): ");
+					rating = sc.nextInt();
+					if(rating < 1 || rating > 10)
+						System.out.println("Invalid Rating\n");
+				} while(rating < 1 || rating > 10);
 
-			book.addRating(rating);
+				book.addRating(rating);
+			}
+			else{
+				System.out.println("Invalid Book Number");
+			}
+			System.out.println("");
 		}
-		else{
-			System.out.println("Invalid Book Number");
-		}
-		System.out.println("");
 	}
 
 	/**
 	 * rateAlbumEntry() rates an album entry in the user's library
 	 */
 	public void rateAlbumEntry(){
-		if(library.getAlbumCount() == 0){
+		if(library.getAlbumCount() > 0){
+			Scanner sc = new Scanner(System.in);
 			library.displayAlbumLibrary();
-			return;
+			System.out.print("Album Number to Rate: ");
+			int index = sc.nextInt() - 1;
+
+			if(index >= 0 && index < library.getAlbumCount()){
+				Album album = library.getAlbumEntry(index);
+
+				int rating;
+				do{
+					System.out.print("Rating (1-10): ");
+					rating = sc.nextInt();
+					if(rating < 1 || rating > 10)
+						System.out.println("Invalid Rating\n");
+				} while(rating < 1 || rating > 10);
+
+				album.addRating(rating);
+			}
+			else{
+				System.out.println("Invalid Album Number");
+			}
+			System.out.println("");
 		}
 
-		Scanner sc = new Scanner(System.in);
-		library.displayAlbumLibrary();
-		System.out.print("Album Number to Rate: ");
-		int index = sc.nextInt() - 1;
-
-		if(index >= 0 && index < library.getAlbumCount()){
-			Album album = library.getAlbumEntry(index);
-
-			int rating;
-			do{
-				System.out.print("Rating (1-10): ");
-				rating = sc.nextInt();
-				if(rating < 1 || rating > 10)
-					System.out.println("Invalid Rating\n");
-			} while(rating < 1 || rating > 10);
-
-			album.addRating(rating);
-		}
-		else{
-			System.out.println("Invalid Album Number");
-		}
-		System.out.println("");
+		
 	}
 
 	/**
 	 * rateSeriesEntry() rates a series entry in the user's library
 	 */
 	public void rateSeriesEntry(){
-		if(library.getSeriesCount() == 0){
+		if(library.getSeriesCount() > 0){
+			Scanner sc = new Scanner(System.in);
 			library.displaySeriesLibrary();
-			return;
+			System.out.print("Series Number to Rate: ");
+			int index = sc.nextInt() - 1;
+
+			if(index >= 0 && index < library.getSeriesCount()){
+				Series series = library.getSeriesEntry(index);
+
+			int rating;
+				do{
+					System.out.print("Rating (1-10): ");
+					rating = sc.nextInt();
+					if(rating < 1 || rating > 10)
+						System.out.println("Invalid Rating\n");
+				} while(rating < 1 || rating > 10);
+
+				series.addRating(rating);
+			}
+			else{
+				System.out.println("Invalid Series Number");
+			}
+			System.out.println("");
 		}
 		
-		Scanner sc = new Scanner(System.in);
-		library.displaySeriesLibrary();
-		System.out.print("Series Number to Rate: ");
-		int index = sc.nextInt() - 1;
-
-		if(index >= 0 && index < library.getSeriesCount()){
-			Series series = library.getSeriesEntry(index);
-
-		int rating;
-			do{
-				System.out.print("Rating (1-10): ");
-				rating = sc.nextInt();
-				if(rating < 1 || rating > 10)
-					System.out.println("Invalid Rating\n");
-			} while(rating < 1 || rating > 10);
-
-			series.addRating(rating);
-		}
-		else{
-			System.out.println("Invalid Series Number");
-		}
-		System.out.println("");
+		
 	}
 
 	/**
 	 * reviewBookEntry() reviews a book entry in the user's library
 	 */
 	public void reviewBookEntry(){
-		if(library.getBookCount() == 0){
+		if(library.getBookCount() > 0){
+			Scanner sc = new Scanner(System.in);
 			library.displayBookLibrary();
-			return;
-		}
+			System.out.print("Book Number to Review: ");
+			int index = sc.nextInt() - 1;
+			System.out.print("Review: ");
+			sc.nextLine();
 
-		Scanner sc = new Scanner(System.in);
-		library.displayBookLibrary();
-		System.out.print("Book Number to Review: ");
-		int index = sc.nextInt() - 1;
-		sc.nextLine();
-
-		if(index >= 0 && index < library.getBookCount()){
-			Book book = library.getBookEntry(index);
-			String review = sc.nextLine();
-			book.addReview(review);
+			if(index >= 0 && index < library.getBookCount()){
+				Book book = library.getBookEntry(index);
+				String review = sc.nextLine();
+				book.addReview(review);
+			}
+			else{
+				System.out.println("Invalid Book Number");
+			}
+			System.out.println("");
 		}
-		else{
-			System.out.println("Invalid Book Number");
-		}
-		System.out.println("");
 	}
 
 	/**
 	 * reviewAlbumEntry() reviews an album entry in the user's library
 	 */
 	public void reviewAlbumEntry(){
-		if(library.getAlbumCount() == 0){
+		if(library.getAlbumCount() > 0){
+			Scanner sc = new Scanner(System.in);
 			library.displayAlbumLibrary();
-			return;
-		}
-		
-		Scanner sc = new Scanner(System.in);
-		library.displayAlbumLibrary();
-		System.out.print("Album to Review: ");
-		int index = sc.nextInt() - 1;
-		sc.nextLine();
+			System.out.print("Album to Review: ");
+			int index = sc.nextInt() - 1;
+			System.out.print("Review: ");
+			sc.nextLine();
 
-		if(index >= 0 && index < library.getAlbumCount()){
-			Album album = library.getAlbumEntry(index);
-			String review = sc.nextLine();
-			album.addReview(review);
+			if(index >= 0 && index < library.getAlbumCount()){
+				Album album = library.getAlbumEntry(index);
+				String review = sc.nextLine();
+				album.addReview(review);
+			}
+			else{
+				System.out.println("Invalid Album Number");
+			}
+			System.out.println("");
 		}
-		else{
-			System.out.println("Invalid Album Number");
-		}
-		System.out.println("");
 	}
 
 	/**
 	 * reviewSeriesEntry() reviews a series entry in the user's library
 	 */
 	public void reviewSeriesEntry(){
-		if(library.getSeriesCount() == 0){
+		if(library.getSeriesCount() > 0){
+			Scanner sc = new Scanner(System.in);
 			library.displaySeriesLibrary();
-			return;
-		}
-		
-		Scanner sc = new Scanner(System.in);
-		library.displaySeriesLibrary();
-		System.out.print("Series to Review: ");
-		int index = sc.nextInt() - 1;
-		sc.nextLine();
+			System.out.print("Series to Review: ");
+			int index = sc.nextInt() - 1;
+			System.out.print("Review: ");
+			sc.nextLine();
 
-		if(index >= 0 && index < library.getSeriesCount()){
-			Series series = library.getSeriesEntry(index);
-			String review = sc.nextLine();
-			series.addReview(review);
+			if(index >= 0 && index < library.getSeriesCount()){
+				Series series = library.getSeriesEntry(index);
+				String review = sc.nextLine();
+				series.addReview(review);
+			}
+			else{
+				System.out.println("Invalid Series Number");
+			}
+			System.out.println("");
 		}
-		else{
-			System.out.println("Invalid Series Number");
-		}
-		System.out.println("");
 	}
 
 	/**
 	 * updateBookStatus() updates a book entry's status in the user's library
 	 */
 	public void updateBookStatus(){
-		if(library.getBookCount() == 0){
+		if(library.getBookCount() > 0){
+			Scanner sc = new Scanner(System.in);
 			library.displayBookLibrary();
-			return;
-		}
+			System.out.print("Book Number to Update: ");
+			int index = sc.nextInt() - 1;
+			sc.nextLine();
 
-		Scanner sc = new Scanner(System.in);
-		library.displayBookLibrary();
-		System.out.print("Book Number to Update: ");
-		int index = sc.nextInt() - 1;
-		sc.nextLine();
-
-		if(index >= 0 && index < library.getBookCount()){
-			Book book = library.getBookEntry(index);
-			System.out.print("New Status (Planned, In Progress, Completed): ");
-			String newStatus = sc.nextLine();
-			book.updateStatus(newStatus);
+			if(index >= 0 && index < library.getBookCount()){
+				Book book = library.getBookEntry(index);
+				System.out.print("New Status (Planned, In Progress, Completed): ");
+				String newStatus = sc.nextLine();
+				book.updateStatus(newStatus);
+			}
+			else{
+				System.out.println("Invalid Book Number");
+			}
+			System.out.println("");
 		}
-		else{
-			System.out.println("Invalid Book Number");
-		}
-		System.out.println("");
 	}
 
 	/**
 	 * updateAlbumStatus() updates an album entry's status in the user's library
 	 */
 	public void updateAlbumStatus(){
-		if(library.getAlbumCount() == 0){
+		if(library.getAlbumCount() > 0){
+			Scanner sc = new Scanner(System.in);
 			library.displayAlbumLibrary();
-			return;
-		}
+			System.out.print("Album Number to Update: ");
+			int index = sc.nextInt() - 1;
+			sc.nextLine();
 
-		Scanner sc = new Scanner(System.in);
-		library.displayAlbumLibrary();
-		System.out.print("Album Number to Update: ");
-		int index = sc.nextInt() - 1;
-		sc.nextLine();
-
-		if(index >= 0 && index < library.getAlbumCount()){
-			Album album = library.getAlbumEntry(index);
-			System.out.print("New Status (Planned, In Progress, Completed): ");
-			String newStatus = sc.nextLine();
-			album.updateStatus(newStatus);
+			if(index >= 0 && index < library.getAlbumCount()){
+				Album album = library.getAlbumEntry(index);
+				System.out.print("New Status (Planned, In Progress, Completed): ");
+				String newStatus = sc.nextLine();
+				album.updateStatus(newStatus);
+			}
+			else{
+				System.out.println("Invalid Album Number");
+			}
+			System.out.println("");
 		}
-		else{
-			System.out.println("Invalid Album Number");
-		}
-		System.out.println("");
 	}
 	
 	/**
 	 * updateSeriesStatus() updates a series entry's status in the user's library
 	 */
 	public void updateSeriesStatus(){
-		if(library.getSeriesCount() == 0){
+		if(library.getSeriesCount() > 0){
+			Scanner sc = new Scanner(System.in);
 			library.displaySeriesLibrary();
-			return;
-		}
+			System.out.print("Series Number to Update: ");
+			int index = sc.nextInt() - 1;
+			sc.nextLine();
 
-		Scanner sc = new Scanner(System.in);
-		library.displaySeriesLibrary();
-		System.out.print("Series Number to Update: ");
-		int index = sc.nextInt() - 1;
-		sc.nextLine();
-
-		if(index >= 0 && index < library.getSeriesCount()){
-			Series series = library.getSeriesEntry(index);
-			System.out.print("New Status (Planned, In Progress, Completed): ");
-			String newStatus = sc.nextLine();
-			series.updateStatus(newStatus);
+			if(index >= 0 && index < library.getSeriesCount()){
+				Series series = library.getSeriesEntry(index);
+				System.out.print("New Status (Planned, In Progress, Completed): ");
+				String newStatus = sc.nextLine();
+				series.updateStatus(newStatus);
+			}
+			else{
+				System.out.println("Invalid Series Number");
+			}
+			System.out.println("");
 		}
-		else{
-			System.out.println("Invalid Series Number");
-		}
-		System.out.println("");
 	}
 
 	/**
 	 * moveBookChapter() moves a book entry's chapter in the user's library
 	 */
 	public void moveBookChapter(){
-		if(library.getBookCount() == 0){
+		if(library.getBookCount() > 0){
+			Scanner sc = new Scanner(System.in);
 			library.displayBookLibrary();
-			return;
-		}
+			System.out.print("Book Number to update Chapter: ");
+			int index = sc.nextInt() - 1;
+			System.out.println("");
 
-		Scanner sc = new Scanner(System.in);
-		library.displayBookLibrary();
-		System.out.print("Book Number to update Chapter: ");
-		int index = sc.nextInt() - 1;
-		System.out.println("");
-
-		if(index >= 0 && index < library.getBookCount()){
-			Book book = library.getBookEntry(index);
-			book.nextChapter();
-			System.out.println(book.getProgress());
-		}
-		else{
-			System.out.println("Invalid Book Number");
+			if(index >= 0 && index < library.getBookCount()){
+				Book book = library.getBookEntry(index);
+				book.nextChapter();
+				System.out.println(book.getProgress());
+			}
+			else{
+				System.out.println("Invalid Book Number");
+			}
 		}
 	}
 
@@ -439,50 +416,48 @@ public class User
 	 * moveAlbumTrack() moves an album entry's track in the user's library
 	 */
 	public void moveAlbumTrack(){
-		if(library.getAlbumCount() == 0){
+		if(library.getAlbumCount() > 0){
+			Scanner sc = new Scanner(System.in);
 			library.displayAlbumLibrary();
-			return;
+			System.out.print("Album Number to update Track: ");
+			int index = sc.nextInt() - 1;
+			System.out.println("");
+
+			if(index >= 0 && index < library.getAlbumCount()){
+				Album album = library.getAlbumEntry(index);
+				album.nextTrack();
+				System.out.println(album.getProgress());
+			}
+			else{
+				System.out.println("Invalid Album Number");
+			}
 		}
 
-		Scanner sc = new Scanner(System.in);
-		library.displayAlbumLibrary();
-		System.out.print("Album Number to update Track: ");
-		int index = sc.nextInt() - 1;
-		System.out.println("");
-
-		if(index >= 0 && index < library.getAlbumCount()){
-			Album album = library.getAlbumEntry(index);
-			album.nextTrack();
-			System.out.println(album.getProgress());
-		}
-		else{
-			System.out.println("Invalid Album Number");
-		}
+		
 	}
 	
 	/**
 	 * moveSeriesEpisode() moves a series entry's episode/season in the user's library
 	 */
 	public void moveSeriesEpisode(){
-		if(library.getSeriesCount() == 0){
+		if(library.getSeriesCount() > 0){
+			Scanner sc = new Scanner(System.in);
 			library.displaySeriesLibrary();
-			return;
+			System.out.print("Series Number to update Episode: ");
+			int index = sc.nextInt() - 1;
+			System.out.println("");
+
+			if(index >= 0 && index < library.getSeriesCount()){
+				Series series = library.getSeriesEntry(index);
+				series.nextEpisode();
+				System.out.println(series.getProgress());
+			}
+			else{
+				System.out.println("Invalid Series Number");
+			}
 		}
 
-		Scanner sc = new Scanner(System.in);
-		library.displaySeriesLibrary();
-		System.out.print("Series Number to update Episode: ");
-		int index = sc.nextInt() - 1;
-		System.out.println("");
-
-		if(index >= 0 && index < library.getSeriesCount()){
-			Series series = library.getSeriesEntry(index);
-			series.nextEpisode();
-			System.out.println(series.getProgress());
-		}
-		else{
-			System.out.println("Invalid Series Number");
-		}
+		
 	}
 
 	//GETTERS 
