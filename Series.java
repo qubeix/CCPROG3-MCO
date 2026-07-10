@@ -34,7 +34,7 @@ public class Series
         status = "Planned";
         rating = 0;
         review = "";
-        currentSeason = 0;
+        currentSeason = 1;
         currentEpisode = 0;
     }
 
@@ -126,7 +126,7 @@ public class Series
             if(currentEpisode == episodeCount[SEASONCOUNT-1] && currentSeason == SEASONCOUNT)     //If it is the last episode and the last season
                 updateStatus("Completed");                        //Update the status to "Completed"
 
-        } else if(currentEpisode == episodeCount[currentSeason-1])
+        } else if(currentEpisode == episodeCount[currentSeason-1] && currentSeason != SEASONCOUNT)
         {
             currentEpisode = 1;
             currentSeason++;
