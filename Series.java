@@ -45,7 +45,7 @@ public class Series
      */
     public void addStatus(String status)
     {
-        if(status.equalsIgnoreCase("Planned") || status.equals("In Progress") || status.equals("Completed"))  //If the status is valid
+        if(status.equalsIgnoreCase("Planned") || status.equalsIgnoreCase("In Progress") || status.equalsIgnoreCase("Completed"))  //If the status is valid
             this.status = status;  //Assign the new status
         else                                       //If the new status is not valid
             System.out.println("Invalid status");  //Display a message
@@ -57,7 +57,7 @@ public class Series
      */
     public void updateStatus(String newStatus)
     {
-        if(newStatus.equalsIgnoreCase("Planned") || newStatus.equals("In Progress") || newStatus.equals("Completed"))  //If the new status is valid
+        if(newStatus.equalsIgnoreCase("Planned") || newStatus.equalsIgnoreCase("In Progress") || newStatus.equalsIgnoreCase("Completed"))  //If the new status is valid
             this.status = newStatus;  //Assign the new status
         else                                       //If the new status is not valid
             System.out.println("Invalid status");  //Display a message

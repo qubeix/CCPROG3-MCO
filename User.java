@@ -207,7 +207,8 @@ public class User
 		library.displayBookLibrary();
 		System.out.print("Book Number to Review: ");
 		int index = sc.nextInt() - 1;
-		sc.nextLine();
+		System.out.print("Type your review: ");
+		String comment = sc.nextLine();
 
 		if(index >= 0 && index < library.getBookCount()){
 			Book book = library.getBookEntry(index);
@@ -230,7 +231,8 @@ public class User
 		library.displayAlbumLibrary();
 		System.out.print("Album to Review: ");
 		int index = sc.nextInt() - 1;
-		sc.nextLine();
+		System.out.print("Type your review: ");
+		String comment = sc.nextLine();
 
 		if(index >= 0 && index < library.getAlbumCount()){
 			Album album = library.getAlbumEntry(index);
@@ -253,7 +255,8 @@ public class User
 		library.displaySeriesLibrary();
 		System.out.print("Series to Review: ");
 		int index = sc.nextInt() - 1;
-		sc.nextLine();
+		System.out.print("Type your review: ");
+		String comment = sc.nextLine();
 
 		if(index >= 0 && index < library.getSeriesCount()){
 			Series series = library.getSeriesEntry(index);

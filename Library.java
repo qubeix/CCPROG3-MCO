@@ -126,7 +126,7 @@ public class Library
     }
 
 
-    //For displaying medi type entries:
+    //For displaying media type entries:
     /**
      * displayBookEntry() displays the given book's details (title, author, genre, and no. of chapters)
      * @param book - the book whose detalls shall be displayed
@@ -418,17 +418,17 @@ public class Library
      */
     public void filterByType(String type)
     {
-        if(type.equals("Book"))
+        if(type.equalsIgnoreCase("Book"))
         {
             displayBookLibrary();
             System.out.println("");
         }
-        else if(type.equals("Album"))
+        else if(type.equalsIgnoreCase("Album"))
         {
             displayAlbumLibrary();
             System.out.println("");
         }
-        else if (type.equals("Series"))
+        else if (type.equalsIgnoreCase("Series"))
         {
             displaySeriesLibrary();
             System.out.println("");
@@ -445,12 +445,12 @@ public class Library
         int i;
         int statusTypeCount = 0;
 
-        if(type.equals("Book"))
+        if(type.equalsIgnoreCase("Book"))
         {
             System.out.println("BOOK LIBRARY [" + status + "]");    //Display all book entries with the given status
             for(i=0; i<bookCount; i++)
             {
-                if(bookLibrary[i].getStatus().equals(status))
+                if(bookLibrary[i].getStatus().equalsIgnoreCase(status))
                 {
                     System.out.print("[" + (i+1) + "] ");
                     displayBookEntry(bookLibrary[i]);
@@ -463,12 +463,12 @@ public class Library
             
             System.out.println("");
 
-        } else if(type.equals("Album"))
+        } else if(type.equalsIgnoreCase("Album"))
         {
             System.out.println("ALBUM LIBRARY [" + status + "]");    //Display all album entries with the given status
             for(i=0; i<albumCount; i++)
             {
-                if(albumLibrary[i].getStatus().equals(status))
+                if(albumLibrary[i].getStatus().equalsIgnoreCase(status))
                 {
                     System.out.print("[" + (i+1) + "] ");
                     displayAlbumEntry(albumLibrary[i]);
@@ -481,12 +481,12 @@ public class Library
 
             System.out.println("");
 
-        } else if (type.equals("Series"))
+        } else if (type.equalsIgnoreCase("Series"))
         {
             System.out.println("SERIES LIBRARY [" + status + "]");    //Display all series entries with the given status
             for(i=0; i < seriesCount; i++)
             {
-                if(seriesLibrary[i].getStatus().equals(status))
+                if(seriesLibrary[i].getStatus().equalsIgnoreCase(status))
                 {
                     System.out.print("[" + (i+1) + "] ");
                     displaySeriesEntry(seriesLibrary[i]);
@@ -535,11 +535,11 @@ public class Library
 
         for(i=0; i<bookCount; i++)  //Get status counts for book entries
         {
-            if(bookLibrary[i].getStatus().equals("Planned"))
+            if(bookLibrary[i].getStatus().equalsIgnoreCase("Planned"))
                 plannedCount++;
-            if(bookLibrary[i].getStatus().equals("In Progress"))
+            if(bookLibrary[i].getStatus().equalsIgnoreCase("In Progress"))
                 inProgressCount++;
-            if(bookLibrary[i].getStatus().equals("Completed"))
+            if(bookLibrary[i].getStatus().equalsIgnoreCase("Completed"))
             {
                 completedBooks[completedBookCount] = bookLibrary[i];
                 completedBookCount++;
@@ -548,11 +548,11 @@ public class Library
 
         for(i=0; i<albumCount; i++)  //Get status counts for album entries
         {
-            if(albumLibrary[i].getStatus().equals("Planned"))
+            if(albumLibrary[i].getStatus().equalsIgnoreCase("Planned"))
                 plannedCount++;
-            if(albumLibrary[i].getStatus().equals("In Progress"))
+            if(albumLibrary[i].getStatus().equalsIgnoreCase("In Progress"))
                 inProgressCount++;
-            if(albumLibrary[i].getStatus().equals("Completed"))
+            if(albumLibrary[i].getStatus().equalsIgnoreCase("Completed"))
             {
                 completedAlbums[completedAlbumCount] = albumLibrary[i];
                 completedAlbumCount++;
@@ -561,11 +561,11 @@ public class Library
 
         for(i=0; i<seriesCount; i++)  //Get status counts for series entries
         {
-            if(seriesLibrary[i].getStatus().equals("Planned"))
+            if(seriesLibrary[i].getStatus().equalsIgnoreCase("Planned"))
                 plannedCount++;
-            if(seriesLibrary[i].getStatus().equals("In Progress"))
+            if(seriesLibrary[i].getStatus().equalsIgnoreCase("In Progress"))
                 inProgressCount++;
-            if(seriesLibrary[i].getStatus().equals("Completed"))
+            if(seriesLibrary[i].getStatus().equalsIgnoreCase("Completed"))
             {
                 completedSeries[completedSeriesCount] = seriesLibrary[i];
                 completedSeriesCount++;
@@ -583,6 +583,7 @@ public class Library
                  aveBookRating += completedBooks[i].getRating();
             }
             aveBookRating /= (completedBookCount * 1.0);
+            aveBookRating = Math.round(aveBookRating * 100.0)/100.0;
         }
         
 
@@ -592,6 +593,7 @@ public class Library
                  aveAlbumRating += completedAlbums[i].getRating();
             }
             aveAlbumRating /= (completedAlbumCount * 1.0);
+            aveAlbumRating = Math.round(aveAlbumRating * 100.0)/100.0;
         }
         
 
@@ -601,16 +603,20 @@ public class Library
                aveSeriesRating += completedSeries[i].getRating();
             }
             aveSeriesRating /= (completedSeriesCount * 1.0);
+            aveSeriesRating = Math.round(aveSeriesRating * 100.0)/100.0;
         }
         
 
-        System.out.println("Your Average Book Rating: " + aveBookRating);       //Display average book rating
-        System.out.println("Your Average Album Rating: " + aveAlbumRating);     //Display average album rating
-        System.out.println("Your Average Series Rating: " + aveSeriesRating);   //Display average series rating
+        System.out.println("Your Average Book Rating: " + String.format("%.2f", aveBookRating));       //Display average book rating
+        System.out.println("Your Average Album Rating: " + String.format("%.2f",aveAlbumRating));     //Display average album rating
+        System.out.println("Your Average Series Rating: " + String.format("%.2f",aveSeriesRating));   //Display average series rating
 
         int totalCompleted = completedBookCount + completedAlbumCount + completedSeriesCount;
         if(totalCompleted > 0){
-            System.out.println("\n\tYour Total Average Rating: " + (aveBookRating*completedBookCount + aveAlbumRating*completedAlbumCount + aveSeriesRating*completedSeriesCount)/(completedBookCount+completedAlbumCount+completedSeriesCount));   //Display average rating of all entries
+            double totalAve = (aveBookRating*completedBookCount + aveAlbumRating*completedAlbumCount + aveSeriesRating*completedSeriesCount)
+                                /(completedBookCount+completedAlbumCount+completedSeriesCount);
+            totalAve = Math.round(totalAve * 100.0) / 100.0;
+            System.out.println("\n\tYour Total Average Rating: " + String.format("%.2f", totalAve)); //Display average rating of all entries
         }
         else{
             System.out.println("\n\tYour Total Average Raiting: No completed entries");
