@@ -26,9 +26,6 @@ public class MenuInterface
     String password;
     boolean isValidUsername = true;
 
-    String whiteSpace;
-
-
     //Main Code
     while(startOption != 3)
     {
@@ -44,7 +41,7 @@ public class MenuInterface
       } while(startOption < 1 || startOption > 3);
       
       System.out.println("");
-      whiteSpace = sc.nextLine();
+      sc.nextLine();
 
       switch(startOption)
       {
@@ -104,7 +101,7 @@ public class MenuInterface
                     } while(addOption < 1 || addOption > 3);
 
                     System.out.println("");
-                    whiteSpace = sc.nextLine();
+                    sc.nextLine();
 
                     //Switch Cases for Adding Entries
                     switch(addOption)
@@ -136,7 +133,7 @@ public class MenuInterface
                     } while(removeOption < 1 || removeOption > 3);
 
                     System.out.println("");
-                    whiteSpace = sc.nextLine();
+                    sc.nextLine();
 
                     //Switch Cases for Removing Entries
                     switch(removeOption)
@@ -168,7 +165,7 @@ public class MenuInterface
                     } while(rateOption < 1 || rateOption > 3);
 
                     System.out.println("");
-                    whiteSpace = sc.nextLine();
+                    sc.nextLine();
 
                     //Switch Cases for Rating Entries
                     switch(rateOption)
@@ -200,7 +197,7 @@ public class MenuInterface
                     } while(reviewOption < 1 || reviewOption > 3);
 
                     System.out.println("");
-                    whiteSpace = sc.nextLine();
+                    sc.nextLine();
 
                     //Switch Cases for Reviewing Entries
                     switch(reviewOption)
@@ -232,7 +229,7 @@ public class MenuInterface
                     } while(updateOption < 1 || updateOption > 3);
 
                     System.out.println("");
-                    whiteSpace = sc.nextLine();
+                    sc.nextLine();
 
                     //Switch Cases for Updating Entries
                     switch(updateOption)
@@ -249,7 +246,7 @@ public class MenuInterface
                         } while(updateOption2 < 1 || updateOption2 > 2);
 
                         System.out.println("");
-                        whiteSpace = sc.nextLine();
+                        sc.nextLine();
 
                         //Switch Case for Updating Book
                         switch(updateOption2)
@@ -276,7 +273,7 @@ public class MenuInterface
                         } while(updateOption2 < 1 || updateOption2 > 2);
 
                         System.out.println("");
-                        whiteSpace = sc.nextLine();
+                        sc.nextLine();
 
                         //Switch Case for Updating Album
                         switch(updateOption2)
@@ -303,7 +300,7 @@ public class MenuInterface
                         } while(updateOption2 < 1 || updateOption2 > 2);
 
                         System.out.println("");
-                        whiteSpace = sc.nextLine();
+                        sc.nextLine();
 
                         //Switch Case for Updating Series
                         switch(updateOption2)
@@ -333,7 +330,7 @@ public class MenuInterface
                     } while(viewOption < 1 || viewOption > 4);
 
                     System.out.println("");
-                    whiteSpace = sc.nextLine();
+                    sc.nextLine();
 
                     //Switch Cases for Viewing Entries
                     switch(viewOption)
