@@ -2,7 +2,7 @@ import java.util.*;
 
 /**
  * The Library class contains a book library, album library, and series library, along with respective methods for
- * adding, removing, displaying, and summarizing entries/libraries.
+ * adding, removing, displaying, and summarizing entries/libraries,
  */
 
 public class Library
@@ -357,7 +357,7 @@ public class Library
         System.out.println("BOOK LIBRARY [" + status + "]");    //Display all book entries with the given status
         for(i=0; i<bookCount; i++)
         {
-            if(bookLibrary[i].getStatus().equals(status))
+            if(bookLibrary[i].getStatus().equalsIgnoreCase(status))
             {
                 System.out.print("[" + (i+1) + "] ");
                 displayBookEntry(bookLibrary[i]);
@@ -373,7 +373,7 @@ public class Library
         System.out.println("ALBUM LIBRARY [" + status + "]");    //Display all album entries with the given status
         for(i=0; i<albumCount; i++)
         {
-            if(albumLibrary[i].getStatus().equals(status))
+            if(albumLibrary[i].getStatus().equalsIgnoreCase(status))
             {
                 System.out.print("[" + (i+1) + "] ");
                 displayAlbumEntry(albumLibrary[i]);
@@ -389,7 +389,7 @@ public class Library
         System.out.println("SERIES LIBRARY [" + status + "]");    //Display all series entries with the given status
         for(i=0; i < seriesCount; i++)
         {
-            if(seriesLibrary[i].getStatus().equals(status))
+            if(seriesLibrary[i].getStatus().equalsIgnoreCase(status))
             {
                 System.out.print("[" + (i+1) + "] ");
                 displaySeriesEntry(seriesLibrary[i]);
