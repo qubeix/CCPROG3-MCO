@@ -178,7 +178,7 @@ public class Book
     }
 
     /**
-   	  * Returns the progress of the book, in the format of: "<current chapter> / <total chapters> Chapters"
+   	  * Returns the progress of the book, in the format of: "{@literal <current chapter> / <total chapters> Chapters}"
    	  * @return the progress
    	 */
     public String getProgress()
