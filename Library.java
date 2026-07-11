@@ -1,7 +1,7 @@
 import java.util.*;
 
 /**
- * The Library class contains a book library, album library, and series library, along with respective methods for
+ * The class <code>Library</code> contains a book library, album library, and series library, along with respective methods for
  * adding, removing, displaying, and summarizing entries/libraries,
  */
 
@@ -16,6 +16,10 @@ public class Library
     private final int MAXCOUNT = 100;   //Maximum count of media entries
 
     //CONSTRUCTOR
+    /**
+      * Creates a Library containing an array of Book, Album, and Series, for book entries, album entries, and series entries, respectively, with a capacity of 100 each.
+      * The count of books, albums, and series (to keep track of existing entries) are initialized to zero.
+     */
     public Library()
     {
         bookLibrary = new Book[MAXCOUNT];
@@ -30,7 +34,7 @@ public class Library
     //METHODS
     //For adding entries:
     /**
-     * addBook() adds a book to the book library
+     * Adds a book to the book library
      */
     public void addBook()
     {
@@ -61,7 +65,9 @@ public class Library
         System.out.println("");
     }
 
-
+    /**
+     * Adds an album to the book library
+     */
     public void addAlbum()
     {
         String title;
@@ -92,7 +98,7 @@ public class Library
     }
 
     /**
-     * addSeries() adds a series to the series library
+     * Adds a series to the series library
      */
     public void addSeries()
     {
@@ -125,8 +131,8 @@ public class Library
 
     //For displaying media type entries:
     /**
-     * displayBookEntry() displays the given book's details (title, author, genre, and no. of chapters)
-     * @param book - the book whose detalls shall be displayed
+     * Displays the given book's details (title, author, genre, and no. of chapters)
+     * @param book the book whose detalls shall be displayed
      */
     public void displayBookEntry(Book book)
     {
@@ -141,8 +147,8 @@ public class Library
     }
 
     /**
-     * displayAlbumEntry() displays the given album's details (title, artist, genre, and no. of tracks)
-     * @param album - the album whose detalls shall be displayed
+     * Displays the given album's details (title, artist, genre, and no. of tracks)
+     * @param album the album whose detalls shall be displayed
      */
     public void displayAlbumEntry(Album album)
     {
@@ -157,8 +163,8 @@ public class Library
     }
 
     /**
-     * displaySeriesEntry() displays the given series' details (title, genre, no. of seasons, and no. of episodes)
-     * @param series - the series whose detalls shall be displayed
+     * Displays the given series' details (title, genre, no. of seasons, and no. of episodes)
+     * @param series the series whose detalls shall be displayed
      */
     public void displaySeriesEntry(Series series)
     {
@@ -175,7 +181,7 @@ public class Library
 
     //For displaying media type libraries:
     /**
-     * displayBookLibrary() displays all entries in the book library
+     * Displays all entries in the book library
      */
     public void displayBookLibrary()
     {
@@ -196,7 +202,7 @@ public class Library
     }
 
     /**
-     * displayAlbumLibrary() displays all entries in the album library
+     * Displays all entries in the album library
      */
     public void displayAlbumLibrary()
     {
@@ -217,7 +223,7 @@ public class Library
     }
 
     /**
-     * displaySeriesLibrary() displays all entries in the series library
+     * Displays all entries in the series library
      */
     public void displaySeriesLibrary()
     {
@@ -240,7 +246,7 @@ public class Library
 
     //For removing entries:
     /**
-     * removeBook() removes a book in the book library
+     * Removes a book in the book library
      */
     public void removeBook()
     {
@@ -270,7 +276,7 @@ public class Library
     }
 
     /**
-     * removeAlbum() removes an album in the album library
+     * Removes an album in the album library
      */
     public void removeAlbum()
     {
@@ -299,7 +305,7 @@ public class Library
     }
 
     /**
-     * removeSeries() removes a series in the series library
+     * Removes a series in the series library
      */
     public void removeSeries()
     {
@@ -329,7 +335,7 @@ public class Library
 
     //For displaying all entries
     /**
-      * displayLibrary() displays all the entries (books, albums, and series) without any filters
+      * Displays all the entries (books, albums, and series) without any filters
      */
     public void displayLibrary()
     {
@@ -344,8 +350,8 @@ public class Library
     }
 
     /**
-      * filterByStatus() displays all the entries (books, albums, and series) with the given status
-      * @param status - the String containing the status condition (Planned, In Progress, or Completed)
+      * Displays all the entries (books, albums, and series) with the given status
+      * @param status the String containing the status condition (Planned, In Progress, or Completed)
      */
     public void filterByStatus(String status)
     {
@@ -404,8 +410,8 @@ public class Library
     }
 
     /**
-      * filterByType() displays all the entries (books, albums, and series) with the given media type
-      * @param type - the String containing the medita type condition (Book, Album, or Series)
+      * Displays all the entries (books, albums, and series) with the given media type
+      * @param type the String containing the medita type condition (Book, Album, or Series)
      */
     public void filterByType(String type)
     {
@@ -427,9 +433,9 @@ public class Library
     }
 
     /**
-      * filterByStatusAndType() displays all the entries (books, albums, and series) with the given status and media type
-      * @param status - the String containing the status condition (Planned, In Progress, or Completed)
-      * @param type - the String containing the medita type condition (Book, Album, or Series)
+      * Displays all the entries (books, albums, and series) with the given status and media type
+      * @param status the String containing the status condition (Planned, In Progress, or Completed)
+      * @param type the String containing the medita type condition (Book, Album, or Series)
      */
     public void filterByStatusType(String status, String type)
     {
@@ -494,11 +500,11 @@ public class Library
 
     //For summary
     /**
-      * summary() displays the library's:
-      *     1. total entry count per media type
-      *     2. total entry count of all media types
-      *     3. total entry count per status
-      *     4. average rating of completed entries
+      * Displays the library's:<br>
+      *     1. total entry count per media type<br>
+      *     2. total entry count of all media types<br>
+      *     3. total entry count per status<br>
+      *     4. average rating of completed entries<br>
      */
     public void summary()
     {
@@ -617,31 +623,55 @@ public class Library
 
 
     //GETTERS
+    /**
+      * Returns the total number of book entries in the library
+      * @return the total number of book entries
+     */
     public int getBookCount()
     {
         return bookCount;
     }
 
+    /**
+      * Returns the total number of album entries in the library
+      * @return the total number of album entries
+     */
     public int getAlbumCount()
     {
         return albumCount;
     }
 
+    /**
+      * Returns the total number of series entries in the library
+      * @return the total number of series entries
+     */
     public int getSeriesCount()
     {
         return seriesCount;
     }
 
+    /**
+      * Returns a book entry of its given index in the library
+      * @return a book entry
+     */
     public Book getBookEntry(int index)
     {
         return bookLibrary[index];
     }
 
+    /**
+      * Returns an album entry of its given index in the library
+      * @return an album entry
+     */
     public Album getAlbumEntry(int index)
     {
         return albumLibrary[index];
     }
 
+    /**
+      * Returns a series entry of its given index in the library
+      * @return a series entry
+     */
     public Series getSeriesEntry(int index)
     {
         return seriesLibrary[index];
