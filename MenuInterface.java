@@ -11,6 +11,7 @@ public class MenuInterface
   //MENU
   /**
     * Contains the implementation of the text-based menu-driven interface for the media vault
+    * @param args default parameter
    */
   public static void main(String[] args)
   {
