@@ -1,7 +1,7 @@
 import java.util.*;
 
 /**
- * The User class contains the attributes, constructor, methods, and getters necessary for the creation, validation, and actions of a user, such as
+ * The class <code>User</code> contains the attributes, constructor, methods, and getters necessary for the creation, validation, and actions of a user, such as<br>
  * the methods of: logging in, logging out, adding entries, removing entries, viewing libraries, and getting their library summary
  */
 
@@ -24,10 +24,10 @@ public class User
 
 	//METHODS
 	/**
-	 * login() logs a user into their account
+	 * Logs a user into their account
 	 * @pre user exists
-	 * @param inputUsername - the username provided by the user in logging in
-	 * @param inputPassword - the password provided by the user in logging in
+	 * @param inputUsername the username provided by the user in logging in
+	 * @param inputPassword the password provided by the user in logging in
 	 * @return true if the inputted password matches the password of the inputted username, false otherwise
 	 */
 	public boolean login (String inputUsername, String inputPassword) 
@@ -45,7 +45,7 @@ public class User
 	}
 	
 	/**
-	 * logout() logs a user out of their account
+	 * Logs a user out of their account
 	 * @pre user has been logged in
 	 */ 
 	public void logout()
@@ -54,7 +54,7 @@ public class User
 	}
 
 	/**
-	 * addBookEntry() adds a book entry into the user's library
+	 * Adds a book entry into the user's library
 	 */
 	public void addBookEntry(){
 		library.addBook();
@@ -62,7 +62,7 @@ public class User
 	}
 
 	/**
-	 * addAlbumEntry() adds an album entry into the user's library
+	 * Adds an album entry into the user's library
 	 */
 	public void addAlbumEntry(){
 		library.addAlbum();
@@ -70,7 +70,7 @@ public class User
 	}
 
 	/**
-	 * addSeriesEntry() adds a series entry into the user's library
+	 * Adds a series entry into the user's library
 	 */
 	public void addSeriesEntry(){
 		library.addSeries();
@@ -78,31 +78,31 @@ public class User
 	}
 	
 	/**
-	 * removeBookEntry() removes a book entry from the user's library
-	 * @pre - book entry exists in library
+	 * Removes a book entry from the user's library
+	 * @pre book entry exists in library
 	 */
 	public void removeBookEntry(){
 		library.removeBook();
 	}
 	
 	/**
-	 * removeAlbumEntry() removes an album entry from the user's library
-	 * @pre - album entry exists in library
+	 * Removes an album entry from the user's library
+	 * @pre album entry exists in library
 	 */
 	public void removeAlbumEntry(){
 		library.removeAlbum();
 	}
 	
 	/**
-	 * removeSeriesEntry() removes a series entry from the user's library
-	 * @pre - series entry exists in library
+	 * Removes a series entry from the user's library
+	 * @pre series entry exists in library
 	 */
 	public void removeSeriesEntry(){
 		library.removeSeries();
 	}
 
 	/**
-	 * viewLibrary() displays the user's libraries (book, album, and series)
+	 * Displays the user's libraries (book, album, and series)
 	 */ 
 	public void viewLibrary()
 	{
@@ -110,7 +110,7 @@ public class User
 	}
 	
 	/**
-	 * viewByStatus() displays the user's libraries of a given status (Planned, In Progress, or Completed)
+	 * Displays the user's libraries of a given status (Planned, In Progress, or Completed)
 	 */ 
 	public void viewByStatus(){
 		Scanner sc = new Scanner(System.in);
@@ -121,7 +121,7 @@ public class User
 	}
 	
 	/**
-	 * viewByType() displays the user's library of a given media type (Book, Album, or Series)
+	 * Displays the user's library of a given media type (Book, Album, or Series)
 	 */ 
 	public void viewByType(){
 		Scanner sc = new Scanner(System.in);
@@ -132,7 +132,7 @@ public class User
 	}
 
 	/**
-	 * viewByStatusType() displays the user's library of a given status (Planned, In Progress, or Completed) and given media type (Book, Album, or Series)
+	 * Displays the user's library of a given status (Planned, In Progress, or Completed) and given media type (Book, Album, or Series)
 	 */
 	public void viewByStatusType(){
 		Scanner sc = new Scanner(System.in);
@@ -145,7 +145,7 @@ public class User
 	}
 
 	/**
-	 * getSummary() displays the user's library summary
+	 * Displays the user's library summary
 	 */ 
 	public void getSummary()
 	{
@@ -153,7 +153,7 @@ public class User
 	}
 
 	/**
-	 * rateBookEntry() rates a book entry in the user's library
+	 * Rates a book entry in the user's library
 	 */ 
 	public void rateBookEntry(){
 		if(library.getBookCount() > 0){
@@ -183,7 +183,7 @@ public class User
 	}
 
 	/**
-	 * rateAlbumEntry() rates an album entry in the user's library
+	 * Rates an album entry in the user's library
 	 */
 	public void rateAlbumEntry(){
 		if(library.getAlbumCount() > 0){
@@ -215,7 +215,7 @@ public class User
 	}
 
 	/**
-	 * rateSeriesEntry() rates a series entry in the user's library
+	 * Rates a series entry in the user's library
 	 */
 	public void rateSeriesEntry(){
 		if(library.getSeriesCount() > 0){
@@ -247,7 +247,7 @@ public class User
 	}
 
 	/**
-	 * reviewBookEntry() reviews a book entry in the user's library
+	 * Reviews a book entry in the user's library
 	 */
 	public void reviewBookEntry(){
 		if(library.getBookCount() > 0){
@@ -271,7 +271,7 @@ public class User
 	}
 
 	/**
-	 * reviewAlbumEntry() reviews an album entry in the user's library
+	 * Reviews an album entry in the user's library
 	 */
 	public void reviewAlbumEntry(){
 		if(library.getAlbumCount() > 0){
@@ -295,7 +295,7 @@ public class User
 	}
 
 	/**
-	 * reviewSeriesEntry() reviews a series entry in the user's library
+	 * Reviews a series entry in the user's library
 	 */
 	public void reviewSeriesEntry(){
 		if(library.getSeriesCount() > 0){
@@ -319,7 +319,7 @@ public class User
 	}
 
 	/**
-	 * updateBookStatus() updates a book entry's status in the user's library
+	 * Updates a book entry's status in the user's library
 	 */
 	public void updateBookStatus(){
 		if(library.getBookCount() > 0){
@@ -343,7 +343,7 @@ public class User
 	}
 
 	/**
-	 * updateAlbumStatus() updates an album entry's status in the user's library
+	 * Updates an album entry's status in the user's library
 	 */
 	public void updateAlbumStatus(){
 		if(library.getAlbumCount() > 0){
@@ -367,7 +367,7 @@ public class User
 	}
 	
 	/**
-	 * updateSeriesStatus() updates a series entry's status in the user's library
+	 * Updates a series entry's status in the user's library
 	 */
 	public void updateSeriesStatus(){
 		if(library.getSeriesCount() > 0){
@@ -391,7 +391,7 @@ public class User
 	}
 
 	/**
-	 * moveBookChapter() moves a book entry's chapter in the user's library
+	 * Moves a book entry's chapter in the user's library
 	 */
 	public void moveBookChapter(){
 		if(library.getBookCount() > 0){
@@ -413,7 +413,7 @@ public class User
 	}
 
 	/**
-	 * moveAlbumTrack() moves an album entry's track in the user's library
+	 * Moves an album entry's track in the user's library
 	 */
 	public void moveAlbumTrack(){
 		if(library.getAlbumCount() > 0){
@@ -437,7 +437,7 @@ public class User
 	}
 	
 	/**
-	 * moveSeriesEpisode() moves a series entry's episode/season in the user's library
+	 * Moves a series entry's episode/season in the user's library
 	 */
 	public void moveSeriesEpisode(){
 		if(library.getSeriesCount() > 0){
@@ -461,16 +461,28 @@ public class User
 	}
 
 	//GETTERS 
+	/**
+	  * Returns the user's username
+	  * @return the user's username
+	 */
 	public String getUsername()
 	{
 		return username;
 	}
-	
+
+	/**
+	  * Returns the user's name
+	  * @return the user's name
+	 */
 	public String getName()
 	{
 		return name;
 	}
-	
+
+	/**
+	  * Returns the user's library
+	  * @return the user's library
+	 */
 	public Library getLibrary()
 	{
 		return library;
