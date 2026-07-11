@@ -195,7 +195,7 @@ public class Album
 	}
 
 	/**
-	  * Returns the progress of the album, in the format of: "Track <current track> of <total tracks>"
+	  * Returns the progress of the album, in the format of: "Track {@literal<current track>} of {@literal<total tracks>}"
 	  * @return the progress
 	 */
 	public String getProgress()
