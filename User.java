@@ -31,7 +31,7 @@ public class User
 	//METHODS
 	/**
 	 * Logs a user into their account
-	 * @pre user exists
+	 * @pre. user exists
 	 * @param inputUsername the username provided by the user in logging in
 	 * @param inputPassword the password provided by the user in logging in
 	 * @return true if the inputted password matches the password of the inputted username, false otherwise
@@ -52,7 +52,7 @@ public class User
 	
 	/**
 	 * Logs a user out of their account
-	 * @pre user has been logged in
+	 * @pre. user has been logged in
 	 */ 
 	public void logout()
 	{
@@ -85,7 +85,7 @@ public class User
 	
 	/**
 	 * Removes a book entry from the user's library
-	 * @pre book entry exists in library
+	 * @pre. book entry exists in library
 	 */
 	public void removeBookEntry(){
 		library.removeBook();
@@ -93,7 +93,7 @@ public class User
 	
 	/**
 	 * Removes an album entry from the user's library
-	 * @pre album entry exists in library
+	 * @pre. album entry exists in library
 	 */
 	public void removeAlbumEntry(){
 		library.removeAlbum();
@@ -101,7 +101,7 @@ public class User
 	
 	/**
 	 * Removes a series entry from the user's library
-	 * @pre series entry exists in library
+	 * @pre. series entry exists in library
 	 */
 	public void removeSeriesEntry(){
 		library.removeSeries();
