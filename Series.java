@@ -218,7 +218,7 @@ public class Series
     }
 
     /**
-   	  * Returns the progress of the series, in the format of: "Season <current season>: <current episode>/<total episodes in current season> Episodes"
+   	  * Returns the progress of the series, in the format of: "{@literal Season <current season>: <current episode>/<total episodes in current season> Episodes}"
    	  * @return the progress
    	 */
     public String getProgress()
