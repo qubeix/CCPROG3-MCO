@@ -1,6 +1,6 @@
 /**
-  * The Book class contains the attributes, constructor, methods, and getters necessary for the creation, modification, and manipulation of a book entry with:
-  * the common methods of: assigning a status (and modifying it), assigning a rating, and assigning a review; and
+  * The class <code>Book</code> contains the attributes, constructor, methods, and getters necessary for the creation, modification, and manipulation of a book entry with:<br>
+  * the common methods of: assigning a status (and modifying it), assigning a rating, and assigning a review; and<br>
   * the unique method of: updating the book entry's current chapter progress
  */
 public class Book
@@ -35,8 +35,8 @@ public class Book
 
     //METHODS
     /**
-      * addStatus() assigns a status ("Planned", "In Progress", or "Completed") to an entry
-      * @param status - the status to be assigned
+      * Assigns a status ("Planned", "In Progress", or "Completed") to an entry
+      * @param status the status to be assigned
      */
     public void addStatus(String status)
     {
@@ -47,8 +47,8 @@ public class Book
     }
 
     /**
-      * updateStatus() modifies an entry's status ("Planned", "In Progress", or "Completed")
-      * @param newStatus - the status to be newly assigned
+      * Modifies an entry's status ("Planned", "In Progress", or "Completed")
+      * @param newStatus the status to be newly assigned
      */
     public void updateStatus(String newStatus)
     {
@@ -62,9 +62,9 @@ public class Book
     }
 
     /**
-      * addRating() assigns a rating to an entry
-      * @param rating - the number rating to be assigned
-      * @pre - the entry must have a status of "Completed" to assign a rating
+      * Assigns a rating to an entry
+      * @param rating the number rating to be assigned
+      * @pre the entry must have a status of "Completed" to assign a rating
      */
     public void addRating(int rating)
     {
@@ -75,9 +75,9 @@ public class Book
     }
 
     /**
-      * addReview() assigns a review to an entry
-      * @param review - the review to be assigned
-      * @pre - the entry must have a status of "Completed" to assign a review
+      * Assigns a review to an entry
+      * @param review the review to be assigned
+      * @pre the entry must have a status of "Completed" to assign a review
      */
     public void addReview(String review)
     {
@@ -88,7 +88,7 @@ public class Book
     }
 
     /**
-      * nextChapter() moves the current chapter forward by one
+      * Moves the current chapter forward by one
      */
     public void nextChapter()
     {
@@ -107,41 +107,73 @@ public class Book
     }
 
     //GETTERS
+    /**
+   	  * Returns the status of the book
+   	  * @return the status
+   	*/
     public String getStatus()
     {
         return status;
     }
 
+    /**
+   	  * Returns the rating of the book
+   	  * @return the rating
+   	*/
     public int getRating()
     {
         return rating;
     }
 
+    /**
+   	  * Returns the review of the book
+   	  * @return the review
+   	*/
     public String getReview()
     {
         return review;
     }
 
+    /**
+   	  * Returns the title of the book
+   	  * @return the title
+   	*/
     public String getTitle()
     {
         return TITLE;
     }
 
+    /**
+   	  * Returns the author of the book
+   	  * @return the author
+   	*/
     public String getAuthor()
     {
         return AUTHOR;
     }
 
+    /**
+   	  * Returns the number of chapters in the book
+   	  * @return the number of chapters
+   	*/
     public int getChapterCount()
     {
         return CHAPTERCOUNT;
     }
 
+    /**
+   	  * Returns the genre of the book
+   	  * @return the genre
+   	*/
     public String getGenre()
     {
         return GENRE;
     }
 
+    /**
+   	  * Returns the progress of the book, in the format of: "<current chapter> / <total chapters> Chapters"
+   	  * @return the progress
+   	*/
     public String getProgress()
     {
         return currentChapter + "/" + CHAPTERCOUNT + " Chapters\n";   //return the amount of chapters read
