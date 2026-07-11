@@ -78,7 +78,7 @@ public class Series
     /**
       * Assigns a rating to an entry
       * @param rating the number rating to be assigned
-      * @pre the entry must have a status of "Completed" to assign a rating
+      * @pre. the entry must have a status of "Completed" to assign a rating
      */
     public void addRating(int rating)
     {
@@ -91,7 +91,7 @@ public class Series
     /**
       * Assigns a review to an entry
       * @param review the review to be assigned
-      * @pre the entry must have a status of "Completed" to assign a review
+      * @pre. the entry must have a status of "Completed" to assign a review
      */
     public void addReview(String review)
     {
@@ -198,6 +198,7 @@ public class Series
 
     /**
    	  * Returns the number of episodes of a given season in the series
+      * @param season the season of the episodes
    	  * @return the number of episodes of a given season
    	 */
     public int getEpisodeCount(int season)
