@@ -22,7 +22,7 @@ public class Series
 
     //CONSTRUCTOR
     /**
-      * Accepts a title, genre, and count of seasons as parameters, and initializes status to "Plenned," rating to 0, review to empty, current season to 1, and current episode to 0, and list of episode counts 
+      * Accepts a title, genre, and count of seasons as parameters, and initializes status to "Planned," rating to 0, review to empty, current season to 1, and current episode to 0, and list of episode counts 
       * @param title the title of the series
       * @param genre the genre of the series
       * @param seasonCount the count of seasons in the series
