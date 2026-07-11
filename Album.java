@@ -18,6 +18,13 @@ public class Album
 	
 	
 	//CONSTRUCTOR
+	/**
+      * Accepts a title, artist, genre, and count of tracks as parameters, and initializes status to "Plenned," rating to 0, review to empty, current track to 0 
+      * @param title the title of the album
+	  * @param artist the artist of the album
+      * @param genre the genre of the album
+      * @param trackCount the count of tracks in the album
+     */
 	public Album(String title, String artist, String genre, int trackCount)
 	{
 		TITLE = title;
@@ -131,7 +138,7 @@ public class Album
 	/**
 	  * Returns the title of the album
 	  * @return the title
-	*/
+	 */
 	public String getTitle(){
 		return TITLE;
 	}
@@ -139,7 +146,7 @@ public class Album
 	/**
 	  * Returns the artist of the album
 	  * @return the artist
-	*/
+	 */
 	public String getArtist(){
 		return ARTIST;
 	}
@@ -147,7 +154,7 @@ public class Album
 	/**
 	  * Returns the genre of the album
 	  * @return the genre
-	*/
+	 */
 	public String getGenre(){
 		return GENRE;
 	}
@@ -155,7 +162,7 @@ public class Album
 	/**
 	  * Returns the number of tracks in the album
 	  * @return the number of tracks
-	*/
+	 */
 	public int getTrackCount(){
 		return TRACKCOUNT;
 	}
@@ -163,7 +170,7 @@ public class Album
 	/**
 	  * Returns the status of the album
 	  * @return the status
-	*/
+	 */
 	public String getStatus()
 	{
 		return status;
@@ -172,7 +179,7 @@ public class Album
 	/**
 	  * Returns the rating of the album
 	  * @return the rating
-	*/
+	 */
 	public int getRating()
 	{
 		return rating;
@@ -181,7 +188,7 @@ public class Album
 	/**
 	  * Returns the review of the album
 	  * @return the review
-	*/
+	 */
 	public String getReview()
 	{
 		return review;
@@ -190,7 +197,7 @@ public class Album
 	/**
 	  * Returns the progress of the album, in the format of: "Track <current track> of <total tracks>"
 	  * @return the progress
-	*/
+	 */
 	public String getProgress()
 	{
 		return "Track " +currentTrack+ " of " +TRACKCOUNT+ "\n";
