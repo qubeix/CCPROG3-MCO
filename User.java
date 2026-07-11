@@ -13,7 +13,13 @@ public class User
 	private String name;
 	private Library library; 
 	
-	//CONSTRUCTORS 
+	//CONSTRUCTORS
+	/**
+      * Accepts a username, password, and name as parameters, and initializes them as the user's username, password, and name, respectively. A Library is also instantiated. 
+      * @param username the username of the user
+      * @param password the password of the user
+      * @param name the name of the user
+     */
 	public User (String username, String password, String name)
 	{
 		this.username = username;
