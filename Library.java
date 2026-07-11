@@ -270,7 +270,7 @@ public class Library
             bookLibrary[j] = null;
             bookCount--;
 
-            System.out.println("\n\"" + removedTitle + "\" by " + removedAuthor + " is removed.");
+            System.out.println("\n\"" + removedTitle + "\" by " + removedAuthor + " is removed.\n");
         } else
         System.out.println("Invalid Book Number. Exiting Book Removal...");
     }
@@ -299,7 +299,7 @@ public class Library
             albumLibrary[j] = null;
             albumCount--;
 
-            System.out.println("\n\"" + removedTitle + "\" by " + removedArtist + " is removed.");
+            System.out.println("\n\"" + removedTitle + "\" by " + removedArtist + " is removed.\n");
         } else
         System.out.println("Invalid Album Number. Exiting Album Removal...");
     }
@@ -327,7 +327,7 @@ public class Library
             seriesLibrary[j] = null;
             seriesCount--;
 
-            System.out.println("\n\"" + removedTitle + "\" is removed.");
+            System.out.println("\n\"" + removedTitle + "\" is removed.\n");
         } else
         System.out.println("Invalid Series Number. Exiting Series Removal...");
     }
