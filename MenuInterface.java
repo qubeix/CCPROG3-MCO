@@ -9,6 +9,9 @@ import java.util.*;
 public class MenuInterface
 {
   //MENU
+  /**
+    * Contains the implementation of the text-based menu-driven interface for the media vault
+   */
   public static void main(String[] args)
   {
     //Variables
