@@ -652,6 +652,7 @@ public class Library
 
     /**
       * Returns a book entry of its given index in the library
+      * @param index the index of the book entry
       * @return a book entry
      */
     public Book getBookEntry(int index)
@@ -661,6 +662,7 @@ public class Library
 
     /**
       * Returns an album entry of its given index in the library
+      * @param index the index of the album entry
       * @return an album entry
      */
     public Album getAlbumEntry(int index)
@@ -670,6 +672,7 @@ public class Library
 
     /**
       * Returns a series entry of its given index in the library
+      * @param index the index of the series entry
       * @return a series entry
      */
     public Series getSeriesEntry(int index)
