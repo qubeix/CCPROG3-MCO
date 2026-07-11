@@ -19,7 +19,7 @@ public class Book
 
     //CONSTRUCTOR
     /**
-      * Accepts a title, author, genre, and count of chapters as parameters, and initializes status to "Plenned," rating to 0, review to empty, current chapter to 0 
+      * Accepts a title, author, genre, and count of chapters as parameters, and initializes status to "Planned," rating to 0, review to empty, current chapter to 0 
       * @param title the title of the book
       * @param author the artist of the book
       * @param genre the genre of the book
