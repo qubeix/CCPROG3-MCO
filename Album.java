@@ -19,7 +19,7 @@ public class Album
 	
 	//CONSTRUCTOR
 	/**
-      * Accepts a title, artist, genre, and count of tracks as parameters, and initializes status to "Plenned," rating to 0, review to empty, current track to 0 
+      * Accepts a title, artist, genre, and count of tracks as parameters, and initializes status to "Planned," rating to 0, review to empty, current track to 0 
       * @param title the title of the album
 	  * @param artist the artist of the album
       * @param genre the genre of the album
