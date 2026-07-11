@@ -1,7 +1,7 @@
 import java.util.*;
 
 /**
- * The MenuInterface class provided a text-based menu-driven interface for a media vault,
+ * The class <code>MenuInterface</code> provides a text-based menu-driven interface for a media vault,
  * containing a book library, album library, and series library
  * and allows the existence of mutiple users
  */
