@@ -18,6 +18,13 @@ public class Book
     private int currentChapter;         //the user's current chapter
 
     //CONSTRUCTOR
+    /**
+      * Accepts a title, author, genre, and count of chapters as parameters, and initializes status to "Plenned," rating to 0, review to empty, current chapter to 0 
+      * @param title the title of the book
+      * @param author the artist of the book
+      * @param genre the genre of the book
+      * @param chapterCount the count of chapters in the book
+     */
     public Book(String title, String author, String genre, int chapterCount)
     {
         TITLE = title;
@@ -110,7 +117,7 @@ public class Book
     /**
    	  * Returns the status of the book
    	  * @return the status
-   	*/
+   	 */
     public String getStatus()
     {
         return status;
@@ -119,7 +126,7 @@ public class Book
     /**
    	  * Returns the rating of the book
    	  * @return the rating
-   	*/
+   	 */
     public int getRating()
     {
         return rating;
@@ -128,7 +135,7 @@ public class Book
     /**
    	  * Returns the review of the book
    	  * @return the review
-   	*/
+   	 */
     public String getReview()
     {
         return review;
@@ -137,7 +144,7 @@ public class Book
     /**
    	  * Returns the title of the book
    	  * @return the title
-   	*/
+   	 */
     public String getTitle()
     {
         return TITLE;
@@ -146,7 +153,7 @@ public class Book
     /**
    	  * Returns the author of the book
    	  * @return the author
-   	*/
+   	 */
     public String getAuthor()
     {
         return AUTHOR;
@@ -155,7 +162,7 @@ public class Book
     /**
    	  * Returns the number of chapters in the book
    	  * @return the number of chapters
-   	*/
+   	 */
     public int getChapterCount()
     {
         return CHAPTERCOUNT;
@@ -164,7 +171,7 @@ public class Book
     /**
    	  * Returns the genre of the book
    	  * @return the genre
-   	*/
+   	 */
     public String getGenre()
     {
         return GENRE;
@@ -173,7 +180,7 @@ public class Book
     /**
    	  * Returns the progress of the book, in the format of: "<current chapter> / <total chapters> Chapters"
    	  * @return the progress
-   	*/
+   	 */
     public String getProgress()
     {
         return currentChapter + "/" + CHAPTERCOUNT + " Chapters\n";   //return the amount of chapters read
