@@ -1,6 +1,6 @@
 /**
-  * The Album class contains the attributes, constructor, methods, and getters necessary for the creation, modification, and manipulation of an album entry with:
-  * the common methods of: assigning a status (and modifying it), assigning a rating, and assigning a review; and
+  * The class <code>Album</code> contains the attributes, constructor, methods, and getters necessary for the creation, modification, and manipulation of an album entry with: <br>
+  * the common methods of: assigning a status (and modifying it), assigning a rating, and assigning a review; and <br>
   * the unique method of: updating the album entry's current track progress
  */
 public class Album
@@ -34,8 +34,8 @@ public class Album
 	
 	//METHODS
     /**
-      * addStatus() assigns a status ("Planned", "In Progress", or "Completed") to an entry
-      * @param status - the status to be assigned
+      * Assigns a status ("Planned", "In Progress", or "Completed") to an entry
+      * @param status the status to be assigned
      */
 	public void addStatus(String status)
 	{
@@ -51,8 +51,8 @@ public class Album
 	}
 	
 	/**
-      * updateStatus() modifies an entry's status ("Planned", "In Progress", or "Completed")
-      * @param newStatus - the status to be newly assigned
+      * Modifies an entry's status ("Planned", "In Progress", or "Completed")
+      * @param newStatus the status to be newly assigned
      */
 	public void updateStatus(String newStatus)
 	{
@@ -67,9 +67,9 @@ public class Album
 	}
 	
 	/**
-      * addRating() assigns a rating to an entry
-      * @param rating - the number rating to be assigned
-      * @pre - the entry must have a status of "Completed" to assign a rating
+      * Assigns a rating to an entry
+      * @param rating the number rating to be assigned
+      * @pre the entry must have a status of "Completed" to assign a rating
      */
 	public void addRating(int rating)
 	{
@@ -84,9 +84,9 @@ public class Album
 	}
 	
 	/**
-      * addReview() assigns a review to an entry
-      * @param review - the review to be assigned
-      * @pre - the entry must have a status of "Completed" to assign a review
+      * Assigns a review to an entry
+      * @param review the review to be assigned
+      * @pre the entry must have a status of "Completed" to assign a review
      */
 	public void addReview(String review)
 	{
@@ -101,7 +101,7 @@ public class Album
 	}
 	
 	/**
-      * nextTrack() moves the current track forward by one
+      * Moves the current track forward by one
      */
 	public void nextTrack()
 	{
@@ -128,37 +128,69 @@ public class Album
 	}
 	
 	//GETTERS
+	/**
+	  * Returns the title of the album
+	  * @return the title
+	*/
 	public String getTitle(){
 		return TITLE;
 	}
-	
+
+	/**
+	  * Returns the artist of the album
+	  * @return the artist
+	*/
 	public String getArtist(){
 		return ARTIST;
 	}
-	
+
+	/**
+	  * Returns the genre of the album
+	  * @return the genre
+	*/
 	public String getGenre(){
 		return GENRE;
 	}
-	
+
+	/**
+	  * Returns the number of tracks in the album
+	  * @return the number of tracks
+	*/
 	public int getTrackCount(){
 		return TRACKCOUNT;
 	}
-	
+
+	/**
+	  * Returns the status of the album
+	  * @return the status
+	*/
 	public String getStatus()
 	{
 		return status;
 	}
-	
+
+	/**
+	  * Returns the rating of the album
+	  * @return the rating
+	*/
 	public int getRating()
 	{
 		return rating;
 	}
-	
+
+	/**
+	  * Returns the review of the album
+	  * @return the review
+	*/
 	public String getReview()
 	{
 		return review;
 	}
-	
+
+	/**
+	  * Returns the progress of the album, in the format of: "Track <current track> of <total tracks>"
+	  * @return the progress
+	*/
 	public String getProgress()
 	{
 		return "Track " +currentTrack+ " of " +TRACKCOUNT+ "\n";
