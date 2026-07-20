@@ -1,3 +1,8 @@
+/**
+ * The class <code>MediaEntry</code> serves as the abstract class for the classes <code>Book</code>, <code>Album</code>, and <code>Series</code><br>
+ * It contains a constructor to define and initialize an entry's information as attributes, and accompanying methods and getters for adding, manipulating, and returning such attributes 
+ */
+
 public abstract class MediaEntry
 {
   //ATTRIBUTES
@@ -69,31 +74,58 @@ public abstract class MediaEntry
     }
   }  
 
+  /**
+   * Moves the entry's progress by one
+   */
   public abstract void updateProgress();
 
+  /**
+   * Returns a String containing the entry's information
+   * @return the entry's information
+   */
   public abstract String toString();
 
   //GETTERS
+  /**
+   	* Returns the status of the entry
+   	* @return the status
+   	*/
   public String getStatus()
   {
     return status;
   }
 
+  /**
+   	* Returns the rating of the entry
+   	* @return the rating
+   	*/
   public int getRating()
   {
     return rating;
   }
 
+  /**
+   	* Returns the review of the entry
+   	* @return the review
+   	*/
   public String getReview()
   {
     return review;
   }
 
+  /**
+   	* Returns the title of the entry
+   	* @return the title
+   	*/
   public String getTitle()
   {
     return TITLE;
   }
 
+  /**
+   	* Returns the genre of the entry
+   	* @return the genre
+   */
   public String getGenre()
   {
     return GENRE;
