@@ -1,13 +1,22 @@
-public class MediaEntry
+public abstract class MediaEntry
 {
   //ATTRIBUTES
-  private String status;
-  private int rating;
-  private String review;
-  private final String TITLE;
-  private final String GENRE;
+  protected String status;
+  protected int rating;
+  protected String review;
+  protected final String TITLE;
+  protected final String GENRE;
 
-  
+  //CONSTRUCTOR
+  public MediaEntry(String title, String genre){
+    TITLE = title;
+    GENRE = genre;
+
+    status = "Planned";
+    rating = 0;
+    review = "";
+  }
+
   //METHODS
   /**
     * Assigns a status ("Planned", "In Progress", or "Completed") to an entry
@@ -51,16 +60,25 @@ public class MediaEntry
     * @param review the review to be assigned
     * @pre. the entry must have a status of "Completed" to assign a review
     */
-  public void addReview(String review)
-  {
-    if(status.equalsIgnoreCase("Completed"))  //If the entry's status is "Completed"
-      this.review = review;       //Assign the review
-    else                                                          //If the entry's status is not "Completed"
+  public void addReview(String review){
+    if(status.equalsIgnoreCase("Completed")){  //If the entry's status is "Completed"
+      this.review = review;
+    }
+    else{
       System.out.println("This entry is yet to be completed\n");  //Display a message
     }
+  }  
 
+  public abstract void updateProgress();
+
+  public abstract String toString();
 
   //GETTERS
+  public String getStatus()
+  {
+    return status;
+  }
+
   public int getRating()
   {
     return rating;
