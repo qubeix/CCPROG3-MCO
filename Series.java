@@ -2,19 +2,12 @@ import java.util.*;
 
 /**
   * The class <code>Series</code> contains the attributes, constructor, methods, and getters necessary for the creation, modification, and manipulation of a series entry with:<br>
-  * the common methods of: assigning a status (and modifying it), assigning a rating, and assigning a review; and<br>
-  * the unique methods of: assigning the number of episodes per season, and updating the series entry's current episode and season progress
+  * the inherited methods of: assigning a status (and modifying it), assigning a rating, and assigning a review; and<br>
+  * the unique methods of: assigning the number of episodes per season, updating the series entry's current episode and season progress, and returning its information via String
  */
-public class Series
+public class Series extends MediaEntry
 {
     //ATTRIBUTES
-    private String status;
-    private int rating;
-    private String review;
-
-    private final String TITLE;
-    private final String GENRE;
-
     private final int SEASONCOUNT;     //the number of seasons
     private int[] episodeCount;        //stores the number of episodes for each season
     private int currentSeason;         //the user's current season
@@ -29,78 +22,17 @@ public class Series
      */
     public Series(String title, String genre, int seasonCount)
     {
-        TITLE = title;
-        GENRE = genre;
+        super(title, genre);
 
         SEASONCOUNT = seasonCount;
-
         episodeCount = new int[SEASONCOUNT];
 
         //Initialization
-        status = "Planned";
-        rating = 0;
-        review = "";
         currentSeason = 1;
         currentEpisode = 0;
     }
 
     //METHODS
-    /**
-      * Assigns a status ("Planned", "In Progress", or "Completed") to an entry
-      * @param status the status to be assigned
-     */
-    public void addStatus(String status)
-    {
-        if(status.equalsIgnoreCase("Planned") || status.equalsIgnoreCase("In Progress") || status.equalsIgnoreCase("Completed"))  //If the status is valid
-            this.status = status;  //Assign the new status
-        else                                       //If the new status is not valid
-            System.out.println("Invalid status");  //Display a message
-    }
-    
-    /**
-      * Modifies an entry's status ("Planned", "In Progress", or "Completed")
-      * @param newStatus the status to be newly assigned
-     */
-    public void updateStatus(String newStatus)
-    {
-        if(newStatus.equalsIgnoreCase("Planned") || newStatus.equalsIgnoreCase("In Progress") || newStatus.equalsIgnoreCase("Completed"))  //If the new status is valid
-            this.status = newStatus;  //Assign the new status
-        else                                       //If the new status is not valid
-            System.out.println("Invalid status");  //Display a message
-     
-        if(status.equalsIgnoreCase("Completed"))
-        {
-            currentEpisode = episodeCount[SEASONCOUNT-1];
-            currentSeason = SEASONCOUNT;
-        }
-    }
-
-    /**
-      * Assigns a rating to an entry
-      * @param rating the number rating to be assigned
-      * @pre. the entry must have a status of "Completed" to assign a rating
-     */
-    public void addRating(int rating)
-    {
-        if(status.equalsIgnoreCase("Completed"))  //If the entry's status is "Completed"
-            this.rating = rating;       //Assign the rating
-        else                                                        //If the entry's status is not "Completed"
-            System.out.println("This entry is yet to be completed\n");  //Display a message
-    }
-
-    /**
-      * Assigns a review to an entry
-      * @param review the review to be assigned
-      * @pre. the entry must have a status of "Completed" to assign a review
-     */
-    public void addReview(String review)
-    {
-        if(status.equalsIgnoreCase("Completed"))  //If the entry's status is "Completed"
-            this.review = review;       //Assign the review
-        else                                                        //If the entry's status is not "Completed"
-            System.out.println("This entry is yet to be completed\n");  //Display a message
-    }
-
     /**
       * Assigns a number of episodes per season
      */
@@ -120,7 +52,7 @@ public class Series
     /**
       * Moves the current episode and current season forward by one as necessary
      */
-    public void nextEpisode()
+    public void updateProgress()
     {
         if(currentEpisode < episodeCount[currentSeason-1])   //If the current episode has not reached the last episode
         {
@@ -141,52 +73,28 @@ public class Series
             System.out.println("You have already completed this series");    //Display a message
     }
 
+    /**
+     * Returns a String containing the information of the series (title, genre, seasons, and episodes (and if the entry is completed, rating and review))
+     */
+    public String toString()
+    {
+        String info = "Title: " + TITLE + " | Genre: " + GENRE;
+        for(int i=0; i<SEASONCOUNT; i++)
+        {
+            info += "\nSeason " + (i+1) + ": " + episodeCount[i];
+            if(episodeCount[i]>1)
+                info += " Episodes";
+            else
+                info += " Episode";
+        }
+
+        if(status.equalsIgnoreCase("Completed"))
+            info += "\nRating: " + rating + "\nReview: " + review;
+
+        return info;
+    }
+
     //GETTERS
-    /**
-   	  * Returns the status of the series
-   	  * @return the status
-   	 */
-    public String getStatus()
-    {
-        return status;
-    }
-
-    /**
-   	  * Returns the rating of the series
-   	  * @return the rating
-   	 */
-    public int getRating()
-    {
-        return rating;
-    }
-
-    /**
-   	  * Returns the review of the series
-   	  * @return the review
-   	 */
-    public String getReview()
-    {
-        return review;
-    }
-
-    /**
-   	  * Returns the title of the series
-   	  * @return the title
-   	 */
-    public String getTitle()
-    {
-        return TITLE;
-    }
-
-    /**
-   	  * Returns the genre of the series
-   	  * @return the genre
-   	 */
-    public String getGenre()
-    {
-        return GENRE;
-    }
-
     /**
    	  * Returns the number of seasons in the series
    	  * @return the number of seasons
