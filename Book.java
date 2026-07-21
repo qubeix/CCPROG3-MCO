@@ -53,7 +53,7 @@ public class Book extends MediaEntry
      */
     public String toString()
     {
-        String info = "Title: " + TITLE + " | Author: " + AUTHOR + " | Genre: " + GENRE + " | Chapters: " + CHAPTERCOUNT;
+        String info = "Title: \"" + TITLE + "\" | Author: " + AUTHOR + " | Genre: " + GENRE + " | Chapters: " + CHAPTERCOUNT;
         if(status.equalsIgnoreCase("Completed"))
             info += "\nRating: " + rating + "\nReview: " + review;
 
