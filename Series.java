@@ -78,7 +78,7 @@ public class Series extends MediaEntry
      */
     public String toString()
     {
-        String info = "Title: " + TITLE + " | Genre: " + GENRE;
+        String info = "Title: \"" + TITLE + "\" | Genre: " + GENRE;
         for(int i=0; i<SEASONCOUNT; i++)
         {
             info += "\nSeason " + (i+1) + ": " + episodeCount[i];
