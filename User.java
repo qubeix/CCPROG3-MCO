@@ -409,7 +409,7 @@ public class User
 
 			if(index >= 0 && index < library.getBookCount()){
 				Book book = library.getBookEntry(index);
-				book.nextChapter();
+				book.updateProgress();
 				System.out.println(book.getProgress());
 			}
 			else{
@@ -431,7 +431,7 @@ public class User
 
 			if(index >= 0 && index < library.getAlbumCount()){
 				Album album = library.getAlbumEntry(index);
-				album.nextTrack();
+				album.updateProgress();
 				System.out.println(album.getProgress());
 			}
 			else{
@@ -455,7 +455,7 @@ public class User
 
 			if(index >= 0 && index < library.getSeriesCount()){
 				Series series = library.getSeriesEntry(index);
-				series.nextEpisode();
+				series.updateProgress();
 				System.out.println(series.getProgress());
 			}
 			else{
