@@ -103,6 +103,7 @@ public class Library
     public void addSeries()
     {
         String title;
+        String studio;
         String genre;
         int seasonCount;
 
@@ -111,12 +112,14 @@ public class Library
             Scanner sc = new Scanner(System.in);
             System.out.print("Title: ");
             title = sc.nextLine();
+            System.out.print("Studio: ");
+            studio = sc.nextLine();
             System.out.print("Genre: ");
             genre = sc.nextLine();
             System.out.print("No. of Seasons: ");
             seasonCount = sc.nextInt();
 
-            Series series = new Series(title, genre, seasonCount);
+            Series series = new Series(title, studio, genre, seasonCount);
             System.out.println("");
             series.addEpisodes();
             seriesLibrary[seriesCount] = series;
@@ -125,56 +128,6 @@ public class Library
         } else      //If there are no more slots for an entry
             System.out.println("Maximum Series Entries reached.");
         
-        System.out.println("");
-    }
-
-
-    //For displaying media type entries:
-    /**
-     * Displays the given book's details (title, author, genre, and no. of chapters)
-     * @param book the book whose detalls shall be displayed
-     */
-    public void displayBookEntry(Book book)
-    {
-        System.out.println("\"" + book.getTitle() + "\" by " + book.getAuthor());
-        System.out.println("\tGenre: " + book.getGenre() + "  |  No. of Chapters: " + book.getChapterCount());
-        if(book.getStatus().equalsIgnoreCase("Completed"))
-        {
-            System.out.println("\tRating: " + book.getRating());
-            System.out.println("\tReview: " + book.getReview());
-        }
-        System.out.println("");
-    }
-
-    /**
-     * Displays the given album's details (title, artist, genre, and no. of tracks)
-     * @param album the album whose detalls shall be displayed
-     */
-    public void displayAlbumEntry(Album album)
-    {
-        System.out.println("\"" + album.getTitle() + "\" by " + album.getArtist());
-        System.out.println("\tGenre: " + album.getGenre() + "  |  No. of Tracks: " + album.getTrackCount());
-        if(album.getStatus().equalsIgnoreCase("Completed"))
-        {
-            System.out.println("\tRating: " + album.getRating());
-            System.out.println("\tReview: " + album.getReview());
-        }
-        System.out.println("");
-    }
-
-    /**
-     * Displays the given series' details (title, genre, no. of seasons, and no. of episodes)
-     * @param series the series whose detalls shall be displayed
-     */
-    public void displaySeriesEntry(Series series)
-    {
-        System.out.println("\"" + series.getTitle() + "\"");
-        System.out.println("\tGenre: " + series.getGenre() + "  |  No. of Seasons: " + series.getSeasonCount() + "  |  No. of Episodes: " + series.getEpisodeCount());
-        if(series.getStatus().equalsIgnoreCase("Completed"))
-        {
-            System.out.println("\tRating: " + series.getRating());
-            System.out.println("\tReview: " + series.getReview());
-        }
         System.out.println("");
     }
 
@@ -196,7 +149,7 @@ public class Library
             for(i=0; i<bookCount; i++)
             {
                 System.out.print("[" + (i+1) + "]");
-                displayBookEntry(bookLibrary[i]);
+                bookLibrary[i].toString();
             }
         }
     }
@@ -217,7 +170,7 @@ public class Library
             for(i=0; i<albumCount; i++)
             {
                 System.out.print("[" + (i+1) + "]");
-                displayAlbumEntry(albumLibrary[i]);
+                albumLibrary[i].toString();
             }
         }
     }
@@ -238,7 +191,7 @@ public class Library
             for(i=0; i<seriesCount; i++)
             {
                 System.out.print("[" + (i+1) + "]");
-                displaySeriesEntry(seriesLibrary[i]);
+                seriesLibrary[i].toString();
             }
         }
     }
@@ -366,7 +319,7 @@ public class Library
             if(bookLibrary[i].getStatus().equalsIgnoreCase(status))
             {
                 System.out.print("[" + (i+1) + "] ");
-                displayBookEntry(bookLibrary[i]);
+                bookLibrary[i].toString();
                 statusBookCount++;
             }
         }
@@ -382,7 +335,7 @@ public class Library
             if(albumLibrary[i].getStatus().equalsIgnoreCase(status))
             {
                 System.out.print("[" + (i+1) + "] ");
-                displayAlbumEntry(albumLibrary[i]);
+                albumLibrary[i].toString();
                 statusAlbumCount++;
             }
         }
@@ -398,7 +351,7 @@ public class Library
             if(seriesLibrary[i].getStatus().equalsIgnoreCase(status))
             {
                 System.out.print("[" + (i+1) + "] ");
-                displaySeriesEntry(seriesLibrary[i]);
+                seriesLibrary[i].toString();
                 statusSeriesCount++;
             }
         }
@@ -450,7 +403,7 @@ public class Library
                 if(bookLibrary[i].getStatus().equalsIgnoreCase(status))
                 {
                     System.out.print("[" + (i+1) + "] ");
-                    displayBookEntry(bookLibrary[i]);
+                    bookLibrary[i].toString();
                     statusTypeCount++;
                 }
             }
@@ -468,7 +421,7 @@ public class Library
                 if(albumLibrary[i].getStatus().equalsIgnoreCase(status))
                 {
                     System.out.print("[" + (i+1) + "] ");
-                    displayAlbumEntry(albumLibrary[i]);
+                    albumLibrary[i].toString();
                     statusTypeCount++;
                 }
             }
@@ -486,7 +439,7 @@ public class Library
                 if(seriesLibrary[i].getStatus().equalsIgnoreCase(status))
                 {
                     System.out.print("[" + (i+1) + "] ");
-                    displaySeriesEntry(seriesLibrary[i]);
+                    seriesLibrary[i].toString();
                     statusTypeCount++;
                 }
             }
