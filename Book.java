@@ -7,7 +7,6 @@ public class Book extends MediaEntry
 {
     //ATTRIBUTES
     private final String AUTHOR;
-
     private final int CHAPTERCOUNT;     //the number of chapters
     private int currentChapter;         //the user's current chapter
 
@@ -53,9 +52,14 @@ public class Book extends MediaEntry
      */
     public String toString()
     {
-        String info = "Title: \"" + TITLE + "\" | Author: " + AUTHOR + " | Genre: " + GENRE + " | Chapters: " + CHAPTERCOUNT;
+        String info = "\"" + TITLE + "\" by " + AUTHOR;
+        info += "\tGenre: " + GENRE + "  |  No. of Chapters: " + CHAPTERCOUNT;
         if(status.equalsIgnoreCase("Completed"))
-            info += "\nRating: " + rating + "\nReview: " + review;
+        {
+            info += "\tRating: " + rating;
+            info += "\tReview: " + review;
+        }
+        info += "\n";
 
         return info;
     }
