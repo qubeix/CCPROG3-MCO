@@ -8,6 +8,7 @@ import java.util.*;
 public class Series extends MediaEntry
 {
     //ATTRIBUTES
+    private final String STUDIO;
     private final int SEASONCOUNT;     //the number of seasons
     private int[] episodeCount;        //stores the number of episodes for each season
     private int currentSeason;         //the user's current season
@@ -20,10 +21,11 @@ public class Series extends MediaEntry
       * @param genre the genre of the series
       * @param seasonCount the count of seasons in the series
      */
-    public Series(String title, String genre, int seasonCount)
+    public Series(String title, String studio, String genre, int seasonCount)
     {
         super(title, genre);
 
+        STUDIO = studio;
         SEASONCOUNT = seasonCount;
         episodeCount = new int[SEASONCOUNT];
 
@@ -78,23 +80,28 @@ public class Series extends MediaEntry
      */
     public String toString()
     {
-        String info = "Title: \"" + TITLE + "\" | Genre: " + GENRE;
-        for(int i=0; i<SEASONCOUNT; i++)
-        {
-            info += "\nSeason " + (i+1) + ": " + episodeCount[i];
-            if(episodeCount[i]>1)
-                info += " Episodes";
-            else
-                info += " Episode";
-        }
-
+        String info = "\"" + TITLE + "\" by " + STUDIO;
+        info += "\tGenre: " + GENRE + "  |  No. of Seasons: " + SEASONCOUNT + "  |  No. of Episodes: " + getEpisodeCount();
         if(status.equalsIgnoreCase("Completed"))
-            info += "\nRating: " + rating + "\nReview: " + review;
+        {
+            info += "\tRating: " + rating;
+            info += "\tReview: " + review;
+        }
+        info += "\n";
 
         return info;
     }
 
     //GETTERS
+    /**
+	     * Returns the studio of the series
+	     * @return the studio
+	    */
+    public String getStudio()
+    {
+        return STUDIO;
+    }
+ 
     /**
    	  * Returns the number of seasons in the series
    	  * @return the number of seasons
