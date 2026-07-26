@@ -1,3 +1,5 @@
+package com.example.model;
+
 /**
  * The class <code>MediaEntry</code> serves as the abstract class for the classes <code>Book</code>, <code>Album</code>, and <code>Series</code><br>
  * It contains a constructor to define and initialize an entry's information as attributes, and accompanying methods and getters for adding, manipulating, and returning such attributes 
