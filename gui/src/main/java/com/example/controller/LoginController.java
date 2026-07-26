@@ -8,6 +8,7 @@ import com.example.model.User;
 import javafx.scene.control.TextField;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.Label;
 
 public class LoginController {
 
@@ -22,6 +23,9 @@ public class LoginController {
 
     @FXML
     private CheckBox showPasswordCheckBox;
+
+    @FXML
+    private Label errorLabel;
 
     @FXML
     private void toggleShowPassword(){
@@ -44,7 +48,7 @@ public class LoginController {
     @FXML
     private void verifyLogin() throws IOException {
         String inputUsername = usernameField.getText();
-        String inputPassword = passwordField.getText();
+        String inputPassword;
 
         if(passwordField.isVisible()){
             inputPassword = passwordField.getText();
@@ -58,17 +62,23 @@ public class LoginController {
 
         int userIndex = -1;
         for (int i = 0; i < userCount && userIndex == -1; i++) {
-            if (users[i].getUsername()().equals(inputUsername)) {
+            if (users[i].getUsername().equals(inputUsername)) {
                 userIndex = i;
             }
         }
 
         if (userIndex != -1 && users[userIndex].login(inputUsername, inputPassword)) {
+            errorLabel.setText("");
             MediaVaultController.setCurrentUser(users[userIndex]);
             MediaVault.setRoot("main-menu-view");
-        } else {
-            System.out.println("Invalid username or passsword");
+        } 
+        else{
+            errorLabel.setText("Invalid username or passsword");
         }
+    }
 
+    @FXML
+    private void goBack() throws IOException{
+        MediaVault.setRoot("mediavault-view");
     }
 }
