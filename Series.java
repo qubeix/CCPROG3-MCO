@@ -39,6 +39,7 @@ public class Series extends MediaEntry
     /**
       * Assigns a number of episodes per season
      */
+    @SuppressWarnings("resource")
     public void addEpisodes()
     {
         Scanner sc = new Scanner(System.in);
@@ -95,14 +96,14 @@ public class Series extends MediaEntry
 
     //GETTERS
     /**
-	     * Returns the studio of the series
-	     * @return the studio
-	    */
+	  * Returns the studio of the series
+	  * @return the studio
+	 */
     public String getStudio()
     {
         return STUDIO;
     }
- 
+
     /**
    	  * Returns the number of seasons in the series
    	  * @return the number of seasons
