@@ -12,16 +12,17 @@ public class MediaVaultController {
         //App.setRoot(fxml: "<new screen>");
     }
 
+    @FXML
     private void createAccount() throws IOException
     {
         //trigger createAccount
         //App.setRoot(fxml: "<new screen>");
     }
 
+    @FXML
     private void close() throws IOException
     {
         //trigger close
     }
 
 }
-
