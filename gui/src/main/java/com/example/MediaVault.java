@@ -6,6 +6,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+// import javafx.scene.Group;
+// import javafx.scene.layout.BorderPane;
+// import javafx.scene.paint.Color;
+// import javafx.scene.layout.BackgroundFill;
+// import javafx.scene.layout.Background;
+
+// import javafx.scene.layout.*;
+
 import java.io.IOException;
 
 /**
@@ -18,10 +26,11 @@ public class MediaVault extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         scene = new Scene(loadFXML("mediavault-view"), 640, 480);
+
+        // scene.getRoot().setStyle
+
         stage.setScene(scene);
         stage.show();
-
-        //help
     }
 
     public static void setRoot(String fxml) throws IOException {
