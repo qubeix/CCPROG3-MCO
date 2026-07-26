@@ -37,6 +37,7 @@ public class Library
     /**
      * Adds a book to the book library
      */
+    @SuppressWarnings("resource")
     public void addBook()
     {
         String title;
@@ -69,6 +70,7 @@ public class Library
     /**
      * Adds an album to the book library
      */
+    @SuppressWarnings("resource")
     public void addAlbum()
     {
         String title;
@@ -101,6 +103,7 @@ public class Library
     /**
      * Adds a series to the series library
      */
+    @SuppressWarnings("resource")
     public void addSeries()
     {
         String title;
@@ -202,6 +205,7 @@ public class Library
     /**
      * Removes a book in the book library
      */
+    @SuppressWarnings("resource")
     public void removeBook()
     {
         int index;
@@ -232,6 +236,7 @@ public class Library
     /**
      * Removes an album in the album library
      */
+    @SuppressWarnings("resource")
     public void removeAlbum()
     {
         int index;
@@ -261,6 +266,7 @@ public class Library
     /**
      * Removes a series in the series library
      */
+    @SuppressWarnings("resource")
     public void removeSeries()
     {
         int index;
