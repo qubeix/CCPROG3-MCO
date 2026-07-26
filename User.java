@@ -119,6 +119,7 @@ public class User
 	/**
 	 * Displays the user's libraries of a given status (Planned, In Progress, or Completed)
 	 */ 
+	@SuppressWarnings("resource")
 	public void viewByStatus(){
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter status (Planned, In Progress, Completed): ");
@@ -130,6 +131,7 @@ public class User
 	/**
 	 * Displays the user's library of a given media type (Book, Album, or Series)
 	 */ 
+	@SuppressWarnings("resource")
 	public void viewByType(){
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter type (Book, Album, Series): ");
@@ -141,6 +143,7 @@ public class User
 	/**
 	 * Displays the user's library of a given status (Planned, In Progress, or Completed) and given media type (Book, Album, or Series)
 	 */
+	@SuppressWarnings("resource")
 	public void viewByStatusType(){
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter status (Planned, In Progress, Completed): ");
@@ -162,6 +165,7 @@ public class User
 	/**
 	 * Rates a book entry in the user's library
 	 */ 
+	@SuppressWarnings("resource")
 	public void rateBookEntry(){
 		if(library.getBookCount() > 0){
 			Scanner sc = new Scanner(System.in);
@@ -192,6 +196,7 @@ public class User
 	/**
 	 * Rates an album entry in the user's library
 	 */
+	@SuppressWarnings("resource")
 	public void rateAlbumEntry(){
 		if(library.getAlbumCount() > 0){
 			Scanner sc = new Scanner(System.in);
@@ -224,6 +229,7 @@ public class User
 	/**
 	 * Rates a series entry in the user's library
 	 */
+	@SuppressWarnings("resource")
 	public void rateSeriesEntry(){
 		if(library.getSeriesCount() > 0){
 			Scanner sc = new Scanner(System.in);
@@ -256,6 +262,7 @@ public class User
 	/**
 	 * Reviews a book entry in the user's library
 	 */
+	@SuppressWarnings("resource")
 	public void reviewBookEntry(){
 		if(library.getBookCount() > 0){
 			Scanner sc = new Scanner(System.in);
@@ -280,6 +287,7 @@ public class User
 	/**
 	 * Reviews an album entry in the user's library
 	 */
+	@SuppressWarnings("resource")
 	public void reviewAlbumEntry(){
 		if(library.getAlbumCount() > 0){
 			Scanner sc = new Scanner(System.in);
@@ -304,6 +312,7 @@ public class User
 	/**
 	 * Reviews a series entry in the user's library
 	 */
+	@SuppressWarnings("resource")
 	public void reviewSeriesEntry(){
 		if(library.getSeriesCount() > 0){
 			Scanner sc = new Scanner(System.in);
@@ -328,6 +337,7 @@ public class User
 	/**
 	 * Updates a book entry's status in the user's library
 	 */
+	@SuppressWarnings("resource")
 	public void updateBookStatus(){
 		if(library.getBookCount() > 0){
 			Scanner sc = new Scanner(System.in);
@@ -352,6 +362,7 @@ public class User
 	/**
 	 * Updates an album entry's status in the user's library
 	 */
+	@SuppressWarnings("resource")
 	public void updateAlbumStatus(){
 		if(library.getAlbumCount() > 0){
 			Scanner sc = new Scanner(System.in);
@@ -376,6 +387,7 @@ public class User
 	/**
 	 * Updates a series entry's status in the user's library
 	 */
+	@SuppressWarnings("resource")
 	public void updateSeriesStatus(){
 		if(library.getSeriesCount() > 0){
 			Scanner sc = new Scanner(System.in);
@@ -400,6 +412,7 @@ public class User
 	/**
 	 * Moves a book entry's chapter in the user's library
 	 */
+	@SuppressWarnings("resource")
 	public void moveBookChapter(){
 		if(library.getBookCount() > 0){
 			Scanner sc = new Scanner(System.in);
@@ -422,6 +435,7 @@ public class User
 	/**
 	 * Moves an album entry's track in the user's library
 	 */
+	@SuppressWarnings("resource")
 	public void moveAlbumTrack(){
 		if(library.getAlbumCount() > 0){
 			Scanner sc = new Scanner(System.in);
@@ -446,6 +460,7 @@ public class User
 	/**
 	 * Moves a series entry's episode/season in the user's library
 	 */
+	@SuppressWarnings("resource")
 	public void moveSeriesEpisode(){
 		if(library.getSeriesCount() > 0){
 			Scanner sc = new Scanner(System.in);
