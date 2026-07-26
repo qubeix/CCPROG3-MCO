@@ -1,3 +1,5 @@
+package com.example.model;
+
 /**
   * The class <code>Album</code> contains the attributes, constructor, methods, and getters necessary for the creation, modification, and manipulation of an album entry with: <br>
   * the inherited methods of: assigning a status (and modifying it), assigning a rating, and assigning a review; and <br>
