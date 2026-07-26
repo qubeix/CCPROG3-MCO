@@ -20,6 +20,8 @@ public class MediaVault extends Application {
         scene = new Scene(loadFXML("mediavault-view"), 640, 480);
         stage.setScene(scene);
         stage.show();
+
+        //help
     }
 
     public static void setRoot(String fxml) throws IOException {
