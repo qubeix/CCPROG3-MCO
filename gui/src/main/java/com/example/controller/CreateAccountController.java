@@ -55,20 +55,13 @@ public class CreateAccountController {
 
         if (isUsernameTaken) {
             errorLabel.setText("This username already exist. Please choose a new username");
-        } else {
+        } 
+        else {
             newUser = new User(username, password, name);
             MediaVaultController.addUser(newUser);
             errorLabel.setText("");
             MediaVault.setRoot("login-view");
         }
-
-        /*
-         * int i;
-         * for (i = 0; i < com.example.controller.MediaVaultController.getUserCount();
-         * i++) {
-         * addUsers("./" + USER_FILE, newUser);
-         * }
-         */
     }
 
     @FXML

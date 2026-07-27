@@ -59,6 +59,7 @@ public class LoginController {
 
         User[] users = MediaVaultController.getUsers();
         int userCount = MediaVaultController.getUserCount();
+        System.out.println("At login attempt, userCount = " +userCount);
 
         int userIndex = -1;
         for (int i = 0; i < userCount && userIndex == -1; i++) {

@@ -2,14 +2,15 @@ package com.example;
 
 import java.io.IOException;
 
+import com.example.controller.MediaVaultController;
+import com.example.model.FileManager;
+import com.example.model.User;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import com.example.controller.*;
-import com.example.model.*;
 
 /**
  * JavaFX App
@@ -24,17 +25,11 @@ public class MediaVault extends Application {
     public void start(Stage stage) throws IOException {
         User[] users = com.example.controller.MediaVaultController.getUsers();
 
+        System.out.println("Users file location: " + new java.io.File(FileManager.getUserFile()).getAbsolutePath());
+
         int loadedCount = FileManager.loadUsers(USER_FILE, users);
         MediaVaultController.setUserCount(loadedCount);
-
-        // int i;
-        // for (i = 0; i < com.example.controller.MediaVaultController.getUserCount();
-        // i++) {
-        // addUsers("./" + USER_FILE, users[i]);
-        // }
-        // int loadedCount = com.example.model.FileManager.addUsers("./" + USER_FILE,
-        // user);
-        // com.example.controller.MediaVaultController.setUserCount(loadedCount);
+        System.out.println("Loaded " + loadedCount + "users at startup");
 
         scene = new Scene(loadFXML("mediavault-view"), 640, 480);
 
