@@ -6,11 +6,11 @@ import com.example.MediaVault;
 import com.example.model.User;
 import com.example.model.FileManager;
 
-import javafx.application.Platform;             //this is for the Platform.exit
+import javafx.application.Platform;
 
 public class MediaVaultController {
 
-    //private static final String USER_FILE = "./users.txt";
+    private static final String USER_FILE = "./users.txt";
 
     private static User[] users = new User[100];
     private static int userCount = 0;
@@ -31,7 +31,8 @@ public class MediaVaultController {
     @FXML
     private void close() throws IOException {
         // trigger close
-        Platform.exit();                        //double check if this is allowed
+        Platform.exit();
+
     }
 
     public static User[] getUsers() {
@@ -49,7 +50,7 @@ public class MediaVaultController {
     public static void addUser(User newUser) throws IOException {
         users[userCount] = newUser;
         userCount++;
-        FileManager.addUsers(FileManager.getUserFile(), newUser);
+        FileManager.addUsers(USER_FILE, newUser);
     }
 
     public static User getCurrentUser() {

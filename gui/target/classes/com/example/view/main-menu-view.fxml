@@ -23,42 +23,42 @@
    <left>
       <VBox spacing="10.0" alignment="TOP_CENTER" prefWidth="180.0">
          <padding>
-            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
          </padding>
          <children>
-            <Label text="Add Entry" style="-fx-font-weight: bold;" />
-            <Button fx:id="addBookButton" text="Add Book" maxWidth="Infinity" onAction="#handleAddBook" />
-            <Button fx:id="addAlbumButton" text="Add Album" maxWidth="Infinity" onAction="#handleAddAlbum" />
+            <Label text="Add Entry" style="-fx-font-weight: bold"/>
+            <Button fx:id="addBookButton" text="Add Book" maxWidth="Infinity" onAction="#handleAddBook"/>
+            <Button fx:id="addAlbumButton" text="Add Album" maxWidth="Infinity" onAction="#handleAddAlbum"/>
             <Button fx:id="addSeriesButton" text="Add Series" maxWidth="Infinity" onAction="#handleAddSeries" />
 
-            <Separator />
+            <Separator/>
 
             <Label text="Manage" style="-fx-font-weight: bold;" />
-            <Button fx:id="removeEntryButton" text="Remove Entry" maxWidth="Infinity" onAction="#handleRemoveEntry" />
-            <Button fx:id="rateEntryButton" text="Rate Entry" maxWidth="Infinity" onAction="#handleRateEntry" />
-            <Button fx:id="reviewEntryButton" text="Review Entry" maxWidth="Infinity" onAction="#handleReviewEntry" />
-            <Button fx:id="updateProgressButton" text="Update Progress" maxWidth="Infinity" onAction="#handleUpdateProgress" />
+            <Button fx:id="removeEntryButton" text="Remove Entry" maxWidth="Infinity" onAction="#handleRemoveEntry"/>
+            <Button fx:id="rateEntryButton" text="Rate Entry" maxWidth="Infinity" onAction="#handleRateEntry"/>
+            <Button fx:id="reviewEntryButton" text="Review Entry" maxWidth="Infinity" onAction="#handleReviewEntry"/>
+            <Button fx:id="updateProgressButton" text="Update Progress" maxWidth="Infinity" onAction="#handleUpdateProgress"/>
 
-            <Separator />
+            <Separator/>
 
             <Label text="View" style="-fx-font-weight: bold;" />
-            <Button fx:id="viewAllButton" text="View All Entries" maxWidth="Infinity" onAction="#handleViewAll" />
-            <Button fx:id="viewSummaryButton" text="View Summary" maxWidth="Infinity" onAction="#handleViewSummary" />
+            <Button fx:id="viewAllButton" text="View All Entries" maxWidth="Infinity" onAction="#handleViewAll"/>
+            <Button fx:id="viewSummaryButton" text="View Summary" maxWidth="Infinity" onAction="#handleViewSummary"/>
 
-            <Separator />
+            <Separator/>
 
-            <Button fx:id="logoutButton" text="Log Out" maxWidth="Infinity" onAction="#handleLogout" />
+            <Button fx:id="logoutButton" text="Log Out" maxWidth="Infinity" onAction="#handleLogout"/>
          </children>
       </VBox>
    </left>
    <center>
       <VBox spacing="8.0">
          <padding>
-            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0"/>
          </padding>
          <children>
-            <Label text="Output" style="-fx-font-weight: bold;" />
-            <TextArea fx:id="outputArea" editable="false" wrapText="true" prefHeight="400.0" VBox.vgrow="ALWAYS" />
+            <Label text="Output" style="-fx-font-weight: bold"/>
+            <TextArea fx:id="outputArea" editable="false" wrapText="true" prefHeight="400.0" VBox.vgrow="ALWAYS"/>
          </children>
       </VBox>
    </center>

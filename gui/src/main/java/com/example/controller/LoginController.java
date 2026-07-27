@@ -4,13 +4,23 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import com.example.MediaVault;
 import com.example.model.User;
+import com.example.controller.*;
 
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.Label;
 
 public class LoginController {
+
+    /*
+     * @FXML
+     * private VBox mainmenuView; // Injects the root node of SubView1
+     * 
+     * @FXML
+     * private MainMenuController mainMenuController; // Injects its controller
+     */
 
     @FXML
     private TextField usernameField;
@@ -28,15 +38,14 @@ public class LoginController {
     private Label errorLabel;
 
     @FXML
-    private void toggleShowPassword(){
-        if(showPasswordCheckBox.isSelected()){
+    private void toggleShowPassword() {
+        if (showPasswordCheckBox.isSelected()) {
             passwordVisibleField.setText(passwordField.getText());
             passwordVisibleField.setVisible(true);
             passwordVisibleField.setManaged(true);
             passwordField.setVisible(false);
             passwordField.setManaged(false);
-        }
-        else{
+        } else {
             passwordField.setText(passwordVisibleField.getText());
             passwordField.setVisible(true);
             passwordField.setManaged(true);
@@ -50,16 +59,15 @@ public class LoginController {
         String inputUsername = usernameField.getText();
         String inputPassword;
 
-        if(passwordField.isVisible()){
+        if (passwordField.isVisible()) {
             inputPassword = passwordField.getText();
-        }
-        else{
+        } else {
             inputPassword = passwordVisibleField.getText();
         }
 
         User[] users = MediaVaultController.getUsers();
         int userCount = MediaVaultController.getUserCount();
-        System.out.println("At login attempt, userCount = " +userCount);
+        System.out.println("At login attempt, userCount = " + userCount);
 
         int userIndex = -1;
         for (int i = 0; i < userCount && userIndex == -1; i++) {
@@ -72,14 +80,13 @@ public class LoginController {
             errorLabel.setText("");
             MediaVaultController.setCurrentUser(users[userIndex]);
             MediaVault.setRoot("main-menu-view");
-        } 
-        else{
+        } else {
             errorLabel.setText("Invalid username or passsword");
         }
     }
 
     @FXML
-    private void goBack() throws IOException{
+    private void goBack() throws IOException {
         MediaVault.setRoot("mediavault-view");
     }
 }
