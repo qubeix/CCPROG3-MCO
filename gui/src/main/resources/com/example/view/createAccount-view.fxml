@@ -7,13 +7,17 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.CheckBox?>
+
 
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.CreateAccountController">
     <children>
         <Label text="CREATE ACCOUNT"/>
         <TextField fx:id="nameField" promptText="Name: " prefWidth="200.0" maxWidth="200.0"/>
         <TextField fx:id="usernameField" promptText="Username: " prefWidth="200.0" maxWidth="200.0"/>
-        <TextField fx:id="passwordField" promptText="Password: " prefWidth="200.0" maxWidth="200.0"/>
+        <PasswordField fx:id="passwordField" promptText="Password: " prefWidth="200.0" maxWidth="200.0"/>
+        <TextField fx:id="passwordVisibleField" promptText="Password:" visible="false" managed="false" prefWidth="200.0" maxWidth="200.0"/>
+        <CheckBox fx:id="showPasswordCheckBox" text="Show Password" onAction="#toggleShowPassword"/>
         <HBox alignment="CENTER" spacing="15.0">
             <children>
                 <Button fx:id="createButton" text="Create Account" onAction="#createAccount"/>

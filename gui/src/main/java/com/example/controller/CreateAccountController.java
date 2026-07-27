@@ -3,15 +3,18 @@ package com.example.controller;
 import java.io.IOException;
 
 import com.example.MediaVault;
-import com.example.model.User;
+import com.example.model.*;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.PasswordField;;
 
 public class CreateAccountController {
+
+    private static final String USER_FILE = "./users.txt";
 
     @FXML
     private TextField nameField;
@@ -23,10 +26,16 @@ public class CreateAccountController {
     private PasswordField passwordField;
 
     @FXML
+    private TextField passwordVisibleField;
+
+    @FXML
+    private CheckBox showPasswordCheckBox;
+
+    @FXML
     private Label errorLabel;
 
     @FXML
-    private void createAccount() throws IOException{
+    private void createAccount() throws IOException {
         String name = nameField.getText();
         String username = usernameField.getText();
         String password = passwordField.getText();
@@ -34,27 +43,53 @@ public class CreateAccountController {
         User[] users = MediaVaultController.getUsers();
         int userCount = MediaVaultController.getUserCount();
 
-        boolean isUsernameTaken = false;         //check if the username already exist
+        User newUser = null;
 
-        for(int i = 0; i < userCount && !isUsernameTaken; i++){
-            if(users[i].getUsername().equals(username)){
+        boolean isUsernameTaken = false; // check if the username already exist
+
+        for (int i = 0; i < userCount && !isUsernameTaken; i++) {
+            if (users[i].getUsername().equals(username)) {
                 isUsernameTaken = true;
             }
         }
 
-        if(isUsernameTaken){
+        if (isUsernameTaken) {
             errorLabel.setText("This username already exist. Please choose a new username");
-        }
-        else{
-            User newUser = new User(username, password, name);
+        } else {
+            newUser = new User(username, password, name);
             MediaVaultController.addUser(newUser);
             errorLabel.setText("");
             MediaVault.setRoot("login-view");
         }
+
+        /*
+         * int i;
+         * for (i = 0; i < com.example.controller.MediaVaultController.getUserCount();
+         * i++) {
+         * addUsers("./" + USER_FILE, newUser);
+         * }
+         */
     }
 
     @FXML
-    private void goBack() throws IOException{
+    private void toggleShowPassword() {
+        if (showPasswordCheckBox.isSelected()) {
+            passwordVisibleField.setText(passwordField.getText());
+            passwordVisibleField.setVisible(true);
+            passwordVisibleField.setManaged(true);
+            passwordField.setVisible(false);
+            passwordField.setManaged(false);
+        } else {
+            passwordField.setText(passwordVisibleField.getText());
+            passwordField.setVisible(true);
+            passwordField.setManaged(true);
+            passwordVisibleField.setVisible(false);
+            passwordVisibleField.setManaged(false);
+        }
+    }
+
+    @FXML
+    private void goBack() throws IOException {
         MediaVault.setRoot("mediavault-view");
     }
 }

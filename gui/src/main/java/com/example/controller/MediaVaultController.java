@@ -4,8 +4,11 @@ import java.io.IOException;
 import javafx.fxml.FXML;
 import com.example.MediaVault;
 import com.example.model.User;
+import com.example.model.FileManager;
 
 public class MediaVaultController {
+
+    private static final String USER_FILE = "./users.txt";
 
     private static User[] users = new User[100];
     private static int userCount = 0;
@@ -37,9 +40,14 @@ public class MediaVaultController {
         return userCount;
     }
 
-    public static void addUser(User newUser) {
+    public static void setUserCount(int count) {
+        userCount = count;
+    }
+
+    public static void addUser(User newUser) throws IOException {
         users[userCount] = newUser;
         userCount++;
+        FileManager.addUsers(USER_FILE, newUser);
     }
 
     public static User getCurrentUser() {
