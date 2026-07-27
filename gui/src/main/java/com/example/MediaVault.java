@@ -17,6 +17,10 @@ public class MediaVault extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+        //User[] users = com.example.controller.MediaVaultController.getUsers();
+        //int loadedCount = com.example.controller.FileManager.loadUsers(users);
+        //com.example.controller.MediaVaultController.setUserCount(loadedCount);
+
         scene = new Scene(loadFXML("mediavault-view"), 640, 480);
 
         stage.setTitle("Group 5 Go-Quin");
