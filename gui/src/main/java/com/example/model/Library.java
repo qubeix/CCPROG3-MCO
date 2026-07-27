@@ -1,6 +1,6 @@
 package com.example.model;
 
-import java.util.*;
+import java.util.Scanner;
 
 /**
  * The class <code>Library</code> contains a book library, album library, and
@@ -683,7 +683,7 @@ public class Library {
             }
         }
 
-        // ablum
+        // album
         for (int i = 0; i < albumCount; i++) {
             if (albumLibrary[i].getStatus().equalsIgnoreCase("Planned")) {
                 plannedCount++;
@@ -709,7 +709,48 @@ public class Library {
             }
         }
 
-        // continue here
+        sb.append("Total Entries Planned: ").append(plannedCount).append("\n");
+        sb.append("Total Entries In Progress: ").append(inProgressCount).append("\n");
+        sb.append("Total Entries Completed: ").append(completedBookCount + completedAlbumCount + completedSeriesCount).append("\n\n");
+
+        if(completedBookCount > 0){
+            for(int i = 0; i < completedBookCount; i++){
+                aveBookRating += completedBooks[i].getRating();
+            }
+            aveBookRating /= (completedBookCount * 1.0);
+            aveBookRating = Math.round(aveBookRating * 100.0)/100.0;
+        }
+
+        if(completedAlbumCount > 0){
+            for(int i = 0; i < completedAlbumCount; i++){
+                aveAlbumRaiting += completedAlbums[i].getRating();
+            }
+            aveAlbumRaiting /= (completedAlbumCount * 1.0);
+            aveAlbumRaiting = Math.round(aveAlbumRaiting * 100.0)/100.0;
+        }
+
+        if(completedSeriesCount > 0){
+            for(int i = 0; i < completedSeriesCount; i++){
+                aveSeriesRating += completedSeries[i].getRating();
+            }
+            aveSeriesRating /= (completedSeriesCount * 1.0);
+            aveSeriesRating = Math.round(aveSeriesRating * 100.0)/100.0;
+        }
+
+        sb.append("Average Book Raiting: ").append(String.format("%.2f", aveBookRating)).append("\n");
+        sb.append("Average Album Raiting: ").append(String.format("%.2f", aveAlbumRaiting)).append("\n");
+        sb.append("Average Series Raiting: ").append(String.format("%.2f", aveSeriesRating)).append("\n");
+
+        int totalCompelted = completedBookCount + completedAlbumCount + completedSeriesCount;
+
+        if(totalCompelted > 0){
+            double totalAve = (aveBookRating*completedBookCount + aveAlbumRaiting*completedAlbumCount + aveSeriesRating*completedSeriesCount) / totalCompelted;
+            totalAve = Math.round(totalAve * 100.0) / 100.0;
+            sb.append("\n\tTotal Average Rating: ").append(String.format("%.2f", totalAve)).append("\n");
+        }
+        else{
+            sb.append("\n\tTotal Average Raiting: No Completed Entries\n");
+        }
 
         return sb.toString();
     }
