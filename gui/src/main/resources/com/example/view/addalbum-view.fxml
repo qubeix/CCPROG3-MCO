@@ -16,11 +16,11 @@
             <ToggleGroup fx:id="genreGroup"/>
         </fx:define>
         <children>
-            <RadioButton text="Pop" toggleGroup="$genreGroup">
-            <RadioButton text="Country" toggleGroup="$genreGroup">
-            <RadioButton text="Rock" toggleGroup="$genreGroup">
-            <RadioButton text="Jazz" toggleGroup="$genreGroup">
-            <RadioButton text="Classical" toggleGroup="$genreGroup">
+            <RadioButton text="Pop" toggleGroup="$genreGroup"/>
+            <RadioButton text="Country" toggleGroup="$genreGroup"/>
+            <RadioButton text="Rock" toggleGroup="$genreGroup"/>
+            <RadioButton text="Jazz" toggleGroup="$genreGroup"/>
+            <RadioButton text="Classical" toggleGroup="$genreGroup"/>
         </children>
       </HBox>
       <TextField fx:id="trackCount" promptText="How many Songs" prefWidth="200.0" maxWidth="200.0"/>

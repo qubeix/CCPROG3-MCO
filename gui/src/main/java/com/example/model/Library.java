@@ -610,6 +610,43 @@ public class Library {
         return seriesLibrary[index];
     }
 
+    /**
+     * JAVAFX CODES
+     */
+
+    // remove book
+    public void removeBookAt(int index) {
+        if (index >= 0 && index < bookCount) {
+            for (int j = index; j < bookCount - 1; j++) {
+                bookLibrary[j] = bookLibrary[j + 1];
+            }
+            bookLibrary[bookCount - 1] = null;
+            bookCount--;
+        }
+    }
+
+    // remove album
+    public void removeAlbumAt(int index) {
+        if (index >= 0 && index < albumCount) {
+            for (int j = index; j < albumCount - 1; j++) {
+                albumLibrary[j] = albumLibrary[j + 1];
+            }
+            albumLibrary[albumCount - 1] = null;
+            albumCount--;
+        }
+    }
+
+    // remove series
+    public void removeSeriesAt(int index) {
+        if (index >= 0 && index < seriesCount) {
+            for (int j = index; j < seriesCount - 1; j++) {
+                seriesLibrary[j] = seriesLibrary[j + 1];
+            }
+            seriesLibrary[seriesCount - 1] = null;
+            seriesCount--;
+        }
+    }
+
     public String getAllEntriesText() {
         StringBuilder sb = new StringBuilder();
 
@@ -711,30 +748,31 @@ public class Library {
 
         sb.append("Total Entries Planned: ").append(plannedCount).append("\n");
         sb.append("Total Entries In Progress: ").append(inProgressCount).append("\n");
-        sb.append("Total Entries Completed: ").append(completedBookCount + completedAlbumCount + completedSeriesCount).append("\n\n");
+        sb.append("Total Entries Completed: ").append(completedBookCount + completedAlbumCount + completedSeriesCount)
+                .append("\n\n");
 
-        if(completedBookCount > 0){
-            for(int i = 0; i < completedBookCount; i++){
+        if (completedBookCount > 0) {
+            for (int i = 0; i < completedBookCount; i++) {
                 aveBookRating += completedBooks[i].getRating();
             }
             aveBookRating /= (completedBookCount * 1.0);
-            aveBookRating = Math.round(aveBookRating * 100.0)/100.0;
+            aveBookRating = Math.round(aveBookRating * 100.0) / 100.0;
         }
 
-        if(completedAlbumCount > 0){
-            for(int i = 0; i < completedAlbumCount; i++){
+        if (completedAlbumCount > 0) {
+            for (int i = 0; i < completedAlbumCount; i++) {
                 aveAlbumRaiting += completedAlbums[i].getRating();
             }
             aveAlbumRaiting /= (completedAlbumCount * 1.0);
-            aveAlbumRaiting = Math.round(aveAlbumRaiting * 100.0)/100.0;
+            aveAlbumRaiting = Math.round(aveAlbumRaiting * 100.0) / 100.0;
         }
 
-        if(completedSeriesCount > 0){
-            for(int i = 0; i < completedSeriesCount; i++){
+        if (completedSeriesCount > 0) {
+            for (int i = 0; i < completedSeriesCount; i++) {
                 aveSeriesRating += completedSeries[i].getRating();
             }
             aveSeriesRating /= (completedSeriesCount * 1.0);
-            aveSeriesRating = Math.round(aveSeriesRating * 100.0)/100.0;
+            aveSeriesRating = Math.round(aveSeriesRating * 100.0) / 100.0;
         }
 
         sb.append("Average Book Raiting: ").append(String.format("%.2f", aveBookRating)).append("\n");
@@ -743,12 +781,12 @@ public class Library {
 
         int totalCompelted = completedBookCount + completedAlbumCount + completedSeriesCount;
 
-        if(totalCompelted > 0){
-            double totalAve = (aveBookRating*completedBookCount + aveAlbumRaiting*completedAlbumCount + aveSeriesRating*completedSeriesCount) / totalCompelted;
+        if (totalCompelted > 0) {
+            double totalAve = (aveBookRating * completedBookCount + aveAlbumRaiting * completedAlbumCount
+                    + aveSeriesRating * completedSeriesCount) / totalCompelted;
             totalAve = Math.round(totalAve * 100.0) / 100.0;
             sb.append("\n\tTotal Average Rating: ").append(String.format("%.2f", totalAve)).append("\n");
-        }
-        else{
+        } else {
             sb.append("\n\tTotal Average Raiting: No Completed Entries\n");
         }
 
