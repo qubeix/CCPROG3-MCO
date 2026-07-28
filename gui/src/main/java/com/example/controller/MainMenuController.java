@@ -84,8 +84,9 @@ public class MainMenuController {
     }
 
     @FXML
-    private void handleAddAlbum() {
-        // fill in
+    private void handleAddAlbum() throws IOException{
+        MediaVault.setRoot("addalbum-view");
+
     }
 
     @FXML
