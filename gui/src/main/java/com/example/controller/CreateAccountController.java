@@ -6,15 +6,22 @@ import com.example.MediaVault;
 import com.example.model.*;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.PasswordField;;
+// import javafx.scene.control.Label;
+// import javafx.scene.control.PasswordField;
+// import javafx.scene.control.TextField;
+// import javafx.scene.control.CheckBox;
+// import javafx.scene.control.PasswordField;
+import javafx.scene.control.*;
 
 public class CreateAccountController {
 
     private static final String USER_FILE = "./users.txt";
+
+    @FXML
+    private Button createButton;
+
+    @FXML
+    private Button backButton;
 
     @FXML
     private TextField nameField;
@@ -29,7 +36,16 @@ public class CreateAccountController {
     private TextField passwordVisibleField;
 
     @FXML
+    private PasswordField verifyPasswordField;
+
+    @FXML
+    private TextField verifyPasswordVisibleField;
+
+    @FXML
     private CheckBox showPasswordCheckBox;
+
+    @FXML
+    private CheckBox showVerifyPasswordCheckBox;
 
     @FXML
     private Label errorLabel;
@@ -77,6 +93,23 @@ public class CreateAccountController {
             passwordField.setManaged(true);
             passwordVisibleField.setVisible(false);
             passwordVisibleField.setManaged(false);
+        }
+    }
+
+    @FXML
+    private void toggleShowVerifyPassword() {
+        if (showVerifyPasswordCheckBox.isSelected()) {
+            verifyPasswordVisibleField.setText(passwordField.getText());
+            verifyPasswordVisibleField.setVisible(true);
+            verifyPasswordVisibleField.setManaged(true);
+            verifyPasswordVisibleField.setVisible(false);
+            passwordField.setManaged(false);
+        } else {
+            verifyPasswordField.setText(verifyPasswordVisibleField.getText());
+            verifyPasswordField.setVisible(true);
+            verifyPasswordField.setManaged(true);
+            verifyPasswordVisibleField.setVisible(false);
+            verifyPasswordVisibleField.setManaged(false);
         }
     }
 

@@ -6,11 +6,8 @@ import com.example.MediaVault;
 import com.example.model.User;
 import com.example.controller.*;
 
-import javafx.scene.control.TextField;
 import javafx.scene.layout.VBox;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 
 public class LoginController {
 
@@ -21,6 +18,11 @@ public class LoginController {
      * @FXML
      * private MainMenuController mainMenuController; // Injects its controller
      */
+    @FXML
+    private Button verifyLoginButton;
+
+    @FXML
+    private Button backButton;
 
     @FXML
     private TextField usernameField;
@@ -38,7 +40,7 @@ public class LoginController {
     private Label errorLabel;
 
     @FXML
-    private void toggleShowPassword() {
+    private void togglePassword() {
         if (showPasswordCheckBox.isSelected()) {
             passwordVisibleField.setText(passwordField.getText());
             passwordVisibleField.setVisible(true);
