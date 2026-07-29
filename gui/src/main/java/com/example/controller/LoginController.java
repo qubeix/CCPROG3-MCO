@@ -67,7 +67,7 @@ public class LoginController {
 
         User[] users = MediaVaultController.getUsers();
         int userCount = MediaVaultController.getUserCount();
-        System.out.println("At login attempt, userCount = " + userCount);
+        System.out.println("At login attempt, userCount= " + userCount);
 
         int userIndex = -1;
         for (int i = 0; i < userCount && userIndex == -1; i++) {
@@ -77,11 +77,11 @@ public class LoginController {
         }
 
         if (userIndex != -1 && users[userIndex].login(inputUsername, inputPassword)) {
-            errorLabel.setText("");
+            errorLabel.setVisible(false);
             MediaVaultController.setCurrentUser(users[userIndex]);
             MediaVault.setRoot("main-menu-view");
         } else {
-            errorLabel.setText("Invalid username or passsword");
+            errorLabel.setVisible(true);
         }
     }
 
