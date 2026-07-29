@@ -15,7 +15,7 @@
          <children>
             <ImageView fitHeight="345.0" fitWidth="610.0" pickOnBounds="true">
                <image>
-                  <Image url="@Photos/MediaVaultView.jpg" />
+                  <Image url="@Photos/MediaVaultView.jpg"/>
                </image>
             </ImageView>
             <AnchorPane layoutX="4.666666507720947" layoutY="1.3333333730697632" prefHeight="200.0" prefWidth="200.0">

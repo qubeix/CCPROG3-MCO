@@ -34,7 +34,7 @@ public class MediaVault extends Application {
 
         stage.setTitle("Group 5 Go-Quin");
         stage.setScene(scene);
-        stage.setResizable(false);
+        stage.setResizable(true);
         stage.show();
     }
 
