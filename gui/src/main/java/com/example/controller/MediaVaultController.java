@@ -3,8 +3,7 @@ package com.example.controller;
 import java.io.IOException;
 import javafx.fxml.FXML;
 import com.example.MediaVault;
-import com.example.model.User;
-import com.example.model.FileManager;
+import com.example.model.*;
 
 import javafx.application.Platform;
 

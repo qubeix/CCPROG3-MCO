@@ -10,20 +10,20 @@ import java.io.IOException;
 public class FileManager {
 
     private static final String USER_FILE = "./users.txt";
+    private static final String LIBRARY_FILE = "_library.txt";
 
-    public static String getUserFile(){
+    public static String getUserFile() {
         return USER_FILE;
     }
-
 
     public static void addUsers(String filePath, User user) throws IOException {
         boolean fileExist = new File(filePath).length() > 0;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
-           
-            if(fileExist){
+
+            if (fileExist) {
                 writer.newLine();
             }
-           
+
             writer.write(user.getName() + "|" + user.getUsername() + "|" + user.getPassword());
             writer.newLine();
         }
@@ -51,7 +51,7 @@ public class FileManager {
     }
 
     public static User readUsers(String filePath, int userLine) throws IOException {
-        //StringBuilder content = new StringBuilder();
+        // StringBuilder content = new StringBuilder();
         User readUser = null;
 
         try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
@@ -66,45 +66,60 @@ public class FileManager {
             int currentLine = 1;
 
             line = reader.readLine();
-            while(line !=null && !found){
-                if(currentLine == userLine){
+            while (line != null && !found) {
+                if (currentLine == userLine) {
                     String[] parts = line.split("\\|");
-                    if(parts.length == 3){
+                    if (parts.length == 3) {
                         name = parts[0];
                         username = parts[1];
                         password = parts[2];
                         readUser = new User(username, password, name);
                     }
                     found = true;
-                }
-                else {
+                } else {
                     currentLine++;
                     line = reader.readLine();
                 }
             }
 
-            /*while ((line = reader.readLine()) != null) {
-                if (currentLine == userLine) {
-                    Scanner sc = new Scanner(line);
-                    // read name
-                    int separatorIndex1 = line.indexOf('|');
-                    name = line.substring(0, separatorIndex1);
-
-                    // read username
-                    int separatorIndex2 = separatorIndex1 + 1 + line.substring(separatorIndex1 + 1).indexOf('|');
-                    username = line.substring(separatorIndex1 + 1, separatorIndex2);
-                    password = line.substring(separatorIndex2 + 1);
-
-                    // read password
-                    password = line.substring(separatorIndex2 + 1, line.length());
-
-                    readUser = new User(username, password, name);
-
-                    sc.close();
-                }
-            }
-        }*/
-        return readUser;
+            return readUser;
         }
+    }
+
+    public static void saveLibrary(User user) throws IOException {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter("./" + user.getUsername() + LIBRARY_FILE))) {
+            writer.write(user.getLibrary().getAllEntriesText());
+        }
+
+    }
+
+    public static Library loadLibrary(User user) throws IOException {
+        Library readlibrary = null;
+
+        try (BufferedReader reader = new BufferedReader(new FileReader("./" + user.getUsername() + LIBRARY_FILE))) {
+            String line;
+
+            line = reader.readLine(); // read "Book Library"
+
+            while (line != "")
+                line = reader.readLine(); // read Book Library entries
+
+            line = reader.readLine(); // read line of total books
+            int totalBooks = Integer.parseInt(line.substring(line.indexOf(':') + 2).trim()); // get total books
+            line = reader.readLine(); // read line of total albums
+            int totalAlbums = Integer.parseInt(line.substring(line.indexOf(':') + 2).trim()); // get total albums
+            line = reader.readLine(); // read line of total series
+            int totalSeries = Integer.parseInt(line.substring(line.indexOf(':') + 2).trim()); // get total series
+
+            line = reader.readLine(); // read line of total entries
+
+            line = reader.readLine(); // read empty line
+
+            for (int i = 0; i < totalBooks; i++) {
+                line = reader.readLine(); // read empty line
+            }
+        }
+
+        return readlibrary;
     }
 }

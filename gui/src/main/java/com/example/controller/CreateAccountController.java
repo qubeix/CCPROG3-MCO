@@ -6,11 +6,6 @@ import com.example.MediaVault;
 import com.example.model.*;
 
 import javafx.fxml.FXML;
-// import javafx.scene.control.Label;
-// import javafx.scene.control.PasswordField;
-// import javafx.scene.control.TextField;
-// import javafx.scene.control.CheckBox;
-// import javafx.scene.control.PasswordField;
 import javafx.scene.control.*;
 
 public class CreateAccountController {
@@ -70,6 +65,7 @@ public class CreateAccountController {
         }
 
         if (isUsernameTaken) {
+            errorLabel.setVisible(true);
             errorLabel.setText("This username already exist. Please choose a new username");
         } else {
             newUser = new User(username, password, name);
@@ -99,11 +95,11 @@ public class CreateAccountController {
     @FXML
     private void toggleShowVerifyPassword() {
         if (showVerifyPasswordCheckBox.isSelected()) {
-            verifyPasswordVisibleField.setText(passwordField.getText());
+            verifyPasswordVisibleField.setText(verifyPasswordField.getText());
             verifyPasswordVisibleField.setVisible(true);
             verifyPasswordVisibleField.setManaged(true);
-            verifyPasswordVisibleField.setVisible(false);
-            passwordField.setManaged(false);
+            verifyPasswordField.setVisible(false);
+            verifyPasswordField.setManaged(false);
         } else {
             verifyPasswordField.setText(verifyPasswordVisibleField.getText());
             verifyPasswordField.setVisible(true);

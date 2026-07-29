@@ -17,6 +17,10 @@ public class Library {
     private int seriesCount;
     private final int MAXCOUNT = 100; // Maximum count of media entries
 
+    // private Feedbacks bookReviews;
+    // private Feedbacks albumReviews;
+    // private Feedbacks seriesReviews;
+
     // CONSTRUCTOR
     /**
      * Creates a Library containing an array of Book, Album, and Series, for book

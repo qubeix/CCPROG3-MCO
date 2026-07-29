@@ -62,7 +62,8 @@ public class Album extends MediaEntry {
 	 */
 	public String toString() {
 		String info = "\"" + TITLE + "\" by " + ARTIST;
-		info += "\tGenre: " + GENRE + "  |  No. of Tracks: " + TRACKCOUNT;
+		info += "\tGenre: " + GENRE + "  |  No. of Tracks: " + TRACKCOUNT + "\nCurrent Track: "
+				+ currentTrack + "\n";
 		if (status.equalsIgnoreCase("Completed")) {
 			info += "\tRating: " + rating;
 			info += "\tReview: " + review;
