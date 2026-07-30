@@ -87,6 +87,7 @@
                               <Button fx:id="logoutButton" maxWidth="Infinity" mnemonicParsing="false" onAction="#handleLogout" text="Log Out">
                                  <cursor><Cursor fx:constant="HAND" /></cursor>
                               </Button>
+                              <!--add the settings button here-->
                            </children>
                         </VBox>
                      </content>

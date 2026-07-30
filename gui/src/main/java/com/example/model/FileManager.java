@@ -10,6 +10,8 @@ import java.io.IOException;
 public class FileManager {
 
     private static final String USER_FILE = "./users.txt";
+    //private static final String USER_FILE="./gui/users.txt";
+    //private static final String FOLDER_PATH="./gui/";
     private static final String LIBRARY_FILE = "_library.txt";
 
     public static String getUserFile() {
