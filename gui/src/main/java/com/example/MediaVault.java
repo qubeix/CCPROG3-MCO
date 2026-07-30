@@ -3,7 +3,8 @@ package com.example;
 import java.io.IOException;
 
 import com.example.controller.MediaVaultController;
-import com.example.model.*;
+import com.example.model.FileManager;
+import com.example.model.User;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -30,11 +31,11 @@ public class MediaVault extends Application {
         MediaVaultController.setUserCount(loadedCount);
         System.out.println("Loaded " + loadedCount + "users at startup");
 
-        scene = new Scene(loadFXML("mediavault-view"), 640, 480);
+        scene = new Scene(loadFXML("mediavault-view"), 800, 500);
 
         stage.setTitle("Group 5 Go-Quin");
         stage.setScene(scene);
-        stage.setResizable(true);
+        stage.setResizable(false);
         stage.show();
     }
 

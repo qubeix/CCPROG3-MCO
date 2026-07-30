@@ -617,7 +617,17 @@ public class Library {
     /**
      * JAVAFX CODES
      */
+//ADDING ENTRIES
+    public void addAlbumInput(String title, String artist, String genre, int trackCount){
+        if(albumCount < MAXCOUNT){
+            Album album = new Album(title, artist, genre, trackCount);
+            albumLibrary[albumCount] = album;
+            albumCount++;
+        }
+    }
 
+
+//REMOVING ENTRIES
     // remove book
     public void removeBookAt(int index) {
         if (index >= 0 && index < bookCount) {
@@ -651,10 +661,11 @@ public class Library {
         }
     }
 
+//ALL ENTRIES
     public String getAllEntriesText() {
         StringBuilder sb = new StringBuilder();
 
-        // book sesction
+        // book section
         if (bookCount == 0) {
             sb.append("Your Book Library is empty.\n");
         } else {
@@ -690,6 +701,7 @@ public class Library {
         return sb.toString();
     }
 
+//SUMMARIES OF ALL ENTRIES 
     public String getSummaryText() {
         StringBuilder sb = new StringBuilder();
 
