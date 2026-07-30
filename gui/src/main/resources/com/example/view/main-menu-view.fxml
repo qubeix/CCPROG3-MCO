@@ -25,7 +25,6 @@
       <AnchorPane prefHeight="500.0" prefWidth="800.0">
          <children>
 
-            <!-- Welcome banner, over the top strip -->
             <Label fx:id="welcomeLabel" alignment="CENTER" contentDisplay="CENTER" text="Welcome!"
                    AnchorPane.topAnchor="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <font>
@@ -33,7 +32,6 @@
                </font>
             </Label>
 
-            <!-- Sidebar, positioned over the guide box -->
             <VBox fx:id="sidebarBox" layoutX="0.0" layoutY="90.0" prefHeight="395.0" prefWidth="205.0">
                <children>
                   <ScrollPane fx:id="sidebarScroll" fitToWidth="true" hbarPolicy="NEVER" prefHeight="395.0" prefWidth="205.0">
@@ -96,7 +94,6 @@
                </children>
             </VBox>
 
-            <!-- Output area, over the open water on the right -->
             <AnchorPane fx:id="centerPane" layoutX="220.0" layoutY="90.0" prefHeight="395.0" prefWidth="565.0">
                <children>
                   <Label layoutX="10.0" layoutY="5.0" text="Output">
