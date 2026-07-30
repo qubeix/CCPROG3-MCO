@@ -18,7 +18,9 @@ public class MainMenuController {
     @FXML private Label welcomeLabel;
 
     @FXML private VBox sidebarBox;
+
     @FXML private ScrollPane sidebarScroll;
+
     @FXML private AnchorPane centerPane;
 
     @FXML private TextArea outputArea;
@@ -33,6 +35,7 @@ public class MainMenuController {
     @FXML private Button updateProgressButton;
     @FXML private Button viewAllButton;
     @FXML private Button viewSummaryButton;
+    @FXML private Button settingsButton;
     @FXML private Button logoutButton;
 
     private User currentUser;
@@ -130,6 +133,11 @@ public class MainMenuController {
     @FXML
     private void handleViewSummary() throws IOException {
         outputArea.setText(library.getSummaryText());
+    }
+
+    @FXML
+    private void handleSettings() throws IOException{
+        //fill in 
     }
 
     @FXML
