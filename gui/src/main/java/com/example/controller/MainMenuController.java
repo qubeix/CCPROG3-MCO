@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.example.MediaVault;
 import com.example.model.Library;
+import com.example.model.NumberTextField;
 import com.example.model.User;
 
 import javafx.application.Platform;
@@ -13,11 +14,11 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.control.RadioButton;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -112,10 +113,13 @@ public class MainMenuController {
     private RadioButton jazzButton;
 
     @FXML
-    private RadioButton endButton;
+    private RadioButton emdButton;
 
     @FXML
-    private TextField albumTrackField;
+    private NumberTextField albumTracks;
+
+    @FXML 
+    private Label albumErrorLabel;
 
     private User currentUser;
     private Library library;
@@ -164,6 +168,25 @@ public class MainMenuController {
         });
     }
 
+    private void hideAllPanels(){       //this allows for the panels to hide after being clicked to avoid overlapping
+        outputArea.setVisible(false);
+        outputArea.setManaged(false);
+
+        //book
+
+
+        //album
+        addAlbumPanel.setVisible(false);
+        addAlbumPanel.setManaged(false);
+
+        //series
+
+
+        //remove 
+        removeEntryPanel.setVisible(false);
+        removeEntryPanel.setManaged(false);
+    }
+
     @FXML
     private void returnHome() {
         // fill in
@@ -180,10 +203,12 @@ public class MainMenuController {
         albumTitleField.clear();
         albumArtistField.clear();
         albumGenreGroup.selectToggle(null);
-        albumTracksField.clear();
+        albumTracks.clear();
+        albumErrorLabel.setVisible(false);
 
-        outputArea.setVisible(false);
-        outputArea.setManaged(false);
+        // outputArea.setVisible(false);
+        // outputArea.setManaged(false);
+        hideAllPanels();
         addAlbumPanel.setVisible(true);
         addAlbumPanel.setManaged(true);
     }
@@ -192,37 +217,54 @@ public class MainMenuController {
     private void confirmAddAlbum() {
         String title = albumTitleField.getText();
         String artist = albumArtistField.getText();
-        String tracksText = albumTracksField.getText();
+        String tracksText = albumTracks.getText();
         RadioButton selectedGenre = (RadioButton) albumGenreGroup.getSelectedToggle();
 
         if (title.isEmpty() || artist.isEmpty() || selectedGenre == null || tracksText.isEmpty()) {
-            cancelAddAlbum();
-            outputArea.setText("Please fill in all fields before submitting.");
-        } else {
+            albumErrorLabel.setText("Please fill in all fields before submitting");
+            albumErrorLabel.setVisible(true);
+        } 
+        else {
             boolean isValidNumber = true;
             int trackCount = 0;
             try {
                 trackCount = Integer.parseInt(tracksText);
-            } catch (NumberFormatException e) {
+            } 
+            catch (NumberFormatException e) {
                 isValidNumber = false;
             }
 
             if (!isValidNumber || trackCount <= 0) {
-                cancelAddAlbum();
-                outputArea.setText("Please enter a valid positive number for tracks.");
-            } else {
+                albumErrorLabel.setText("Please enter a valid positive number for tracks.");
+                albumErrorLabel.setVisible(true);
+            } 
+            else {
                 String genre = selectedGenre.getText();
                 library.addAlbumInput(title, artist, genre, trackCount);
-                cancelAddAlbum();
+                albumErrorLabel.setVisible(false);
+
+                addAlbumPanel.setVisible(false);
+                addAlbumPanel.setManaged(false);
+                outputArea.setVisible(true);
+                outputArea.setManaged(true);
+                //cancelAddAlbum();
                 outputArea.setText("\"" + title + "\" by " + artist + " added to your Album Library.");
+
             }
         }
     }
 
     @FXML
     private void cancelAddAlbum() {
-        addAlbumPanel.setVisible(false);
-        addAlbumPanel.setManaged(false);
+        albumTitleField.clear();
+        albumArtistField.clear();
+        albumGenreGroup.selectToggle(null);
+        albumTracks.clear();
+        albumErrorLabel.setVisible(false);
+
+        // addAlbumPanel.setVisible(false);
+        // addAlbumPanel.setManaged(false);
+        hideAllPanels();
         outputArea.setVisible(true);
         outputArea.setManaged(true);
     }
@@ -238,8 +280,9 @@ public class MainMenuController {
         removeTypeCombo.setValue(null);
         removeEntryCombo.getItems().clear();
         
-        outputArea.setVisible(false);
-        outputArea.setManaged(false);
+        // outputArea.setVisible(false);
+        // outputArea.setManaged(false);
+        hideAllPanels();
         removeEntryPanel.setVisible(true);
         removeEntryPanel.setManaged(true);
     }
@@ -253,11 +296,13 @@ public class MainMenuController {
             for (int i = 0; i < library.getBookCount(); i++) {
                 removeEntryCombo.getItems().add((i + 1) + ". " + library.getBookEntry(i).getTitle());
             }
-        } else if ("Album".equals(type)) {
+        } 
+        else if ("Album".equals(type)) {
             for (int i = 0; i < library.getAlbumCount(); i++) {
                 removeEntryCombo.getItems().add((i + 1) + ". " + library.getAlbumEntry(i).getTitle());
             }
-        } else if ("Series".equals(type)) {
+        } 
+        else if ("Series".equals(type)) {
             for (int i = 0; i < library.getSeriesCount(); i++) {
                 removeEntryCombo.getItems().add((i + 1) + ". " + library.getSeriesEntry(i).getTitle());
             }
@@ -277,9 +322,11 @@ public class MainMenuController {
 
         if ("Book".equals(type)) {
             library.removeBookAt(index);
-        } else if ("Album".equals(type)) {
+        } 
+        else if ("Album".equals(type)) {
             library.removeAlbumAt(index);
-        } else if ("Series".equals(type)) {
+        } 
+        else if ("Series".equals(type)) {
             library.removeSeriesAt(index);
         }
 

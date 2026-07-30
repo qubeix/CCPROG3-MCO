@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.example.model.NumberTextField?>
+
 <?import javafx.geometry.Insets?>
 
 <?import javafx.scene.Cursor?>
@@ -158,21 +160,17 @@
                         <Label text="Genre:"/>
                         <HBox spacing="10.0">
                            <children>
-                              <RadioButton fx:id="popButton" text="Pop">
+                              <RadioButton fx:id="popButton" text="Pop" style="-fx-mark-color: #224aa6">
                                  <toggleGroup><ToggleGroup fx:id="albumGenreGroup"/></toggleGroup>
                               </RadioButton>
-                              <RadioButton fx:id="hipHopButton" text="Hip Hop/Rap" toggleGroup="$albumGenreGroup"/>
-                              <RadioButton fx:id="rockButton" text="Rock" toggleGroup="$albumGenreGroup"/>
+                              <RadioButton fx:id="hipHopButton" text="Hip Hop/Rap" toggleGroup="$albumGenreGroup" style="-fx-mark-color: #224aa6"/>
+                              <RadioButton fx:id="rockButton" text="Rock" toggleGroup="$albumGenreGroup" style="-fx-mark-color: #224aa6"/>
+                              <RadioButton fx:id="jazzButton" text="Jazz" toggleGroup="$albumGenreGroup" style="-fx-mark-color: #224aa6"/>
+                              <RadioButton fx:id="emdButton" text="EMD" toggleGroup="$albumGenreGroup" style="-fx-mark-color: #224aa6"/>
                            </children>
                         </HBox>
-                        <HBox spacing="10.0">
-                           <children>
-                              <RadioButton fx:id="jazzButton" text="Jazz" toggleGroup="$albumGenreGroup"/>
-                              <RadioButton fx:id="emdButton" text="EMD" toggleGroup="$albumGenreGroup"/>
-                           </children>
-                        </HBox>
-
-                        <TextField fx:id="albumTracksField" promptText="Number of Tracks"/>
+                       
+                        <NumberTextField fx:id="albumTracks" promptText="Number of Tracks"/>
 
                         <HBox spacing="10.0">
                            <children>
@@ -180,6 +178,11 @@
                               <Button text="Cancel" onAction="#cancelAddAlbum"/>
                            </children>
                         </HBox>
+                        <Label fx:id="albumErrorLabel" style="-fx-text-fill: RED">
+                        <font>
+                           <Font name="Century Gothic Bold" size="13.0" />
+                        </font>
+                     </Label>
                      </children>
                </VBox>
                   

@@ -617,7 +617,12 @@ public class Library {
     /**
      * JAVAFX CODES
      */
+
 //ADDING ENTRIES
+    //add book
+
+
+    //add album
     public void addAlbumInput(String title, String artist, String genre, int trackCount){
         if(albumCount < MAXCOUNT){
             Album album = new Album(title, artist, genre, trackCount);
@@ -626,6 +631,8 @@ public class Library {
         }
     }
 
+    //add series
+    
 
 //REMOVING ENTRIES
     // remove book
