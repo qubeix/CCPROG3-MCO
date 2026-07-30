@@ -41,7 +41,7 @@
                               <Insets bottom="15.0" left="12.0" right="12.0" top="15.0" />
                            </padding>
                            <children>
-                              <Button fx:id="homeButton" maxWidth="Infinity" mnemonicParsing="false" onAction="#returnHome" text="Home">
+                              <Button fx:id="homeButton" maxWidth="Infinity" mnemonicParsing="false" onAction="#returnHome" text="Home" >
                                  <cursor><Cursor fx:constant="HAND" /></cursor>
                               </Button>
                               <Separator />
