@@ -3,10 +3,14 @@ package com.example.controller;
 import java.io.IOException;
 
 import com.example.MediaVault;
-import com.example.model.*;
+import com.example.model.User;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
 public class CreateAccountController {
 
@@ -43,13 +47,18 @@ public class CreateAccountController {
     private CheckBox showVerifyPasswordCheckBox;
 
     @FXML
-    private Label errorLabel;
+    private Label usernameErrorLabel;
+
+    @FXML
+    private Label verifyPasswordErrorLabel;
 
     @FXML
     private void createAccount() throws IOException {
         String name = nameField.getText();
         String username = usernameField.getText();
         String password = passwordField.getText();
+
+        String verifyPassword = verifyPasswordField.getText();
 
         User[] users = MediaVaultController.getUsers();
         int userCount = MediaVaultController.getUserCount();
@@ -65,13 +74,28 @@ public class CreateAccountController {
         }
 
         if (isUsernameTaken) {
-            errorLabel.setVisible(true);
-            errorLabel.setText("This username already exist. Please choose a new username");
-        } else {
+            usernameErrorLabel.setVisible(true);
+            usernameErrorLabel.setText("This username already exist. Please choose a new username");
+        } 
+        else {
             newUser = new User(username, password, name);
             MediaVaultController.addUser(newUser);
-            errorLabel.setText("");
+            usernameErrorLabel.setText("");
             MediaVault.setRoot("main-menu-view");
+        }
+
+        // boolean isPasswordMatch = false;
+
+        // if(isPasswordMatch){
+        //     verifyPasswordErrorLabel.setVisible(true);
+        //     verifyPasswordErrorLabel.setText("Your password does not match, please try again");
+        // }
+
+        boolean isPasswordMatch = false;
+
+        if(isPasswordMatch.equals(verifyPassword)){
+            verifyPasswordErrorLabel.setVisible(true);
+            verifyPasswordErrorLabel.setText("Your password does not match, please try again");
         }
     }
 
@@ -108,6 +132,17 @@ public class CreateAccountController {
             verifyPasswordVisibleField.setManaged(false);
         }
     }
+
+    // @FXML
+    // private void toggleShowVerifyPassword(){
+    //     if(showVerifyPasswordCheckBox.isSelected()){
+    //         verifyPasswordField.setText(verifyPasswordField.getText());
+    //         verifyPasswordField.setVisible(true);
+    //         verifyPasswordField.setManaged(true);
+    //         verifyPasswordField.setVisible(false);
+    //         verifyPasswordField.setManaged(false);
+    //     }
+    // }
 
     @FXML
     private void goBack() throws IOException {

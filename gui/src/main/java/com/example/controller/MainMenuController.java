@@ -295,6 +295,7 @@ public class MainMenuController {
             } catch (NumberFormatException e) {
                 isValidNumber = false;
             }
+
             if(!isValidNumber || chapterCount <= 0){
                 bookErrorLabel.setText("Please enter a valid postive number for the chapter.");
                 bookErrorLabel.setVisible(true);
@@ -329,7 +330,9 @@ public class MainMenuController {
         // outputArea.setManaged(true);
     }
 
-    //ALBUM
+/*==========================================================================================================
+                                        A L B U M 
+===========================================================================================================*/
     @FXML
     private void handleAddAlbum(){
         albumTitleField.clear();

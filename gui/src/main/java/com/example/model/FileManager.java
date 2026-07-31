@@ -19,12 +19,12 @@ public class FileManager {
     }
 
     public static void addUsers(String filePath, User user) throws IOException {
-        boolean fileExist = new File(filePath).length() > 0;
+        //boolean fileExist = new File(filePath).length() > 0;
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, true))) {
 
-            if (fileExist) {
-                writer.newLine();
-            }
+            // if (fileExist) {
+            //     writer.newLine();
+            // }
 
             writer.write(user.getName() + "|" + user.getUsername() + "|" + user.getPassword());
             writer.newLine();
