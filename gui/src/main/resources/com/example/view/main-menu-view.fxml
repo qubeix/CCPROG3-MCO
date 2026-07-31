@@ -148,7 +148,7 @@
                   <TextArea fx:id="outputArea" editable="false" wrapText="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="35.0" />
                   <!--ADD ENTRIES-->
                   <!--add book entry-->
-                     <VBox fx:id="addBookPanel" spacing="10.0" alignment="TOP_LEFT" visible="false" managed="false" style="-fx-background-color: transparent"
+                     <!-- <VBox fx:id="addBookPanel" spacing="10.0" alignment="TOP_LEFT" visible="false" managed="false" style="-fx-background-color: transparent"
                         AnchorPane.topAnchor="35.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
                         <children>
                            <Label text="Add Book" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
@@ -182,9 +182,9 @@
                            </font>
                         </Label>
                         </children>
-                  </VBox>
+                  </VBox> -->
                   <!--add album entry-->
-                  <VBox fx:id="addAlbumPanel" spacing="10.0" alignment="TOP_LEFT" visible="false" managed="false" style="-fx-background-color: transparent"
+                  <!-- <VBox fx:id="addAlbumPanel" spacing="10.0" alignment="TOP_LEFT" visible="false" managed="false" style="-fx-background-color: transparent"
                      AnchorPane.topAnchor="35.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
                      <children>
                         <Label text="Add Album" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
@@ -218,9 +218,9 @@
                         </font>
                      </Label>
                      </children>
-               </VBox>
+               </VBox> -->
                <!--add series-->
-               <VBox fx:id="addSeriesPanel" spacing="10.0" alignment="TOP_LEFT" visible="false" managed="false" style="-fx-background-color: transparent"
+               <!-- <VBox fx:id="addSeriesPanel" spacing="10.0" alignment="TOP_LEFT" visible="false" managed="false" style="-fx-background-color: transparent"
                         AnchorPane.topAnchor="35.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
                         <children>
                            <Label text="Add Series" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
@@ -239,21 +239,30 @@
                               </children>
                            </HBox>
                         
-                           <NumberTextField fx:id="bookChapter" promptText="Number of Chapters"/>
+                           <NumberTextField fx:id="seriesSeason" promptText="Number of Seasons"/>
 
                            <HBox spacing="10.0">
                               <children>
-                                 <Button text="Submit" onAction="#confirmAddBook"/>
-                                 <Button text="Clear" onAction="#clearAddBook"/>
+                                 <Button text="Continue" onAction="#continueAddSeries"/>
+                                 <Button text="Clear" onAction="#clearAddSeries"/>
                               </children>
                            </HBox>
-                           <Label fx:id="bookErrorLabel" style="-fx-text-fill: RED">
+
+                           <Label fx:id="SeriesSeasonErrorLabel" style="-fx-text-fill: RED">
+                              <font>
+                                 <Font name="Century Gothic Bold" size="13.0" />
+                              </font>
+                           </Label>
+
+                           <NumberTextField fx:id="seriesEpisode" promptText="Number of Episodes"/>
+
+                        <Label fx:id="SeriesEpisodeErrorLabel" style="-fx-text-fill: RED">
                            <font>
                               <Font name="Century Gothic Bold" size="13.0" />
                            </font>
                         </Label>
                         </children>
-                  </VBox>
+                  </VBox> -->
                   
                   <!--REMOVE ENTRIES-->
                   <VBox fx:id="removeEntryPanel" spacing="12.0" alignment="TOP_LEFT" visible="false" managed="false"

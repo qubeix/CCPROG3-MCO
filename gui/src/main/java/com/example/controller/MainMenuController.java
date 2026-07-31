@@ -9,6 +9,7 @@ import com.example.model.User;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.*;
 import javafx.scene.control.Button;
@@ -89,72 +90,72 @@ public class MainMenuController {
     private ComboBox<String> removeEntryCombo;
 
     //book
-    @FXML
-    private VBox addBookPanel;
+    // @FXML
+    // private VBox addBookPanel;
 
-    @FXML 
-    private TextField bookTitleField;
+    // @FXML 
+    // private TextField bookTitleField;
     
-    @FXML 
-    private TextField bookAuthorField;
+    // @FXML 
+    // private TextField bookAuthorField;
     
-    @FXML 
-    private ToggleGroup bookGenreGroup;
+    // @FXML 
+    // private ToggleGroup bookGenreGroup;
 
-    @FXML
-    private RadioButton romanceButton;
+    // @FXML
+    // private RadioButton romanceButton;
 
-    @FXML
-    private RadioButton mysteryButton;
+    // @FXML
+    // private RadioButton mysteryButton;
 
-    @FXML
-    private RadioButton fantasyButton;
+    // @FXML
+    // private RadioButton fantasyButton;
 
-    @FXML
-    private RadioButton nonfictionButton;
+    // @FXML
+    // private RadioButton nonfictionButton;
 
-    @FXML
-    private RadioButton selfhelpButton;
+    // @FXML
+    // private RadioButton selfhelpButton;
 
-    @FXML
-    private NumberTextField bookChapter;
+    // @FXML
+    // private NumberTextField bookChapter;
 
-    @FXML 
-    private Label bookErrorLabel;
+    // @FXML 
+    // private Label bookErrorLabel;
 
     //album
-    @FXML
-    private VBox addAlbumPanel;
+    // @FXML
+    // private VBox addAlbumPanel;
 
-    @FXML 
-    private TextField albumTitleField;
+    // @FXML 
+    // private TextField albumTitleField;
     
-    @FXML 
-    private TextField albumArtistField;
+    // @FXML 
+    // private TextField albumArtistField;
     
-    @FXML 
-    private ToggleGroup albumGenreGroup;
+    // @FXML 
+    // private ToggleGroup albumGenreGroup;
 
-    @FXML
-    private RadioButton popButton;
+    // @FXML
+    // private RadioButton popButton;
 
-    @FXML
-    private RadioButton hipHopButton;
+    // @FXML
+    // private RadioButton hipHopButton;
 
-    @FXML
-    private RadioButton rockButton;
+    // @FXML
+    // private RadioButton rockButton;
 
-    @FXML
-    private RadioButton jazzButton;
+    // @FXML
+    // private RadioButton jazzButton;
 
-    @FXML
-    private RadioButton emdButton;
+    // @FXML
+    // private RadioButton emdButton;
 
-    @FXML
-    private NumberTextField albumTracks;
+    // @FXML
+    // private NumberTextField albumTracks;
 
-    @FXML 
-    private Label albumErrorLabel;
+    // @FXML 
+    // private Label albumErrorLabel;
 
     //series
     // @FXML
@@ -262,73 +263,87 @@ public class MainMenuController {
         // fill in
     }
 
+/*==========================================================================================================
+                                        B O O K
+===========================================================================================================*/
     @FXML
-    private void handleAddBook() throws IOException {
-        bookTitleField.clear();
-        bookAuthorField.clear();
-        bookGenreGroup.selectToggle(null);
-        bookChapter.clear();
-        bookErrorLabel.setVisible(false);
+    private void handleAddBook(){
+        try {
+            Parent bookPane = MediaVault.loadFXML("book-view");
 
-        hideAllPanels();
-        addBookPanel.setVisible(true);
-        addBookPanel.setManaged(true);
-    }
+            //FXMLLoader loader = new FXMLLoader(MediaVault.class.getResource("/com/example/view/book-panel.fxml"));
+            FXMLLoader loader = new FXMLLoader(MediaVault.class.getResource("/com/example/view/book-view.fxml"));
+            Parent bookPaneWithController = loader.load();
+            BookController bookController = loader.getController();
+            bookController.setLibrary(library);
 
-    @FXML
-    private void confirmAddBook(){
-        String title = bookTitleField.getText();
-        String author = bookAuthorField.getText();
-        String chapterText = bookChapter.getText();
-        RadioButton selectedGenre = (RadioButton) bookGenreGroup.getSelectedToggle();
-
-        if(title.isEmpty() || author.isEmpty() || selectedGenre == null || chapterText.isEmpty()){
-            bookErrorLabel.setText("Please fill in all fields before submitting");
-            bookErrorLabel.setVisible(true);
+            centerPane.getChildren().setAll(bookPaneWithController);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        else{
-            boolean isValidNumber = true;
-            int chapterCount = 0;
-
-            try {
-                chapterCount = Integer.parseInt(chapterText);
-            } catch (NumberFormatException e) {
-                isValidNumber = false;
-            }
-
-            if(!isValidNumber || chapterCount <= 0){
-                bookErrorLabel.setText("Please enter a valid postive number for the chapter.");
-                bookErrorLabel.setVisible(true);
-            }
-            else{
-                String genre = selectedGenre.getText();
-                library.addBookInput(title, author, genre, chapterCount);
-                bookErrorLabel.setVisible(false);
-
-                addBookPanel.setVisible(false);
-                addBookPanel.setManaged(false);
-                outputArea.setVisible(true);
-                outputArea.setManaged(true);
-                outputArea.setText("\"" + title + "\" by " + author + " added to your Book Library.");
-            }
-        }
-
     }
 
-    @FXML
-    private void clearAddBook() {
-        bookTitleField.clear();
-        bookAuthorField.clear();
-        bookGenreGroup.selectToggle(null);
-        bookChapter.clear();
-        bookErrorLabel.setVisible(false);
+    // @FXML
+    // private void handleAddBook() throws IOException {
+    //     bookTitleField.clear();
+    //     bookAuthorField.clear();
+    //     bookGenreGroup.selectToggle(null);
+    //     bookChapter.clear();
+    //     bookErrorLabel.setVisible(false);
 
-        // addAlbumPanel.setVisible(false);
-        // addAlbumPanel.setManaged(false);
-        //hideAllPanels();
-        // outputArea.setVisible(true);
-        // outputArea.setManaged(true);
-    }
+    //     hideAllPanels();
+    //     addBookPanel.setVisible(true);
+    //     addBookPanel.setManaged(true);
+    // }
+
+    // @FXML
+    // private void confirmAddBook(){
+    //     String title = bookTitleField.getText();
+    //     String author = bookAuthorField.getText();
+    //     String chapterText = bookChapter.getText();
+    //     RadioButton selectedGenre = (RadioButton) bookGenreGroup.getSelectedToggle();
+
+    //     if(title.isEmpty() || author.isEmpty() || selectedGenre == null || chapterText.isEmpty()){
+    //         bookErrorLabel.setText("Please fill in all fields before submitting");
+    //         bookErrorLabel.setVisible(true);
+    //     }
+    //     else{
+    //         boolean isValidNumber = true;
+    //         int chapterCount = 0;
+
+    //         try {
+    //             chapterCount = Integer.parseInt(chapterText);
+    //         } catch (NumberFormatException e) {
+    //             isValidNumber = false;
+    //         }
+
+    //         if(!isValidNumber || chapterCount <= 0){
+    //             bookErrorLabel.setText("Please enter a valid postive number for the chapter.");
+    //             bookErrorLabel.setVisible(true);
+    //         }
+    //         else{
+    //             String genre = selectedGenre.getText();
+    //             library.addBookInput(title, author, genre, chapterCount);
+    //             bookErrorLabel.setVisible(false);
+
+    //             addBookPanel.setVisible(false);
+    //             addBookPanel.setManaged(false);
+    //             outputArea.setVisible(true);
+    //             outputArea.setManaged(true);
+    //             outputArea.setText("\"" + title + "\" by " + author + " added to your Book Library.");
+    //         }
+    //     }
+
+    // }
+
+    // @FXML
+    // private void clearAddBook() {
+    //     bookTitleField.clear();
+    //     bookAuthorField.clear();
+    //     bookGenreGroup.selectToggle(null);
+    //     bookChapter.clear();
+    //     bookErrorLabel.setVisible(false);
+    // }
 
 /*==========================================================================================================
                                         A L B U M 
@@ -404,10 +419,23 @@ public class MainMenuController {
         // outputArea.setManaged(true);
     }
 
+/*==========================================================================================================
+                                        S E R I E S
+===========================================================================================================*/
+
     @FXML
     private void handleAddSeries() {
         // fill in
     }
+
+    @FXML
+    private void continueAddSeries(){
+
+    }
+
+/*==========================================================================================================
+                            R E M O V E  E N T R I E S
+===========================================================================================================*/
 
     @FXML
     private void handleRemoveEntry() {
@@ -478,36 +506,63 @@ public class MainMenuController {
         outputArea.setManaged(true);
     }
 
+/*==========================================================================================================
+                            R A T E  E N T R I E S 
+===========================================================================================================*/
 
     @FXML
     private void handleRateEntry() {
         // fill in
     }
 
+/*==========================================================================================================
+                        R E V I E W  E N T R I E S
+===========================================================================================================*/
+
     @FXML
     private void handleReviewEntry() {
         // fill in
     }
+
+/*==========================================================================================================
+                U P D A T E  P R O G R E S S
+===========================================================================================================*/
 
     @FXML
     private void handleUpdateProgress() {
         // fill in
     }
 
+/*==========================================================================================================
+                    V I E W  A L L
+===========================================================================================================*/
+
     @FXML
     private void handleViewAll() throws IOException {
         outputArea.setText(library.getAllEntriesText());
     }
+
+/*==========================================================================================================
+                        S U M M A R Y
+===========================================================================================================*/
 
     @FXML
     private void handleViewSummary() throws IOException {
         outputArea.setText(library.getSummaryText());
     }
 
+/*==========================================================================================================
+                        S E T T I N G S
+===========================================================================================================*/
+
     @FXML
     private void handleSettings() throws IOException{
         //fill in 
     }
+
+/*==========================================================================================================
+                        L O G O U T
+===========================================================================================================*/
 
     @FXML
     private void handleLogout() throws IOException {

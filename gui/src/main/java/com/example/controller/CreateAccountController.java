@@ -57,15 +57,28 @@ public class CreateAccountController {
         String name = nameField.getText();
         String username = usernameField.getText();
         String password = passwordField.getText();
-
         String verifyPassword = verifyPasswordField.getText();
 
         User[] users = MediaVaultController.getUsers();
         int userCount = MediaVaultController.getUserCount();
 
-        User newUser = null;
+        //User newUser = null;
 
-        boolean isUsernameTaken = false; // check if the username already exist
+        if(passwordField.isVisible()){
+            password = passwordField.getText();
+        }
+        else{
+            password = passwordVisibleField.getText();
+        }
+
+        if(verifyPasswordField.isVisible()){
+            verifyPassword = verifyPasswordField.getText();
+        }
+        else{
+            verifyPassword = verifyPasswordVisibleField.getText();
+        }
+
+        boolean isUsernameTaken = false; 
 
         for (int i = 0; i < userCount && !isUsernameTaken; i++) {
             if (users[i].getUsername().equals(username)) {
@@ -73,29 +86,33 @@ public class CreateAccountController {
             }
         }
 
-        if (isUsernameTaken) {
+        boolean isPasswordMatch = password.equals(verifyPassword);
+        //boolean containsSspace = name.contains(" ") == false && username.contains(" ") || password.contains(" ") || verifyPassword.contains(" ");
+        boolean invalidSpaces = username.contains(" ") || password.contains(" ") || verifyPassword.contains(" ");
+
+        usernameErrorLabel.setVisible(false);
+        verifyPasswordErrorLabel.setVisible(false);
+
+        if(username.isEmpty() || password.isEmpty() || verifyPassword.isEmpty()){
+            usernameErrorLabel.setText("Please fill in all fields");
             usernameErrorLabel.setVisible(true);
-            usernameErrorLabel.setText("This username already exist. Please choose a new username");
-        } 
-        else {
-            newUser = new User(username, password, name);
-            MediaVaultController.addUser(newUser);
-            usernameErrorLabel.setText("");
-            MediaVault.setRoot("main-menu-view");
         }
-
-        // boolean isPasswordMatch = false;
-
-        // if(isPasswordMatch){
-        //     verifyPasswordErrorLabel.setVisible(true);
-        //     verifyPasswordErrorLabel.setText("Your password does not match, please try again");
-        // }
-
-        boolean isPasswordMatch = false;
-
-        if(isPasswordMatch.equals(verifyPassword)){
+        else if(invalidSpaces){
+            verifyPasswordErrorLabel.setText("Username and password cannot contain spaces.");
             verifyPasswordErrorLabel.setVisible(true);
-            verifyPasswordErrorLabel.setText("Your password does not match, please try again");
+        }
+        else if(isUsernameTaken){
+            usernameErrorLabel.setText("This username already exist. Please choose a new username");
+            usernameErrorLabel.setVisible(true);
+        }
+        else if(!isPasswordMatch){
+            verifyPasswordErrorLabel.setText("Your password does not match. Please try again");
+            verifyPasswordErrorLabel.setVisible(true);
+        }
+        else{
+            User newUser = new User(username, password, name);
+            MediaVaultController.addUser(newUser);
+            MediaVault.setRoot("main-menu-view");
         }
     }
 
@@ -132,17 +149,6 @@ public class CreateAccountController {
             verifyPasswordVisibleField.setManaged(false);
         }
     }
-
-    // @FXML
-    // private void toggleShowVerifyPassword(){
-    //     if(showVerifyPasswordCheckBox.isSelected()){
-    //         verifyPasswordField.setText(verifyPasswordField.getText());
-    //         verifyPasswordField.setVisible(true);
-    //         verifyPasswordField.setManaged(true);
-    //         verifyPasswordField.setVisible(false);
-    //         verifyPasswordField.setManaged(false);
-    //     }
-    // }
 
     @FXML
     private void goBack() throws IOException {
