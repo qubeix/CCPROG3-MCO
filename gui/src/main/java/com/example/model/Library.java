@@ -620,6 +620,13 @@ public class Library {
 
 //ADDING ENTRIES
     //add book
+    public void addBookInput(String title, String author, String genre, int chapterCount){
+        if(chapterCount < MAXCOUNT){
+            Book book = new Book(title, author, genre, chapterCount);
+            bookLibrary[bookCount] = book;
+            bookCount++;
+        }
+    }
 
 
     //add album
@@ -683,7 +690,7 @@ public class Library {
         }
         sb.append("\n");
 
-        // album sesction
+        // album section
         if (albumCount == 0) {
             sb.append("Your Album Library is empty.\n");
         } else {
@@ -694,7 +701,7 @@ public class Library {
         }
         sb.append("\n");
 
-        // series sesction
+        // series section
         if (bookCount == 0) {
             sb.append("Your Series Library is empty.\n");
         } else {

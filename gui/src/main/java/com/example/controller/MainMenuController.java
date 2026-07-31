@@ -10,7 +10,7 @@ import com.example.model.User;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.geometry.Insets;
-import javafx.scene.Node;
+import javafx.scene.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -88,6 +88,41 @@ public class MainMenuController {
     @FXML
     private ComboBox<String> removeEntryCombo;
 
+    //book
+    @FXML
+    private VBox addBookPanel;
+
+    @FXML 
+    private TextField bookTitleField;
+    
+    @FXML 
+    private TextField bookAuthorField;
+    
+    @FXML 
+    private ToggleGroup bookGenreGroup;
+
+    @FXML
+    private RadioButton romanceButton;
+
+    @FXML
+    private RadioButton mysteryButton;
+
+    @FXML
+    private RadioButton fantasyButton;
+
+    @FXML
+    private RadioButton nonfictionButton;
+
+    @FXML
+    private RadioButton selfhelpButton;
+
+    @FXML
+    private NumberTextField bookChapter;
+
+    @FXML 
+    private Label bookErrorLabel;
+
+    //album
     @FXML
     private VBox addAlbumPanel;
 
@@ -120,6 +155,8 @@ public class MainMenuController {
 
     @FXML 
     private Label albumErrorLabel;
+
+    //series
 
     private User currentUser;
     private Library library;
@@ -173,6 +210,8 @@ public class MainMenuController {
         outputArea.setManaged(false);
 
         //book
+        addBookPanel.setVisible(false);
+        addBookPanel.setManaged(false);
 
 
         //album
@@ -180,6 +219,8 @@ public class MainMenuController {
         addAlbumPanel.setManaged(false);
 
         //series
+        // addSeriesPanel.setVisible(false);
+        // addSeriesPanel.setManaged(false);
 
 
         //remove 
@@ -194,7 +235,69 @@ public class MainMenuController {
 
     @FXML
     private void handleAddBook() throws IOException {
-        // fill in
+        bookTitleField.clear();
+        bookAuthorField.clear();
+        bookGenreGroup.selectToggle(null);
+        bookChapter.clear();
+        bookErrorLabel.setVisible(false);
+
+        hideAllPanels();
+        addBookPanel.setVisible(true);
+        addBookPanel.setManaged(true);
+    }
+
+    @FXML
+    private void confirmAddBook(){
+        String title = bookTitleField.getText();
+        String author = bookAuthorField.getText();
+        String chapterText = bookChapter.getText();
+        RadioButton selectedGenre = (RadioButton) bookGenreGroup.getSelectedToggle();
+
+        if(title.isEmpty() || author.isEmpty() || selectedGenre == null || chapterText.isEmpty()){
+            bookErrorLabel.setText("Please fill in all fields before submitting");
+            bookErrorLabel.setVisible(true);
+        }
+        else{
+            boolean isValidNumber = true;
+            int chapterCount = 0;
+
+            try {
+                chapterCount = Integer.parseInt(chapterText);
+            } catch (NumberFormatException e) {
+                isValidNumber = false;
+            }
+            if(!isValidNumber || chapterCount <= 0){
+                bookErrorLabel.setText("Please enter a valid postive number for the chapter.");
+                bookErrorLabel.setVisible(true);
+            }
+            else{
+                String genre = selectedGenre.getText();
+                library.addBookInput(title, author, genre, chapterCount);
+                bookErrorLabel.setVisible(false);
+
+                addBookPanel.setVisible(false);
+                addBookPanel.setManaged(false);
+                outputArea.setVisible(true);
+                outputArea.setManaged(true);
+                outputArea.setText("\"" + title + "\" by " + author + " added to your Book Library.");
+            }
+        }
+
+    }
+
+    @FXML
+    private void clearAddBook() {
+        bookTitleField.clear();
+        bookAuthorField.clear();
+        bookGenreGroup.selectToggle(null);
+        bookChapter.clear();
+        bookErrorLabel.setVisible(false);
+
+        // addAlbumPanel.setVisible(false);
+        // addAlbumPanel.setManaged(false);
+        //hideAllPanels();
+        // outputArea.setVisible(true);
+        // outputArea.setManaged(true);
     }
 
     //ALBUM
@@ -255,7 +358,7 @@ public class MainMenuController {
     }
 
     @FXML
-    private void cancelAddAlbum() {
+    private void clearAddAlbum() {
         albumTitleField.clear();
         albumArtistField.clear();
         albumGenreGroup.selectToggle(null);
@@ -264,9 +367,9 @@ public class MainMenuController {
 
         // addAlbumPanel.setVisible(false);
         // addAlbumPanel.setManaged(false);
-        hideAllPanels();
-        outputArea.setVisible(true);
-        outputArea.setManaged(true);
+        //hideAllPanels();
+        // outputArea.setVisible(true);
+        // outputArea.setManaged(true);
     }
 
     @FXML
@@ -331,11 +434,11 @@ public class MainMenuController {
         }
 
         outputArea.setText("Entry removed.");
-        cancelRemoveEntry();
+        clearRemoveEntry();
     }
 
     @FXML
-    private void cancelRemoveEntry() {
+    private void clearRemoveEntry() {
         removeEntryPanel.setVisible(false);
         removeEntryPanel.setManaged(false);
 

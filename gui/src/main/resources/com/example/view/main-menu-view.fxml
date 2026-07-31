@@ -148,9 +148,44 @@
                   <TextArea fx:id="outputArea" editable="false" wrapText="true" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="35.0" />
                   <!--ADD ENTRIES-->
                   <!--add book entry-->
+                     <VBox fx:id="addBookPanel" spacing="10.0" alignment="TOP_LEFT" visible="false" managed="false" style="-fx-background-color: transparent"
+                        AnchorPane.topAnchor="35.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
+                        <children>
+                           <Label text="Add Book" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                           <TextField fx:id="bookTitleField" promptText="Book Title"/>
+                           <TextField fx:id="bookAuthorField" promptText="Author"/>
+
+                           <Label text="Genre:"/>
+                           <HBox spacing="10.0">
+                              <children>
+                                 <RadioButton fx:id="romanceButton" text="Romance" style="-fx-mark-color: #224aa6">
+                                    <toggleGroup><ToggleGroup fx:id="bookGenreGroup"/></toggleGroup>
+                                 </RadioButton>
+                                 <RadioButton fx:id="mysteryButton" text="Mystery" toggleGroup="$bookGenreGroup" style="-fx-mark-color: #224aa6"/>
+                                 <RadioButton fx:id="fantasyButton" text="Fantasy" toggleGroup="$bookGenreGroup" style="-fx-mark-color: #224aa6"/>
+                                 <RadioButton fx:id="nonfictionButton" text="Non-Fiction" toggleGroup="$bookGenreGroup" style="-fx-mark-color: #224aa6"/>
+                                 <RadioButton fx:id="selfhelpButton" text="Self-Help" toggleGroup="$bookGenreGroup" style="-fx-mark-color: #224aa6"/>
+                              </children>
+                           </HBox>
+                        
+                           <NumberTextField fx:id="bookChapter" promptText="Number of Chapters"/>
+
+                           <HBox spacing="10.0">
+                              <children>
+                                 <Button text="Submit" onAction="#confirmAddBook"/>
+                                 <Button text="Clear" onAction="#clearAddBook"/>
+                              </children>
+                           </HBox>
+                           <Label fx:id="bookErrorLabel" style="-fx-text-fill: RED">
+                           <font>
+                              <Font name="Century Gothic Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        </children>
+                  </VBox>
 
                   <!--add album entry-->
-                  <VBox fx:id="addAlbumPanel" spacing="10.0" alignment="TOP_LEFT" visible="false" managed="false"
+                  <VBox fx:id="addAlbumPanel" spacing="10.0" alignment="TOP_LEFT" visible="false" managed="false" style="-fx-background-color: transparent"
                      AnchorPane.topAnchor="35.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
                      <children>
                         <Label text="Add Album" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
@@ -175,7 +210,7 @@
                         <HBox spacing="10.0">
                            <children>
                               <Button text="Submit" onAction="#confirmAddAlbum"/>
-                              <Button text="Cancel" onAction="#cancelAddAlbum"/>
+                              <Button text="Clear" onAction="#clearAddAlbum"/>
                            </children>
                         </HBox>
                         <Label fx:id="albumErrorLabel" style="-fx-text-fill: RED">
@@ -196,7 +231,7 @@
                         <HBox spacing="10.0">
                            <children>
                               <Button text="Remove" onAction="#confirmRemoveEntry"/>
-                              <Button text="Cancel" onAction="#cancelRemoveEntry"/>
+                              <Button text="Clear" onAction="#clearRemoveEntry"/>
                            </children>
                         </HBox>
                      </children>

@@ -18,6 +18,7 @@
       <Group>
          <children>
             <ImageView fitHeight="345.0" fitWidth="610.0" pickOnBounds="true" preserveRatio="true">
+            <!--<ImageView fitHeight="500.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">-->
                <image>
                   <Image url="@Photos/LoginView.jpg" />
                </image>
