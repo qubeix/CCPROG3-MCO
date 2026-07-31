@@ -183,7 +183,6 @@
                         </Label>
                         </children>
                   </VBox>
-
                   <!--add album entry-->
                   <VBox fx:id="addAlbumPanel" spacing="10.0" alignment="TOP_LEFT" visible="false" managed="false" style="-fx-background-color: transparent"
                      AnchorPane.topAnchor="35.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
@@ -220,6 +219,41 @@
                      </Label>
                      </children>
                </VBox>
+               <!--add series-->
+               <VBox fx:id="addSeriesPanel" spacing="10.0" alignment="TOP_LEFT" visible="false" managed="false" style="-fx-background-color: transparent"
+                        AnchorPane.topAnchor="35.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
+                        <children>
+                           <Label text="Add Series" style="-fx-font-size: 14px; -fx-font-weight: bold;"/>
+                           <TextField fx:id="seriesTitleField" promptText="Series Title"/>
+
+                           <Label text="Genre:"/>
+                           <HBox spacing="10.0">
+                              <children>
+                                 <RadioButton fx:id="comedyButton" text="Comedy" style="-fx-mark-color: #224aa6">
+                                    <toggleGroup><ToggleGroup fx:id="SeriesGenreGroup"/></toggleGroup>
+                                 </RadioButton>
+                                 <RadioButton fx:id="dramaButton" text="Drama" toggleGroup="$SeriesGenreGroup" style="-fx-mark-color: #224aa6"/>
+                                 <RadioButton fx:id="fantasyButton" text="Fantasy" toggleGroup="$SeriesGenreGroup" style="-fx-mark-color: #224aa6"/>
+                                 <RadioButton fx:id="horrorButton" text="Horror or Thriller" toggleGroup="$SeriesGenreGroup" style="-fx-mark-color: #224aa6"/>
+                                 <RadioButton fx:id="animeButton" text="Anime" toggleGroup="$SeriesGenreGroup" style="-fx-mark-color: #224aa6"/>
+                              </children>
+                           </HBox>
+                        
+                           <NumberTextField fx:id="bookChapter" promptText="Number of Chapters"/>
+
+                           <HBox spacing="10.0">
+                              <children>
+                                 <Button text="Submit" onAction="#confirmAddBook"/>
+                                 <Button text="Clear" onAction="#clearAddBook"/>
+                              </children>
+                           </HBox>
+                           <Label fx:id="bookErrorLabel" style="-fx-text-fill: RED">
+                           <font>
+                              <Font name="Century Gothic Bold" size="13.0" />
+                           </font>
+                        </Label>
+                        </children>
+                  </VBox>
                   
                   <!--REMOVE ENTRIES-->
                   <VBox fx:id="removeEntryPanel" spacing="12.0" alignment="TOP_LEFT" visible="false" managed="false"

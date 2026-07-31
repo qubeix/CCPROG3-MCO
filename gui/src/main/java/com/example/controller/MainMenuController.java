@@ -157,6 +157,35 @@ public class MainMenuController {
     private Label albumErrorLabel;
 
     //series
+    // @FXML
+    // private VBox addSeriesPanel;
+    
+    // @FXML 
+    // private TextField albumArtistField;
+    
+    // @FXML 
+    // private ToggleGroup seriesGenreGroup;
+
+    // @FXML
+    // private RadioButton popButton;
+
+    // @FXML
+    // private RadioButton hipHopButton;
+
+    // @FXML
+    // private RadioButton rockButton;
+
+    // @FXML
+    // private RadioButton jazzButton;
+
+    // @FXML
+    // private RadioButton emdButton;
+
+    // @FXML
+    // private NumberTextField albumTracks;
+
+    // @FXML 
+    // private Label albumErrorLabel;
 
     private User currentUser;
     private Library library;
