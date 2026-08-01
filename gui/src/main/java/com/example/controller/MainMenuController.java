@@ -260,7 +260,9 @@ public class MainMenuController {
 
     @FXML
     private void returnHome() {
-        // fill in
+        centerPane.getChildren().setAll(outputArea);
+        outputArea.setVisible(true);
+        outputArea.setManaged(true);
     }
 
 /*==========================================================================================================
@@ -269,7 +271,7 @@ public class MainMenuController {
     @FXML
     private void handleAddBook(){
         try {
-            Parent bookPane = MediaVault.loadFXML("book-view");
+            //Parent bookPane = MediaVault.loadFXML("book-view");
 
             //FXMLLoader loader = new FXMLLoader(MediaVault.class.getResource("/com/example/view/book-panel.fxml"));
             FXMLLoader loader = new FXMLLoader(MediaVault.class.getResource("/com/example/view/book-view.fxml"));
@@ -282,141 +284,22 @@ public class MainMenuController {
             e.printStackTrace();
         }
     }
-
-    // @FXML
-    // private void handleAddBook() throws IOException {
-    //     bookTitleField.clear();
-    //     bookAuthorField.clear();
-    //     bookGenreGroup.selectToggle(null);
-    //     bookChapter.clear();
-    //     bookErrorLabel.setVisible(false);
-
-    //     hideAllPanels();
-    //     addBookPanel.setVisible(true);
-    //     addBookPanel.setManaged(true);
-    // }
-
-    // @FXML
-    // private void confirmAddBook(){
-    //     String title = bookTitleField.getText();
-    //     String author = bookAuthorField.getText();
-    //     String chapterText = bookChapter.getText();
-    //     RadioButton selectedGenre = (RadioButton) bookGenreGroup.getSelectedToggle();
-
-    //     if(title.isEmpty() || author.isEmpty() || selectedGenre == null || chapterText.isEmpty()){
-    //         bookErrorLabel.setText("Please fill in all fields before submitting");
-    //         bookErrorLabel.setVisible(true);
-    //     }
-    //     else{
-    //         boolean isValidNumber = true;
-    //         int chapterCount = 0;
-
-    //         try {
-    //             chapterCount = Integer.parseInt(chapterText);
-    //         } catch (NumberFormatException e) {
-    //             isValidNumber = false;
-    //         }
-
-    //         if(!isValidNumber || chapterCount <= 0){
-    //             bookErrorLabel.setText("Please enter a valid postive number for the chapter.");
-    //             bookErrorLabel.setVisible(true);
-    //         }
-    //         else{
-    //             String genre = selectedGenre.getText();
-    //             library.addBookInput(title, author, genre, chapterCount);
-    //             bookErrorLabel.setVisible(false);
-
-    //             addBookPanel.setVisible(false);
-    //             addBookPanel.setManaged(false);
-    //             outputArea.setVisible(true);
-    //             outputArea.setManaged(true);
-    //             outputArea.setText("\"" + title + "\" by " + author + " added to your Book Library.");
-    //         }
-    //     }
-
-    // }
-
-    // @FXML
-    // private void clearAddBook() {
-    //     bookTitleField.clear();
-    //     bookAuthorField.clear();
-    //     bookGenreGroup.selectToggle(null);
-    //     bookChapter.clear();
-    //     bookErrorLabel.setVisible(false);
-    // }
-
 /*==========================================================================================================
                                         A L B U M 
 ===========================================================================================================*/
     @FXML
     private void handleAddAlbum(){
-        albumTitleField.clear();
-        albumArtistField.clear();
-        albumGenreGroup.selectToggle(null);
-        albumTracks.clear();
-        albumErrorLabel.setVisible(false);
+        try {
+            FXMLLoader loader = new FXMLLoader(MediaVault.class.getResource("/com/example/view/album-view.fxml"));
+            Parent albumPaneWithController = loader.load();
+            AlbumController albumController = loader.getController();
+            albumController.setLibrary(library);
 
-        // outputArea.setVisible(false);
-        // outputArea.setManaged(false);
-        hideAllPanels();
-        addAlbumPanel.setVisible(true);
-        addAlbumPanel.setManaged(true);
-    }
+            centerPane.getChildren().setAll(albumPaneWithController);
 
-    @FXML
-    private void confirmAddAlbum() {
-        String title = albumTitleField.getText();
-        String artist = albumArtistField.getText();
-        String tracksText = albumTracks.getText();
-        RadioButton selectedGenre = (RadioButton) albumGenreGroup.getSelectedToggle();
-
-        if (title.isEmpty() || artist.isEmpty() || selectedGenre == null || tracksText.isEmpty()) {
-            albumErrorLabel.setText("Please fill in all fields before submitting");
-            albumErrorLabel.setVisible(true);
-        } 
-        else {
-            boolean isValidNumber = true;
-            int trackCount = 0;
-            try {
-                trackCount = Integer.parseInt(tracksText);
-            } 
-            catch (NumberFormatException e) {
-                isValidNumber = false;
-            }
-
-            if (!isValidNumber || trackCount <= 0) {
-                albumErrorLabel.setText("Please enter a valid positive number for tracks.");
-                albumErrorLabel.setVisible(true);
-            } 
-            else {
-                String genre = selectedGenre.getText();
-                library.addAlbumInput(title, artist, genre, trackCount);
-                albumErrorLabel.setVisible(false);
-
-                addAlbumPanel.setVisible(false);
-                addAlbumPanel.setManaged(false);
-                outputArea.setVisible(true);
-                outputArea.setManaged(true);
-                //cancelAddAlbum();
-                outputArea.setText("\"" + title + "\" by " + artist + " added to your Album Library.");
-
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    }
-
-    @FXML
-    private void clearAddAlbum() {
-        albumTitleField.clear();
-        albumArtistField.clear();
-        albumGenreGroup.selectToggle(null);
-        albumTracks.clear();
-        albumErrorLabel.setVisible(false);
-
-        // addAlbumPanel.setVisible(false);
-        // addAlbumPanel.setManaged(false);
-        //hideAllPanels();
-        // outputArea.setVisible(true);
-        // outputArea.setManaged(true);
     }
 
 /*==========================================================================================================

@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.geometry.Insets?>
 
-    <VBox fx:id="addBookPanel" fx:controller="com.example.controller.BookController"
+    <VBox fx:id="addAlbumPanel" fx:controller="com.example.controller.AlbumController"
       xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1"
       spacing="12.0" alignment="TOP_LEFT" style="-fx-background-color: rgba(255,255,255,0.6); -fx-background-radius: 10;"
       AnchorPane.topAnchor="35.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
@@ -16,15 +16,15 @@
     </padding>
 
     <children>
-        <Label text="Add Book" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #224aa6;">
+        <Label text="Add Album" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #224aa6;">
             <font><Font name="Century Gothic Bold" size="16.0"/></font>
         </Label>
 
-        <TextField fx:id="bookTitleField" promptText="Book Title" style="-fx-background-radius: 6; -fx-border-color: #cccccc; -fx-border-radius: 6;">
+        <TextField fx:id="albumTitleField" promptText="album Title" style="-fx-background-radius: 6; -fx-border-color: #cccccc; -fx-border-radius: 6;">
             <font><Font name="Century Gothic Italic" size="12.0"/></font>
         </TextField>
 
-        <TextField fx:id="bookAuthorField" promptText="Author" style="-fx-background-radius: 6; -fx-border-color: #cccccc; -fx-border-radius: 6;">
+        <TextField fx:id="albumArtistField" promptText="Artist" style="-fx-background-radius: 6; -fx-border-color: #cccccc; -fx-border-radius: 6;">
             <font><Font name="Century Gothic Italic" size="12.0"/></font>
         </TextField>
 
@@ -34,32 +34,32 @@
 
         <HBox spacing="10.0">
             <children>
-                <RadioButton fx:id="romanceButton" text="Romance" style="-fx-mark-color: #224aa6">
-                    <toggleGroup><ToggleGroup fx:id="bookGenreGroup"/></toggleGroup>
+                <RadioButton fx:id="popButton" text="Pop" style="-fx-mark-color: #224aa6">
+                    <toggleGroup><ToggleGroup fx:id="albumGenreGroup"/></toggleGroup>
                 </RadioButton>
-                <RadioButton fx:id="mysteryButton" text="Mystery" toggleGroup="$bookGenreGroup" style="-fx-mark-color: #224aa6"/>
-                <RadioButton fx:id="fantasyButton" text="Fantasy" toggleGroup="$bookGenreGroup" style="-fx-mark-color: #224aa6"/>
-                <RadioButton fx:id="nonfictionButton" text="Non-Fiction" toggleGroup="$bookGenreGroup" style="-fx-mark-color: #224aa6"/>
-                <RadioButton fx:id="selfhelpButton" text="Self-Help" toggleGroup="$bookGenreGroup" style="-fx-mark-color: #224aa6"/>
+                <RadioButton fx:id="hipHopButton" text="Hip Hop / Rap" toggleGroup="$albumGenreGroup" style="-fx-mark-color: #224aa6"/>
+                <RadioButton fx:id="rockButton" text="Rock" toggleGroup="$albumGenreGroup" style="-fx-mark-color: #224aa6"/>
+                <RadioButton fx:id="jazzButton" text="Jazz" toggleGroup="$albumGenreGroup" style="-fx-mark-color: #224aa6"/>
+                <RadioButton fx:id="emdButton" text="EMD" toggleGroup="$albumGenreGroup" style="-fx-mark-color: #224aa6"/>
             </children>
         </HBox>
 
-        <NumberTextField fx:id="bookChapter" promptText="Number of Chapters" style="-fx-background-radius: 6; -fx-border-color: #cccccc; -fx-border-radius: 6;">
+        <NumberTextField fx:id="AlbumTrack" promptText="Number of Tracks" style="-fx-background-radius: 6; -fx-border-color: #cccccc; -fx-border-radius: 6;">
             <font><Font name="Century Gothic Italic" size="12.0"/></font>
         </NumberTextField>
 
         <HBox spacing="10.0">
             <children>
-                <Button text="Submit" onAction="#confirmAddBook" style="-fx-background-color: #448afa; -fx-text-fill: white; -fx-background-radius: 5;">
+                <Button text="Submit" onAction="#confirmAddAlbum" style="-fx-background-color: #448afa; -fx-text-fill: white; -fx-background-radius: 5;">
                     <font><Font name="Century Gothic Bold" size="12.0"/></font>
                 </Button>
-                <Button text="Clear" onAction="#clearAddBook" style="-fx-background-color: #f6933c; -fx-text-fill: white; -fx-background-radius: 5;">
+                <Button text="Clear" onAction="#clearAddAlbum" style="-fx-background-color: #f6933c; -fx-text-fill: white; -fx-background-radius: 5;">
                     <font><Font name="Century Gothic Bold" size="12.0"/></font>
                 </Button>
             </children>
         </HBox>
 
-        <Label fx:id="bookErrorLabel" style="-fx-text-fill: RED">
+        <Label fx:id="albumErrorLabel" style="-fx-text-fill: RED">
             <font><Font name="Century Gothic Bold" size="13.0"/></font>
         </Label>
     </children>

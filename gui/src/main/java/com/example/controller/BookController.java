@@ -1,7 +1,8 @@
 package com.example.controller;
 
-import java.io.IOException;
+//import java.io.IOException;
 
+import com.example.model.Book;
 //import com.example.MediaVault;
 import com.example.model.Library;
 import com.example.model.User;
@@ -17,8 +18,8 @@ import javafx.scene.control.TextArea;
 
 public class BookController{
 
-    @FXML
-    private VBox addBookPanel;
+    // @FXML
+    // private VBox addBookPanel;
 
     @FXML
     private TextField bookTitleField;
@@ -29,20 +30,20 @@ public class BookController{
     @FXML
     private ToggleGroup bookGenreGroup;
 
-    @FXML
-    private RadioButton romanceButton;
+    // @FXML
+    // private RadioButton romanceButton;
 
-    @FXML
-    private RadioButton mysteryButton;
+    // @FXML
+    // private RadioButton mysteryButton;
 
-    @FXML
-    private RadioButton fantasyButton;
+    // @FXML
+    // private RadioButton fantasyButton;
 
-    @FXML
-    private RadioButton nonfictionButton;
+    // @FXML
+    // private RadioButton nonfictionButton;
 
-    @FXML
-    private RadioButton selfhelpButton;
+    // @FXML
+    // private RadioButton selfhelpButton;
 
     @FXML
     private NumberTextField bookChapter;
@@ -50,8 +51,8 @@ public class BookController{
     @FXML
     private Label bookErrorLabel;
 
-    @FXML
-    private TextArea outputArea;
+    // @FXML
+    // private TextArea outputArea;
 
     private User currentUser;
     private Library library;
@@ -68,24 +69,31 @@ public class BookController{
         RadioButton selectedGenre = (RadioButton) bookGenreGroup.getSelectedToggle();
 
         if (title.isEmpty() || author.isEmpty() || selectedGenre == null || chapterText.isEmpty()) {
+            bookErrorLabel.setStyle("-fx-text-fil: RED");
             bookErrorLabel.setText("Please fill in all fields before submitting");
             bookErrorLabel.setVisible(true);
-            return;
+            
         }
+        else{
+            try {
+                int chapterCount = Integer.parseInt(chapterText);
+                if (chapterCount <= 0) throw new NumberFormatException();
 
-        try {
-            int chapterCount = Integer.parseInt(chapterText);
-            if (chapterCount <= 0) throw new NumberFormatException();
+                //library.addBookInput(title, author, selectedGenre.getText(), chapterCount);
+                Book newBook = library.addBookInput(title, author, selectedGenre.getText(), chapterCount);
 
-            library.addBookInput(title, author, selectedGenre.getText(), chapterCount);
-            bookErrorLabel.setVisible(false);
+                bookErrorLabel.setStyle("=fx-text-fill: GREEN");
+                bookErrorLabel.setText("Added: " + newBook.toString());
+                bookErrorLabel.setVisible(true);
 
-            outputArea.setVisible(true);
-            outputArea.setManaged(true);
-            outputArea.setText("\"" + title + "\" by " + author + " added to your Book Library.");
-        } catch (NumberFormatException e) {
-            bookErrorLabel.setText("Please enter a valid positive number for chapters.");
-            bookErrorLabel.setVisible(true);
+                // outputArea.setVisible(true);
+                // outputArea.setManaged(true);
+                // outputArea.setText("\"" + title + "\" by " + author + " added to your Book Library.");
+            } catch (NumberFormatException e) {
+                bookErrorLabel.setStyle("-fx-text-fill: RED");
+                bookErrorLabel.setText("Please enter a valid positive number for chapters.");
+                bookErrorLabel.setVisible(true);
+            }
         }
     }
 
@@ -97,67 +105,4 @@ public class BookController{
         bookChapter.clear();
         bookErrorLabel.setVisible(false);
     }
-
-
-    // @FXML
-    // private void handleAddBook() throws IOException {
-    //     bookTitleField.clear();
-    //     bookAuthorField.clear();
-    //     bookGenreGroup.selectToggle(null);
-    //     bookChapter.clear();
-    //     bookErrorLabel.setVisible(false);
-
-    //     hideAllPanels();
-    //     addBookPanel.setVisible(true);
-    //     addBookPanel.setManaged(true);
-    // }
-
-    // @FXML
-    // private void confirmAddBook(){
-    //     String title = bookTitleField.getText();
-    //     String author = bookAuthorField.getText();
-    //     String chapterText = bookChapter.getText();
-    //     RadioButton selectedGenre = (RadioButton) bookGenreGroup.getSelectedToggle();
-
-    //     if(title.isEmpty() || author.isEmpty() || selectedGenre == null || chapterText.isEmpty()){
-    //         bookErrorLabel.setText("Please fill in all fields before submitting");
-    //         bookErrorLabel.setVisible(true);
-    //     }
-    //     else{
-    //         boolean isValidNumber = true;
-    //         int chapterCount = 0;
-
-    //         try {
-    //             chapterCount = Integer.parseInt(chapterText);
-    //         } catch (NumberFormatException e) {
-    //             isValidNumber = false;
-    //         }
-
-    //         if(!isValidNumber || chapterCount <= 0){
-    //             bookErrorLabel.setText("Please enter a valid postive number for the chapter.");
-    //             bookErrorLabel.setVisible(true);
-    //         }
-    //         else{
-    //             String genre = selectedGenre.getText();
-    //             library.addBookInput(title, author, genre, chapterCount);
-    //             bookErrorLabel.setVisible(false);
-
-    //             addBookPanel.setVisible(false);
-    //             addBookPanel.setManaged(false);
-    //             outputArea.setVisible(true);
-    //             outputArea.setManaged(true);
-    //             outputArea.setText("\"" + title + "\" by " + author + " added to your Book Library.");
-    //         }
-    //     }
-
-    // }
-
-    // @FXML
-    // private void clearAddBook() {
-    //     bookTitleField.clear();
-    //     bookAuthorField.clear();
-    //     bookGenreGroup.selectToggle(null);
-    //     bookChapter.clear();
-    //     bookErrorLabel.setVisible(false);
-    // }
 }

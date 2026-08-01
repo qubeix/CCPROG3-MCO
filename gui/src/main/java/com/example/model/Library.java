@@ -620,22 +620,26 @@ public class Library {
 
 //ADDING ENTRIES
     //add book
-    public void addBookInput(String title, String author, String genre, int chapterCount){
+    public Book addBookInput(String title, String author, String genre, int chapterCount){
+        Book book = null;
         if(chapterCount < MAXCOUNT){
-            Book book = new Book(title, author, genre, chapterCount);
+            book = new Book(title, author, genre, chapterCount);
             bookLibrary[bookCount] = book;
             bookCount++;
         }
+        return book;
     }
 
 
     //add album
-    public void addAlbumInput(String title, String artist, String genre, int trackCount){
+    public Album addAlbumInput(String title, String artist, String genre, int trackCount){
+        Album album = null;
         if(albumCount < MAXCOUNT){
-            Album album = new Album(title, artist, genre, trackCount);
+            album = new Album(title, artist, genre, trackCount);
             albumLibrary[albumCount] = album;
             albumCount++;
         }
+        return album;
     }
 
     //add series
