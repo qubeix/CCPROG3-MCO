@@ -81,27 +81,29 @@ public class RemoveEntryController {
         if(type != null && selected !=null){
 
             int index = Integer.parseInt(selected.split("\\.")[0]) - 1;
+            String removedEntry = "";
 
             switch(type){
                 case "Book":{
-                    library.removeBookAt(index);
+                    removedEntry = library.removeBookAt(index);
                     break;
                 }
 
                 case "Album": {
-                    library.removeAlbumAt(index);
+                    removedEntry = library.removeAlbumAt(index);
                     break;
                 }
 
                 case "Series": {
-                    library.removeSeriesAt(index);
+                    removedEntry = library.removeSeriesAt(index);
                     break;
                 }
             }
             removeEntryLabel.setVisible(false);
             outputArea.setVisible(true);
             outputArea.setManaged(true);
-            outputArea.setText(entry + " has been sucessfully removed");        //have it dispaly the name title and author of what ever entry is being removed
+            //outputArea.setText(entry + " has been sucessfully removed");        //have it dispaly the name title and author of what ever entry is being removed
+            outputArea.setText(removedEntry + "Entry has been removed");
 
             clearRemoveEntry(); 
         }
