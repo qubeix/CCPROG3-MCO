@@ -1,4 +1,7 @@
 a|a|a
 b|b|b
-c|c|
 gyh|d|b
+mango|mangosteen|123
+123|456|123
+1|1|1
+2|2|2
