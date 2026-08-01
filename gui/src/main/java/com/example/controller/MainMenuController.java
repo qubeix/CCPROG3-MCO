@@ -395,7 +395,16 @@ public class MainMenuController {
 
     @FXML
     private void handleRateEntry() {
-        // fill in
+        try {
+            FXMLLoader loader = new FXMLLoader(MediaVault.class.getResource("/com/example/view/rate-view.fxml"));
+            Parent ratePaneWithController = loader.load();
+            // RateController rateController = loader.getController();
+            // RateController.setLibrary(library);
+
+            // centerPane.getChildren().setAll(ratePaneWithController);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 /*==========================================================================================================
