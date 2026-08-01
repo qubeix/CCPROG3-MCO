@@ -10,7 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-//import javafx.scene.layout.VBox;
 
 public class AlbumController {
 
@@ -20,19 +19,19 @@ public class AlbumController {
     @FXML
     private TextField albumArtistField;
 
-    @FXML 
+    @FXML
     private ToggleGroup albumGenreGroup;
 
     @FXML
     private NumberTextField albumTracks;
 
-    @FXML 
+    @FXML
     private Label albumErrorLabel;
 
     private User currentUser;
     private Library library;
 
-    public void setLibrary(Library library){
+    public void setLibrary(Library library) {
         this.library = library;
     }
 
@@ -47,12 +46,12 @@ public class AlbumController {
             albumErrorLabel.setStyle("-fx-text-fil: RED");
             albumErrorLabel.setText("Please fill in all fields before submitting");
             albumErrorLabel.setVisible(true);
-            
-        }
-        else{
+
+        } else {
             try {
                 int trackCount = Integer.parseInt(trackText);
-                if (trackCount <= 0) throw new NumberFormatException();
+                if (trackCount <= 0)
+                    throw new NumberFormatException();
 
                 Album newAlbum = library.addAlbumInput(title, artist, selectedGenre.getText(), trackCount);
 
@@ -67,13 +66,12 @@ public class AlbumController {
             }
         }
     }
-    
+
     @FXML
     private void clearAddAlbum() {
         albumTitleField.clear();
         albumArtistField.clear();
         albumGenreGroup.selectToggle(null);
         albumTracks.clear();
-        albumErrorLabel.setVisible(false);
     }
 }

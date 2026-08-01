@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.geometry.Insets?>
 
-<VBox fx:id="addAlbumPanel" fx:controller="com.example.controller.RemoveEntryController" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" spacing="12.0" alignment="TOP_LEFT" style="-fx-background-color: rgba(255,255,255,0.6); -fx-background-radius: 10;"
+<VBox fx:id="removeEntryPanel" fx:controller="com.example.controller.RemoveEntryController" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" spacing="12.0" alignment="TOP_LEFT" style="-fx-background-color: rgba(255,255,255,0.6); -fx-background-radius: 10;"
       AnchorPane.topAnchor="35.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
 
     <padding>
@@ -22,7 +22,6 @@
         </Label>
 
         <ComboBox fx:id="removeTypeCombo" promptText="Select Type" maxWidth="Infinity" onAction="#onRemoveTypeSelected" style="-fx-background-radius: 6; -fx-border-color: #cccccc; -fx-border-radius: 6; -fx-font-family: 'Century Gothic';"/>
-
         <ComboBox fx:id="removeEntryCombo" promptText="Select Entry" maxWidth="Infinity" style="-fx-background-radius: 6; -fx-border-color: #cccccc; -fx-border-radius: 6; -fx-font-family: 'Century Gothic';"/>
 
         <HBox spacing="10.0">
@@ -31,5 +30,10 @@
                 <Button text="Clear" onAction="#clearRemoveEntry" style="-fx-background-color: #f6933c; -fx-text-fill: white; -fx-background-radius: 5; -fx-font-family: 'Century Gothic Bold';"/>
             </children>
         </HBox>
+        <Label fx:id="removeEntryLabel" style="-fx-text-fill: RED">
+            <font>
+                <Font name="Century Gothic Bold" size="16.0"/>
+            </font>
+        </Label>
     </children>
 </VBox>

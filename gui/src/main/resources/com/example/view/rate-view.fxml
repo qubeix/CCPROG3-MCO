@@ -6,7 +6,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.geometry.Insets?>
 
-<VBox fx:id="rateEntryPanel" fx:controller="com.example.controller.MainMenuController" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" spacing="12.0" alignment="TOP_LEFT" style="-fx-background-color: rgba(255,255,255,0.6); -fx-background-radius: 10;"
+<VBox fx:id="rateEntryPanel" fx:controller="com.example.controller.RateController" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" spacing="12.0" alignment="TOP_LEFT" style="-fx-background-color: rgba(255,255,255,0.6); -fx-background-radius: 10;"
       AnchorPane.topAnchor="35.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
 
     <padding>
@@ -14,8 +14,7 @@
     </padding>
 
     <children>
-        <Label text="Rate Entry"
-               style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #224aa6;">
+        <Label text="Rate Entry" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #224aa6;">
             <font>
                 <Font name="Century Gothic Bold" size="16.0"/>
             </font>
@@ -25,7 +24,7 @@
 
         <ComboBox fx:id="rateEntryCombo" promptText="Select Entry" maxWidth="Infinity" style="-fx-background-radius: 6; -fx-border-color: #cccccc; -fx-border-radius: 6; -fx-font-family: 'Century Gothic';"/>
 
-        <NumberTextField fx:id="rating" promptText="Your Rating" maxWidth="Infinity" style="-fx-background-radius: 6; -fx-border-color: #cccccc; -fx-border-radius: 6; -fx-font-family: 'Century Gothic';"/>
+        <NumberTextField fx:id="inputRating" promptText="Your Rating" maxWidth="Infinity" style="-fx-background-radius: 6; -fx-border-color: #cccccc; -fx-border-radius: 6; -fx-font-family: 'Century Gothic';"/>
 
         <HBox spacing="10.0">
             <children>
@@ -33,5 +32,11 @@
                 <Button text="Clear" onAction="#clearRateEntry" style="-fx-background-color: #f6933c; -fx-text-fill: white; -fx-background-radius: 5; -fx-font-family: 'Century Gothic Bold';"/>
             </children>
         </HBox>
+
+        <Label fx:id="rateEntryMessage" style="-fx-text-fill: RED">
+            <font>
+                <Font name="Century Gothic Bold" size="12.0"/>
+            </font>
+        </Label>
     </children>
 </VBox>

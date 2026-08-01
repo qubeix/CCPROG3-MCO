@@ -5,14 +5,8 @@ import com.example.model.Library;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
-import javafx.scene.layout.VBox;
-
 
 public class RemoveEntryController {
-    
-    @FXML
-    private VBox removeEntryPanel;
 
     @FXML
     private ComboBox<String> removeTypeCombo;
@@ -23,99 +17,73 @@ public class RemoveEntryController {
     @FXML
     private Label removeEntryLabel;
 
-    @FXML
-    private TextArea outputArea;
-
     private Library library;
 
-    public void setLibrary(Library library){
+    public void setLibrary(Library library) {
         this.library = library;
     }
 
     @FXML
-    private void initialize(){
-        removeTypeCombo.getItems().setAll("Book", "Album", S"eries");
+    private void initialize() {
+        removeTypeCombo.getItems().setAll("Book", "Album", "Series");
         removeEntryLabel.setVisible(false);
     }
 
     @FXML
-    private void handleRemoveEntry(){
-        removeTypeCombo.setValue(null);
-        removeEntryCombo.getItems().clear();
-
-        hideAllPanels();
-        removeEntryPanel.setVisible(true);
-        removeEntryPanel.setManaged(true);
-    }
-
-    @FXML
-    private void onRemoveTypeSelected(){
+    private void onRemoveTypeSelected() {
         String type = removeTypeCombo.getValue();
         removeEntryCombo.getItems().clear();
 
-        if ("Book".equals(type)) {
-            
-            for (int i = 0; i < library.getBookCount(); i++) {
-                removeEntryCombo.getItems().add((i + 1) + ". " + library.getBookEntry(i).getTitle());
-            }
-        } 
-        else if ("Album".equals(type)) {
-            
-            for (int i = 0; i < library.getAlbumCount(); i++) {
-                removeEntryCombo.getItems().add((i + 1) + ". " + library.getAlbumEntry(i).getTitle());
-            }
-        } 
-        else if ("Series".equals(type)) {
-            
-            for (int i = 0; i < library.getSeriesCount(); i++) {
-                removeEntryCombo.getItems().add((i + 1) + ". " + library.getSeriesEntry(i).getTitle());
-            }
+        switch (type) {
+            case "Book":
+                for (int i = 0; i < library.getBookCount(); i++) {
+                    removeEntryCombo.getItems().add((i + 1) + ". " + library.getBookEntry(i).getTitle());
+                }
+                break;
+            case "Album":
+                for (int i = 0; i < library.getAlbumCount(); i++) {
+                    removeEntryCombo.getItems().add((i + 1) + ". " + library.getAlbumEntry(i).getTitle());
+                }
+                break;
+            case "Series":
+                for (int i = 0; i < library.getSeriesCount(); i++) {
+                    removeEntryCombo.getItems().add((i + 1) + ". " + library.getSeriesEntry(i).getTitle());
+                }
         }
     }
 
     @FXML
-    private void confrimRemoveEntry(){
+    private void confirmRemoveEntry() {
         String type = removeTypeCombo.getValue();
         String selected = removeEntryCombo.getValue();
 
-        if(type != null && selected !=null){
-
+        if (type != null && selected != null) {
             int index = Integer.parseInt(selected.split("\\.")[0]) - 1;
-            String removedEntry = "";
 
-            switch(type){
-                case "Book":{
-                    removedEntry = library.removeBookAt(index);
-                    break;
-                }
-
-                case "Album": {
-                    removedEntry = library.removeAlbumAt(index);
-                    break;
-                }
-
-                case "Series": {
-                    removedEntry = library.removeSeriesAt(index);
-                    break;
-                }
+            if ("Book".equals(type)) {
+                library.removeBookAt(index);
+            } else if ("Album".equals(type)) {
+                library.removeAlbumAt(index);
+            } else if ("Series".equals(type)) {
+                library.removeSeriesAt(index);
             }
-            removeEntryLabel.setVisible(false);
-            outputArea.setVisible(true);
-            outputArea.setManaged(true);
-            //outputArea.setText(entry + " has been sucessfully removed");        //have it dispaly the name title and author of what ever entry is being removed
-            outputArea.setText(removedEntry + "Entry has been removed");
 
-            clearRemoveEntry(); 
+            removeEntryLabel.setStyle("-fx-text-fill: GREEN");
+            removeEntryLabel.setText("Entry removed.");
+            removeEntryLabel.setVisible(true);
+
+            clearRemoveEntry();
+        } else {
+            removeEntryLabel.setStyle("-fx-text-fill: RED");
+            removeEntryLabel.setText("Please select both a type and an entry to remove.");
+            removeEntryLabel.setVisible(true);
         }
     }
 
     @FXML
-    private void clearRemoveEntry(){
-        removeEntryPanel.setVisible(false);
-        removeEntryPanel.setManaged(false);
-
+    private void clearRemoveEntry() {
         removeTypeCombo.setValue(null);
-        removeTypeCombo.getItems().clear();
+        removeEntryCombo.getItems().clear();
     }
 
 }

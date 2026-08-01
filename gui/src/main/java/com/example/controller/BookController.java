@@ -16,7 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextArea;
 
-public class BookController{
+public class BookController {
 
     // @FXML
     // private VBox addBookPanel;
@@ -57,7 +57,7 @@ public class BookController{
     private User currentUser;
     private Library library;
 
-    public void setLibrary(Library library){
+    public void setLibrary(Library library) {
         this.library = library;
     }
 
@@ -72,14 +72,14 @@ public class BookController{
             bookErrorLabel.setStyle("-fx-text-fil: RED");
             bookErrorLabel.setText("Please fill in all fields before submitting");
             bookErrorLabel.setVisible(true);
-            
-        }
-        else{
+
+        } else {
             try {
                 int chapterCount = Integer.parseInt(chapterText);
-                if (chapterCount <= 0) throw new NumberFormatException();
+                if (chapterCount <= 0)
+                    throw new NumberFormatException();
 
-                //library.addBookInput(title, author, selectedGenre.getText(), chapterCount);
+                // library.addBookInput(title, author, selectedGenre.getText(), chapterCount);
                 Book newBook = library.addBookInput(title, author, selectedGenre.getText(), chapterCount);
 
                 bookErrorLabel.setStyle("=fx-text-fill: GREEN");
@@ -88,7 +88,8 @@ public class BookController{
 
                 // outputArea.setVisible(true);
                 // outputArea.setManaged(true);
-                // outputArea.setText("\"" + title + "\" by " + author + " added to your Book Library.");
+                // outputArea.setText("\"" + title + "\" by " + author + " added to your Book
+                // Library.");
             } catch (NumberFormatException e) {
                 bookErrorLabel.setStyle("-fx-text-fill: RED");
                 bookErrorLabel.setText("Please enter a valid positive number for chapters.");
@@ -103,6 +104,5 @@ public class BookController{
         bookAuthorField.clear();
         bookGenreGroup.selectToggle(null);
         bookChapter.clear();
-        bookErrorLabel.setVisible(false);
     }
 }

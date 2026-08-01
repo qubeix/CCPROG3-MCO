@@ -6,6 +6,7 @@ import com.example.MediaVault;
 import com.example.model.Library;
 import com.example.model.NumberTextField;
 import com.example.model.User;
+import com.example.controller.*;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -29,164 +30,56 @@ import javafx.scene.paint.Color;
 
 public class MainMenuController {
 
-    @FXML 
+    @FXML
     private Label welcomeLabel;
 
-    @FXML 
+    @FXML
     private VBox sidebarBox;
 
-    @FXML 
+    @FXML
     private ScrollPane sidebarScroll;
 
-    @FXML 
+    @FXML
     private AnchorPane centerPane;
 
-    @FXML 
+    @FXML
     private TextArea outputArea;
 
-    @FXML 
+    @FXML
     private Button homeButton;
 
-    @FXML 
+    @FXML
     private Button addBookButton;
 
-    @FXML 
+    @FXML
     private Button addAlbumButton;
 
-    @FXML 
+    @FXML
     private Button addSeriesButton;
 
-    @FXML 
+    @FXML
     private Button removeEntryButton;
 
-    @FXML 
+    @FXML
     private Button rateReviewEntry;
 
-    @FXML 
+    @FXML
     private Button rateEntryButton1;
 
-    @FXML 
+    @FXML
     private Button updateProgressButton;
 
-    @FXML 
+    @FXML
     private Button viewAllButton;
 
-    @FXML 
+    @FXML
     private Button viewSummaryButton;
-    
-    @FXML 
+
+    @FXML
     private Button settingsButton;
 
-    @FXML 
+    @FXML
     private Button logoutButton;
-
-    @FXML
-    private VBox removeEntryPanel;
-
-    @FXML
-    private ComboBox<String> removeTypeCombo;
-
-    @FXML
-    private ComboBox<String> removeEntryCombo;
-
-    //book
-    // @FXML
-    // private VBox addBookPanel;
-
-    // @FXML 
-    // private TextField bookTitleField;
-    
-    // @FXML 
-    // private TextField bookAuthorField;
-    
-    // @FXML 
-    // private ToggleGroup bookGenreGroup;
-
-    // @FXML
-    // private RadioButton romanceButton;
-
-    // @FXML
-    // private RadioButton mysteryButton;
-
-    // @FXML
-    // private RadioButton fantasyButton;
-
-    // @FXML
-    // private RadioButton nonfictionButton;
-
-    // @FXML
-    // private RadioButton selfhelpButton;
-
-    // @FXML
-    // private NumberTextField bookChapter;
-
-    // @FXML 
-    // private Label bookErrorLabel;
-
-    //album
-    // @FXML
-    // private VBox addAlbumPanel;
-
-    // @FXML 
-    // private TextField albumTitleField;
-    
-    // @FXML 
-    // private TextField albumArtistField;
-    
-    // @FXML 
-    // private ToggleGroup albumGenreGroup;
-
-    // @FXML
-    // private RadioButton popButton;
-
-    // @FXML
-    // private RadioButton hipHopButton;
-
-    // @FXML
-    // private RadioButton rockButton;
-
-    // @FXML
-    // private RadioButton jazzButton;
-
-    // @FXML
-    // private RadioButton emdButton;
-
-    // @FXML
-    // private NumberTextField albumTracks;
-
-    // @FXML 
-    // private Label albumErrorLabel;
-
-    //series
-    // @FXML
-    // private VBox addSeriesPanel;
-    
-    // @FXML 
-    // private TextField albumArtistField;
-    
-    // @FXML 
-    // private ToggleGroup seriesGenreGroup;
-
-    // @FXML
-    // private RadioButton popButton;
-
-    // @FXML
-    // private RadioButton hipHopButton;
-
-    // @FXML
-    // private RadioButton rockButton;
-
-    // @FXML
-    // private RadioButton jazzButton;
-
-    // @FXML
-    // private RadioButton emdButton;
-
-    // @FXML
-    // private NumberTextField albumTracks;
-
-    // @FXML 
-    // private Label albumErrorLabel;
 
     private User currentUser;
     private Library library;
@@ -207,10 +100,10 @@ public class MainMenuController {
 
     private void applyPanelBackgrounds() {
         sidebarBox.setBackground(new Background(
-            new BackgroundFill(Color.rgb(255, 255, 255, 0.35), CornerRadii.EMPTY, Insets.EMPTY)));
+                new BackgroundFill(Color.rgb(255, 255, 255, 0.35), CornerRadii.EMPTY, Insets.EMPTY)));
 
         centerPane.setBackground(new Background(
-            new BackgroundFill(Color.rgb(255, 255, 255, 0.55), CornerRadii.EMPTY, Insets.EMPTY)));
+                new BackgroundFill(Color.rgb(255, 255, 255, 0.55), CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
     private void stylizeScrollbar() {
@@ -225,37 +118,14 @@ public class MainMenuController {
             if (thumb != null) {
                 thumb.setStyle("-fx-background-color: rgba(0,0,0,0.3); -fx-background-radius: 4;");
             }
-            for (String selector : new String[]{".increment-button", ".decrement-button",
-                                                 ".increment-arrow", ".decrement-arrow"}) {
+            for (String selector : new String[] { ".increment-button", ".decrement-button",
+                    ".increment-arrow", ".decrement-arrow" }) {
                 Node n = sidebarScroll.lookup(selector);
                 if (n != null) {
                     n.setStyle("-fx-background-color: transparent; -fx-padding: 0;");
                 }
             }
         });
-    }
-
-    private void hideAllPanels(){       //this allows for the panels to hide after being clicked to avoid overlapping
-        outputArea.setVisible(false);
-        outputArea.setManaged(false);
-
-        //book
-        addBookPanel.setVisible(false);
-        addBookPanel.setManaged(false);
-
-
-        //album
-        addAlbumPanel.setVisible(false);
-        addAlbumPanel.setManaged(false);
-
-        //series
-        // addSeriesPanel.setVisible(false);
-        // addSeriesPanel.setManaged(false);
-
-
-        //remove 
-        removeEntryPanel.setVisible(false);
-        removeEntryPanel.setManaged(false);
     }
 
     @FXML
@@ -265,15 +135,10 @@ public class MainMenuController {
         outputArea.setManaged(true);
     }
 
-/*==========================================================================================================
-                                        B O O K
-===========================================================================================================*/
+    // BOOK
     @FXML
-    private void handleAddBook(){
+    private void handleAddBook() {
         try {
-            //Parent bookPane = MediaVault.loadFXML("book-view");
-
-            //FXMLLoader loader = new FXMLLoader(MediaVault.class.getResource("/com/example/view/book-panel.fxml"));
             FXMLLoader loader = new FXMLLoader(MediaVault.class.getResource("/com/example/view/book-view.fxml"));
             Parent bookPaneWithController = loader.load();
             BookController bookController = loader.getController();
@@ -284,11 +149,10 @@ public class MainMenuController {
             e.printStackTrace();
         }
     }
-/*==========================================================================================================
-                                        A L B U M 
-===========================================================================================================*/
+
+    // ALBUM
     @FXML
-    private void handleAddAlbum(){
+    private void handleAddAlbum() {
         try {
             FXMLLoader loader = new FXMLLoader(MediaVault.class.getResource("/com/example/view/album-view.fxml"));
             Parent albumPaneWithController = loader.load();
@@ -302,160 +166,121 @@ public class MainMenuController {
         }
     }
 
-/*==========================================================================================================
-                                        S E R I E S
-===========================================================================================================*/
-
+    // SERIES
     @FXML
     private void handleAddSeries() {
         // fill in
     }
 
     @FXML
-    private void continueAddSeries(){
+    private void continueAddSeries() {
 
     }
 
-/*==========================================================================================================
-                            R E M O V E  E N T R I E S
-===========================================================================================================*/
-
+    // REMOVE
     @FXML
     private void handleRemoveEntry() {
-        removeTypeCombo.getItems().setAll("Book", "Album", "Series");
-        removeTypeCombo.setValue(null);
-        removeEntryCombo.getItems().clear();
-        
-        // outputArea.setVisible(false);
-        // outputArea.setManaged(false);
-        hideAllPanels();
-        removeEntryPanel.setVisible(true);
-        removeEntryPanel.setManaged(true);
-    }
-
-    @FXML
-    private void onRemoveTypeSelected(){
-        String type = removeTypeCombo.getValue();
-        removeEntryCombo.getItems().clear();
-
-        if ("Book".equals(type)) {
-            for (int i = 0; i < library.getBookCount(); i++) {
-                removeEntryCombo.getItems().add((i + 1) + ". " + library.getBookEntry(i).getTitle());
-            }
-        } 
-        else if ("Album".equals(type)) {
-            for (int i = 0; i < library.getAlbumCount(); i++) {
-                removeEntryCombo.getItems().add((i + 1) + ". " + library.getAlbumEntry(i).getTitle());
-            }
-        } 
-        else if ("Series".equals(type)) {
-            for (int i = 0; i < library.getSeriesCount(); i++) {
-                removeEntryCombo.getItems().add((i + 1) + ". " + library.getSeriesEntry(i).getTitle());
-            }
-        }
-    }
-
-    @FXML
-    private void confirmRemoveEntry() {
-        String type = removeTypeCombo.getValue();
-        String selected = removeEntryCombo.getValue();
-
-        if (type == null || selected == null) {
-            outputArea.setText("Please select both a type and an entry to remove.");
-        }
-
-        int index = Integer.parseInt(selected.split("\\.")[0]) - 1;
-
-        if ("Book".equals(type)) {
-            library.removeBookAt(index);
-        } 
-        else if ("Album".equals(type)) {
-            library.removeAlbumAt(index);
-        } 
-        else if ("Series".equals(type)) {
-            library.removeSeriesAt(index);
-        }
-
-        outputArea.setText("Entry removed.");
-        clearRemoveEntry();
-    }
-
-    @FXML
-    private void clearRemoveEntry() {
-        removeEntryPanel.setVisible(false);
-        removeEntryPanel.setManaged(false);
-
-        outputArea.setVisible(true);
-        outputArea.setManaged(true);
-    }
-
-/*==========================================================================================================
-                            R A T E  E N T R I E S 
-===========================================================================================================*/
-
-    @FXML
-    private void handleRateEntry() {
         try {
-            FXMLLoader loader = new FXMLLoader(MediaVault.class.getResource("/com/example/view/rate-view.fxml"));
-            Parent ratePaneWithController = loader.load();
-            // RateController rateController = loader.getController();
-            // RateController.setLibrary(library);
+            FXMLLoader loader = new FXMLLoader(MediaVault.class.getResource("/com/example/view/removeEntry-view.fxml"));
+            Parent removePaneWithController = loader.load();
+            RemoveEntryController entryController = loader.getController();
+            entryController.setLibrary(library);
 
-            // centerPane.getChildren().setAll(ratePaneWithController);
+            centerPane.getChildren().setAll(removePaneWithController);
+
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-/*==========================================================================================================
-                        R E V I E W  E N T R I E S
-===========================================================================================================*/
+    // RATE
+    @FXML
+    private void handleRateEntry() {
+        try {
+            FXMLLoader loader = new FXMLLoader(MediaVault.class.getResource("/com/example/view/rate-view.fxml"));
+            Parent ratePaneWithController = loader.load();
+            RateController rateController = loader.getController();
+            rateController.setLibrary(library);
 
+            centerPane.getChildren().setAll(ratePaneWithController);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // REVIEW
     @FXML
     private void handleReviewEntry() {
-        // fill in
+        try {
+            FXMLLoader loader = new FXMLLoader(MediaVault.class.getResource("/com/example/view/review-view.fxml"));
+            Parent reviewPaneWithController = loader.load();
+            ReviewEntryController controller = loader.getController();
+            controller.setLibrary(library);
+
+            centerPane.getChildren().setAll(reviewPaneWithController);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
-/*==========================================================================================================
-                U P D A T E  P R O G R E S S
-===========================================================================================================*/
-
+    // UPDATE PROGRESS
     @FXML
     private void handleUpdateProgress() {
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    MediaVault.class.getResource("/com/example/view/updateProgress-view.fxml"));
+            Parent updatePaneWithController = loader.load();
+            UpdateProgressController updateController = loader.getController();
+            updateController.setLibrary(library);
+
+            centerPane.getChildren().setAll(updatePaneWithController);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // VIEW ALL
+    @FXML
+    private void handleViewAll() {
+        try {
+            FXMLLoader loader = new FXMLLoader(MediaVault.class.getResource("/com/example/view/viewAll-view.fxml"));
+            Parent viewAllPaneWithController = loader.load();
+            ViewAllController viewAllController = loader.getController();
+            viewAllController.setLibrary(library);
+
+            centerPane.getChildren().setAll(viewAllPaneWithController);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // SUMMARY
+    @FXML
+    private void handleViewSummary() {
+        try {
+            FXMLLoader loader = new FXMLLoader(MediaVault.class.getResource("/com/example/view/summary-view.fxml"));
+            Parent summaryPaneWithController = loader.load();
+            SummaryController summaryController = loader.getController();
+            summaryController.setLibrary(library);
+
+            centerPane.getChildren().setAll(summaryPaneWithController);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    // SETTING
+    @FXML
+    private void handleSettings() throws IOException {
         // fill in
     }
 
-/*==========================================================================================================
-                    V I E W  A L L
-===========================================================================================================*/
-
-    @FXML
-    private void handleViewAll() throws IOException {
-        outputArea.setText(library.getAllEntriesText());
-    }
-
-/*==========================================================================================================
-                        S U M M A R Y
-===========================================================================================================*/
-
-    @FXML
-    private void handleViewSummary() throws IOException {
-        outputArea.setText(library.getSummaryText());
-    }
-
-/*==========================================================================================================
-                        S E T T I N G S
-===========================================================================================================*/
-
-    @FXML
-    private void handleSettings() throws IOException{
-        //fill in 
-    }
-
-/*==========================================================================================================
-                        L O G O U T
-===========================================================================================================*/
-
+    // LOGOUT
+    /**
+     * Handles the logout action returning the view to the MediaVault login screen
+     * 
+     * @throws IOException if the FXML resource for the login view cannot be loaded
+     */
     @FXML
     private void handleLogout() throws IOException {
         MediaVault.setRoot("mediavault-view");
