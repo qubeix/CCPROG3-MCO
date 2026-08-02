@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import com.example.MediaVault;
 import com.example.model.Library;
-import com.example.model.NumberTextField;
+// import com.example.model.NumberTextField;
 import com.example.model.User;
 import com.example.controller.*;
 
@@ -14,13 +14,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
+// import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
+// import javafx.scene.control.RadioButton;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+// import javafx.scene.control.TextField;
+// import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -96,6 +96,10 @@ public class MainMenuController {
 
         applyPanelBackgrounds();
         stylizeScrollbar();
+
+        if(library != null){
+            returnHome();
+        }
     }
 
     private void applyPanelBackgrounds() {
@@ -130,9 +134,20 @@ public class MainMenuController {
 
     @FXML
     private void returnHome() {
-        centerPane.getChildren().setAll(outputArea);
-        outputArea.setVisible(true);
-        outputArea.setManaged(true);
+        try {
+            FXMLLoader loader = new FXMLLoader(MediaVault.class.getResource("/com/example/view/home-view.fxml"));
+            Parent homePaneWithController = loader.load();
+            HomeController homeController = loader.getController();
+            homeController.setLibrary(library);
+
+            centerPane.getChildren().setAll(homePaneWithController);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // centerPane.getChildren().setAll(outputArea);
+        // outputArea.setVisible(true);
+        // outputArea.setManaged(true);
     }
 
     // BOOK
@@ -172,10 +187,10 @@ public class MainMenuController {
         // fill in
     }
 
-    @FXML
-    private void continueAddSeries() {
+    // @FXML
+    // private void continueAddSeries() {
 
-    }
+    // }
 
     // REMOVE
     @FXML
@@ -271,8 +286,17 @@ public class MainMenuController {
 
     // SETTING
     @FXML
-    private void handleSettings() throws IOException {
-        // fill in
+    private void handleSettings(){
+        try {
+            FXMLLoader loader = new FXMLLoader(MediaVault.class.getResource("/com/example/view/settings-view.fxml"));
+            Parent settingsPaneWithController = loader.load();
+            SettingsController settingsController = loader.getController();
+            settingsController.setCurrentUser(currentUser);
+
+            centerPane.getChildren().setAll(settingsPaneWithController);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     // LOGOUT

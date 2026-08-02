@@ -49,19 +49,27 @@ public class ReviewEntryController {
             switch (type) {
                 case "Book":
                     for (int i = 0; i < library.getBookCount(); i++) {
-                        reviewEntryCombo.getItems().add((i + 1) + ". " + library.getBookEntry(i).getTitle());
+                        if("Completed".equalsIgnoreCase(library.getBookEntry(i).getStatus())){
+                            reviewEntryCombo.getItems().add((i + 1) + ". " + library.getBookEntry(i).getTitle());
+                        }
                     }
                     break;
 
                 case "Album":
                     for (int i = 0; i < library.getAlbumCount(); i++) {
-                        reviewEntryCombo.getItems().add((i + 1) + ". " + library.getAlbumEntry(i).getTitle());
+                        if("Completed".equalsIgnoreCase(library.getAlbumEntry(i).getStatus())){
+                            reviewEntryCombo.getItems().add((i + 1) + ". " + library.getAlbumEntry(i).getTitle());
+                        }
+            
                     }
                     break;
 
                 case "Series":
                     for (int i = 0; i < library.getSeriesCount(); i++) {
-                        reviewEntryCombo.getItems().add((i + 1) + ". " + library.getSeriesEntry(i).getTitle());
+                        if("Completed".equalsIgnoreCase(library.getSeriesEntry(i).getStatus())){
+                            reviewEntryCombo.getItems().add((i + 1) + ". " + library.getSeriesEntry(i).getTitle());
+                        }
+                        
                     }
             }
         }

@@ -6,7 +6,6 @@ import com.example.model.NumberTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-// import javafx.scene.control.TextArea;
 import javafx.scene.layout.VBox;
 
 public class RateController {
@@ -50,19 +49,25 @@ public class RateController {
             switch (type) {
                 case "Book":
                     for (int i = 0; i < library.getBookCount(); i++) {
-                        rateEntryCombo.getItems().add((i + 1) + ". " + library.getBookEntry(i).getTitle());
+                        if("Completed".equalsIgnoreCase(library.getBookEntry(i).getStatus())){
+                            rateEntryCombo.getItems().add((i + 1) + ". " + library.getBookEntry(i).getTitle());
+                        }
                     }
                     break;
 
                 case "Album":
                     for (int i = 0; i < library.getAlbumCount(); i++) {
-                        rateEntryCombo.getItems().add((i + 1) + ". " + library.getAlbumEntry(i).getTitle());
+                        if("Completed".equalsIgnoreCase(library.getBookEntry(i).getStatus())){
+                            rateEntryCombo.getItems().add((i + 1) + ". " + library.getAlbumEntry(i).getTitle());
+                        }
                     }
                     break;
 
                 case "Series":
                     for (int i = 0; i < library.getSeriesCount(); i++) {
-                        rateEntryCombo.getItems().add((i + 1) + ". " + library.getSeriesEntry(i).getTitle());
+                        if("Completed".equalsIgnoreCase(library.getBookEntry(i).getStatus())){
+                            rateEntryCombo.getItems().add((i + 1) + ". " + library.getSeriesEntry(i).getTitle());
+                        }
                     }
             }
         }

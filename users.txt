@@ -5,3 +5,5 @@ mango|mangosteen|123
 123|456|123
 1|1|1
 2|2|2
+banana|ban|1
+help|helpme|save

@@ -112,6 +112,7 @@ public class CreateAccountController {
         else{
             User newUser = new User(username, password, name);
             MediaVaultController.addUser(newUser);
+            MediaVaultController.setCurrentUser(newUser);
             MediaVault.setRoot("main-menu-view");
         }
     }

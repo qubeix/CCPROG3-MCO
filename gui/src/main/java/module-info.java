@@ -2,7 +2,8 @@ module com.example {
     requires javafx.controls;
     requires javafx.fxml;
 
-    requires transitive javafx.graphics;
+    //requires transitive javafx.graphics;
+    requires javafx.graphics;
 
     opens com.example.controller to javafx.fxml;
 

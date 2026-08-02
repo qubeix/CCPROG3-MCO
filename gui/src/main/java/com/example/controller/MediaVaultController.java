@@ -60,4 +60,21 @@ public class MediaVaultController {
         currentUser = user;
     }
 
+    public static void removeUser(String username){
+        int indexToRemove = -1;
+        for (int i = 0; i < userCount && indexToRemove == -1; i++) {
+            if (users[i].getUsername().equals(username)) {
+                indexToRemove = i;
+            }
+        }
+
+        if (indexToRemove != -1) {
+            for (int i = indexToRemove; i < userCount - 1; i++) {
+                users[i] = users[i + 1];
+            }
+            users[userCount - 1] = null;
+            userCount--;
+        }
+    }
+
 }

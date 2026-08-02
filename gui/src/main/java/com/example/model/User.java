@@ -517,4 +517,12 @@ public class User
 	{
 		return library;
 	}
+
+	public void setUsername(String username){
+		this.username = name;
+	}
+
+	public void setName(String name){
+		this.name = name;
+	}
 }

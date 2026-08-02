@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+
+<AnchorPane fx:id="settingsPanel" fx:controller="com.example.controller.SettingsController"
+      xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1"
+      AnchorPane.topAnchor="35.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
+
+    <children>
+        <ScrollPane fitToWidth="true" hbarPolicy="NEVER" style="-fx-background-color: transparent;"
+                    AnchorPane.topAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.bottomAnchor="0.0">
+            <content>
+                <VBox spacing="12.0" alignment="TOP_LEFT" style="-fx-background-color: rgba(255,255,255,0.6); -fx-background-radius: 10;">
+                    <padding>
+                        <Insets top="20" left="25" right="25" bottom="20"/>
+                    </padding>
+
+                    <children>
+                        <Label text="Settings" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #224aa6;">
+                            <font><Font name="Century Gothic Bold" size="16.0"/></font>
+                        </Label>
+
+                        <Separator/>
+
+                        <Label text="Change Name" style="-fx-font-weight: bold;"/>
+                        <TextField fx:id="newNameField" promptText="New Name"
+                                   style="-fx-background-radius: 6; -fx-border-color: #cccccc; -fx-border-radius: 6;"/>
+                        <Button text="Update Name" onAction="#confirmChangeName"
+                                style="-fx-background-color: #448afa; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                        <Label fx:id="nameMessage" style="-fx-text-fill: RED"/>
+
+                        <Separator/>
+
+                        <Label text="Change Username" style="-fx-font-weight: bold;"/>
+                        <TextField fx:id="newUsernameField" promptText="New Username"
+                                   style="-fx-background-radius: 6; -fx-border-color: #cccccc; -fx-border-radius: 6;"/>
+                        <Button text="Update Username" onAction="#confirmChangeUsername"
+                                style="-fx-background-color: #448afa; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                        <Label fx:id="usernameMessage" style="-fx-text-fill: RED"/>
+
+                        <Separator/>
+
+                        <Label text="Change Password" style="-fx-font-weight: bold;"/>
+                        <PasswordField fx:id="currentPasswordField" promptText="Current Password"
+                                       style="-fx-background-radius: 6; -fx-border-color: #cccccc; -fx-border-radius: 6;"/>
+                        <PasswordField fx:id="newPasswordField" promptText="New Password"
+                                       style="-fx-background-radius: 6; -fx-border-color: #cccccc; -fx-border-radius: 6;"/>
+                        <PasswordField fx:id="confirmNewPasswordField" promptText="Confirm New Password"
+                                       style="-fx-background-radius: 6; -fx-border-color: #cccccc; -fx-border-radius: 6;"/>
+                        <Button text="Update Password" onAction="#confirmChangePassword"
+                                style="-fx-background-color: #448afa; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                        <Label fx:id="passwordMessage" style="-fx-text-fill: RED"/>
+
+                        <Separator/>
+
+                        <Label text="Delete Account" style="-fx-font-weight: bold; -fx-text-fill: #d73333;"/>
+                        <PasswordField fx:id="deleteConfirmPasswordField" promptText="Enter your password to confirm"
+                                       style="-fx-background-radius: 6; -fx-border-color: #cccccc; -fx-border-radius: 6;"/>
+                        <Button text="Delete My Account" onAction="#confirmDeleteAccount"
+                                style="-fx-background-color: #d73333; -fx-text-fill: white; -fx-background-radius: 5;"/>
+                        <Label fx:id="deleteMessage" style="-fx-text-fill: RED"/>
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </children>
+</AnchorPane>
