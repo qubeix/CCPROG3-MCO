@@ -7,10 +7,14 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/**
+ * Utility class for managing user and library data files.
+ * Provides methods to read, write, and update user and library information.
+ */
 public class FileManager {
 
+    /** Path to the user data file. */
     private static final String USER_FILE = "./users.txt";
-    private static final String LIBRARY_FILE = "_library.txt";
 
     /**
      * returs the path or name of the user file

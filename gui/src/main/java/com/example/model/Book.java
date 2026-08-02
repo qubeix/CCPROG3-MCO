@@ -10,11 +10,22 @@ package com.example.model;
  * returning its information via String
  */
 
+ /**
+ * Represents a book entry in the media library.
+ * A book has a title, author, genre, and chapter count.
+ * It inherits methods from MediaEntry for assigning status, rating, and review,
+ * and adds functionality for tracking chapter progress.
+ */
 public class Book extends MediaEntry {
     // ATTRIBUTES
+    /** The author of the book. */
     private final String AUTHOR;
-    private final int CHAPTERCOUNT; // the number of chapters
-    private int currentChapter; // the user's current chapter
+
+    /** The total number of chapters in the book. */
+    private final int CHAPTERCOUNT;
+
+    /** The user's current chapter progress. */
+    private int currentChapter;
 
     // CONSTRUCTOR
     /**

@@ -1,28 +1,40 @@
 package com.example.controller;
 
 import java.io.IOException;
-import javafx.fxml.FXML;
+
 import com.example.MediaVault;
 import com.example.model.User;
-import com.example.controller.*;
 
-import javafx.scene.layout.VBox;
-import javafx.scene.control.*;
+import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 
+/**
+ * Controller class for handling user login in the GUI.
+ * Provides methods for toggling password visibility, verifying credentials,
+ * and navigating between views.
+ */
 public class LoginController {
 
+    /** Text field for entering the username. */
     @FXML
     private TextField usernameField;
 
+     /** Hidden password field for entering the account password. */
     @FXML
     private PasswordField passwordField;
 
+    /** Visible text field for showing the account password when toggled. */
     @FXML
     private TextField passwordVisibleField;
 
+    /** Checkbox to toggle visibility of the password field. */
     @FXML
     private CheckBox showPasswordCheckBox;
 
+    /** Label for displaying login error messages. */
     @FXML
     private Label errorLabel;
 
@@ -33,8 +45,6 @@ public class LoginController {
      * replaced with a visible text field showing the current password. When the
      * checkbox is deselected, the visible text field is hidden again and the
      * password is restored to a hidden field
-     * 
-     * @FXML This method is bound to the "Show Password" checkbox in the login form
      */
     @FXML
     private void togglePassword() {
@@ -61,7 +71,6 @@ public class LoginController {
      * 
      * @throws IOException if the FXML resource for the main menu view can not be
      *                     loaded
-     * @FXML This method is bound to the "Login" button in the login form
      */
     @FXML
     private void verifyLogin() throws IOException {
@@ -103,7 +112,6 @@ public class LoginController {
      * 
      * @throws IOException if the FXML resoruce for the MediaVault view can not be
      *                     loaded
-     * @FXML This method is bound to the "Back" button in the login form
      */
     @FXML
     private void goBack() throws IOException {

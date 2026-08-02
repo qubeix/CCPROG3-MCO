@@ -7,63 +7,85 @@ import com.example.model.FileManager;
 import com.example.model.User;
 
 import javafx.fxml.FXML;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
+/**
+ * Controller class for handling user account settings.
+ * Provides methods to update name, username, password, and delete accounts.
+ */
 public class SettingsController {
 
+    /** Path to the user data file. */
     private static final String USER_FILE = "./users.txt";
 
+    /** Text field for entering a new name. */
     @FXML
     private TextField newNameField;
 
+    /** Label for displaying success or error messages related to name changes. */
     @FXML
     private Label nameMessage;
 
+    /** Text field for entering a new username. */
     @FXML
     private TextField newUsernameField;
 
+    /** Label for displaying success or error messages related to username changes. */
     @FXML
     private Label usernameMessage;
 
+    /** Password field for entering the current password. */
     @FXML
     private PasswordField currentPasswordField;
 
+    /** Password field for entering a new password. */
     @FXML
     private PasswordField newPasswordField;
 
+    /** Password field for confirming the new password. */
     @FXML
     private PasswordField confirmNewPasswordField;
 
+    /** Label for displaying success or error messages related to password changes. */
     @FXML
     private Label passwordMessage;
 
+    /** Password field for confirming account deletion. */
     @FXML
     private PasswordField deleteConfirmPasswordField;
 
+    /** Visible text field for showing the current password when toggled. */
     @FXML
     private TextField currentPasswordVisibleField;
 
+    /** Visible text field for showing the new password when toggled. */
     @FXML
     private TextField newPasswordVisibleField;
 
+    /** Visible text field for showing the confirmation password when toggled. */
     @FXML
     private TextField confirmNewPasswordVisibleField;
 
+    /** Checkbox to toggle visibility of the current password field. */
     @FXML
     private CheckBox showCurrentPasswordCheckBox;
 
+    /** Checkbox to toggle visibility of the new password field. */
     @FXML
     private CheckBox showNewPasswordCheckBox;
 
+    /** Checkbox to toggle visibility of the confirm new password field. */
     @FXML
     private CheckBox showConfirmNewPasswordCheckBox;
 
+    /** Label for displaying success or error messages related to account deletion. */
     @FXML
     private Label deleteMessage;
 
+    /** Reference to the currently logged-in user. */
     private User currentUser;
 
     /**
@@ -86,9 +108,6 @@ public class SettingsController {
      * If the name is empty, it displays an error message. If valid,
      * it updates the currentUser's name, persists the changes, shows
      * a success message, and clears the input field.
-     *
-     * @FXML This method is triggered when the user clicks the
-     *       confirm button for changing their name.
      */
     @FXML
     private void confirmChangeName() {
@@ -116,9 +135,6 @@ public class SettingsController {
      * by another user. If available, updates the currentUser's username, persists
      * the changes, shows a success message, and clears the input field. If taken,
      * displays an error message instead.
-     *
-     * @FXML This method is triggered when the user clicks the
-     *       confirm button for changing their username.
      */
     @FXML
     private void confirmChangeUsername() {
@@ -162,9 +178,6 @@ public class SettingsController {
      * behind a hidden field, depending on the state of the
      * showCurrentPasswordCheckBox. Ensures that the entered password
      * remains synchronized between the visible and hidden fields.
-     *
-     * @FXML This method is triggered when the user checks or unchecks
-     *       the "Show Password" option for the current password.
      */
     @FXML
     private void toggleShowCurrentPassword() {
@@ -190,9 +203,6 @@ public class SettingsController {
      * hiding it behind a hidden field, depending on the state of the
      * showNewPasswordCheckBox. Ensures that the entered password
      * remains synchronized between the visible and hidden fields.
-     *
-     * @FXML This method is triggered when the user checks or unchecks
-     *       the "Show Password" option for the new password.
      */
     @FXML
     private void toggleShowNewPassword() {
@@ -218,9 +228,6 @@ public class SettingsController {
      * and hiding it behind a hidden field, depending on the state of the
      * showConfirmNewPasswordCheckBox. Ensures that the entered password
      * remains synchronized between the visible and hidden fields.
-     *
-     * @FXML This method is triggered when the user checks or unchecks
-     *       the "Show Password" option for the confirm new password field.
      */
     @FXML
     private void toggleShowConfirmNewPassword() {
@@ -251,9 +258,6 @@ public class SettingsController {
      * the user's password, persists the changes, shows a success
      * message, and clears all password fields. If validation fails,
      * displays an appropriate error message.
-     *
-     * @FXML This method is triggered when the user clicks the
-     *       confirm button for changing their password.
      */
     @FXML
     private void confirmChangePassword() {
@@ -310,9 +314,6 @@ public class SettingsController {
      * rewrites the user file to persist changes, clears the current user,
      * and redirects to the MediaVault main view. If an I/O error occurs
      * during deletion, displays an error message instead.
-     *
-     * @FXML This method is triggered when the user clicks the
-     *       confirm button for deleting their account.
      */
     @FXML
     private void confirmDeleteAccount() {

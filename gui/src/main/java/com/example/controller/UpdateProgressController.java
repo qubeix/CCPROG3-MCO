@@ -5,19 +5,26 @@ import com.example.model.Library;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 
+/**
+ * Controller class for updating progress of library entries.
+ * Provides methods to select entries and mark their progress.
+ */
 public class UpdateProgressController {
 
+    /** Combo box for selecting the type of entry to update (Book, Album, Series). */
     @FXML
     private ComboBox<String> updateTypeCombo;
 
+    /** Combo box for selecting a specific entry of the chosen type. */
     @FXML
     private ComboBox<String> updateEntryCombo;
 
+    /** Label for displaying success or error messages related to progress updates. */
     @FXML
     private Label updateEntryMessage;
 
+    /** Reference to the user's library. */
     private Library library;
 
     /**
@@ -37,9 +44,6 @@ public class UpdateProgressController {
      * ("Book", "Album", "Series") and hides the updateEntryMessage
      * label. Ensures the form is ready for user interaction
      * when the view is first loaded.
-     *
-     * @FXML This method is automatically called when the
-     *       corresponding FXML view is initialized.
      */
     @FXML
     private void initialize() {
@@ -55,9 +59,6 @@ public class UpdateProgressController {
      * series),
      * found in the library then adds their titles to the combo box with an
      * index prefix. If no type is selected, the list remains empty.
-     *
-     * @FXML This method is triggered when the user selects an
-     *       update type from the combo box.
      */
     @FXML
     private void onUpdateTypeSelected() {
@@ -96,9 +97,6 @@ public class UpdateProgressController {
      * entry's updateProgress method and displays a success message with
      * the updated entry details. If no type or entry is selected, shows
      * an error message instead.
-     *
-     * @FXML This method is triggered when the user clicks the
-     *       confirm button to update a library entry.
      */
     @FXML
     private void confirmUpdateEntry() {
@@ -154,9 +152,6 @@ public class UpdateProgressController {
      * 
      * Resets the updateTypeCombo and updateEntryCombo selections
      * to null and hides the updateEntryMessage label.
-     *
-     * @FXML This method is triggered when the user clicks the
-     *       clear button in the update entry view.
      */
     @FXML
     private void clearUpdateEntry() {

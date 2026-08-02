@@ -1,13 +1,26 @@
 package com.example.controller;
 
-import com.example.model.User;
 import java.io.IOException;
-import com.example.model.FileManager;
 
+import com.example.model.FileManager;
+import com.example.model.User;
+
+/**
+ * Controller class for managing user accounts in the application.
+ * Provides methods to add, retrieve, update, and remove users,
+ * as well as track the currently logged-in user.
+ */
 public class UserController {
+    /** Path to the user data file. */
     private static final String USER_FILE = "./users.txt";
+
+    /** Array storing all registered users. */
     private static User[] users = new User[100];
+
+    /** Counter tracking the number of registered users. */
     private static int userCount = 0;
+
+    /** Reference to the currently logged-in user. */
     private static User currentUser = null;
 
     /**
@@ -35,12 +48,9 @@ public class UserController {
     }
 
     /**
-     * updates the total number of registered users.
-     * 
-     * Returns the static userCount value to the specified count, which represents
-     * how many User object are currently stored in the application
-     * 
-     * @return count the new total number of users
+     * Updates the total number of registered users.
+     *
+     * @param count the new total number of users
      */
     public static void setUserCount(int count) {
         userCount = count;

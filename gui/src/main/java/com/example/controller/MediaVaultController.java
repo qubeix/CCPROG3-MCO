@@ -1,19 +1,17 @@
 package com.example.controller;
 
 import java.io.IOException;
-import javafx.fxml.FXML;
+
 import com.example.MediaVault;
-import com.example.model.*;
 
 import javafx.application.Platform;
+import javafx.fxml.FXML;
 
+/**
+ * Controller class for handling navigation in the MediaVault entry screen.
+ * Provides methods to switch between login, account creation, and closing the application.
+ */
 public class MediaVaultController {
-
-    private static final String USER_FILE = "./users.txt";
-
-    private static User[] users = new User[100];
-    private static int userCount = 0;
-    private static User currentUser = null;
 
     /**
      * Switches the application view to the login screen.
@@ -23,7 +21,6 @@ public class MediaVaultController {
      * authenticate or re-authenticate.
      * 
      * @throws IOException if the FXML resource for the login view cannot be loaded
-     * @FXML This method is bound to the UI element that triggers the login action.
      */
     @FXML
     private void switchToLogin() throws IOException {
@@ -39,8 +36,6 @@ public class MediaVaultController {
      * 
      * @throws IOException if the FXML resource for the create account view cannot
      *                     be loaded
-     * @FXML This method is bound to the UI element that triggers the create account
-     *       action.
      */
     @FXML
     private void switchToCreateAccount() throws IOException {
@@ -58,7 +53,6 @@ public class MediaVaultController {
      * @throws IOException IOException included for consistency with other
      *                     navigation methods, though no FXML loading occurs in this
      *                     case.
-     * @FXML This method is bound to the UI element that triggers the close action
      */
     @FXML
     private void close() throws IOException {

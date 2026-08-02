@@ -7,16 +7,31 @@ package com.example.model;
  * attributes, and accompanying methods and getters for adding, manipulating,
  * and returning such attributes
  */
-
 public abstract class MediaEntry {
   // ATTRIBUTES
-  protected final String TITLE;
-  protected final String GENRE;
-  protected String status;
-  protected int rating;
-  protected String review;
+  /** The title of the media entry. */
+    protected final String TITLE;
+
+    /** The genre of the media entry. */
+    protected final String GENRE;
+
+    /** The current status of the entry (Planned, In Progress, Completed). */
+    protected String status;
+
+    /** The rating assigned to the entry. */
+    protected int rating;
+
+    /** The review text for the entry. */
+    protected String review;
 
   // CONSTRUCTOR
+  /**
+   *  Constructs a new MediaEntry with the given title and genre.
+   * Initializes status to "Planned," rating to 0, and review to empty.
+   * 
+   * @param title the title of the media entry
+   * @param genre the genre of the media entry
+   * */
   public MediaEntry(String title, String genre) {
     TITLE = title;
     GENRE = genre;
@@ -57,8 +72,6 @@ public abstract class MediaEntry {
    * Assigns a rating to an entry
    * 
    * @param rating the number rating to be assigned
-   *               @pre. the entry must have a status of "Completed" to assign a
-   *               rating
    */
   public void addRating(int rating) {
     if (status.equalsIgnoreCase("Completed")) // If the entry's status is "Completed"
@@ -71,8 +84,6 @@ public abstract class MediaEntry {
    * Assigns a review to an entry
    * 
    * @param review the review to be assigned
-   *               @pre. the entry must have a status of "Completed" to assign a
-   *               review
    */
   public void addReview(String review) {
     if (status.equalsIgnoreCase("Completed")) { // If the entry's status is "Completed"

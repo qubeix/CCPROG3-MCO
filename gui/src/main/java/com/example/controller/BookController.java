@@ -5,30 +5,38 @@ import com.example.model.Library;
 import com.example.model.NumberTextField;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.VBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 
+/**
+ * Controller class for handling book-related input in the GUI.
+ * Provides methods to add books to the library and reset input fields.
+ */
 public class BookController {
 
+    /** Text field for entering the book title. */
     @FXML
     private TextField bookTitleField;
 
+    /** Text field for entering the book author. */
     @FXML
     private TextField bookAuthorField;
 
+     /** Toggle group for selecting the book genre. */
     @FXML
     private ToggleGroup bookGenreGroup;
 
+    /** Custom text field for entering the number of chapters (numeric only). */
     @FXML
     private NumberTextField bookChapter;
 
+    /** Label for displaying error or success messages. */
     @FXML
     private Label bookErrorLabel;
 
+    /** Reference to the user's library for storing books. */
     private Library library;
 
     /**
@@ -46,11 +54,6 @@ public class BookController {
      * if the fileds is empty or invalid it dispals an error message in red
      * if all iputs are valid, initializes a new object and add its to the library,
      * displaying a sucessfully added message in green
-     * 
-     * @param title         the title of the album entered by the user
-     * @param author        the author of the album entered by the user
-     * @param chapterText   the number of chapters in the book provided by the user
-     * @param selectedGenre the selected genre from teh toggle group
      */
     @FXML
     private void confirmAddBook() {

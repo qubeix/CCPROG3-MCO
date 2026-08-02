@@ -10,23 +10,33 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 
+/**
+ * Controller class for handling album-related input in the GUI.
+ * Provides methods to add albums to the library and reset input fields.
+ */
 public class AlbumController {
 
+     /**Text field for entering the album title. */
     @FXML
     private TextField albumTitleField;
 
+    /** Text field for entering the album artist. */
     @FXML
     private TextField albumArtistField;
 
+    /** Toggle group for selecting the album genre. */
     @FXML
     private ToggleGroup albumGenreGroup;
 
+    /** Custom text field for entering the number of tracks (numeric only). */
     @FXML
     private NumberTextField albumTracks;
 
+    /** Label for displaying error or success messages. */
     @FXML
     private Label albumErrorLabel;
 
+    /** Reference to the user's library for storing albums. */
     private Library library;
 
     /**
@@ -44,11 +54,6 @@ public class AlbumController {
      * if the fileds is empty or invalid it dispals an error message in red
      * if all iputs are valid, initializes a new object and add its to the library,
      * displaying a sucessfully added message in green
-     * 
-     * @param title         the title of the album entered by the user
-     * @param artist        the artist of the album entered by the user
-     * @param trackText     the number of tracks in the album provided by the user
-     * @param selectedGenre the selected genre from teh toggle group
      */
     @FXML
     private void confirmAddAlbum() {

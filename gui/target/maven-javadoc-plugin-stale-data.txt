@@ -1,0 +1,61 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+-classpath
+'C:/Users/User/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17.jar;C:/Users/User/.m2/repository/org/openjfx/javafx-controls/17/javafx-controls-17-win.jar;C:/Users/User/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17.jar;C:/Users/User/.m2/repository/org/openjfx/javafx-graphics/17/javafx-graphics-17-win.jar;C:/Users/User/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17.jar;C:/Users/User/.m2/repository/org/openjfx/javafx-base/17/javafx-base-17-win.jar;C:/Users/User/.m2/repository/org/openjfx/javafx-fxml/17/javafx-fxml-17.jar;C:/Users/User/.m2/repository/org/openjfx/javafx-fxml/17/javafx-fxml-17-win.jar'
+-encoding
+'UTF-8'
+-private
+-source
+'11'
+-sourcepath
+'C:/Users/User/OneDrive/Desktop/DLSU/1st Year/Term 3/CCPROG 3/.CCPROG3 [NEW]/NEW MCO PLS/CCPROG3-MCO/gui/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2026. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'C:/Users/User/OneDrive/Desktop/DLSU/1st Year/Term 3/CCPROG 3/.CCPROG3 [NEW]/NEW MCO PLS/CCPROG3-MCO/gui/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'gui 1.0-SNAPSHOT API'
+-linkoffline
+'https://docs.oracle.com/en/java/javase/11/docs/api' 'C:/Users/User/OneDrive/Desktop/DLSU/1st Year/Term 3/CCPROG 3/.CCPROG3 [NEW]/NEW MCO PLS/CCPROG3-MCO/gui/target/javadoc-bundle-options'
+-nohelp
+-use
+-version
+-windowtitle
+'gui 1.0-SNAPSHOT API'
+com.example.controller
+com.example
+com.example.model
+C:\Users\User\.m2\repository\org\openjfx\javafx-controls\17\javafx-controls-17.jar = 1785065024710
+C:\Users\User\.m2\repository\org\openjfx\javafx-controls\17\javafx-controls-17-win.jar = 1785065027318
+C:\Users\User\.m2\repository\org\openjfx\javafx-graphics\17\javafx-graphics-17.jar = 1785065024595
+C:\Users\User\.m2\repository\org\openjfx\javafx-graphics\17\javafx-graphics-17-win.jar = 1785065028654
+C:\Users\User\.m2\repository\org\openjfx\javafx-base\17\javafx-base-17.jar = 1785065024817
+C:\Users\User\.m2\repository\org\openjfx\javafx-base\17\javafx-base-17-win.jar = 1785065026101
+C:\Users\User\.m2\repository\org\openjfx\javafx-fxml\17\javafx-fxml-17.jar = 1785065024997
+C:\Users\User\.m2\repository\org\openjfx\javafx-fxml\17\javafx-fxml-17-win.jar = 1785065026064
+C:\Users\User\OneDrive\Desktop\DLSU\1st Year\Term 3\CCPROG 3\.CCPROG3 [NEW]\NEW MCO PLS\CCPROG3-MCO\gui\src\main\java = 1785695273000
+C:\Users\User\OneDrive\Desktop\DLSU\1st Year\Term 3\CCPROG 3\.CCPROG3 [NEW]\NEW MCO PLS\CCPROG3-MCO\gui\target\reports\apidocs\allclasses-index.html = 1785698984843
+C:\Users\User\OneDrive\Desktop\DLSU\1st Year\Term 3\CCPROG 3\.CCPROG3 [NEW]\NEW MCO PLS\CCPROG3-MCO\gui\target\reports\apidocs\allpackages-index.html = 1785698984846
+C:\Users\User\OneDrive\Desktop\DLSU\1st Year\Term 3\CCPROG 3\.CCPROG3 [NEW]\NEW MCO PLS\CCPROG3-MCO\gui\target\reports\apidocs\argfile = 1785695152710
+C:\Users\User\OneDrive\Desktop\DLSU\1st Year\Term 3\CCPROG 3\.CCPROG3 [NEW]\NEW MCO PLS\CCPROG3-MCO\gui\target\reports\apidocs\constant-values.html = 1785698984645
+C:\Users\User\OneDrive\Desktop\DLSU\1st Year\Term 3\CCPROG 3\.CCPROG3 [NEW]\NEW MCO PLS\CCPROG3-MCO\gui\target\reports\apidocs\element-list = 1785698984519
+C:\Users\User\OneDrive\Desktop\DLSU\1st Year\Term 3\CCPROG 3\.CCPROG3 [NEW]\NEW MCO PLS\CCPROG3-MCO\gui\target\reports\apidocs\index-all.html = 1785698984899
+C:\Users\User\OneDrive\Desktop\DLSU\1st Year\Term 3\CCPROG 3\.CCPROG3 [NEW]\NEW MCO PLS\CCPROG3-MCO\gui\target\reports\apidocs\index.html = 1785698984815
+C:\Users\User\OneDrive\Desktop\DLSU\1st Year\Term 3\CCPROG 3\.CCPROG3 [NEW]\NEW MCO PLS\CCPROG3-MCO\gui\target\reports\apidocs\jquery-ui.overrides.css = 1785698984934
+C:\Users\User\OneDrive\Desktop\DLSU\1st Year\Term 3\CCPROG 3\.CCPROG3 [NEW]\NEW MCO PLS\CCPROG3-MCO\gui\target\reports\apidocs\member-search-index.js = 1785698984857
+C:\Users\User\OneDrive\Desktop\DLSU\1st Year\Term 3\CCPROG 3\.CCPROG3 [NEW]\NEW MCO PLS\CCPROG3-MCO\gui\target\reports\apidocs\module-search-index.js = 1785698984847
+C:\Users\User\OneDrive\Desktop\DLSU\1st Year\Term 3\CCPROG 3\.CCPROG3 [NEW]\NEW MCO PLS\CCPROG3-MCO\gui\target\reports\apidocs\overview-summary.html = 1785698984907
+C:\Users\User\OneDrive\Desktop\DLSU\1st Year\Term 3\CCPROG 3\.CCPROG3 [NEW]\NEW MCO PLS\CCPROG3-MCO\gui\target\reports\apidocs\overview-tree.html = 1785698984805
+C:\Users\User\OneDrive\Desktop\DLSU\1st Year\Term 3\CCPROG 3\.CCPROG3 [NEW]\NEW MCO PLS\CCPROG3-MCO\gui\target\reports\apidocs\package-search-index.js = 1785698984852
+C:\Users\User\OneDrive\Desktop\DLSU\1st Year\Term 3\CCPROG 3\.CCPROG3 [NEW]\NEW MCO PLS\CCPROG3-MCO\gui\target\reports\apidocs\script.js = 1785698984914
+C:\Users\User\OneDrive\Desktop\DLSU\1st Year\Term 3\CCPROG 3\.CCPROG3 [NEW]\NEW MCO PLS\CCPROG3-MCO\gui\target\reports\apidocs\search.js = 1785698984918
+C:\Users\User\OneDrive\Desktop\DLSU\1st Year\Term 3\CCPROG 3\.CCPROG3 [NEW]\NEW MCO PLS\CCPROG3-MCO\gui\target\reports\apidocs\stylesheet.css = 1785698984912
+C:\Users\User\OneDrive\Desktop\DLSU\1st Year\Term 3\CCPROG 3\.CCPROG3 [NEW]\NEW MCO PLS\CCPROG3-MCO\gui\target\reports\apidocs\tag-search-index.js = 1785698984858
+C:\Users\User\OneDrive\Desktop\DLSU\1st Year\Term 3\CCPROG 3\.CCPROG3 [NEW]\NEW MCO PLS\CCPROG3-MCO\gui\target\reports\apidocs\type-search-index.js = 1785698984855

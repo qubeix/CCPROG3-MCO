@@ -6,22 +6,30 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.VBox;
 
+/**
+ * Controller class for handling reviews of library entries.
+ * Provides methods to select completed entries and add user-written reviews.
+ */
 public class ReviewEntryController {
 
+    /** Combo box for selecting the type of entry to review (Book, Album, Series). */
     @FXML
     private ComboBox<String> reviewTypeCombo;
 
+    /** Combo box for selecting a specific entry of the chosen type. */
     @FXML
     private ComboBox<String> reviewEntryCombo;
 
+    /** Text area for entering the review text. */
     @FXML
     private TextArea reviewTextArea;
 
+    /** Label for displaying success or error messages related to reviews. */
     @FXML
     private Label reviewEntryMessage;
 
+    /** Reference to the user's library. */
     private Library library;
 
     /**
@@ -39,9 +47,6 @@ public class ReviewEntryController {
      * 
      * Set up choices in the reviewTypeCombo with the options (Book, Album, Series),
      * and hides the reviewEntryMessage by deafult until it is needed
-     * 
-     * @FXML this method is automatically called after the FXML components have been
-     *       loaded
      */
     @FXML
     private void initialize() {
@@ -55,9 +60,6 @@ public class ReviewEntryController {
      * clears the reviewEntryCombo items and fills them based on the selected type
      * (book, album, series). Only entries with a status of "Completed" are listed
      * with their index and title, allowing the user to choose which entry to review
-     * 
-     * @FXML this method is triggered when the user selects a type from the
-     *       reviewTypeCombo
      */
     @FXML
     private void onReviewTypeSelected() {
@@ -101,9 +103,6 @@ public class ReviewEntryController {
      * review text entered by the user. If all inputs are valid, the review is added
      * to the corresponding entry in the library and a success message is displayed.
      * If any input is missing, an error message is shown instead
-     * 
-     * @FXML this method is triggered when the user clicks the confirm button to
-     *       submit the review
      */
     @FXML
     private void confirmReviewEntry() {
@@ -144,9 +143,6 @@ public class ReviewEntryController {
      * resets the reviewTypeCombo and removeEntryCombo selection to null and clears
      * the removeEntryCombo field, and clears the reviewTextArea field, preparing
      * the form for a new review
-     * 
-     * @FXML this method is triggered when the user clicks the clear for remove
-     *       button
      */
     @FXML
     private void clearReviewEntry() {

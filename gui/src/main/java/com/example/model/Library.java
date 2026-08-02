@@ -1,7 +1,5 @@
 package com.example.model;
 
-import java.util.Scanner;
-
 /**
  * The class <code>Library</code> contains a book library, album library, and
  * series library, along with respective methods for
@@ -9,17 +7,26 @@ import java.util.Scanner;
  */
 
 public class Library {
+    /** Array storing all book entries in the library. */
     private Book[] bookLibrary;
-    private Album[] albumLibrary;
-    private Series[] seriesLibrary;
-    private int bookCount;
-    private int albumCount;
-    private int seriesCount;
-    private final int MAXCOUNT = 100; // Maximum count of media entries
 
-    // private Feedbacks bookReviews;
-    // private Feedbacks albumReviews;
-    // private Feedbacks seriesReviews;
+    /** Array storing all album entries in the library. */
+    private Album[] albumLibrary;
+
+    /** Array storing all series entries in the library. */
+    private Series[] seriesLibrary;
+
+    /** The total number of books in the library. */
+    private int bookCount;
+
+    /** The total number of albums in the library. */
+    private int albumCount;
+
+    /** The total number of series in the library. */
+    private int seriesCount;
+
+    /** Maximum number of media entries allowed per category. */
+    private final int MAXCOUNT = 100;
 
     // CONSTRUCTOR
     /**
@@ -65,17 +72,13 @@ public class Library {
     }
 
     /**
-     * Accepts a title, artist, genre, and count of chapters as parameters, and
-     * creates a new Album object if the chapter count is less than MAXCOUNT.
-     * The new Album is added to the library array and the album count is
-     * incremented.
-     * 
+     * Adds a new album entry to the library.
+     *
      * @param title      the title of the album
-     * @param arist      the singer/s of the song/album
-     * @param genre      the type of music genre
-     * @param trackCount number of track in the album
-     * @return the newly created Book if successful, or null if the chapter count
-     *         exceeds MAXCOUNT
+     * @param artist     the singer(s) of the album
+     * @param genre      the genre of the album
+     * @param trackCount the number of tracks in the album
+     * @return the newly created Album object
      */
     public Album addAlbumInput(String title, String artist, String genre, int trackCount) {
         Album album = null;
@@ -94,7 +97,7 @@ public class Library {
      * The new Series is added to the library array and the series count is
      * incremented.
      * 
-     * @param title        the title of the album
+     * @param title        the title of the series
      * @param genre        the type of music genre
      * @param seasonCount  number of seasons in the series
      * @param episodeCount number of episdoes per series

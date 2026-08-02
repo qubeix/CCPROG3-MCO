@@ -6,17 +6,25 @@ import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 
+/**
+ * Controller class for handling removal of library entries.
+ * Provides methods to select and delete books, albums, or series from the user's library.
+ */
 public class RemoveEntryController {
 
+    /** Combo box for selecting the type of entry to remove (Book, Album, Series). */
     @FXML
     private ComboBox<String> removeTypeCombo;
 
+    /** Combo box for selecting a specific entry of the chosen type. */
     @FXML
     private ComboBox<String> removeEntryCombo;
 
+    /** Label for displaying success or error messages related to removal. */
     @FXML
     private Label removeEntryLabel;
 
+    /** Reference to the user's library. */
     private Library library;
 
     /**
@@ -34,9 +42,6 @@ public class RemoveEntryController {
      * 
      * Set up choices in the removeTypeCombo with the options (Book, Album, Series),
      * and hides the removeEntryLabel by deafult until it is needed
-     * 
-     * @FXML this method is automatically called after the FXML components have been
-     *       loaded
      */
     @FXML
     private void initialize() {
@@ -50,9 +55,6 @@ public class RemoveEntryController {
      * clears the removeEntryCombo items and fills them based on the selected entry
      * types (book, album, series). all entries of the chosen type are lsited with
      * their index and title, allowign the user to chose which entry to remove
-     * 
-     * @FXML this method is triggered when the user selects a type of entry to
-     *       remove from the removeTypeCombo
      */
     @FXML
     private void onRemoveTypeSelected() {
@@ -84,8 +86,6 @@ public class RemoveEntryController {
      * both are valid, the corresponding entry is remvoed from the library and
      * displays a successfully removed message. If either are missing, and error
      * message would be shown
-     * 
-     * @FXML this method is triggered once the user clicks the confirm remove button
      */
     @FXML
     private void confirmRemoveEntry() {
@@ -120,8 +120,6 @@ public class RemoveEntryController {
      * 
      * resets the removeTypeCombo and removeEntryCombo selection to null and clears
      * the removeEntryCombo field, preparing the form for a new entry removal
-     * 
-     * @FXML this method is triggered when the user clicks the remove button
      */
     @FXML
     private void clearRemoveEntry() {

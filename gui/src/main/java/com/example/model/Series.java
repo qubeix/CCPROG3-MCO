@@ -1,7 +1,5 @@
 package com.example.model;
 
-import java.util.*;
-
 /**
  * The class <code>Series</code> contains the attributes, constructor, methods,
  * and getters necessary for the creation, modification, and manipulation of a
@@ -14,11 +12,17 @@ import java.util.*;
  */
 public class Series extends MediaEntry {
     // ATTRIBUTES
-    // private final String STUDIO;
-    private final int SEASONCOUNT; // the number of seasons
-    private int[] episodeCount; // stores the number of episodes for each season
-    private int currentSeason; // the user's current season
-    private int currentEpisode; // the user's current episode
+    /** The total number of seasons in the series. */
+    private final int SEASONCOUNT;
+
+    /** Stores the number of episodes for each season. */
+    private int[] episodeCount;
+
+    /** The user's current season progress. */
+    private int currentSeason;
+
+    /** The user's current episode progress. */
+    private int currentEpisode;
 
     /**
      * Accepts a title, genre, and count of seasons as parameters, and initializes
@@ -28,6 +32,7 @@ public class Series extends MediaEntry {
      * @param title       the title of the series
      * @param genre       the genre of the series
      * @param seasonCount the count of seasons in the series
+     * @param episodeCount an array storing the number of episodes per season
      */
     public Series(String title, String genre, int seasonCount, int[] episodeCount) {
         super(title, genre);
@@ -49,6 +54,7 @@ public class Series extends MediaEntry {
     /**
      * Moves the current episode and current season forward by one as necessary
      */
+    @Override
     public void updateProgress() {
         if (currentEpisode < episodeCount[currentSeason - 1]) // If the current episode has not reached the last episode
         {
@@ -72,6 +78,8 @@ public class Series extends MediaEntry {
     /**
      * Returns a String containing the information of the series (title, genre,
      * seasons, and episodes (and if the entry is completed, rating and review))
+     * 
+     * @return a formatted string with series information
      */
     public String toString() {
         String info = "\"" + TITLE + "\"";

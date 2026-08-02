@@ -12,8 +12,19 @@ package com.example.model;
 
 public class Album extends MediaEntry {
 	// ATTRIBUTES
+	/**
+	 * the artist of the album
+	 */
 	private final String ARTIST;
+
+	/**
+	 * the total number of tracks in the album
+	 */
 	private final int TRACKCOUNT;
+
+	/**
+	 * the current track number being palyed or progressed
+	 */
 	private int currentTrack;
 
 	// CONSTRUCTOR

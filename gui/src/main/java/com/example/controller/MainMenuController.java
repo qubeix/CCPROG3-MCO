@@ -5,19 +5,15 @@ import java.io.IOException;
 import com.example.MediaVault;
 import com.example.model.Library;
 import com.example.model.User;
-import com.example.controller.*;
-import javafx.application.Platform;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-
-import javafx.scene.*;
-import javafx.scene.control.Button;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TextArea;
-
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -25,21 +21,33 @@ import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 
+/**
+ * Controller class for the main menu view.
+ * Provides navigation between different sections (books, albums, series, etc.),
+ * applies UI styling, and manages the user's library data.
+ */
 public class MainMenuController {
 
+    /** Label for displaying a personalized welcome message. */
     @FXML
     private Label welcomeLabel;
 
+    /** VBox container for the sidebar menu items. */
     @FXML
     private VBox sidebarBox;
 
+    /** Scroll pane for the sidebar menu. */
     @FXML
     private ScrollPane sidebarScroll;
 
+    /** Anchor pane for displaying the main content in the center. */
     @FXML
     private AnchorPane centerPane;
 
+    /** The currently logged-in user. */
     private User currentUser;
+
+    /** The library associated with the current user. */
     private Library library;
 
     /**
@@ -47,8 +55,6 @@ public class MainMenuController {
      * 
      * retrives the current user from UserController, sets the welcome label,
      * applies background styling to panels, and customizes the sidebar scrollbar.
-     * 
-     * @FXML This method is automaticall called after the FXML is loaded
      */
     @FXML
     private void initialize() {
@@ -122,8 +128,6 @@ public class MainMenuController {
      * HomeController and injects the current Library into it. Replaces the center
      * pane content with the loaded home view so the user can see their libarary
      * completion progress and real-time clock
-     * 
-     * @FXML This method is bound to the "Home" button in the main menu
      */
     @FXML
     private void returnHome() {
@@ -146,8 +150,6 @@ public class MainMenuController {
      * loads the book-view.fxml file using FXMLLoader, retrieves the BookController,
      * and injects the current Library into it. Replaces the center pane content
      * with the book form so the user can add new book entries to their library
-     * 
-     * @FXML This method is bound to the "Add Book" button in the main menu
      */
     @FXML
     private void handleAddBook() {
@@ -171,8 +173,6 @@ public class MainMenuController {
      * AlbumController,
      * and injects the current Library into it. Replaces the center pane content
      * with the album form so the user can add new album entries to their library
-     * 
-     * @FXML This method is bound to the "Add Album" button in the main menu
      */
     @FXML
     private void handleAddAlbum() {
@@ -197,8 +197,6 @@ public class MainMenuController {
      * SeriesController,
      * and injects the current Library into it. Replaces the center pane content
      * with the series form so the user can add new series entries to their library
-     * 
-     * @FXML This method is bound to the "Add Series" button in the main menu
      */
     @FXML
     private void handleAddSeries() {
@@ -223,8 +221,6 @@ public class MainMenuController {
      * RemoveEntryController, and injects the current Library into it. Replaces the
      * center pane content with the removme entry form so the user can delete any
      * existing entry (book, album, series) from their library
-     * 
-     * @FXML This method is bound to the "Remove Entry" button in the main menu
      */
     @FXML
     private void handleRemoveEntry() {
@@ -249,8 +245,6 @@ public class MainMenuController {
      * and injects the current Library into it. Replaces the center pane content
      * with the rating form so the user can assign rating to existing entries (book,
      * album, series) in their library
-     * 
-     * @FXML This method is bound to the "Rate Entry" button in the main menu
      */
     @FXML
     private void handleRateEntry() {
@@ -274,8 +268,6 @@ public class MainMenuController {
      * ReviewEntryController, and injects the current Library into it. Replaces the
      * cneter pane content with the review form so the user can write or update
      * their reviews for the entries (book, album, series) in their library
-     * 
-     * @FXML this method is bound to the "Remove Entry" button in the main menu
      */
     @FXML
     private void handleReviewEntry() {
@@ -299,8 +291,6 @@ public class MainMenuController {
      * UpdateProgressController, and injects the current Library into it. Replaces
      * the center pane contente with the update progress form so the user can modify
      * the completion status of existing entries (book, album, seties) to library
-     * 
-     * @FXML This method is bound to the "Update Progress" button in the main menu.
      */
     @FXML
     private void handleUpdateProgress() {
@@ -325,8 +315,6 @@ public class MainMenuController {
      * ViewAllController, and injects the current Library into it. Replaces
      * the center pane contente with the view-all display form so the user can
      * browse all of the existing entries (book, album, seties) to library
-     * 
-     * @FXML This method is bound to the "View Alls" button in the main menu.
      */
     @FXML
     private void handleViewAll() {
@@ -374,8 +362,6 @@ public class MainMenuController {
      * 
      * Replaces the center pane content with the settings form so the user can
      * update their account preferences and application configurations
-     * 
-     * @FXML This method is bound to the "Settings" button in the main menu.
      */
     @FXML
     private void handleSettings() {

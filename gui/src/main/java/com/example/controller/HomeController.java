@@ -1,5 +1,8 @@
 package com.example.controller;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 import com.example.model.Library;
 
 import javafx.animation.KeyFrame;
@@ -9,26 +12,37 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.util.Duration;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-
+/**
+ * Controller class for the home view.
+ * Displays a real-time clock and the user's library completion progress.
+ */
 public class HomeController {
+     /** Label for displaying the current date. */
     @FXML
     private Label dateLabel;
 
+    /** Label for displaying the current time. */
     @FXML
     private Label timeLabel;
 
+    /** Progress bar showing the percentage of completed entries. */
     @FXML
     private ProgressBar completionBar;
 
+    /** Label showing completion details (e.g., "3 of 5 entries completed"). */
     @FXML
     private Label completionLabel;
 
+    /** Reference to the user's library. */
     private Library library;
+
+     /** Timeline for updating the clock every second. */
     private Timeline clockTimeline;
 
+    /** Formatter for displaying the date as "Day, Month Day, Year". */
     private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("EEEE, MMMM d, yyyy");
+    
+    /** Formatter for displaying the time as "hh:mm:ss AM/PM". */
     private static final DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("hh:mm:ss a");
 
     /**

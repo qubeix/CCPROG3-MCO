@@ -17,7 +17,10 @@ import javafx.stage.Stage;
  */
 public class MediaVault extends Application {
 
+    /** The main application scene used for switching views. */
     private static Scene scene;
+
+    /** Path to the user data file. */
     private static final String USER_FILE = "./users.txt";
 
     /**
@@ -57,7 +60,7 @@ public class MediaVault extends Application {
     /**
      * Load an FXML file from the view package
      * 
-     * @param FXML the name of the FXML fiel (wwithout extension)
+     * @param fxml the name of the FXML fiel (wwithout extension)
      * @return the loaded Parent node
      * @throws IOException if the FXML can not be loaded
      */

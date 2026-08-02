@@ -1,7 +1,5 @@
 package com.example.model;
 
-import java.util.Scanner;
-
 /**
  * The class <code>User</code> contains the attributes, constructor, methods,
  * and getters necessary for the creation, validation, and actions of a user,
@@ -12,9 +10,16 @@ import java.util.Scanner;
 
 public class User {
 	// ATTRIBUTES
+	/** The unique username of the user. */
 	private String username;
+
+	/** The password associated with the user account. */
 	private String password;
+
+	/** The full name of the user. */
 	private String name;
+
+	/** The personal library associated with the user. */
 	private Library library;
 
 	// CONSTRUCTORS
@@ -37,7 +42,6 @@ public class User {
 	// METHODS
 	/**
 	 * Logs a user into their account
-	 * @pre. user exists
 	 * 
 	 * @param inputUsername the username provided by the user in logging in
 	 * @param inputPassword the password provided by the user in logging in

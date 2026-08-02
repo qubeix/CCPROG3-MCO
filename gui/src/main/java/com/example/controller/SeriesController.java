@@ -1,36 +1,51 @@
 package com.example.controller;
 
-import com.example.model.Series;
 import com.example.model.Library;
 import com.example.model.NumberTextField;
+import com.example.model.Series;
 
 import javafx.fxml.FXML;
-import javafx.scene.layout.VBox;
-import javafx.scene.control.*;
+import javafx.scene.control.Label;
+import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleGroup;
 
+/**
+ * Controller class for handling series-related input in the GUI.
+ * Provides methods to add new series entries with season and episode details.
+ */
 public class SeriesController {
 
+    /** Text field for entering the series title. */
     @FXML
     private TextField seriesTitleField;
 
+    /** Numeric text field for entering the number of seasons. */
     @FXML
     private NumberTextField seriesSeasons;
 
+    /** Numeric text field for entering the number of episodes per season. */
     @FXML
     private NumberTextField seriesEpisodes;
 
+    /** Toggle group for selecting the series genre. */
     @FXML
     private ToggleGroup seriesGenreGroup;
 
+    /** Label for displaying success or error messages related to series input. */
     @FXML
     private Label seriesErrorLabel;
 
+    /** Reference to the user's library. */
     private Library library;
 
+    /** Array storing the episode count for each season. */
     private int[] episodeCount;
 
+    /** Counter tracking how many seasons have had episodes assigned. */
     private int episodesAdded = 0;
 
+    /** Total number of seasons, initialized to -1 until set. */
     private int seasonCount = -1;
 
     /**
@@ -52,9 +67,6 @@ public class SeriesController {
      * assigned. Also updates the seariesEpisodes field prompt to request the number
      * of episodes for the first season and enables the input field
      * if input is invalid, it dispalys an error message
-     * 
-     * @FXML this method is triggered when the user confirms the number of season to
-     *       add for the series
      */
     @FXML
     private void setAddSeasons() {
@@ -98,9 +110,6 @@ public class SeriesController {
      * prompt for the next season until all seasons have been assigned.
      * Once completed, disables the input field and shows a confirmation prompt. If
      * the input is invalid, an error message is displayed
-     * 
-     * @FXML this method is triggered when the user confirms the number of episodes
-     *       for a season
      */
     @FXML
     private void setAddEpisodes() {
@@ -138,8 +147,6 @@ public class SeriesController {
      * object and adds it to the library. Displays a success message with the added
      * series details. If any input is missing or invalid, an error message is shown
      * instead. Resets episodesAdd and seasonCount after a successful addition
-     * 
-     * @FXML this method is triggered when the user clocks the confirm button
      */
     @FXML
     private void confirmAddSeries() {
@@ -185,9 +192,6 @@ public class SeriesController {
      * Resets all input field related the adding series, including the title, genre
      * selection, season count, and episode count. Prepares the form for entering a
      * new series
-     * 
-     * @FXML this method is triggered when the user clicks the clear button for add
-     *       series
      */
     @FXML
     private void clearAddSeries() {

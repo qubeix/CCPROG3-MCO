@@ -6,22 +6,30 @@ import com.example.model.NumberTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
 
+/**
+ * Controller class for handling rating of library entries.
+ * Provides methods to select completed entries and assign ratings.
+ */
 public class RateController {
 
+    /** Combo box for selecting the type of entry to rate (Book, Album, Series). */
     @FXML
     private ComboBox<String> rateTypeCombo;
 
+    /** Combo box for selecting a specific entry of the chosen type. */
     @FXML
     private ComboBox<String> rateEntryCombo;
 
+    /** Numeric text field for entering the rating value (1–10). */
     @FXML
     private NumberTextField inputRating;
 
+    /** Label for displaying success or error messages related to rating. */
     @FXML
     private Label rateEntryMessage;
 
+    /** Reference to the user's library. */
     private Library library;
 
     /**
@@ -39,9 +47,6 @@ public class RateController {
      * 
      * Set up choices in the rateTypeCombo with the options (Book, Album, Series),
      * and hides the rateEntryMessage by deafult until it is needed
-     * 
-     * @FXML this method is automatically called after the FXML components have been
-     *       loaded
      */
     @FXML
     private void initialize() {
@@ -55,9 +60,6 @@ public class RateController {
      * Clears the rateEntryCombo items and sets them based on the selected entry
      * type (book, album, series). Only the entries with a status of "Completed" are
      * added to the list. allowing the user to choose which completed item to rate
-     * 
-     * @FXML the method is triggered once the user selects a type from the
-     *       rateTypeCombo
      */
 
     @FXML
@@ -101,9 +103,6 @@ public class RateController {
      * the rating is added to the entry in the library. Displays a success message
      * when the raiting is applied, or an error message if the input is invalid or
      * incomplete
-     * 
-     * @FXML this method is triggered when the usesr clicks the confirm button when
-     *       rating an entry
      */
     @FXML
     private void confirmRateEntry() {
@@ -152,8 +151,6 @@ public class RateController {
      * 
      * resets the rateTypeCombo and rateEntryCombo selection to null and clears the
      * inputRating field, preparing the form for a new entry
-     * 
-     * @FXML this method is triggered when the user clicks the clear button
      */
     @FXML
     private void clearRateEntry() {

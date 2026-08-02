@@ -6,60 +6,70 @@ import com.example.MediaVault;
 import com.example.model.User;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 
+/**
+ * Controller class for handling account creation in the GUI.
+ * Provides methods for validating input, toggling password visibility,
+ * and navigating between views.
+ */
 public class CreateAccountController {
 
+    /** Text field for entering the user's full name. */
     @FXML
     private TextField nameField;
 
+    /** Text field for entering the desired username. */
     @FXML
     private TextField usernameField;
 
+    /** Hidden password field for entering the account password. */
     @FXML
     private PasswordField passwordField;
 
+    /** Visible text field for showing the account password when toggled. */
     @FXML
     private TextField passwordVisibleField;
 
+    /** Hidden password field for confirming the account password. */
     @FXML
     private PasswordField confirmPasswordField;
 
+    /** Visible text field for showing the confirmation password when toggled. */
     @FXML
     private TextField confirmPasswordVisibleField;
 
+    /** Checkbox to toggle visibility of the password field. */
     @FXML
     private CheckBox showPasswordCheckBox;
 
+    /** Checkbox to toggle visibility of the confirm password field. */
     @FXML
     private CheckBox showConfirmPasswordCheckBox;
 
+    /** Label for displaying username-related error messages. */
     @FXML
     private Label usernameErrorLabel;
 
+    /** Label for displaying confirm password-related error messages. */
     @FXML
     private Label confirmPasswordErrorLabel;
 
     /**
-     * Accepts name, username, password, and confirmation of password
-     * performs the a validation check to ensure:
-     * all fields are filled,
-     * username and password do not contain spaces
-     * password and confirmation password matches
-     * 
-     * if the validation fails, it dispalys the error messages
-     * if validation succeeds. creates a new User object adding it to the system
-     * UserController
-     * sets the new user to the current user. and proceeds to the main menu view
-     * 
-     * @throws IOExceptions if the FXML resource for the main menu view can not be
-     *                      loaded
-     * @FXML this method is bound to the "Create Account" button in the account
-     *       creation form
+     * Accepts name, username, password, and confirmation of password.
+     * Performs validation to ensure:
+     * - all fields are filled
+     * - username and password do not contain spaces
+     * - password and confirmation password match
+     *
+     * If validation fails, error messages are displayed.
+     * If validation succeeds, creates a new User object, adds it to the system,
+     * sets the new user as the current user, and proceeds to the main menu view.
+     *
+     * @throws IOException if the FXML resource for the main menu view cannot be loaded
      */
     @FXML
     private void createAccount() throws IOException {
@@ -130,9 +140,6 @@ public class CreateAccountController {
      * This ensures that the user can choose whenever to view their password in
      * plaine text
      * or keep their password hidden
-     * 
-     * @FXML this method is bound to the "Show Password" checkbox in the account
-     *       form
      */
     @FXML
     private void toggleShowPassword() {
@@ -162,10 +169,6 @@ public class CreateAccountController {
      * 
      * This ensures that the user can choose whenever to view their password in
      * plaine text or keep their password hidden
-     * 
-     * @FXML this method is bound to the "Show Confirm Password" checkbox in the
-     *       account
-     *       form
      */
     @FXML
     private void toggleShowConfirmPassword() {
@@ -185,15 +188,12 @@ public class CreateAccountController {
     }
 
     /**
-     * Navigates back to the MediaVault login view
-     * 
-     * Is triggered once the "Back" button is clicked, this method resets the
-     * application roomm to the mediavault-view FXML file, effectively returning the
-     * user to the login screen
-     * 
-     * @throws IOExecption if the FXML resource for the MediaVault view can not be
-     *                     loaded
-     * @FXML This method is bound to the "Back" button in the account creation
+     * Navigates back to the MediaVault login view.
+     * Triggered when the "Back" button is clicked.
+     * Resets the application root to the mediavault-view FXML file,
+     * effectively returning the user to the login screen.
+     *
+     * @throws IOException if the FXML resource for the MediaVault view cannot be loaded
      */
     @FXML
     private void goBack() throws IOException {
