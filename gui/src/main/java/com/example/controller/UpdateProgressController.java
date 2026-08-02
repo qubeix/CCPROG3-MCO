@@ -129,11 +129,11 @@ public class UpdateProgressController {
                     // library.updateBookAt(index);
                     info = library.getBookEntry(index).toString();
                 } else if ("Album".equals(type)) {
-                    library.getBookEntry(index).updateProgress();
+                    library.getAlbumEntry(index).updateProgress();
                     // library.updateAlbumAt(index);
                     info = library.getAlbumEntry(index).toString();
                 } else if ("Series".equals(type)) {
-                    library.getBookEntry(index).updateProgress();
+                    library.getSeriesEntry(index).updateProgress();
                     // library.updateSeriesAt(index);
                     info = library.getSeriesEntry(index).toString();
                 }
@@ -144,7 +144,7 @@ public class UpdateProgressController {
             }
         } else {
             updateEntryMessage.setStyle("-fx-text-fill: RED");
-            updateEntryMessage.setText("Please select both a type and an entry to remove.");
+            updateEntryMessage.setText("Please select both a type and an entry to update.");
             updateEntryMessage.setVisible(true);
         }
     }
