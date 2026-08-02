@@ -49,7 +49,7 @@ public class ReviewEntryController {
             switch (type) {
                 case "Book":
                     for (int i = 0; i < library.getBookCount(); i++) {
-                        if("Completed".equalsIgnoreCase(library.getBookEntry(i).getStatus())){
+                        if ("Completed".equalsIgnoreCase(library.getBookEntry(i).getStatus())) {
                             reviewEntryCombo.getItems().add((i + 1) + ". " + library.getBookEntry(i).getTitle());
                         }
                     }
@@ -57,19 +57,19 @@ public class ReviewEntryController {
 
                 case "Album":
                     for (int i = 0; i < library.getAlbumCount(); i++) {
-                        if("Completed".equalsIgnoreCase(library.getAlbumEntry(i).getStatus())){
+                        if ("Completed".equalsIgnoreCase(library.getAlbumEntry(i).getStatus())) {
                             reviewEntryCombo.getItems().add((i + 1) + ". " + library.getAlbumEntry(i).getTitle());
                         }
-            
+
                     }
                     break;
 
                 case "Series":
                     for (int i = 0; i < library.getSeriesCount(); i++) {
-                        if("Completed".equalsIgnoreCase(library.getSeriesEntry(i).getStatus())){
+                        if ("Completed".equalsIgnoreCase(library.getSeriesEntry(i).getStatus())) {
                             reviewEntryCombo.getItems().add((i + 1) + ". " + library.getSeriesEntry(i).getTitle());
                         }
-                        
+
                     }
             }
         }
@@ -103,7 +103,7 @@ public class ReviewEntryController {
             clearReviewEntry();
         } else {
             reviewEntryMessage.setStyle("-fx-text-fill: RED");
-            reviewEntryMessage.setText("Please select both a type and an entry to remove, and add a rating.");
+            reviewEntryMessage.setText("Please fill all areas.");
             reviewEntryMessage.setVisible(true);
         }
     }

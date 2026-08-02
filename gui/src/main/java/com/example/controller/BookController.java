@@ -1,11 +1,7 @@
 package com.example.controller;
 
-//import java.io.IOException;
-
 import com.example.model.Book;
-//import com.example.MediaVault;
 import com.example.model.Library;
-import com.example.model.User;
 import com.example.model.NumberTextField;
 
 import javafx.fxml.FXML;
@@ -18,9 +14,6 @@ import javafx.scene.control.TextArea;
 
 public class BookController {
 
-    // @FXML
-    // private VBox addBookPanel;
-
     @FXML
     private TextField bookTitleField;
 
@@ -30,37 +23,35 @@ public class BookController {
     @FXML
     private ToggleGroup bookGenreGroup;
 
-    // @FXML
-    // private RadioButton romanceButton;
-
-    // @FXML
-    // private RadioButton mysteryButton;
-
-    // @FXML
-    // private RadioButton fantasyButton;
-
-    // @FXML
-    // private RadioButton nonfictionButton;
-
-    // @FXML
-    // private RadioButton selfhelpButton;
-
     @FXML
     private NumberTextField bookChapter;
 
     @FXML
     private Label bookErrorLabel;
 
-    // @FXML
-    // private TextArea outputArea;
-
-    private User currentUser;
     private Library library;
 
+    /**
+     * This method is the parent controller after loading the FXML,
+     * allowing the controller to access the user's library data
+     * 
+     * @param library this object is associated with this controller
+     */
     public void setLibrary(Library library) {
         this.library = library;
     }
 
+    /**
+     * Accepts a title, author, genre, and chapter count
+     * if the fileds is empty or invalid it dispals an error message in red
+     * if all iputs are valid, initializes a new object and add its to the library,
+     * displaying a sucessfully added message in green
+     * 
+     * @param title         the title of the album entered by the user
+     * @param author        the author of the album entered by the user
+     * @param chapterText   the number of chapters in the book provided by the user
+     * @param selectedGenre the selected genre from teh toggle group
+     */
     @FXML
     private void confirmAddBook() {
         String title = bookTitleField.getText();
@@ -69,7 +60,7 @@ public class BookController {
         RadioButton selectedGenre = (RadioButton) bookGenreGroup.getSelectedToggle();
 
         if (title.isEmpty() || author.isEmpty() || selectedGenre == null || chapterText.isEmpty()) {
-            bookErrorLabel.setStyle("-fx-text-fil: RED");
+            bookErrorLabel.setStyle("-fx-text-fill: RED");
             bookErrorLabel.setText("Please fill in all fields before submitting");
             bookErrorLabel.setVisible(true);
 
@@ -79,17 +70,12 @@ public class BookController {
                 if (chapterCount <= 0)
                     throw new NumberFormatException();
 
-                // library.addBookInput(title, author, selectedGenre.getText(), chapterCount);
                 Book newBook = library.addBookInput(title, author, selectedGenre.getText(), chapterCount);
 
-                bookErrorLabel.setStyle("=fx-text-fill: GREEN");
+                bookErrorLabel.setStyle("-fx-text-fill: GREEN");
                 bookErrorLabel.setText("Added: " + newBook.toString());
                 bookErrorLabel.setVisible(true);
 
-                // outputArea.setVisible(true);
-                // outputArea.setManaged(true);
-                // outputArea.setText("\"" + title + "\" by " + author + " added to your Book
-                // Library.");
             } catch (NumberFormatException e) {
                 bookErrorLabel.setStyle("-fx-text-fill: RED");
                 bookErrorLabel.setText("Please enter a valid positive number for chapters.");
@@ -98,6 +84,12 @@ public class BookController {
         }
     }
 
+    /**
+     * Resets the album title, artist, genre selection, and track count fields
+     * to their default empty.
+     * This is triggered when the user clocks the "Clear" button. allowing the user
+     * to start fresh without any previously entered valeus
+     */
     @FXML
     private void clearAddBook() {
         bookTitleField.clear();

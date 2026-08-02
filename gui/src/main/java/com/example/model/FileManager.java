@@ -88,7 +88,7 @@ public class FileManager {
         }
     }
 
-    public static void rewriteAllUsers(String filePath, User[] users, int userCount) throws IOExpectation{
+    public static void rewriteAllUsers(String filePath, User[] users, int userCount) throws IOException{
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filePath, false))) {
             for (int i = 0; i < userCount; i++) {
                 writer.write(users[i].getName() + "|" + users[i].getUsername() + "|" + users[i].getPassword());

@@ -33,7 +33,7 @@
 
         <Label fx:id="updateEntryMessage" style="-fx-text-fill: RED">
             <font>
-                <Font name="Century Gothic Bold" size="16.0"/>
+                <Font name="Century Gothic Bold" size="11.0"/>
             </font>
         </Label>
     </children>

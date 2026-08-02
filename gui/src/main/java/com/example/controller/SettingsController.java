@@ -9,23 +9,60 @@ import com.example.model.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
 public class SettingsController {
 
-    @FXML private TextField newNameField;
-    @FXML private Label nameMessage;
+    private static final String USER_FILE = "./users.txt";
 
-    @FXML private TextField newUsernameField;
-    @FXML private Label usernameMessage;
+    @FXML
+    private TextField newNameField;
 
-    @FXML private PasswordField currentPasswordField;
-    @FXML private PasswordField newPasswordField;
-    @FXML private PasswordField confirmNewPasswordField;
-    @FXML private Label passwordMessage;
+    @FXML
+    private Label nameMessage;
 
-    @FXML private PasswordField deleteConfirmPasswordField;
-    @FXML private Label deleteMessage;
+    @FXML
+    private TextField newUsernameField;
+
+    @FXML
+    private Label usernameMessage;
+
+    @FXML
+    private PasswordField currentPasswordField;
+
+    @FXML
+    private PasswordField newPasswordField;
+
+    @FXML
+    private PasswordField confirmNewPasswordField;
+
+    @FXML
+    private Label passwordMessage;
+
+    @FXML
+    private PasswordField deleteConfirmPasswordField;
+
+    @FXML
+    private TextField currentPasswordVisibleField;
+
+    @FXML
+    private TextField newPasswordVisibleField;
+
+    @FXML
+    private TextField confirmNewPasswordVisibleField;
+
+    @FXML
+    private CheckBox showCurrentPasswordCheckBox;
+
+    @FXML
+    private CheckBox showNewPasswordCheckBox;
+
+    @FXML
+    private CheckBox showConfirmNewPasswordCheckBox;
+
+    @FXML
+    private Label deleteMessage;
 
     private User currentUser;
 
@@ -56,6 +93,10 @@ public class SettingsController {
         if (newUsername.trim().isEmpty() || newUsername.contains(" ")) {
             usernameMessage.setStyle("-fx-text-fill: RED");
             usernameMessage.setText("Username cannot be empty or contain spaces.");
+        } else if (newUsername.equalsIgnoreCase(currentUser.getUsername())) {
+            usernameMessage.setStyle("-fx-text-fill: GREEN");
+            usernameMessage.setText("Username was not changed");
+            newUsernameField.clear();
         } else {
             User[] users = MediaVaultController.getUsers();
             int userCount = MediaVaultController.getUserCount();
@@ -81,28 +122,99 @@ public class SettingsController {
     }
 
     @FXML
+    private void toggleShowCurrentPassword() {
+        if (showCurrentPasswordCheckBox.isSelected()) {
+            currentPasswordVisibleField.setText(currentPasswordField.getText());
+            currentPasswordVisibleField.setVisible(true);
+            currentPasswordVisibleField.setManaged(true);
+            currentPasswordField.setVisible(false);
+            currentPasswordField.setManaged(false);
+        } else {
+            currentPasswordField.setText(currentPasswordVisibleField.getText());
+            currentPasswordField.setVisible(true);
+            currentPasswordField.setManaged(true);
+            currentPasswordVisibleField.setVisible(false);
+            currentPasswordVisibleField.setManaged(false);
+        }
+    }
+
+    @FXML
+    private void toggleShowNewPassword() {
+        if (showNewPasswordCheckBox.isSelected()) {
+            newPasswordVisibleField.setText(newPasswordField.getText());
+            newPasswordVisibleField.setVisible(true);
+            newPasswordVisibleField.setManaged(true);
+            newPasswordField.setVisible(false);
+            newPasswordField.setManaged(false);
+        } else {
+            newPasswordField.setText(newPasswordVisibleField.getText());
+            newPasswordField.setVisible(true);
+            newPasswordField.setManaged(true);
+            newPasswordVisibleField.setVisible(false);
+            newPasswordVisibleField.setManaged(false);
+        }
+    }
+
+    @FXML
+    private void toggleShowConfirmNewPassword() {
+        if (showConfirmNewPasswordCheckBox.isSelected()) {
+            confirmNewPasswordVisibleField.setText(confirmNewPasswordField.getText());
+            confirmNewPasswordVisibleField.setVisible(true);
+            confirmNewPasswordVisibleField.setManaged(true);
+            confirmNewPasswordField.setVisible(false);
+            confirmNewPasswordField.setManaged(false);
+        } else {
+            confirmNewPasswordField.setText(confirmNewPasswordVisibleField.getText());
+            confirmNewPasswordField.setVisible(true);
+            confirmNewPasswordField.setManaged(true);
+            confirmNewPasswordVisibleField.setVisible(false);
+            confirmNewPasswordVisibleField.setManaged(false);
+        }
+    }
+
+    @FXML
     private void confirmChangePassword() {
-        String current = currentPasswordField.getText();
-        String newPass = newPasswordField.getText();
-        String confirmPass = confirmNewPasswordField.getText();
+        String current;
+        if (currentPasswordField.isVisible()) {
+            current = currentPasswordField.getText();
+        } else {
+            current = currentPasswordVisibleField.getText();
+        }
+
+        String newPas;
+        if (newPasswordField.isVisible()) {
+            newPas = newPasswordField.getText();
+        } else {
+            newPas = newPasswordVisibleField.getText();
+        }
+
+        String confirmPas;
+        if (confirmNewPasswordField.isVisible()) {
+            confirmPas = confirmNewPasswordField.getText();
+        } else {
+            confirmPas = confirmNewPasswordVisibleField.getText();
+        }
 
         if (!current.equals(currentUser.getPassword())) {
             passwordMessage.setStyle("-fx-text-fill: RED");
             passwordMessage.setText("Current password is incorrect.");
-        } else if (newPass.trim().isEmpty() || newPass.contains(" ")) {
+        } else if (newPas.trim().isEmpty() || newPas.contains(" ")) {
             passwordMessage.setStyle("-fx-text-fill: RED");
             passwordMessage.setText("New password cannot be empty or contain spaces.");
-        } else if (!newPass.equals(confirmPass)) {
+        } else if (!newPas.equals(confirmPas)) {
             passwordMessage.setStyle("-fx-text-fill: RED");
             passwordMessage.setText("New passwords do not match.");
         } else {
-            currentUser.setPassword(newPass);
+            currentUser.setPassword(newPas);
             persistChanges();
             passwordMessage.setStyle("-fx-text-fill: GREEN");
             passwordMessage.setText("Password updated successfully.");
             currentPasswordField.clear();
+            currentPasswordVisibleField.clear();
             newPasswordField.clear();
+            newPasswordVisibleField.clear();
             confirmNewPasswordField.clear();
+            confirmNewPasswordVisibleField.clear();
         }
     }
 
@@ -116,8 +228,8 @@ public class SettingsController {
         } else {
             try {
                 MediaVaultController.removeUser(currentUser.getUsername());
-                FileManager.rewriteAllUsers(FileManager.getUserFile(), MediaVaultController.getUsers(), MediaVaultController.getUserCount());
-
+                FileManager.rewriteAllUsers(FileManager.getUserFile(), MediaVaultController.getUsers(),
+                        MediaVaultController.getUserCount());
                 MediaVaultController.setCurrentUser(null);
                 MediaVault.setRoot("mediavault-view");
             } catch (IOException e) {
@@ -130,7 +242,8 @@ public class SettingsController {
 
     private void persistChanges() {
         try {
-            FileManager.rewriteAllUsers(FileManager.getUserFile(), MediaVaultController.getUsers(), MediaVaultController.getUserCount());
+            FileManager.rewriteAllUsers(FileManager.getUserFile(), MediaVaultController.getUsers(),
+                    MediaVaultController.getUserCount());
         } catch (IOException e) {
             e.printStackTrace();
         }

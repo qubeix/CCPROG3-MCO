@@ -14,13 +14,34 @@ import java.util.*;
  */
 public class Series extends MediaEntry {
     // ATTRIBUTES
-    private final String STUDIO;
+    // private final String STUDIO;
     private final int SEASONCOUNT; // the number of seasons
     private int[] episodeCount; // stores the number of episodes for each season
     private int currentSeason; // the user's current season
     private int currentEpisode; // the user's current episode
 
     // CONSTRUCTOR
+    // /**
+    // * Accepts a title, genre, and count of seasons as parameters, and initializes
+    // * status to "Planned," rating to 0, review to empty, current season to 1, and
+    // * current episode to 0, and list of episode counts
+    // *
+    // * @param title the title of the series
+    // * @param genre the genre of the series
+    // * @param seasonCount the count of seasons in the series
+    // */
+    // public Series(String title, String genre, int seasonCount) {
+    // super(title, genre);
+
+    // STUDIO = studio;
+    // SEASONCOUNT = seasonCount;
+    // episodeCount = new int[SEASONCOUNT];
+
+    // // Initialization
+    // currentSeason = 1;
+    // currentEpisode = 0;
+    // }
+
     /**
      * Accepts a title, genre, and count of seasons as parameters, and initializes
      * status to "Planned," rating to 0, review to empty, current season to 1, and
@@ -30,12 +51,16 @@ public class Series extends MediaEntry {
      * @param genre       the genre of the series
      * @param seasonCount the count of seasons in the series
      */
-    public Series(String title, String studio, String genre, int seasonCount) {
+    public Series(String title, String genre, int seasonCount, int[] episodeCount) {
         super(title, genre);
 
-        STUDIO = studio;
         SEASONCOUNT = seasonCount;
-        episodeCount = new int[SEASONCOUNT];
+        this.episodeCount = new int[SEASONCOUNT];
+
+        int i;
+        for (i = 0; i < SEASONCOUNT; i++) {
+            this.episodeCount[i] = episodeCount[i];
+        }
 
         // Initialization
         currentSeason = 1;
@@ -43,19 +68,19 @@ public class Series extends MediaEntry {
     }
 
     // METHODS
-    /**
-     * Assigns a number of episodes per season
-     */
-    @SuppressWarnings("resource")
-    public void addEpisodes() {
-        Scanner sc = new Scanner(System.in);
-        for (int i = 0; i < SEASONCOUNT; i++) {
-            do {
-                System.out.print("Season " + (i + 1) + " Episode Count: ");
-                episodeCount[i] = sc.nextInt();
-            } while (episodeCount[i] <= 0);
-        }
-    }
+    // /**
+    // * Assigns a number of episodes per season
+    // */
+    // @SuppressWarnings("resource")
+    // public void addEpisodes() {
+    // Scanner sc = new Scanner(System.in);
+    // for (int i = 0; i < SEASONCOUNT; i++) {
+    // do {
+    // System.out.print("Season " + (i + 1) + " Episode Count: ");
+    // episodeCount[i] = sc.nextInt();
+    // } while (episodeCount[i] <= 0);
+    // }
+    // }
 
     /**
      * Moves the current episode and current season forward by one as necessary
@@ -85,13 +110,13 @@ public class Series extends MediaEntry {
      * seasons, and episodes (and if the entry is completed, rating and review))
      */
     public String toString() {
-        String info = "\"" + TITLE + "\" by " + STUDIO;
-        info += "\tGenre: " + GENRE + "  |  No. of Seasons: " + SEASONCOUNT + "  |  No. of Episodes: "
+        String info = "\"" + TITLE + "\"";
+        info += "\nGenre: " + GENRE + "  |  No. of Seasons: " + SEASONCOUNT + "  |  No. of Episodes: "
                 + getEpisodeCount() + "\nCurrent Season: " + currentSeason + " | Current Episode: " + currentEpisode
                 + "\n";
         if (status.equalsIgnoreCase("Completed")) {
             info += "\tRating: " + rating;
-            info += "\tReview: " + review;
+            info += "\n\tReview: " + review;
         }
         info += "\n";
 
@@ -99,14 +124,14 @@ public class Series extends MediaEntry {
     }
 
     // GETTERS
-    /**
-     * Returns the studio of the series
-     * 
-     * @return the studio
-     */
-    public String getStudio() {
-        return STUDIO;
-    }
+    // /**
+    // * Returns the studio of the series
+    // *
+    // * @return the studio
+    // */
+    // public String getStudio() {
+    // return STUDIO;
+    // }
 
     /**
      * Returns the number of seasons in the series

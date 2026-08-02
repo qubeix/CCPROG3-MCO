@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.example.model.NumberTextField?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import javafx.geometry.Insets?>
+
+    <VBox fx:id="addSeriesPanel" fx:controller="com.example.controller.SeriesController" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" spacing="12.0" alignment="TOP_LEFT" style="-fx-background-color: rgba(255,255,255,0.6); -fx-background-radius: 10;"
+      AnchorPane.topAnchor="35.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.bottomAnchor="10.0">
+
+    <padding>
+        <Insets top="20" left="25" right="25" bottom="20"/>
+    </padding>
+
+    <children>
+        <Label text="Add Series" style="-fx-font-size: 16px; -fx-font-weight: bold; -fx-text-fill: #224aa6;">
+            <font><Font name="Century Gothic Bold" size="16.0"/></font>
+        </Label>
+
+        <TextField fx:id="seriesTitleField" promptText="Series Title" style="-fx-background-radius: 6; -fx-border-color: #cccccc; -fx-border-radius: 6;">
+            <font><Font name="Century Gothic Italic" size="12.0"/></font>
+        </TextField>
+
+        <Label text="Genre:" style="-fx-font-weight: bold; -fx-text-fill: #224aa6;">
+            <font><Font name="Century Gothic Bold" size="14.0"/></font>
+        </Label>
+
+        <HBox spacing="10.0">
+            <children>
+                <RadioButton fx:id="dramaButton" text="Drama" style="-fx-mark-color: #224aa6">
+                    <toggleGroup><ToggleGroup fx:id="seriesGenreGroup"/></toggleGroup>
+                </RadioButton>
+                <RadioButton fx:id="comedyButton" text="Comedy" toggleGroup="$seriesGenreGroup" style="-fx-mark-color: #224aa6"/>
+                <RadioButton fx:id="fantasyButton" text="Fantasy" toggleGroup="$seriesGenreGroup" style="-fx-mark-color: #224aa6"/>
+                <RadioButton fx:id="documentaryButton" text="Documentary" toggleGroup="$seriesGenreGroup" style="-fx-mark-color: #224aa6"/>
+                <RadioButton fx:id="mysteryButton" text="Mystery" toggleGroup="$seriesGenreGroup" style="-fx-mark-color: #224aa6"/>
+            </children>
+        </HBox>
+
+        <HBox spacing="10.0">
+            <children>
+                <NumberTextField fx:id="seriesSeasons" promptText="No. of Seasons" style="-fx-background-radius: 6; -fx-border-color: #cccccc; -fx-border-radius: 6;">
+                    <font><Font name="Century Gothic Italic" size="12.0"/></font>
+                </NumberTextField>
+                <Button text="Set Seasons" onAction="#setAddSeasons" style="-fx-background-color: #5998fc; -fx-text-fill: white; -fx-background-radius: 5;">
+                    <font><Font name="Century Gothic Bold" size="12.0"/></font>
+                </Button>
+            </children>
+        </HBox>
+
+        <HBox spacing="10.0">
+            <children>
+                <NumberTextField fx:id="seriesEpisodes" promptText="Number of Episodes" style="-fx-background-radius: 6; -fx-border-color: #cccccc; -fx-border-radius: 6;" disable="true">
+                    <font><Font name="Century Gothic Italic" size="12.0"/></font>
+                </NumberTextField>
+                <Button text="Set Episodes" onAction="#setAddEpisodes" style="-fx-background-color: #5998fc; -fx-text-fill: white; -fx-background-radius: 5;">
+                    <font><Font name="Century Gothic Bold" size="12.0"/></font>
+                </Button>
+            </children>
+        </HBox>
+
+        <HBox spacing="10.0">
+            <children>
+                <Button text="Submit" onAction="#confirmAddSeries" style="-fx-background-color: #448afa; -fx-text-fill: white; -fx-background-radius: 5;">
+                    <font><Font name="Century Gothic Bold" size="12.0"/></font>
+                </Button>
+                <Button text="Clear" onAction="#clearAddSeries" style="-fx-background-color: #f6933c; -fx-text-fill: white; -fx-background-radius: 5;">
+                    <font><Font name="Century Gothic Bold" size="12.0"/></font>
+                </Button>
+            </children>
+        </HBox>
+
+        <Label fx:id="seriesErrorLabel" style="-fx-text-fill: RED">
+            <font><Font name="Century Gothic Bold" size="11.0"/></font>
+        </Label>
+    </children>
+</VBox>

@@ -49,7 +49,7 @@ public class RateController {
             switch (type) {
                 case "Book":
                     for (int i = 0; i < library.getBookCount(); i++) {
-                        if("Completed".equalsIgnoreCase(library.getBookEntry(i).getStatus())){
+                        if ("Completed".equalsIgnoreCase(library.getBookEntry(i).getStatus())) {
                             rateEntryCombo.getItems().add((i + 1) + ". " + library.getBookEntry(i).getTitle());
                         }
                     }
@@ -57,7 +57,7 @@ public class RateController {
 
                 case "Album":
                     for (int i = 0; i < library.getAlbumCount(); i++) {
-                        if("Completed".equalsIgnoreCase(library.getBookEntry(i).getStatus())){
+                        if ("Completed".equalsIgnoreCase(library.getAlbumEntry(i).getStatus())) {
                             rateEntryCombo.getItems().add((i + 1) + ". " + library.getAlbumEntry(i).getTitle());
                         }
                     }
@@ -65,7 +65,7 @@ public class RateController {
 
                 case "Series":
                     for (int i = 0; i < library.getSeriesCount(); i++) {
-                        if("Completed".equalsIgnoreCase(library.getBookEntry(i).getStatus())){
+                        if ("Completed".equalsIgnoreCase(library.getSeriesEntry(i).getStatus())) {
                             rateEntryCombo.getItems().add((i + 1) + ". " + library.getSeriesEntry(i).getTitle());
                         }
                     }
@@ -85,22 +85,29 @@ public class RateController {
         if (type != null && selected != null && rating != 0) {
             int index = Integer.parseInt(selected.split("\\.")[0]) - 1;
 
-            if ("Book".equals(type)) {
-                library.rateBookAt(index, rating);
-            } else if ("Album".equals(type)) {
-                library.rateAlbumAt(index, rating);
-            } else if ("Series".equals(type)) {
-                library.rateSeriesAt(index, rating);
+            if (rating > 0 && rating <= 10) {
+                if ("Book".equals(type)) {
+                    library.rateBookAt(index, rating);
+                } else if ("Album".equals(type)) {
+                    library.rateAlbumAt(index, rating);
+                } else if ("Series".equals(type)) {
+                    library.rateSeriesAt(index, rating);
+                }
+
+                rateEntryMessage.setStyle("-fx-text-fill: GREEN");
+                rateEntryMessage.setText("Entry rated.");
+                rateEntryMessage.setVisible(true);
+
+                clearRateEntry();
+
+            } else {
+                rateEntryMessage.setStyle("-fx-text-fill: RED");
+                rateEntryMessage.setText("Invalid rating. Please choose a number from 1-10.");
+                rateEntryMessage.setVisible(true);
             }
-
-            rateEntryMessage.setStyle("-fx-text-fill: GREEN");
-            rateEntryMessage.setText("Entry rated.");
-            rateEntryMessage.setVisible(true);
-
-            clearRateEntry();
         } else {
             rateEntryMessage.setStyle("-fx-text-fill: RED");
-            rateEntryMessage.setText("Please select both a type and an entry to remove, and add a rating.");
+            rateEntryMessage.setText("Please fill all areas.");
             rateEntryMessage.setVisible(true);
         }
     }

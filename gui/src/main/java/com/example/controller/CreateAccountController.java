@@ -14,8 +14,6 @@ import javafx.scene.control.TextField;
 
 public class CreateAccountController {
 
-    private static final String USER_FILE = "./users.txt";
-
     @FXML
     private Button createButton;
 
@@ -35,50 +33,63 @@ public class CreateAccountController {
     private TextField passwordVisibleField;
 
     @FXML
-    private PasswordField verifyPasswordField;
+    private PasswordField confirmPasswordField;
 
     @FXML
-    private TextField verifyPasswordVisibleField;
+    private TextField confirmPasswordVisibleField;
 
     @FXML
     private CheckBox showPasswordCheckBox;
 
     @FXML
-    private CheckBox showVerifyPasswordCheckBox;
+    private CheckBox showConfirmPasswordCheckBox;
 
     @FXML
     private Label usernameErrorLabel;
 
     @FXML
-    private Label verifyPasswordErrorLabel;
+    private Label confirmPasswordErrorLabel;
 
+    /**
+     * Accepts name, username, password, and confirmation of password
+     * performs the a validation check to ensure:
+     * all fields are filled,
+     * username and password do not contain spaces
+     * password and confirmation password matches
+     * 
+     * if the validation fails, it dispalys the error messages
+     * if validation succeeds. creates a new User object adding it to the system
+     * MediaVaultController
+     * sets the new user to the current user. and proceeds to the main menu view
+     * 
+     * @throws IOExceptions if the FXML resource for the main menu view can not be
+     *                      loaded
+     * @FXML this method is bound to the "Create Account" button in the account
+     *       creation form
+     */
     @FXML
     private void createAccount() throws IOException {
         String name = nameField.getText();
         String username = usernameField.getText();
         String password = passwordField.getText();
-        String verifyPassword = verifyPasswordField.getText();
+        String confirmPassword = confirmPasswordField.getText();
 
         User[] users = MediaVaultController.getUsers();
         int userCount = MediaVaultController.getUserCount();
 
-        //User newUser = null;
-
-        if(passwordField.isVisible()){
+        if (passwordField.isVisible()) {
             password = passwordField.getText();
-        }
-        else{
+        } else {
             password = passwordVisibleField.getText();
         }
 
-        if(verifyPasswordField.isVisible()){
-            verifyPassword = verifyPasswordField.getText();
-        }
-        else{
-            verifyPassword = verifyPasswordVisibleField.getText();
+        if (confirmPasswordField.isVisible()) {
+            confirmPassword = confirmPasswordField.getText();
+        } else {
+            confirmPassword = confirmPasswordVisibleField.getText();
         }
 
-        boolean isUsernameTaken = false; 
+        boolean isUsernameTaken = false;
 
         for (int i = 0; i < userCount && !isUsernameTaken; i++) {
             if (users[i].getUsername().equals(username)) {
@@ -86,30 +97,25 @@ public class CreateAccountController {
             }
         }
 
-        boolean isPasswordMatch = password.equals(verifyPassword);
-        //boolean containsSspace = name.contains(" ") == false && username.contains(" ") || password.contains(" ") || verifyPassword.contains(" ");
-        boolean invalidSpaces = username.contains(" ") || password.contains(" ") || verifyPassword.contains(" ");
+        boolean isPasswordMatch = password.equals(confirmPassword);
+        boolean invalidSpaces = username.contains(" ") || password.contains(" ") || confirmPassword.contains(" ");
 
         usernameErrorLabel.setVisible(false);
-        verifyPasswordErrorLabel.setVisible(false);
+        confirmPasswordErrorLabel.setVisible(false);
 
-        if(username.isEmpty() || password.isEmpty() || verifyPassword.isEmpty()){
+        if (username.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
             usernameErrorLabel.setText("Please fill in all fields");
             usernameErrorLabel.setVisible(true);
-        }
-        else if(invalidSpaces){
-            verifyPasswordErrorLabel.setText("Username and password cannot contain spaces.");
-            verifyPasswordErrorLabel.setVisible(true);
-        }
-        else if(isUsernameTaken){
+        } else if (invalidSpaces) {
+            confirmPasswordErrorLabel.setText("Username and password cannot contain spaces.");
+            confirmPasswordErrorLabel.setVisible(true);
+        } else if (isUsernameTaken) {
             usernameErrorLabel.setText("This username already exist. Please choose a new username");
             usernameErrorLabel.setVisible(true);
-        }
-        else if(!isPasswordMatch){
-            verifyPasswordErrorLabel.setText("Your password does not match. Please try again");
-            verifyPasswordErrorLabel.setVisible(true);
-        }
-        else{
+        } else if (!isPasswordMatch) {
+            confirmPasswordErrorLabel.setText("Your password does not match. Please try again");
+            confirmPasswordErrorLabel.setVisible(true);
+        } else {
             User newUser = new User(username, password, name);
             MediaVaultController.addUser(newUser);
             MediaVaultController.setCurrentUser(newUser);
@@ -117,6 +123,23 @@ public class CreateAccountController {
         }
     }
 
+    /**
+     * Toggles the visibility of the password field between hidden and visible modes
+     * 
+     * When "Show Password" checkbox is triggered, the hidden password field is
+     * replaced
+     * with a visible text field showing the current password. When the checkbox is
+     * deselected,
+     * the visible text field is hidden again and the password is restored to the
+     * hidden field
+     * 
+     * This ensures that the user can choose whenever to view their password in
+     * plaine text
+     * or keep their password hidden
+     * 
+     * @FXML this method is bound to the "Show Password" checkbox in the account
+     *       form
+     */
     @FXML
     private void toggleShowPassword() {
         if (showPasswordCheckBox.isSelected()) {
@@ -134,23 +157,50 @@ public class CreateAccountController {
         }
     }
 
+    /**
+     * Toggles the visibility of the password field between hidden and visible modes
+     * 
+     * When "Show Confirm Password" checkbox is triggered, the hidden password field
+     * is replaced with a visible text field showing the current confirmation
+     * password. When the checkbox is
+     * deselected, the visible text field is hidden again and the password is
+     * restored to the hidden field
+     * 
+     * This ensures that the user can choose whenever to view their password in
+     * plaine text or keep their password hidden
+     * 
+     * @FXML this method is bound to the "Show Confirm Password" checkbox in the
+     *       account
+     *       form
+     */
     @FXML
-    private void toggleShowVerifyPassword() {
-        if (showVerifyPasswordCheckBox.isSelected()) {
-            verifyPasswordVisibleField.setText(verifyPasswordField.getText());
-            verifyPasswordVisibleField.setVisible(true);
-            verifyPasswordVisibleField.setManaged(true);
-            verifyPasswordField.setVisible(false);
-            verifyPasswordField.setManaged(false);
+    private void toggleShowConfirmPassword() {
+        if (showConfirmPasswordCheckBox.isSelected()) {
+            confirmPasswordVisibleField.setText(confirmPasswordField.getText());
+            confirmPasswordVisibleField.setVisible(true);
+            confirmPasswordVisibleField.setManaged(true);
+            confirmPasswordField.setVisible(false);
+            confirmPasswordField.setManaged(false);
         } else {
-            verifyPasswordField.setText(verifyPasswordVisibleField.getText());
-            verifyPasswordField.setVisible(true);
-            verifyPasswordField.setManaged(true);
-            verifyPasswordVisibleField.setVisible(false);
-            verifyPasswordVisibleField.setManaged(false);
+            confirmPasswordField.setText(confirmPasswordVisibleField.getText());
+            confirmPasswordField.setVisible(true);
+            confirmPasswordField.setManaged(true);
+            confirmPasswordVisibleField.setVisible(false);
+            confirmPasswordVisibleField.setManaged(false);
         }
     }
 
+    /**
+     * Navigates back to the MediaVault login view
+     * 
+     * Is triggered once the "Back" button is clicked, this method resets the
+     * application roomm to the mediavault-view FXML file, effectively returning the
+     * user to the login screen
+     * 
+     * @throws IOExecption if the FXML resource for the MediaVault view can not be
+     *                     loaded
+     * @FXML This method is bound to the "Back" button in the account creation
+     */
     @FXML
     private void goBack() throws IOException {
         MediaVault.setRoot("mediavault-view");

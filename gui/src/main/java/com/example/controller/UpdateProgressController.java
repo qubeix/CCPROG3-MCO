@@ -72,36 +72,37 @@ public class UpdateProgressController {
             int index = Integer.parseInt(selected.split("\\.")[0]) - 1;
             String status = null;
 
-            if("Book".equals(type)){
+            if ("Book".equals(type)) {
                 status = library.getBookEntry(index).getStatus();
-            }
-            else if("Album".equals(type)){
+            } else if ("Album".equals(type)) {
                 status = library.getAlbumEntry(index).getStatus();
-            }
-            else if("Series".equals(type)){
+            } else if ("Series".equals(type)) {
                 status = library.getSeriesEntry(index).getStatus();
             }
 
-            if("Completed".equalsIgnoreCase(status)){
+            if ("Completed".equalsIgnoreCase(status)) {
                 updateEntryMessage.setStyle("-fx-text-fill: RED");
-                updateEntryMessage.setText("You can not longer update a completed entry.");
+                updateEntryMessage.setText("You can no longer update a completed entry.");
                 updateEntryMessage.setVisible(true);
-            }
-            else{
+            } else {
+                String info = null;
+
                 if ("Book".equals(type)) {
-                library.updateBookAt(index);
-                } 
-                else if ("Album".equals(type)) {
+                    library.updateBookAt(index);
+                    info = library.getBookEntry(index).toString();
+                } else if ("Album".equals(type)) {
                     library.updateAlbumAt(index);
-                } 
-                else if ("Series".equals(type)) {
+                    info = library.getAlbumEntry(index).toString();
+                } else if ("Series".equals(type)) {
                     library.updateSeriesAt(index);
+                    info = library.getSeriesEntry(index).toString();
                 }
+
                 updateEntryMessage.setStyle("-fx-text-fill: GREEN");
-                updateEntryMessage.setText("Entry updated.");
+                updateEntryMessage.setText("Entry updated.\n" + info);
                 updateEntryMessage.setVisible(true);
             }
-            //learUpdateEntry();
+            // learUpdateEntry();
         } else {
             updateEntryMessage.setStyle("-fx-text-fill: RED");
             updateEntryMessage.setText("Please select both a type and an entry to remove.");

@@ -34,17 +34,16 @@
                   <TextField fx:id="usernameField" layoutX="266.0" layoutY="111.0" prefHeight="25.0" prefWidth="169.0" promptText="Username" />
                   <PasswordField fx:id="passwordField" layoutX="265.0" layoutY="152.0" prefHeight="25.0" prefWidth="169.0" promptText="Password" managed="true" visible="true"/>
                   <TextField fx:id="passwordVisibleField" layoutX="265.0" layoutY="152.0" prefHeight="25.0" prefWidth="169.0" promptText="Password" managed="false" visible="false"/>
-                  <PasswordField fx:id="verifyPasswordField" layoutX="266.0" layoutY="193.0" prefHeight="25.0" prefWidth="169.0" promptText="Verify Password" managed="true" visible="true"/>
-                  <TextField fx:id="verifyPasswordVisibleField" layoutX="265.0" layoutY="193.0" prefHeight="25.0" prefWidth="169.0" promptText="Password" managed="false" visible="false"/>
+                  <PasswordField fx:id="confirmPasswordField" layoutX="266.0" layoutY="193.0" prefHeight="25.0" prefWidth="169.0" promptText="Confirm Password" managed="true" visible="true"/>
+                  <TextField fx:id="confirmPasswordVisibleField" layoutX="265.0" layoutY="193.0" prefHeight="25.0" prefWidth="169.0" promptText="Password" managed="false" visible="false"/>
                   <CheckBox fx:id="showPasswordCheckBox" layoutX="413.0" layoutY="156.0" mnemonicParsing="false" onAction="#toggleShowPassword" />
-                  <CheckBox fx:id="showVerifyPasswordCheckBox" layoutX="413.0" layoutY="197.0" mnemonicParsing="false" onAction="#toggleShowVerifyPassword" />
-                  <!-- <Label fx:id="errorLabel" layoutX="141.0" layoutY="231.0" text="Username already exist, please choose a new username" textFill="#d73333" visible="false"> -->
+                  <CheckBox fx:id="showConfirmPasswordCheckBox" layoutX="413.0" layoutY="197.0" mnemonicParsing="false" onAction="#toggleShowConfirmPassword" />
                   <Label fx:id="usernameErrorLabel" layoutX="141.0" layoutY="231.0" textFill="#d73333" visible="false">
                      <font>
                         <Font name="Century Gothic Bold" size="13.0" />
                      </font>
                   </Label>
-                  <Label fx:id="verifyPasswordErrorLabel" layoutX="141.0" layoutY="231.0" text="Your password does not match, please try again." textFill="#d73333" visible="false">
+                  <Label fx:id="confirmPasswordErrorLabel" layoutX="141.0" layoutY="231.0" text="Your password does not match, please try again." textFill="#d73333" visible="false">
                      <font>
                         <Font name="Century Gothic Bold" size="13.0" />
                      </font>
