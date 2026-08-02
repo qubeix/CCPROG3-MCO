@@ -56,6 +56,8 @@ public class Book extends MediaEntry {
     /**
      * Returns a String containing the information of the book (title, author,
      * genre, and chapters (and if the entry is completed, rating and review))
+     * 
+     * @return a formatted string with book information
      */
     public String toString() {
         String info = "\"" + TITLE + "\" by " + AUTHOR;

@@ -113,6 +113,12 @@ public class Library {
 
     // REMOVING ENTRIES
     // remove book
+    /**
+     * Removes a book at the given index from the library
+     * 
+     * @param index the potion of the book to remove
+     * @return the title of the author of the remvoed book, or null if invalid
+     */
     public String removeBookAt(int index) {
         if (index >= 0 && index < bookCount) {
             String removedTitle = bookLibrary[index].getTitle() + " by " + bookLibrary[index].getAuthor();
@@ -127,6 +133,13 @@ public class Library {
     }
 
     // remove album
+    /**
+     * removes an album at the given index from the library
+     * 
+     * @param index the position of teh album to remove
+     * @return the title and artist of the removed album, or null if index is
+     *         invalid
+     */
     public String removeAlbumAt(int index) {
         if (index >= 0 && index < albumCount) {
             String removedTitle = albumLibrary[index].getTitle() + " by " + albumLibrary[index].getArtist();
@@ -141,6 +154,12 @@ public class Library {
     }
 
     // remove series
+    /**
+     * removes a series at the given index from the library
+     * 
+     * @param index the position of the sesries to remove
+     * @return the title of the removed series, or null if index is invalid
+     */
     public String removeSeriesAt(int index) {
         if (index >= 0 && index < seriesCount) {
             String removedTitle = seriesLibrary[index].getTitle();
@@ -154,97 +173,12 @@ public class Library {
         return null;
     }
 
-    // remove album
-    public String rateBookAt(int index, int rating) {
-        if (index >= 0 && index < bookCount) {
-            String ratedTitle = bookLibrary[index].getTitle();
-            bookLibrary[index].addRating(rating);
-            return ratedTitle;
-        }
-        return null;
-    }
-
-    // remove album
-    public String rateAlbumAt(int index, int rating) {
-        if (index >= 0 && index < albumCount) {
-            String ratedTitle = albumLibrary[index].getTitle();
-            albumLibrary[index].addRating(rating);
-            return ratedTitle;
-        }
-        return null;
-    }
-
-    // remove series
-    public String rateSeriesAt(int index, int rating) {
-        if (index >= 0 && index < seriesCount) {
-            String ratedTitle = seriesLibrary[index].getTitle();
-            seriesLibrary[index].addRating(rating);
-            return ratedTitle;
-        }
-        return null;
-    }
-
-    // review book
-    public String reviewBookAt(int index, String review) {
-        if (index >= 0 && index < bookCount) {
-            String reviewedTitle = bookLibrary[index].getTitle();
-            bookLibrary[index].addReview(review);
-            return reviewedTitle;
-        }
-        return null;
-    }
-
-    // review album
-    public String reviewAlbumAt(int index, String review) {
-        if (index >= 0 && index < albumCount) {
-            String reviewedTitle = albumLibrary[index].getTitle();
-            albumLibrary[index].addReview(review);
-            return reviewedTitle;
-        }
-        return null;
-    }
-
-    // review series
-    public String reviewSeriesAt(int index, String review) {
-        if (index >= 0 && index < seriesCount) {
-            String reviewedTitle = seriesLibrary[index].getTitle();
-            seriesLibrary[index].addReview(review);
-            return reviewedTitle;
-        }
-        return null;
-    }
-
-    // update book
-    public String updateBookAt(int index) {
-        if (index >= 0 && index < bookCount) {
-            String updatedTitle = bookLibrary[index].getTitle();
-            bookLibrary[index].updateProgress();
-            return updatedTitle;
-        }
-        return null;
-    }
-
-    // update album
-    public String updateAlbumAt(int index) {
-        if (index >= 0 && index < albumCount) {
-            String updatedTitle = albumLibrary[index].getTitle();
-            albumLibrary[index].updateProgress();
-            return updatedTitle;
-        }
-        return null;
-    }
-
-    // update series
-    public String updateSeriesAt(int index) {
-        if (index >= 0 && index < seriesCount) {
-            String updatedTitle = seriesLibrary[index].getTitle();
-            seriesLibrary[index].updateProgress();
-            return updatedTitle;
-        }
-        return null;
-    }
-
-    // ALL ENTRIES
+    // VIEW ALL ENTRIES
+    /**
+     * Returns a formatted string of all library entries
+     * 
+     * @return text listing books, albums, and series, or message if empty
+     */
     public String getAllEntriesText() {
         StringBuilder sb = new StringBuilder();
 
@@ -285,6 +219,11 @@ public class Library {
     }
 
     // SUMMARIES OF ALL ENTRIES
+    /**
+     * Returns a summary of the library with totals and average rating
+     * 
+     * @return text showing counts of entries by status and average ratings
+     */
     public String getSummaryText() {
         StringBuilder sb = new StringBuilder();
 
@@ -449,5 +388,4 @@ public class Library {
     public Series getSeriesEntry(int index) {
         return seriesLibrary[index];
     }
-
 }

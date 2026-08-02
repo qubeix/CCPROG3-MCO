@@ -36,7 +36,11 @@ public class Album extends MediaEntry {
 
 	// METHODS
 	/**
-	 * Moves the current track forward by one
+	 * updates the album's progress by moving to the next track
+	 * 
+	 * increments teh currentTrack counter if it is less than the total TRACKCOUNT.
+	 * If all tracks are completed, it prints a message that no further edits can be
+	 * made
 	 */
 	public void updateProgress() {
 		if (currentTrack < TRACKCOUNT) {
@@ -59,6 +63,8 @@ public class Album extends MediaEntry {
 	/**
 	 * Returns a String containing the information of the album (title, artist,
 	 * genre, and tracks (and if the entry is completed, rating and review))
+	 * 
+	 * @return a formatted string with album information
 	 */
 	public String toString() {
 		String info = "\"" + TITLE + "\" by " + ARTIST;

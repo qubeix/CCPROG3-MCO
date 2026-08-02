@@ -11,9 +11,6 @@ import javafx.scene.layout.VBox;
 public class RateController {
 
     @FXML
-    private VBox rateEntryPanel;
-
-    @FXML
     private ComboBox<String> rateTypeCombo;
 
     @FXML
@@ -27,10 +24,25 @@ public class RateController {
 
     private Library library;
 
+    /**
+     * This method is the parent controller after loading the FXML,
+     * allowing the controller to access the user's library data
+     * 
+     * @param library this object is associated with this controller
+     */
     public void setLibrary(Library library) {
         this.library = library;
     }
 
+    /**
+     * Initializes the controller after its root element has been completely loaded.
+     * 
+     * Set up choices in the rateTypeCombo with the options (Book, Album, Series),
+     * and hides the rateEntryMessage by deafult until it is needed
+     * 
+     * @FXML this method is automatically called after the FXML components have been
+     *       loaded
+     */
     @FXML
     private void initialize() {
         rateTypeCombo.getItems().setAll("Book", "Album", "Series");
@@ -38,8 +50,16 @@ public class RateController {
     }
 
     /**
-     * Initializes the entry options depending on the selected media type
+     * Handles the selection of a rate type from the combo box
+     * 
+     * Clears the rateEntryCombo items and sets them based on the selected entry
+     * type (book, album, series). Only the entries with a status of "Completed" are
+     * added to the list. allowing the user to choose which completed item to rate
+     * 
+     * @FXML the method is triggered once the user selects a type from the
+     *       rateTypeCombo
      */
+
     @FXML
     private void onRateTypeSelected() {
         String type = rateTypeCombo.getValue();
@@ -73,6 +93,18 @@ public class RateController {
         }
     }
 
+    /**
+     * Confirms and applies a rating to the selected entry
+     * 
+     * retrives the selected entry type (book, album, series), and allows the user
+     * to rate the entry. If all inputs are valid and the rating is between 1-10,
+     * the rating is added to the entry in the library. Displays a success message
+     * when the raiting is applied, or an error message if the input is invalid or
+     * incomplete
+     * 
+     * @FXML this method is triggered when the usesr clicks the confirm button when
+     *       rating an entry
+     */
     @FXML
     private void confirmRateEntry() {
         String type = rateTypeCombo.getValue();
@@ -87,11 +119,14 @@ public class RateController {
 
             if (rating > 0 && rating <= 10) {
                 if ("Book".equals(type)) {
-                    library.rateBookAt(index, rating);
+                    library.getBookEntry(index).addRating(rating);
+                    // library.rateBookAt(index, rating);
                 } else if ("Album".equals(type)) {
-                    library.rateAlbumAt(index, rating);
+                    library.getAlbumEntry(index).addRating(rating);
+                    // library.rateAlbumAt(index, rating);
                 } else if ("Series".equals(type)) {
-                    library.rateSeriesAt(index, rating);
+                    library.getSeriesEntry(index).addRating(rating);
+                    // library.rateSeriesAt(index, rating);
                 }
 
                 rateEntryMessage.setStyle("-fx-text-fill: GREEN");
@@ -112,6 +147,14 @@ public class RateController {
         }
     }
 
+    /**
+     * clears the current rating entry form
+     * 
+     * resets the rateTypeCombo and rateEntryCombo selection to null and clears the
+     * inputRating field, preparing the form for a new entry
+     * 
+     * @FXML this method is triggered when the user clicks the clear button
+     */
     @FXML
     private void clearRateEntry() {
         rateTypeCombo.setValue(null);

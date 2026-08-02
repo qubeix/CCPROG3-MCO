@@ -39,59 +39,20 @@ public class MainMenuController {
     @FXML
     private AnchorPane centerPane;
 
-    @FXML
-    private TextArea outputArea;
-
-    @FXML
-    private Button homeButton;
-
-    @FXML
-    private Button addBookButton;
-
-    @FXML
-    private Button addAlbumButton;
-
-    @FXML
-    private Button addSeriesButton;
-
-    @FXML
-    private Button removeEntryButton;
-
-    @FXML
-    private Button rateReviewEntry;
-
-    @FXML
-    private Button rateEntryButton1;
-
-    @FXML
-    private Button updateProgressButton;
-
-    @FXML
-    private Button viewAllButton;
-
-    @FXML
-    private Button viewSummaryButton;
-
-    @FXML
-    private Button settingsButton;
-
-    @FXML
-    private Button logoutButton;
-
     private User currentUser;
     private Library library;
 
     /**
      * Initalizes the main menu view
      * 
-     * retrives the current user from MediaVaultController, sets the welcome label,
+     * retrives the current user from UserController, sets the welcome label,
      * applies background styling to panels, and customizes the sidebar scrollbar.
      * 
      * @FXML This method is automaticall called after the FXML is loaded
      */
     @FXML
     private void initialize() {
-        currentUser = MediaVaultController.getCurrentUser();
+        currentUser = UserController.getCurrentUser();
         if (currentUser != null) {
             library = currentUser.getLibrary();
             welcomeLabel.setText("Welcome, " + currentUser.getName() + "!");
@@ -116,11 +77,11 @@ public class MainMenuController {
      * applications aesthetic
      */
     private void applyPanelBackgrounds() {
-        sidebarBox.setBackground(new Background(
-                new BackgroundFill(Color.rgb(255, 255, 255, 0.35), CornerRadii.EMPTY, Insets.EMPTY)));
+        sidebarBox.setBackground(
+                new Background(new BackgroundFill(Color.rgb(255, 255, 255, 0.35), CornerRadii.EMPTY, Insets.EMPTY)));
 
-        centerPane.setBackground(new Background(
-                new BackgroundFill(Color.rgb(255, 255, 255, 0.55), CornerRadii.EMPTY, Insets.EMPTY)));
+        centerPane.setBackground(
+                new Background(new BackgroundFill(Color.rgb(255, 255, 255, 0.55), CornerRadii.EMPTY, Insets.EMPTY)));
     }
 
     /**

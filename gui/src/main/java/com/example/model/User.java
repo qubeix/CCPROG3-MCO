@@ -54,14 +54,6 @@ public class User {
 		}
 	}
 
-	/**
-	 * Logs a user out of their account
-	 * @pre. user has been logged in
-	 */
-	public void logout() {
-		System.out.println("Thank you! " + name + " has logged out\n");
-	}
-
 	// GETTERS
 	/**
 	 * Returns the user's username
@@ -100,14 +92,29 @@ public class User {
 	}
 
 	// SETTERS
+	/**
+	 * sets the user's username
+	 * 
+	 * @param username the new username to assign
+	 */
 	public void setUsername(String username) {
 		this.username = username;
 	}
 
+	/**
+	 * sets the user's password
+	 * 
+	 * @param password the new password to assign
+	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
+	/**
+	 * sets the user's name
+	 * 
+	 * @param name the new name to assign
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}

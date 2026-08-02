@@ -66,10 +66,30 @@ public class SettingsController {
 
     private User currentUser;
 
+    /**
+     * Sets the current user for this controller.
+     * 
+     * Assigns the provided User object to the currentUser field,
+     * allowing the controller to track and manage actions based
+     * on the active user.
+     *
+     * @param user the User object to set as the current user
+     */
     public void setCurrentUser(User user) {
         this.currentUser = user;
     }
 
+    /**
+     * Confirms and updates the current user's name
+     * 
+     * Retrieves the new name from the input field and confirms it.
+     * If the name is empty, it displays an error message. If valid,
+     * it updates the currentUser's name, persists the changes, shows
+     * a success message, and clears the input field.
+     *
+     * @FXML This method is triggered when the user clicks the
+     *       confirm button for changing their name.
+     */
     @FXML
     private void confirmChangeName() {
         String newName = newNameField.getText();
@@ -86,6 +106,20 @@ public class SettingsController {
         }
     }
 
+    /**
+     * Confirms and updates the current user's username.
+     * 
+     * Retrieves the new username from the input field and validates it.
+     * If the username is empty or contains spaces, it displays an error message.
+     * If the username matches the current one, it shows a message that no change
+     * was made to the username. Otherwise, checks if the username is already taken
+     * by another user. If available, updates the currentUser's username, persists
+     * the changes, shows a success message, and clears the input field. If taken,
+     * displays an error message instead.
+     *
+     * @FXML This method is triggered when the user clicks the
+     *       confirm button for changing their username.
+     */
     @FXML
     private void confirmChangeUsername() {
         String newUsername = newUsernameField.getText();
@@ -98,8 +132,8 @@ public class SettingsController {
             usernameMessage.setText("Username was not changed");
             newUsernameField.clear();
         } else {
-            User[] users = MediaVaultController.getUsers();
-            int userCount = MediaVaultController.getUserCount();
+            User[] users = UserController.getUsers();
+            int userCount = UserController.getUserCount();
             boolean isTaken = false;
 
             for (int i = 0; i < userCount && !isTaken; i++) {
@@ -121,6 +155,17 @@ public class SettingsController {
         }
     }
 
+    /**
+     * Toggles the visibility of the current password field.
+     * 
+     * Switches between showing the password in plain text and hiding it
+     * behind a hidden field, depending on the state of the
+     * showCurrentPasswordCheckBox. Ensures that the entered password
+     * remains synchronized between the visible and hidden fields.
+     *
+     * @FXML This method is triggered when the user checks or unchecks
+     *       the "Show Password" option for the current password.
+     */
     @FXML
     private void toggleShowCurrentPassword() {
         if (showCurrentPasswordCheckBox.isSelected()) {
@@ -138,6 +183,17 @@ public class SettingsController {
         }
     }
 
+    /**
+     * Toggles the visibility of the new password field.
+     * 
+     * Switches between showing the new password in plain text and
+     * hiding it behind a hidden field, depending on the state of the
+     * showNewPasswordCheckBox. Ensures that the entered password
+     * remains synchronized between the visible and hidden fields.
+     *
+     * @FXML This method is triggered when the user checks or unchecks
+     *       the "Show Password" option for the new password.
+     */
     @FXML
     private void toggleShowNewPassword() {
         if (showNewPasswordCheckBox.isSelected()) {
@@ -155,6 +211,17 @@ public class SettingsController {
         }
     }
 
+    /**
+     * Toggles the visibility of the confirm new password field.
+     * 
+     * Switches between showing the confirmation password in plain text
+     * and hiding it behind a hidden field, depending on the state of the
+     * showConfirmNewPasswordCheckBox. Ensures that the entered password
+     * remains synchronized between the visible and hidden fields.
+     *
+     * @FXML This method is triggered when the user checks or unchecks
+     *       the "Show Password" option for the confirm new password field.
+     */
     @FXML
     private void toggleShowConfirmNewPassword() {
         if (showConfirmNewPasswordCheckBox.isSelected()) {
@@ -172,6 +239,22 @@ public class SettingsController {
         }
     }
 
+    /**
+     * Confirms and updates the current user's password.
+     * 
+     * Retrieves the current, new, and confirmation password values
+     * from either the masked or visible fields depending on which
+     * are active. Validates the inputs by checking that the current
+     * password matches the user's existing password, the new password
+     * is not empty or containing spaces, and that the new password
+     * matches the confirmation field. If validation passes, updates
+     * the user's password, persists the changes, shows a success
+     * message, and clears all password fields. If validation fails,
+     * displays an appropriate error message.
+     *
+     * @FXML This method is triggered when the user clicks the
+     *       confirm button for changing their password.
+     */
     @FXML
     private void confirmChangePassword() {
         String current;
@@ -218,6 +301,19 @@ public class SettingsController {
         }
     }
 
+    /**
+     * Confirms and deletes the current user's account.
+     * 
+     * Validates the entered password against the current user's password.
+     * If incorrect, displays an error message.
+     * If correct, attempts to remove the user from the UserController,
+     * rewrites the user file to persist changes, clears the current user,
+     * and redirects to the MediaVault main view. If an I/O error occurs
+     * during deletion, displays an error message instead.
+     *
+     * @FXML This method is triggered when the user clicks the
+     *       confirm button for deleting their account.
+     */
     @FXML
     private void confirmDeleteAccount() {
         String enteredPassword = deleteConfirmPasswordField.getText();
@@ -227,10 +323,10 @@ public class SettingsController {
             deleteMessage.setText("Incorrect password. Account not deleted.");
         } else {
             try {
-                MediaVaultController.removeUser(currentUser.getUsername());
-                FileManager.rewriteAllUsers(FileManager.getUserFile(), MediaVaultController.getUsers(),
-                        MediaVaultController.getUserCount());
-                MediaVaultController.setCurrentUser(null);
+                UserController.removeUser(currentUser.getUsername());
+                FileManager.rewriteAllUsers(FileManager.getUserFile(), UserController.getUsers(),
+                        UserController.getUserCount());
+                UserController.setCurrentUser(null);
                 MediaVault.setRoot("mediavault-view");
             } catch (IOException e) {
                 deleteMessage.setStyle("-fx-text-fill: RED");
@@ -240,10 +336,19 @@ public class SettingsController {
         }
     }
 
+    /**
+     * Persists all user changes to storage.
+     * 
+     * Rewrites the user file with the current list of users
+     * and their updated information, ensuring that changes
+     * such as name, username, or password updates are saved.
+     * If an I/O error occurs during the process, the stack
+     * trace is printed for debugging.
+     */
     private void persistChanges() {
         try {
-            FileManager.rewriteAllUsers(FileManager.getUserFile(), MediaVaultController.getUsers(),
-                    MediaVaultController.getUserCount());
+            FileManager.rewriteAllUsers(FileManager.getUserFile(), UserController.getUsers(),
+                    UserController.getUserCount());
         } catch (IOException e) {
             e.printStackTrace();
         }

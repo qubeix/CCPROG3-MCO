@@ -15,12 +15,6 @@ import javafx.scene.control.TextField;
 public class CreateAccountController {
 
     @FXML
-    private Button createButton;
-
-    @FXML
-    private Button backButton;
-
-    @FXML
     private TextField nameField;
 
     @FXML
@@ -59,7 +53,7 @@ public class CreateAccountController {
      * 
      * if the validation fails, it dispalys the error messages
      * if validation succeeds. creates a new User object adding it to the system
-     * MediaVaultController
+     * UserController
      * sets the new user to the current user. and proceeds to the main menu view
      * 
      * @throws IOExceptions if the FXML resource for the main menu view can not be
@@ -74,8 +68,8 @@ public class CreateAccountController {
         String password = passwordField.getText();
         String confirmPassword = confirmPasswordField.getText();
 
-        User[] users = MediaVaultController.getUsers();
-        int userCount = MediaVaultController.getUserCount();
+        User[] users = UserController.getUsers();
+        int userCount = UserController.getUserCount();
 
         if (passwordField.isVisible()) {
             password = passwordField.getText();
@@ -117,8 +111,8 @@ public class CreateAccountController {
             confirmPasswordErrorLabel.setVisible(true);
         } else {
             User newUser = new User(username, password, name);
-            MediaVaultController.addUser(newUser);
-            MediaVaultController.setCurrentUser(newUser);
+            UserController.addUser(newUser);
+            UserController.setCurrentUser(newUser);
             MediaVault.setRoot("main-menu-view");
         }
     }

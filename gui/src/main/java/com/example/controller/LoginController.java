@@ -12,12 +12,6 @@ import javafx.scene.control.*;
 public class LoginController {
 
     @FXML
-    private Button verifyLoginButton;
-
-    @FXML
-    private Button backButton;
-
-    @FXML
     private TextField usernameField;
 
     @FXML
@@ -80,8 +74,8 @@ public class LoginController {
             inputPassword = passwordVisibleField.getText();
         }
 
-        User[] users = MediaVaultController.getUsers();
-        int userCount = MediaVaultController.getUserCount();
+        User[] users = UserController.getUsers();
+        int userCount = UserController.getUserCount();
         System.out.println("At login attempt, userCount= " + userCount);
 
         int userIndex = -1;
@@ -93,7 +87,7 @@ public class LoginController {
 
         if (userIndex != -1 && users[userIndex].login(inputUsername, inputPassword)) {
             errorLabel.setVisible(false);
-            MediaVaultController.setCurrentUser(users[userIndex]);
+            UserController.setCurrentUser(users[userIndex]);
             MediaVault.setRoot("main-menu-view");
         } else {
             errorLabel.setVisible(true);

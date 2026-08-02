@@ -20,28 +20,6 @@ public class Series extends MediaEntry {
     private int currentSeason; // the user's current season
     private int currentEpisode; // the user's current episode
 
-    // CONSTRUCTOR
-    // /**
-    // * Accepts a title, genre, and count of seasons as parameters, and initializes
-    // * status to "Planned," rating to 0, review to empty, current season to 1, and
-    // * current episode to 0, and list of episode counts
-    // *
-    // * @param title the title of the series
-    // * @param genre the genre of the series
-    // * @param seasonCount the count of seasons in the series
-    // */
-    // public Series(String title, String genre, int seasonCount) {
-    // super(title, genre);
-
-    // STUDIO = studio;
-    // SEASONCOUNT = seasonCount;
-    // episodeCount = new int[SEASONCOUNT];
-
-    // // Initialization
-    // currentSeason = 1;
-    // currentEpisode = 0;
-    // }
-
     /**
      * Accepts a title, genre, and count of seasons as parameters, and initializes
      * status to "Planned," rating to 0, review to empty, current season to 1, and
@@ -68,20 +46,6 @@ public class Series extends MediaEntry {
     }
 
     // METHODS
-    // /**
-    // * Assigns a number of episodes per season
-    // */
-    // @SuppressWarnings("resource")
-    // public void addEpisodes() {
-    // Scanner sc = new Scanner(System.in);
-    // for (int i = 0; i < SEASONCOUNT; i++) {
-    // do {
-    // System.out.print("Season " + (i + 1) + " Episode Count: ");
-    // episodeCount[i] = sc.nextInt();
-    // } while (episodeCount[i] <= 0);
-    // }
-    // }
-
     /**
      * Moves the current episode and current season forward by one as necessary
      */
@@ -124,15 +88,6 @@ public class Series extends MediaEntry {
     }
 
     // GETTERS
-    // /**
-    // * Returns the studio of the series
-    // *
-    // * @return the studio
-    // */
-    // public String getStudio() {
-    // return STUDIO;
-    // }
-
     /**
      * Returns the number of seasons in the series
      * 

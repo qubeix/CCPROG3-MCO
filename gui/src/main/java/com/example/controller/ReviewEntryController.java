@@ -11,9 +11,6 @@ import javafx.scene.layout.VBox;
 public class ReviewEntryController {
 
     @FXML
-    private VBox reviewEntryPanel;
-
-    @FXML
     private ComboBox<String> reviewTypeCombo;
 
     @FXML
@@ -23,23 +20,45 @@ public class ReviewEntryController {
     private TextArea reviewTextArea;
 
     @FXML
-    private TextArea outputArea;
-
-    @FXML
     private Label reviewEntryMessage;
 
     private Library library;
 
+    /**
+     * This method is the parent controller after loading the FXML,
+     * allowing the controller to access the user's library data
+     * 
+     * @param library this object is associated with this controller
+     */
     public void setLibrary(Library library) {
         this.library = library;
     }
 
+    /**
+     * Initializes the controller after its root element has been completely loaded.
+     * 
+     * Set up choices in the reviewTypeCombo with the options (Book, Album, Series),
+     * and hides the reviewEntryMessage by deafult until it is needed
+     * 
+     * @FXML this method is automatically called after the FXML components have been
+     *       loaded
+     */
     @FXML
     private void initialize() {
         reviewTypeCombo.getItems().setAll("Book", "Album", "Series");
         reviewEntryMessage.setVisible(false);
     }
 
+    /**
+     * Handles the selection of a type for review
+     * 
+     * clears the reviewEntryCombo items and fills them based on the selected type
+     * (book, album, series). Only entries with a status of "Completed" are listed
+     * with their index and title, allowing the user to choose which entry to review
+     * 
+     * @FXML this method is triggered when the user selects a type from the
+     *       reviewTypeCombo
+     */
     @FXML
     private void onReviewTypeSelected() {
         String type = reviewTypeCombo.getValue();
@@ -75,6 +94,17 @@ public class ReviewEntryController {
         }
     }
 
+    /**
+     * Confirms and adds a review to the selected entry
+     * 
+     * Retrieves the selected type (book, album, series), the chosesn entry, and the
+     * review text entered by the user. If all inputs are valid, the review is added
+     * to the corresponding entry in the library and a success message is displayed.
+     * If any input is missing, an error message is shown instead
+     * 
+     * @FXML this method is triggered when the user clicks the confirm button to
+     *       submit the review
+     */
     @FXML
     private void confirmReviewEntry() {
         String type = reviewTypeCombo.getValue();
@@ -89,11 +119,11 @@ public class ReviewEntryController {
             int index = Integer.parseInt(selected.split("\\.")[0]) - 1;
 
             if ("Book".equals(type)) {
-                library.reviewBookAt(index, review);
+                library.getBookEntry(index).addReview(review);
             } else if ("Album".equals(type)) {
-                library.reviewAlbumAt(index, review);
+                library.getAlbumEntry(index).addReview(review);
             } else if ("Series".equals(type)) {
-                library.reviewSeriesAt(index, review);
+                library.getSeriesEntry(index).addReview(review);
             }
 
             reviewEntryMessage.setStyle("-fx-text-fill: GREEN");
@@ -108,6 +138,16 @@ public class ReviewEntryController {
         }
     }
 
+    /**
+     * clears the current review entry form
+     * 
+     * resets the reviewTypeCombo and removeEntryCombo selection to null and clears
+     * the removeEntryCombo field, and clears the reviewTextArea field, preparing
+     * the form for a new review
+     * 
+     * @FXML this method is triggered when the user clicks the clear for remove
+     *       button
+     */
     @FXML
     private void clearReviewEntry() {
         reviewTypeCombo.setValue(null);

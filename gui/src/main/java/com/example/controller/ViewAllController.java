@@ -12,6 +12,12 @@ public class ViewAllController {
 
     private Library library;
 
+    /**
+     * This method is the parent controller after loading the FXML,
+     * allowing the controller to access the user's library data
+     * 
+     * @param library this object is associated with this controller
+     */
     public void setLibrary(Library library) {
         this.library = library;
         outputArea.setText(library.getAllEntriesText());
